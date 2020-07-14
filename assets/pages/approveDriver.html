@@ -1,0 +1,434 @@
+<style>
+    /* -------------Content Css-------------- */
+
+    .wrapper {
+        display: flex;
+        width: 100%;
+    }
+
+
+    #content {
+        width: calc(100% - 220px);
+        padding: 10px 40px 20px 40px !important;
+        min-height: 100vh;
+        transition: all 0.3s;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-image: url('assets/img/background.jpg')!important;
+    }
+
+    #content.active {
+        width: 100%;
+    }
+
+    .overlay {
+        display: none;
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 998;
+        opacity: 0;
+        transition: all 0.5s ease-in-out;
+    }
+
+    .overlay.active {
+        display: block;
+        opacity: 1;
+    }
+
+    /* ------------------------------------- */
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    /* Zebra striping */
+
+    tr:nth-of-type(odd) {
+        background: #eee;
+    }
+
+    th {
+        background: #333;
+        color: white;
+        font-weight: bold;
+    }
+
+    td,
+    th {
+        padding: 6px;
+        border: 1px solid #ccc;
+        text-align: left;
+    }
+
+    @media only screen and (max-width: 760px),
+    (min-device-width: 768px) and (max-device-width: 1024px) {
+
+        /* Force table to not be like tables anymore */
+        table.responsive,
+        .responsive thead,
+        .responsive tbody,
+        .responsive th,
+        .responsive td,
+        .responsive tr {
+            display: block;
+        }
+
+        /* Hide table headers (but not display: none;, for accessibility) */
+        .responsive thead tr {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+
+        .responsive tr {
+            border: 1px solid #ccc;
+        }
+
+        .responsive td {
+            /* Behave  like a "row" */
+            border: none;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: 50%;
+        }
+
+        .responsive td:before {
+            /* Now like a table header */
+            position: absolute;
+            /* Top/left values mimic padding */
+            top: 6px;
+            left: 6px;
+            width: 45%;
+            padding-right: 10px;
+            white-space: nowrap;
+        }
+
+        /*Label the data*/
+        .responsive td:before {
+            content: attr(data-table-header);
+        }
+    }
+
+    .table-responsive .bootstrap {
+        min-height: .01%;
+        overflow-x: auto;
+    }
+
+    @media screen and (max-width: 767px) {
+        .table-responsive.bootstrap {
+            width: 100%;
+            margin-bottom: 15px;
+            overflow-y: hidden;
+            -ms-overflow-style: -ms-autohiding-scrollbar;
+            border: 1px solid #ddd;
+        }
+        .table-responsive.bootstrap>.table {
+            margin-bottom: 0;
+        }
+        .table-responsive.bootstrap>.table>thead>tr>th,
+        .table-responsive.bootstrap>.table>tbody>tr>th,
+        .table-responsive.bootstrap>.table>tfoot>tr>th,
+        .table-responsive.bootstrap>.table>thead>tr>td,
+        .table-responsive.bootstrap>.table>tbody>tr>td,
+        .table-responsive.bootstrap>.table>tfoot>tr>td {
+            white-space: nowrap;
+        }
+        .table-responsive.bootstrap>.table-bordered {
+            border: 0;
+        }
+        .table-responsive.bootstrap>.table-bordered>thead>tr>th:first-child,
+        .table-responsive.bootstrap>.table-bordered>tbody>tr>th:first-child,
+        .table-responsive.bootstrap>.table-bordered>tfoot>tr>th:first-child,
+        .table-responsive.bootstrap>.table-bordered>thead>tr>td:first-child,
+        .table-responsive.bootstrap>.table-bordered>tbody>tr>td:first-child,
+        .table-responsive.bootstrap>.table-bordered>tfoot>tr>td:first-child {
+            border-left: 0;
+        }
+        .table-responsive.bootstrap>.table-bordered>thead>tr>th:last-child,
+        .table-responsive.bootstrap>.table-bordered>tbody>tr>th:last-child,
+        .table-responsive.bootstrap>.table-bordered>tfoot>tr>th:last-child,
+        .table-responsive.bootstrap>.table-bordered>thead>tr>td:last-child,
+        .table-responsive.bootstrap>.table-bordered>tbody>tr>td:last-child,
+        .table-responsive.bootstrap>.table-bordered>tfoot>tr>td:last-child {
+            border-right: 0;
+        }
+        .table-responsive.bootstrap>.table-bordered>tbody>tr:last-child>th,
+        .table-responsive.bootstrap>.table-bordered>tfoot>tr:last-child>th,
+        .table-responsive.bootstrap>.table-bordered>tbody>tr:last-child>td,
+        .table-responsive.bootstrap>.table-bordered>tfoot>tr:last-child>td {
+            border-bottom: 0;
+        }
+    }
+
+    /* ---------------User info Section--------------------- */
+
+    .label {
+        width: 70px;
+
+    }
+
+    .label,
+    .phone,
+    .mobile,
+    .email {
+        display: inline-block;
+    }
+
+    .phone,
+    .mobile,
+    .email {
+        font-weight: 600;
+    }
+
+    .details-td {
+        padding: 10px;
+        border: none;
+        background-color: #ffff;
+    }
+
+    /*=========making add doctor popup at center of screen(Starts)======*/
+
+    .modal {
+        text-align: center;
+        padding: 0 !important;
+    }
+
+    .modal:before {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+        margin-right: -4px;
+    }
+
+    .modal-dialog {
+        display: inline-block;
+        text-align: left;
+        vertical-align: middle;
+    }
+
+    /*=========making add doctor popup at center of screen(Ends)======*/
+
+    /* -----------------button------------------------- */
+
+    .button {
+        padding: 5px 20px;
+        border: 2px solid #494a49;
+        border-radius: 5px;
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: #494a49;
+        background-color: #fff;
+
+
+    }
+
+    .button:hover {
+        color: #494a49;
+        background-color: #f1f50b;
+        cursor: pointer;
+
+    }
+
+
+    .button-small {
+        padding: 3px 15px;
+        border: 2px solid #494a49;
+        border-radius: 5px;
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: #494a49;
+        background-color: #fff;
+
+
+    }
+
+    .button-small:hover {
+        color: #494a49;
+        background-color: #f1f50b;
+        cursor: pointer;
+
+    }
+    .header-board{
+        position: relative;
+top: 13px;
+    }
+
+    /* -----------Accordian------------------- */
+
+    .i-accordion .panel-heading,
+    .d-accordion .panel-heading,
+    .accordion-2a .panel-heading,
+    .accordion-2b .panel-heading,
+    .accordion-3 .panel-heading {
+        cursor: pointer;
+    }
+
+    .d-accordion .panel-heading.collapsed .fa-chevron-up:before {
+        content: '\f078';
+    }
+
+    .panel-heading {
+        background-color: transparent;
+        min-height: 45px;
+        padding: 10px 20px 10px 20px;
+        background: transparent;
+        margin-top: 15px;
+        border: 1px solid;
+        border-radius: 22px;
+    }
+
+    .panel-body {
+        border: 1px solid #dad6d6;
+        border-top: 0pc;
+        padding: 30px 20px 20px 20px;
+        color: #777777;
+        font-family: sans-serif;
+        font-size: 15px;
+        border-radius: 30px;
+        box-shadow: 2px 2px #e2dddd;
+    }
+
+    .header-right {
+        background-color: transparent !important;
+        border: none !important;
+        margin-top: 0 !important;
+    }
+
+</style>
+
+<div id="page-loading" ng-show="loading" class="ng-hide">
+    <div class="loader">
+        <img src="assets/img/giphy.gif" width="100" height="100" style="padding: 0">
+    </div>
+</div>
+
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <ng-include src="'assets/pages/MysideBar.html'"></ng-include>
+    <!-- Page Content  -->
+    <div id="content">
+        <nav class="navbar navbar-expand-lg bg-white" ng-controller="DashNavBarCtrl">
+            <div class="container-fluid">
+                <button type="button" id="sidebarCollapse1" class="btn btn-info" style="display: none;">
+                    <!--<i class="fas fa-align-justify"></i>--><img src="assets/img/menu.png">
+                </button>
+                <h3 class="text-md-right myFont">{{Route}}</h3>
+                <button ng-show = "travelBilling" class="btn btn-default" style="margin-left: 32px;" ng-click = "filters()">Filters</button>
+        
+                <button class="btn btn-dark d-inline-block d-lg-none ml-auto" id="hideButton" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-align-justify"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="col-md-12  col-sm-12 mb-2" style="text-align: right">
+                        <a href="#driverReg">
+                            <button type="button" class="button-small" style="cursor: pointer ;position: relative;
+                            top: 4px;" ng-click="ListUpcomingRide(); toggle();" ng-show="!upcomingList"><span class="myfont">Driver Registration</span></button>         
+                         </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- ---------------------------------------------------------------------- -->
+        <div class="col-md-12 header-board" >
+     
+            <table class="responsive">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Mobile Number</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Car Brand/Model</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="record in driverList" ng-show="!NoDriverList">
+                        <td data-table-header="Name">{{record.name}}</td>
+                        <td data-table-header="Mobile Number"></td>
+                        <td data-table-header="Email"></td>
+                        <td data-table-header="Car Brand/Model"></td>
+                        <td data-table-header="Action">
+                            <button type="button" class="button-small" ng-click="showDriverDetails(record)" uib-tooltip='appears with delay'><i class="fa fa-search-minus" aria-hidden="true"></i></button>
+                            <!--<button type="button" class="button-small" data-toggle="modal" data-target="#deleteConf"><i class="fa fa-check-circle" aria-hidden="true"></i></button>-->
+                        </td>
+                    </tr>
+                    <tr ng-show="NoDriverList">
+                        <td colspan="5">
+                            <center><img class="imgIco" src="assets/img/fuel.png" />
+                                <h3>No member available to approve</h3>
+                            </center>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- ---------------------------info------------------------------------------------------ -->
+        
+        <!-- ------------------Modal------------------------------ -->
+        <!-- <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content--
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Modal Header</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Some text in the modal.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!---------------------------------delete Conf Model-------------------------------- -->
+        <!-- <div id="deleteConf" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content custom-modal">
+                    <div class="modal-header custom-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body custom-body">
+                        <div class="col-md-12 mycontent">
+                            <center>Are you Sure you want to do this?</center>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-6 conf-yes" ng-click="CallapproveMember()">
+                                    <center>Yes</center>
+                                </div>
+                                <div class="col-md-6 conf-no " ng-click="CallapproveMemberNO()">
+                                    <center>No</center>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        
+        
+    </div>
+</div>
+<div class="overlay"></div>
+<script>
+    /* ---------------Accordian arrow button rotate-------- */
+    $('.d-accordion').on('show.bs.collapse', function(n) {
+        $(n.target).siblings('.panel-heading').find('.panel-title i').toggleClass('fa-chevron-up fa-chevron-down ');
+    });
+
+    $('.d-accordion').on('hide.bs.collapse', function(n) {
+        $(n.target).siblings('.panel-heading').find('.panel-title i').toggleClass('fa-chevron-down fa-chevron-up ');
+    });
+
+</script>

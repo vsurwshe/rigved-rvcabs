@@ -1,0 +1,1671 @@
+<style>
+    /* -------------Content Css-------------- */
+
+    .wrapper {
+        display: flex;
+        width: 100%;
+    }
+
+    /* .card{
+        background: none!important;
+        border: 0px;
+    } */
+    #content {
+        width: calc(100% - 220px);
+        padding: 10px 40px 20px 40px !important;
+        min-height: 100vh;
+        transition: all 0.3s;
+        position: absolute;
+        top: 0;
+        right: 0;
+    background-image: url('assets/img/background.jpg')!important;
+
+    }
+
+    #content.active {
+        width: 100%;
+    }
+
+    /* ------------------------------------- */
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    /* Zebra striping */
+
+    tr:nth-of-type(odd) {
+        background: #eee;
+    }
+
+    th {
+        background: #333;
+        color: white;
+        font-weight: bold;
+    }
+
+    td,
+    th {
+        padding: 6px;
+        border: 1px solid #ccc;
+        text-align: left;
+    }
+
+    @media only screen and (max-width: 760px),
+    (min-device-width: 768px) and (max-device-width: 1024px) {
+
+        /* Force table to not be like tables anymore */
+        table.responsive,
+        .responsive thead,
+        .responsive tbody,
+        .responsive th,
+        .responsive td,
+        .responsive tr {
+            display: block;
+        }
+
+        /* Hide table headers (but not display: none;, for accessibility) */
+        .responsive thead tr {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+
+        .responsive tr {
+            border: 1px solid #ccc;
+        }
+
+        .responsive td {
+            /* Behave  like a "row" */
+            border: none;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: 50%;
+        }
+
+        .responsive td:before {
+            /* Now like a table header */
+            position: absolute;
+            /* Top/left values mimic padding */
+            top: 6px;
+            left: 6px;
+            width: 45%;
+            padding-right: 10px;
+            white-space: nowrap;
+        }
+
+        /*Label the data*/
+        .responsive td:before {
+            content: attr(data-table-header);
+        }
+    }
+
+    .table-responsive .bootstrap {
+        min-height: .01%;
+        overflow-x: auto;
+    }
+
+    @media screen and (max-width: 767px) {
+        .table-responsive.bootstrap {
+            width: 100%;
+            margin-bottom: 15px;
+            overflow-y: hidden;
+            -ms-overflow-style: -ms-autohiding-scrollbar;
+            border: 1px solid #ddd;
+        }
+        .table-responsive.bootstrap>.table {
+            margin-bottom: 0;
+        }
+        .table-responsive.bootstrap>.table>thead>tr>th,
+        .table-responsive.bootstrap>.table>tbody>tr>th,
+        .table-responsive.bootstrap>.table>tfoot>tr>th,
+        .table-responsive.bootstrap>.table>thead>tr>td,
+        .table-responsive.bootstrap>.table>tbody>tr>td,
+        .table-responsive.bootstrap>.table>tfoot>tr>td {
+            white-space: nowrap;
+        }
+        .table-responsive.bootstrap>.table-bordered {
+            border: 0;
+        }
+        .table-responsive.bootstrap>.table-bordered>thead>tr>th:first-child,
+        .table-responsive.bootstrap>.table-bordered>tbody>tr>th:first-child,
+        .table-responsive.bootstrap>.table-bordered>tfoot>tr>th:first-child,
+        .table-responsive.bootstrap>.table-bordered>thead>tr>td:first-child,
+        .table-responsive.bootstrap>.table-bordered>tbody>tr>td:first-child,
+        .table-responsive.bootstrap>.table-bordered>tfoot>tr>td:first-child {
+            border-left: 0;
+        }
+        .table-responsive.bootstrap>.table-bordered>thead>tr>th:last-child,
+        .table-responsive.bootstrap>.table-bordered>tbody>tr>th:last-child,
+        .table-responsive.bootstrap>.table-bordered>tfoot>tr>th:last-child,
+        .table-responsive.bootstrap>.table-bordered>thead>tr>td:last-child,
+        .table-responsive.bootstrap>.table-bordered>tbody>tr>td:last-child,
+        .table-responsive.bootstrap>.table-bordered>tfoot>tr>td:last-child {
+            border-right: 0;
+        }
+        .table-responsive.bootstrap>.table-bordered>tbody>tr:last-child>th,
+        .table-responsive.bootstrap>.table-bordered>tfoot>tr:last-child>th,
+        .table-responsive.bootstrap>.table-bordered>tbody>tr:last-child>td,
+        .table-responsive.bootstrap>.table-bordered>tfoot>tr:last-child>td {
+            border-bottom: 0;
+        }
+
+        .header-board {
+            padding: 0px !important;
+            box-shadow: 1px 3px 10px 5px #cecece !important;
+        }
+    }
+
+    /* ---------------User info Section--------------------- */
+
+    .label {
+        width: 70px;
+
+    }
+
+    .label,
+    .phone,
+    .mobile,
+    .email {
+        display: inline-block;
+    }
+
+    .phone,
+    .mobile,
+    .email {
+        font-weight: 600;
+    }
+
+    .details-td {
+        padding: 10px;
+        border: none;
+        background-color: #ffff;
+    }
+
+    /* -----------------button------------------------- */
+
+    .button {
+        padding: 5px 20px;
+        border: 2px solid #494a49;
+        border-radius: 5px;
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: #494a49;
+        background-color: #fff;
+
+
+    }
+
+    .button:hover {
+        color: #494a49;
+        background-color: #f1f50b;
+        cursor: pointer;
+
+    }
+
+
+    .button-small {
+        padding: 3px 15px;
+        border: 2px solid #494a49;
+        border-radius: 5px;
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: #494a49;
+        background-color: #fff;
+
+
+    }
+
+    .button-small:hover {
+        color: #494a49;
+        background-color: #f1f50b;
+        cursor: pointer;
+
+    }
+
+    .overlay {
+        display: none;
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 998;
+        opacity: 0;
+        transition: all 0.5s ease-in-out;
+    }
+
+    .overlay.active {
+        display: block;
+        opacity: 1;
+    }
+
+    .middle-div {
+        display: table;
+        width: 100%;
+        height: 100%;
+    }
+
+    .inner-middle-div {
+        display: table-cell;
+        vertical-align: middle;
+    }
+    .user-profile-card {       
+        padding: 15px;
+        /* background-color: #fff; */
+        border-radius: 7px;
+        /* box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); */
+        /* background-image: url('assets/img/28228.jpg'); */
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        z-index: 1;
+        text-align: center;
+        color: #fff;
+    }
+
+    .user-profile-card:before {
+        position: absolute;
+        content: "";
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        z-index: -1;
+        border-radius: 7px;
+    }
+
+    .user-profile-card .card-body {
+        margin-bottom: 30px;
+    }
+
+    .user-profile-card .card-body .user-info .user-pic {
+        position: relative;
+        width: 140px;
+        height: 140px;
+        margin: auto;
+        border-radius: 100%;
+        background-image: url('assets/img/elements/g5.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        border: 3px solid #fff;
+        z-index: 1;
+    }
+
+    .user-profile-card .card-body .user-info .user-pic .edit {
+        position: absolute;
+        content: "";
+        bottom: 0;
+        right: 0;
+        width: 28px;
+        height: 28px;
+        background-color: #eedd11;
+        z-index: -1;
+        border-radius: 100%;
+        text-align: center;
+        line-height: 27px;
+        cursor: pointer;
+    }
+
+    .user-profile-card .card-body .user-info .user-pic .edit i {
+        font-size: 14px;
+        vertical-align: middle;
+    }
+
+    .user-profile-card .card-body .user-info .user-name {
+        margin: 15px 0 0 0;
+        font-weight: 400;
+        font-size: 2em;
+        font-weight: 600;
+        color: #fff;
+    }
+
+    .user-profile-card .card-body .user-info p {
+        margin: 5px 0 0 0;
+        font-size: 20px;
+        font-weight: 400;
+    }
+
+    .user-profile-card .card-footer .list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .user-profile-card .card-footer .list li {
+        float: left;
+    }
+
+    .user-profile-card .card-footer .list li+li {
+        margin-left: 60px;
+    }
+
+    .user-profile-card .card-footer .list li span {
+        display: block;
+    }
+
+    .user-profile-card .card-footer .list li span+span {
+        font-size: 14px;
+        font-weight: 400;
+        opacity: 0.7;
+    }
+
+    .user-profile-card .card-footer .list li .count {
+        font-weight: 400;
+        font-size: 1.3em;
+        padding-bottom: 5px;
+    }
+
+    .profile-card {       
+        padding: 15px;
+        background-color: #fff;
+        border-radius: 7px;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+        background-image: url('assets/img/28228.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        z-index: 1;
+        text-align: center;
+        color: #fff;
+    }
+
+    .profile-card:before {
+        position: absolute;
+        content: "";
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(1, 61, 64, 0.5);
+        z-index: -1;
+        border-radius: 7px;
+    }
+
+    .profile-card .card-body {
+        margin-bottom: 30px;
+    }
+
+    .profile-card .card-body .user-info .user-pic {
+        position: relative;
+        width: 140px;
+        height: 140px;
+        margin: auto;
+        border-radius: 100%;
+        background-image: url('assets/img/elements/g5.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        border: 3px solid #fff;
+        z-index: 1;
+    }
+
+    .profile-card .card-body .user-info .user-pic .edit {
+        position: absolute;
+        content: "";
+        bottom: 0;
+        right: 0;
+        width: 28px;
+        height: 28px;
+        background-color: #feca4a;
+        z-index: -1;
+        border-radius: 100%;
+        text-align: center;
+        line-height: 27px;
+        cursor: pointer;
+    }
+
+    .profile-card .card-body .user-info .user-pic .edit i {
+        font-size: 14px;
+        vertical-align: middle;
+    }
+
+    .profile-card .card-body .user-info .user-name {
+        margin: 15px 0 0 0;
+        font-weight: 400;
+        font-size: 2em;
+        font-weight: 600;
+        color: #fff;
+    }
+
+    .profile-card .card-body .user-info p {
+        margin: 5px 0 0 0;
+        font-size: 20px;
+        font-weight: 400;
+    }
+
+    .profile-card .card-footer .list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .profile-card .card-footer .list li {
+        float: left;
+    }
+
+    .profile-card .card-footer .list li+li {
+        margin-left: 60px;
+    }
+
+    .profile-card .card-footer .list li span {
+        display: block;
+    }
+
+    .profile-card .card-footer .list li span+span {
+        font-size: 14px;
+        font-weight: 400;
+        opacity: 0.7;
+    }
+
+    .profile-card .card-footer .list li .count {
+        font-weight: 400;
+        font-size: 1.3em;
+        padding-bottom: 5px;
+    }
+
+    /* side bar */
+    #content {
+    width: calc(100% - 220px);
+    padding: 10px 40px 20px 40px !important;
+    min-height: 100vh;
+    transition: all 0.3s;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#content.active {
+    width: 100%;
+}
+    #sidebar{
+        margin-top:0px!important;
+    }
+ .sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #343a40!important;
+  color: #fff;
+  position: static;
+  height: auto;
+  overflow: auto;
+}
+
+.sidebar a {
+  display: block;
+  color: white;
+  padding: 14px;
+  text-decoration: none;
+  /* float: left; */
+}
+ 
+ .sidebar a.active {
+  background-color: #fab700;
+  color: white;
+  /* width: 100%; */
+}
+
+  .sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+ /* .btn-default{
+    
+     } */
+div .textconetnt
+ {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
+}
+ @media screen and (max-width: 768px){
+    .sidebar {
+    width: 100%;
+    height: auto;
+    display: block;
+    position: relative;
+    scrollbar-color: red;
+  }
+  .sidebar a {
+      float: left;
+      /* padding: 10px; */
+  }
+     .sidebar a.active{
+    width: auto!important;
+    height: auto;
+    /* display: block; */
+    position: relative;
+    scrollbar-color: red;
+  }
+
+  .sidebar a > .fa-user , .fa-key ,.fa-file, .fa-question, .fa-envelope, .fa-file-powerpoint{
+          /* padding: 2px; */
+          margin: 3px;
+      }
+} 
+@media screen and (max-width: 1080px) {
+     .sidebar {
+    width: 100%;
+    height: auto;
+    display: block;
+    position: relative;
+    scrollbar-color: red;
+  }
+    .sidebar a {
+      float: left;
+      /* padding: 10px; */
+      }
+    .sidebar a > .fa-user , .fa-key ,.fa-file, .fa-question, .fa-envelope, .fa-file-powerpoint{
+          /* padding: 2px; */
+          margin: 3px;
+      }
+
+div.content {margin-left: 0;}
+.sidebar a.active {
+background-color: #fab700;
+color: white;
+width: 100%;
+}
+}
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+  /* .profileM .sidebar a > i{
+    display: none;
+  } */
+}
+@media (min-width: 576px){
+.container {
+max-width: 100%;
+}
+}
+/*for profile upload*/
+.heading{
+Font-size:20px;
+text-align: initial!important;
+}
+ol{
+margin: 0;
+padding: 0;
+list-style: number;
+}
+.a{
+list-style-type: lower-alpha!important;
+}
+.sidePane {
+        min-height: 150px;
+        width: 100%;
+        margin-top: 0px;
+        border:none;
+        /* border-right: 1px solid #42c7be;
+        border-left: 1px solid #42c7be; */
+        border-radius: 10px;
+        box-shadow: none;
+    }
+    .edit-pic{
+        position: absolute;
+        top: 118px;
+        right: 87px;
+        width: 55px;
+        height: 55px;
+        background: rgba(0, 0, 0, 0.14);
+        text-align: center;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+    .ce-pencil{
+        position: relative;
+        top: 17px;
+        font-size: 20px;
+    }
+    .edit-pic:hover {
+        background:#fab700;
+        opacity: .7;
+    }
+    .edit-pic:hover > .ce-pencil{
+        font-size: 17px;
+        transition: .3s;
+        color:#ecd8d8;
+    }
+
+    /* eyeposition */
+    .eyeposition {
+    position: relative;
+    bottom: 23px;
+    float: right;
+    margin-right: 6px;
+    cursor: pointer;
+    z-index: 999;
+}
+
+/* accordion css */
+ /* -----------Accordian------------------- */
+
+ .i-accordion .panel-heading,
+    .d-accordion .panel-heading,
+    .accordion-2a .panel-heading,
+    .accordion-2b .panel-heading,
+    .accordion-3 .panel-heading {
+        cursor: pointer;
+    }
+
+    .d-accordion .panel-heading.collapsed .fa-chevron-up:before {
+        content: '\f078';
+    }
+
+    .panel-heading {
+        background-color: transparent;
+        min-height: 45px;
+        padding: 10px 20px 10px 20px;
+        background: transparent;
+        margin-top: 15px;
+        border: 1px solid;
+        border-radius: 22px;
+    }
+
+    .panel-body {
+        border: 1px solid #dad6d6;
+        border-top: 0pc;
+        padding: 30px 20px 20px 20px;
+        color: #777777;
+        font-family: sans-serif;
+        font-size: 15px;
+        border-radius: 30px;
+        box-shadow: 2px 2px #e2dddd;
+    }
+    .header-right {
+        background-color: transparent !important;
+        border: none !important;
+        margin-top: 0 !important;
+    }
+    .w-75 {
+         width: 96% !important;
+    }
+    .navbar-expand .navbar-nav .nav-link {
+    padding-right: 0rem !important;
+    }
+    .typeahead {
+  padding: 20px;
+  max-width: 600px;
+}
+
+.typeahead ul.tags {
+  list-style: none;
+  border-bottom: 1px solid #aaa;
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 0;
+  cursor: text;
+  /*border-bottom: 1px solid #26a69a;
+  box-shadow: 0 1px 0 0 #26a69a;*/
+}
+
+.typeahead ul.tags.focused {
+  border-bottom: 1px solid #26a69a;
+  box-shadow: 0 1px 0 0 #26a69a;
+}
+
+.typeahead ul.list{
+  list-style: none;
+  border: 1px solid #aaa;
+  border-top: none;
+  width: 400px;
+  padding: 0;
+  margin: 0;
+}
+.typeahead ul.list li{
+  padding: 5px;
+  cursor: pointer;
+}
+
+.typeahead ul.list li.active{
+  background-color: #aaa;
+}
+
+
+.typeahead ul li.tag {
+  display: inline;
+  padding: 2px 2px 2px 5px;
+  border: 1px solid #aaa;
+  background-color: #eee;
+  border-radius: 5px;
+  margin-right: 5px;
+  color: #333;
+  cursor: pointer;
+}
+
+.typeahead ul li.inputtag {
+  display: inline;
+  margin-right: 5px;
+  color: #333;
+}
+.typeahead ul li.inputtag input {
+  border: none;
+  display: inline;
+  height: initial;
+  width: initial;
+  margin: initial;
+}
+
+.typeahead ul li.inputtag input:focus {
+  border: none;
+  display: inline;
+  height: initial;
+  width: initial;
+  margin: initial;
+  border-bottom: none;
+  box-shadow: none;
+}
+
+.typeahead ul li.inputtag input:focus {
+  outline: none;
+}
+
+
+.typeahead ul li span {
+  padding-left: 5px;
+  padding-right: 2px;
+  font-weight: bold;
+  font-family: sans-serif;
+  color: rgba(0,0,0,0.5);
+  text-transform: lowercase;
+  font-height: 10px;
+}
+</style>
+
+
+<div id="page-loading" ng-show="loading" class="ng-hide">
+    <div class="loader">
+        <img src="assets/img/giphy.gif" width="100" height="100" style="padding: 0">
+    </div>
+</div>
+<div class="wrapper">
+    <!-- Sidebar  -->
+    
+    <ng-include src="'assets/pages/MysideBar.html'"></ng-include>
+    <!-- Page Content  -->
+    <div id="content">
+        <ng-include src="'assets/pages/MynavBar.html'"></ng-include>
+
+       
+        <div class="container-fluid h-100 bg-white p-3"  ng-hide="profileData.masterId == '1'">
+            <div class="row h-100">
+                <aside class="col-12 col-md-2 ml-2 mt-4 p-0 mr-2">
+                    <nav class="navbar navbar-expand navbar-dark bg-dark flex-md-column flex-row align-items-start w-75">
+                        <div class="collapse navbar-collapse">
+                            <ul class="flex-md-column flex-row navbar-nav w-100 justify-content-start">
+                                <li class="nav-item">
+                                    <a class="nav-link tablinks " onclick="openProfile(event, 'dateRange')" id="defaultOpen"><i class="fa fa-user"></i>Date Range</a>
+                                </li>
+                                <li class="nav-item">
+                                   <a class="nav-link tablinks "  onclick="openProfile(event, 'companyData')"><i class="fa fa-car"></i> Company Name</a> 
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link tablinks "  onclick="openProfile(event, 'gst')"><i class="fa fa-file"></i> GST Number</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link tablinks" onclick="openProfile(event, 'cost')"><i class="fa fa-key"></i> Cost Number</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link tablinks" onclick="openProfile(event, 'employee')"><i class="fa fa-key"></i> Employee Number</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link tablinks" onclick="openProfile(event, 'travel')"><i class="fa fa-key"></i> Travel ID</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link tablinks" onclick="openProfile(event, 'typeOfduty')"><i class="fa fa-key"></i> Type of Duty</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link tablinks" onclick="openProfile(event, 'vehSegment')"><i class="fa fa-key"></i> Vehicle Segment</a>
+                                </li> 
+                                <li class="nav-item">
+                                    <a class="nav-link tablinks" onclick="openProfile(event, 'vhModel')"><i class="fa fa-key"></i> Vehicle Model</a>
+                                </li>
+                                <!-- <li class="nav-item">
+                                    <a class="nav-link tablinks" onclick="openProfile(event, 'kmsRate')"><i class="fa fa-key"></i> Per kms. Rate</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link tablinks" onclick="openProfile(event, 'hrsRate')"><i class="fa fa-key"></i> Per Hrs. Rate</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link tablinks" onclick="openProfile(event, 'kiloRange')"><i class="fa fa-key"></i> Kilometer Range </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link tablinks" onclick="openProfile(event, 'timeRange')"><i class="fa fa-key"></i>Time Range</a> -->
+                                </li>
+                            
+                             
+                            </ul>
+                        </div>
+                    </nav>
+                </aside>
+
+                <main class="col">
+                       
+                            <div class="tabcontent" id="dateRange">
+                                <h3 class="mt-3">Select Date Range</h3>
+                                <hr>
+                                <div class="from-group  col-sm-6">
+                                    <lable for="">Enter Start  From Date</lable>
+                                    <my-datepicker ng-model="fromDate" myid="someid"></my-datepicker>
+                               
+                                </div>
+                                <div class="from-group  col-sm-6">
+                                    <lable for="">Enter End To Date</lable>
+                                    <my-datepicker ng-model="endDate" myid="someid"></my-datepicker>
+                              
+                                </div>
+                            
+                            </div>
+
+                            <div class="tabcontent" id="companyData">
+                                <h3 class="mt-3">Company Details</h3>
+                                <hr>
+                                <div class="from-group  col-sm-6">
+                                    <typeahead ng-model="selectedCompany" items="contacts" displaytag="companyName" displayitem="companyName">
+                                    </typeahead> 
+                                </div>
+                            </div>
+                            <div class="tabcontent" id="gst">
+                                <h3 class="mt-3">GST Number</h3>
+                                <hr>
+                                <div class="from-group  col-sm-6">
+                                    <typeahead ng-model="selectedGst" items="contacts" displaytag="gstnumber" displayitem="gstnumber">
+                                    </typeahead> 
+                                </div>
+                            </div>
+                     
+                            <div class="tabcontent" id="cost">
+                                <h3 class="mt-3">Cost Center</h3>
+                                <hr>
+                                <div class="from-group  col-sm-6">
+                                    <typeahead ng-model="costCenter" items="costCenters"   >
+                                    </typeahead> 
+                                    <!-- <input class="form-control txt-field" ng-model="constCenter" type="text"  placeholder="Enter Cost Center"  maxlength="20"> -->
+                                </div>
+                            </div>
+                            <div class="tabcontent" id="employee">
+                                <h3 class="mt-3">Employee Id</h3>
+                                <hr>
+                                <div class="from-group  col-sm-6">
+                                    <!-- <input class="form-control txt-field" ng-model="empId" type="text" name="traveler_mobNum" placeholder="Enter Employee ID"  maxlength="20"> -->
+                                    <typeahead ng-model="empId" items="empIds" displaytag="name" displayitem="name">
+                                    </typeahead> 
+                                </div>
+                            </div>
+                            <div class="tabcontent" id="travel">
+                                <h3 class="mt-3">Travel ID</h3>
+                                <hr>
+                                <typeahead ng-model="travelId" items="travelIds" displaytag="name" displayitem="name">
+                                </typeahead>
+                                <!-- <input class="form-control txt-field" ng-model="travelId" type="text" name="traveler_mobNum" placeholder="Enter Travel ID"  maxlength="20"> -->
+                            </div>
+                            <div class="tabcontent" id="typeOfduty">
+                                <h3 class="mt-3">Type of duty</h3>
+                                <hr>
+                                <div class="from-group  col-sm-9">
+                                    <typeahead ng-model="selectedsDuty" items="forUse" displaytag="name" displayitem="name">
+                                    </typeahead> 
+                                </div>
+                            </div>
+                            <div class="tabcontent" id="vehSegment">
+                                <h3 class="mt-3">Vehicle Segment</h3>
+                                <hr>
+                                <div class="from-group  col-sm-9">
+                                    <typeahead ng-model="selectedsSeg" items="categery" displaytag="name" displayitem="name">
+                                    </typeahead> 
+                                </div>
+                            </div>
+                            <div class="tabcontent" id="vhModel">
+                                <h3 class="mt-3">Vehicle Model</h3>
+                                <hr>
+                                <div class="from-group  col-sm-9">
+                                    <typeahead ng-model="selectedsModel" items="carModals" displaytag="name" displayitem="name">
+                                    </typeahead> 
+                                </div>
+                            </div>
+                            <div class="tabcontent" id="kmsRate">
+                                <h3 class="mt-3">Per Kms. Rate</h3>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input type="checkbox" name=""  id=""> <label style="position: relative; top: 1px;"> &#8377;13 per km</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="checkbox" name=""  id=""> <label style="position: relative; top: 1px;"> &#8377;18 per km</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="checkbox" name=""  id=""> <label style="position: relative; top: 1px;"> &#8377;15.5 per km</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="checkbox" name=""  id=""> <label style="position: relative; top: 1px;"> &#8377;20 per km</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tabcontent" id="hrsRate">
+                                <h3 class="mt-3">Per Hrs. Rate</h3>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <input type="checkbox" name=""  id=""> <label style="position: relative; top: 1px;"> &#8377;140 per hr</label>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="checkbox" name=""  id=""> <label style="position: relative; top: 1px;"> &#8377;215 per hr</label>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="checkbox" name=""  id=""> <label style="position: relative; top: 1px;"> &#8377;290 per hr</label>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="checkbox" name=""  id=""> <label style="position: relative; top: 1px;"> &#8377;160 per hr</label>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="checkbox" name=""  id=""> <label style="position: relative; top: 1px;"> &#8377;230 per hr</label>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="checkbox" name=""  id=""> <label style="position: relative; top: 1px;"> &#8377;320 per hr</label>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="checkbox" name=""  id=""> <label style="position: relative; top: 1px;"> &#8377;180 per hr</label>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="checkbox" name=""  id=""> <label style="position: relative; top: 1px;"> &#8377;320 per hr</label>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="checkbox" name=""  id=""> <label style="position: relative; top: 1px;"> &#8377;350 per hr</label>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="checkbox" name=""  id=""> <label style="position: relative; top: 1px;"> &#8377;210 per hr</label>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="checkbox" name=""  id=""> <label style="position: relative; top: 1px;"> &#8377;255 per hr</label>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="tabcontent" id="kiloRange">
+                                <h3 class="mt-3">Kilometer Range</h3>
+                                <hr>
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label>Enter Start Kilometer Value</label>
+                                        c
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Enter End Kilometer Value</label>
+                                        <input class="form-control txt-field" ng-model="driver_lname" type="text" name="traveler_mobNum" placeholder="Enter time"  maxlength="20">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tabcontent" id="timeRange">
+                                <h3 class="mt-3">Time Range</h3>
+                                <hr>
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label>Enter Start Hour Value</label>
+                                        <input class="form-control txt-field" ng-model="driver_lname" type="text" name="traveler_mobNum" placeholder="Enter time"  maxlength="20">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Enter End Hour Value</label>
+                                        <input class="form-control txt-field" ng-model="driver_lname" type="text" name="traveler_mobNum" placeholder="Enter time"  maxlength="20">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                  
+                </main>
+                
+            </div>
+                    
+            </div>
+        </div>
+        
+
+    </div>
+         <!--Modal for Profile Picture -->
+     <div id="ProfilePicture" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+           <!-- Modal content-->
+           <div class="modal-content">
+              <div class="modal-header" style="display: block;">
+                 <button type="button" class="close" data-dismiss="modal">&times;</button>
+                 <h4 class="modal-title">Select Profile Picture</h4>
+              </div>
+              <div class="modal-body" style="height:330px;">
+                 <style>
+                    .cropArea {
+                    background: #E4E4E4;
+                    overflow: hidden;
+                    width:350px;
+                    height:250px;
+                    }
+                    /* line 1, ../../source/scss/ng-img-crop.scss */
+                    img-crop {
+                    width: 100%;
+                    height: 100%;
+                    display: block;
+                    position: relative;
+                    overflow: hidden;
+                    }
+                    /* line 7, ../../source/scss/ng-img-crop.scss */
+                    img-crop canvas {
+                    display: block;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    outline: none;
+                    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+                    /* mobile webkit */
+                    }
+                 </style>
+                 <center>
+                    <div ngf-drop ng-model="picFile" ngf-pattern="image/*" class="cropArea">
+                       <br/>
+                       <img-crop id="imgcropcanvas" image="picFile  | ngfDataUrl"  result-image="croppedDataUrl" ng-init="croppedDataUrl=''"></img-crop>
+                    </div>
+                    <br>
+                    <button class="btn btn-default btn-sm" ngf-select ng-model="picFile" accept="image/*"  ng-click="toggleButton()" style="color: #ababab !important;" >Select a photo from your computer</button>
+                 </center>
+              </div>
+              <div class="clearfix"></div>
+              <div class="modal-footer" style="display: block;">
+                 <button ng-click="uploadDrProfilePic(croppedDataUrl, picFile.name, picFile.size)" class="profile-submit btn btn-outline-primary btn-sm pull-left"><img class="imgIco" src="assets/img/correct.png">Save Profile Picture</button>
+                 <button type="button" class="btn btn-default btn-sm" data-dismiss="modal" style="float: right;" >Close</button>
+              </div>
+           </div>
+        </div>
+     </div>
+
+    <!-- Fassword Change Message  -->
+    <div id="passChangeModals" class="modal fade">
+        <div class="modal-dialog modal-sm" style="border-radius:5px;">
+            <div class="modal-content">
+
+                <div class="modal-header" style="background-color:#35c885;color:white">
+                     <h4 class="modal-title text-white" >Success</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body" style="padding: 27px" >
+                   <span style="color:#009933"><center><img src="assets\img\succss.png" style="margin-right: 9px;margin-left: 6px;"></center></img><br><center>Password changed successfully</center></br></span>
+                    
+                </div>
+                <div class="modal-footer" style="padding: 10px;">
+                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal" data-toggle="modal" >Close</button>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ------------------Model of Password not Matck Popup Conf------------------------------ -->
+      <div id="passNotMatch" class="modal fade">
+        <div class="modal-dialog modal-sm" style="border-radius:5px;">
+            <div class="modal-content">
+
+                <div class="modal-header" style="background-color:#ff6656;color:white">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" >Warning</h4>
+                </div>
+                <div class="modal-body" style="padding: 27px" >
+                   <center><span style="color:#ff6656"><img src="assets\img\warng.png" style="margin-right: 9px; height: 32px; margin-left: 6px;"></center></img><br>Password And Confirm Password Didn't Match!</span><br>
+                </div>
+                <div class="modal-footer" style="padding: 10px;">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" >Close</button>		   
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- End -->
+
+    <!--Pan Card document upload  -->
+     <div id="panModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+               <!-- Modal content-->
+               <div class="modal-content">
+                  <div class="modal-header" style="display: block;">
+                     <button type="button" class="close" data-dismiss="modal">&times;</button>
+                     <h4 class="modal-title">Select Document</h4>
+                  </div>
+                  <div class="modal-body">
+                        <div class="from-group">
+                                <div class="col-md-12">
+            
+                                    <div class=" col-md-12 zero-padding">
+                                        <div class="col-md-12 zero-padding">
+                                            <h5 class="text-gray">Front Side</h5>
+                                        </div>
+                                        <div class="col-md-12 zero-padding">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label class="drop_target docs">
+                                                                <input type="file" ng-model="FrontPanCard" name="FrontPanCard" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" required minnum="1" ng-change="FrontPanCardUploading()"  maxlength="16">
+                                                            </label>
+                                                </div>
+                                                <div class="col-md-8 zero-padding" style="overflow: hidden">
+                                                    <p class="text-gray">{{FrontPanCard[0].filename}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+            
+                                </div>
+                                <div class="col-md-8 col-sm-12 col-xs-12 mt-2">
+                                <input class="form-control txt-field" type="text" name="PanCard" ng-model="PanCard" placeholder="Pan Card Number">
+
+                                </div>
+                            </div>
+                            <div class="form-group row ml-0 mt-2">
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-secondary text-capitalize" ng-click="SubmitDriverPan()">Upload Licence <i class="fa fa-arrow-up"></i></button>
+
+                                    <!-- <button type="reset" class="btn genric-btn primary-border radius btn-lg btn-block text-center text-uppercase" ng-click="ShowStep(3)">Back</button> -->
+                                </div>
+                            </div>
+                            
+                            
+                   
+               </div>
+               <div class="modal-footer">
+                   <button type="button" class="btn btn-outline-danger" data-dismiss="modal" style="float: right;">Close <i class="fa fa-times"></i></button>
+               </div>
+            </div>
+         </div>
+</div>
+<!-- End -->
+<!-- Aadhar Crad document upload -->
+<div id="aadharModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+           <!-- Modal content-->
+           <div class="modal-content">
+              <div class="modal-header" style="display: block;">
+                 <button type="button" class="close" data-dismiss="modal">&times;</button>
+                 <h4 class="modal-title">Upload Document</h4>
+              </div>
+              <div class="modal-body">
+                    <div class="from-group">
+                            <div class="col-md-12">
+        
+                                    <div class=" col-md-12 zero-padding">
+                                            <div class="col-md-12 zero-padding">
+                                                <h5 class="text-gray">Front Side</h5>
+                                            </div>
+                                            <div class="col-md-12 zero-padding">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <label class="drop_target docs">
+                                                                    <input type="file" ng-model="FrontAadhar" name="FrontAadhar" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" required minnum="1" ng-change="FrontAadharUploading()"  maxlength="16">
+                                                                </label>
+                                                    </div>
+                                                    <div class="col-md-8 zero-padding" style="overflow: hidden">
+                                                        <p class="text-gray">{{FrontAadhar[0].filename}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class=" col-md-12 zero-padding">
+                                            <div class="col-md-12 zero-padding">
+                                                <h5 class="text-gray mt-2">Back Side</h5>
+                                            </div>
+                                            <div class="col-md-12 zero-padding">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <label class="drop_target docs">
+                                                                    <input type="file" ng-model="BackAadhar" name="BackAadhar" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" required minnum="1" ng-change="BackAadharUploading()"  maxlength="16">
+                                                                </label>
+                                                    </div>
+                                                    <div class="col-md-8 zero-padding" style="overflow: hidden">
+                                                        <p class="text-gray mt-2">{{BackAadhar[0].filename}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+        
+                            </div>
+                            <div class="col-md-8 col-sm-12 col-xs-12 mt-2">
+                            <input class="form-control txt-field" type="text" name="AadharCard" ng-model="AadharCard" placeholder="Aadhar Card Number">
+
+                            </div>
+                        </div>
+                        <div class="form-group row ml-0 mt-2">
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-secondary text-capitalize" ng-click="SubmitAadharCard()">Upload Licence <i class="fa fa-arrow-up"></i></button>
+
+                                <!-- <button type="reset" class="btn genric-btn primary-border radius btn-lg btn-block text-center text-uppercase" ng-click="ShowStep(3)">Back</button> -->
+                            </div>
+                        </div>
+                        
+                        
+               
+           </div>
+           <div class="modal-footer">
+               <button type="button" class="btn btn-outline-danger" data-dismiss="modal" style="float: right;">Close <i class="fa fa-times"></i></button>
+           </div>
+        </div>
+     </div>
+</div>
+<!-- End -->
+<!-- Vehicle Registraion document upload -->
+<div id="vrModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+           <!-- Modal content-->
+           <div class="modal-content">
+              <div class="modal-header" style="display: block;">
+                 <button type="button" class="close" data-dismiss="modal">&times;</button>
+                 <h4 class="modal-title">Upload Document</h4>
+              </div>
+              <div class="modal-body">
+                    <div class="from-group">
+                            <div class="col-md-12">
+                                <div class=" col-md-12 zero-padding">
+                                    <div class="col-md-12 zero-padding">
+                                        <h5 class="text-gray">Front Side</h5>
+                                    </div>
+                                    <div class="col-md-12 zero-padding">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label class="drop_target docs">
+                                                            <input type="file" ng-model="FrontRegistration" name="FrontRegistration[]" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" required minnum="1" ng-change="FrontRegistrationUploading()"  maxlength="16">
+                                                        </label>
+                                            </div>
+                                            <div class="col-md-8 zero-padding" style="overflow: hidden">
+                                                <p class="text-gray">{{FrontRegistration[0].filename}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" col-md-12 zero-padding">
+                                    <div class="col-md-12 zero-padding">
+                                        <h5 class="text-gray mt-2">Back Side</h5>
+                                    </div>
+                                    <div class="col-md-12 zero-padding">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label class="drop_target docs">
+                                                            <input type="file" ng-model="BackRegistration" name="BackRegistration" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" required minnum="1" ng-change="BackRegistrationUploading()"  maxlength="16">
+                                                        </label>
+                                            </div>
+                                            <div class="col-md-8 zero-padding" style="overflow: hidden">
+                                                <p class="text-gray">{{BackRegistration[0].filename}}</p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+        
+                            </div>
+                            <div class="col-md-8 col-sm-12 col-xs-12 mt-2">
+                            <input class="form-control txt-field" type="text" name="VehicleRegistration" ng-model="VehicleRegistration" placeholder="Vehicle Registration">
+
+                            </div>
+                        </div>
+                        <div class="form-group row ml-0 mt-2">
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-secondary text-capitalize" ng-click="SubmitDriverVr()">Upload Licence <i class="fa fa-arrow-up"></i></button>
+
+                                <!-- <button type="reset" class="btn genric-btn primary-border radius btn-lg btn-block text-center text-uppercase" ng-click="ShowStep(3)">Back</button> -->
+                            </div>
+                        </div>
+                        
+                        
+               
+           </div>
+           <div class="modal-footer">
+               <button type="button" class="btn btn-outline-danger" data-dismiss="modal" style="float: right;">Close <i class="fa fa-times"></i></button>
+           </div>
+        </div>
+     </div>
+</div>
+<!-- end -->
+<!-- Driving Licence document upload -->
+<div id="dlModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+           <!-- Modal content-->
+           <div class="modal-content">
+              <div class="modal-header" style="display: block;">
+                 <button type="button" class="close" data-dismiss="modal">&times;</button>
+                 <h4 class="modal-title">Upload Document</h4>
+              </div>
+              <div class="modal-body">
+                    <div class="from-group">
+                            <div class="col-md-12">
+                                <div class=" col-md-12 zero-padding">
+                                    <div class="col-md-12 zero-padding">
+                                        <h5 class="text-gray">Front Side</h5>
+                                    </div>
+                                    <div class="col-md-12 zero-padding">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label class="drop_target docs browse">
+                                                            <input type="file" ng-model="FrontDL" name="FrontDL" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" required minnum="1" ng-change="Uploading()"  maxlength="16">
+                                                        </label>
+
+                                                        <!-- <img id="blah" src="#" alt="your image"  width="200"/> -->
+                                            </div>
+                                           
+                                            <div class="col-md-8 zero-padding" style="overflow: hidden">
+                                                <p class="text-gray" id="file">{{FrontDL[0].filename}}</p>
+                                                <!-- <img src="https://placehold.it/80x80" id="preview" class="img-thumbnail"> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                   
+                                <div class=" col-md-12 zero-padding">
+                                    <div class="col-md-12 zero-padding">
+                                        <h5 class="text-gray mt-2">Back Side</h5>
+                                    </div>
+                                    <div class="col-md-12 zero-padding">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label class="drop_target docs">
+                                                    <input type="file" ng-model="BackDL" name="BackDL" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" required minnum="1" ng-change="BackDLupload()"  maxlength="16">
+                                                </label>
+                                            </div>
+                                            <div class="col-md-8 zero-padding" style="overflow: hidden">
+                                                <p class="text-gray">{{BackDL[0].filename}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8 col-sm-12 col-xs-12 mt-2">
+                                    <input class="form-control txt-field" type="text" name="Licence_No" ng-model="LicenceNo" placeholder="Driving Licence Number">
+
+                            </div>
+                        </div>
+                        <div class="form-group row ml-0 mt-2">
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-secondary text-capitalize" ng-click="SubmitDL()">Upload Licence <i class="fa fa-arrow-up"></i></button>
+
+                                <!-- <button type="reset" class="btn genric-btn primary-border radius btn-lg btn-block text-center text-uppercase" ng-click="ShowStep(3)">Back</button> -->
+                            </div>
+                        </div>
+                        
+                        
+               
+           </div>
+           <div class="modal-footer">
+               <button type="button" class="btn btn-outline-danger" data-dismiss="modal" style="float: right;">Close <i class="fa fa-times"></i></button>
+           </div>
+        </div>
+     </div>
+</div>
+</div>
+<!-- ENd -->
+<!-- Vehicle Insurance document upload -->
+<div id="viModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+           <!-- Modal content-->
+           <div class="modal-content">
+              <div class="modal-header" style="display: block;">
+                 <button type="button" class="close" data-dismiss="modal">&times;</button>
+                 <h4 class="modal-title">Upload Document</h4>
+              </div>
+              <div class="modal-body">
+                    <div class="from-group">
+                            <div class="col-md-12">
+                                <div class=" col-md-12 zero-padding">
+                                    <div class="col-md-12 zero-padding">
+                                        <h5 class="text-gray">Front Side</h5>
+                                    </div>
+                                    <div class="col-md-12 zero-padding">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label class="drop_target docs">
+                                                    <input type="file" ng-model="FrontInsu" name="FrontInsu" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" required minnum="1" ng-change="FrontUploadInsu()"  maxlength="16">
+                                                </label>
+                                            </div>
+                                            <div class="col-md-8 zero-padding" style="overflow: hidden">
+                                                <p class="text-gray">{{FrontInsu[0].filename}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" col-md-12 zero-padding">
+                                    <div class="col-md-12 zero-padding">
+                                        <h5 class="text-gray mt-2">Back Side</h5>
+                                    </div>
+                                    <div class="col-md-12 zero-padding">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label class="drop_target docs">
+                                                    <input type="file" ng-model="BackInsu" name="BackInsu" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" required minnum="1" ng-change="BackUploadInsu()"  maxlength="16">
+                                                </label>
+                                            </div>
+                                            <div class="col-md-8 zero-padding" style="overflow: hidden">
+                                                <p class="text-gray">{{BackInsu[0].filename}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8 col-sm-12 col-xs-12 mt-2">
+
+                            <input class="form-control txt-field" type="text" name="VehicleInsurance" ng-model="VehicleInsurance" placeholder="Vehicle Insurance">
+                             </div>   
+                        </div>
+                        <div class="form-group row ml-0 mt-2">
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-secondary text-capitalize" ng-click="SubmitDrivervehicleIns()">Upload Licence <i class="fa fa-arrow-up"></i></button>
+
+                                <!-- <button type="reset" class="btn genric-btn primary-border radius btn-lg btn-block text-center text-uppercase" ng-click="ShowStep(3)">Back</button> -->
+                            </div>
+                        </div>
+                        
+                        
+               
+           </div>
+           <div class="modal-footer">
+               <button type="button" class="btn btn-outline-danger" data-dismiss="modal" style="float: right;">Close <i class="fa fa-times"></i></button>
+           </div>
+        </div>
+     </div>
+</div>
+<!-- ENd -->
+
+<!-- Vehicle Permit document upload -->
+<div id="vpModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+           <!-- Modal content-->
+           <div class="modal-content">
+              <div class="modal-header" style="display: block;">
+                 <button type="button" class="close" data-dismiss="modal">&times;</button>
+                 <h4 class="modal-title">Upload Document</h4>
+              </div>
+              <div class="modal-body">
+                    <div class="from-group">
+                            <div class="col-md-12">
+        
+                                <div class=" col-md-12 zero-padding">
+                                    <div class="col-md-12 zero-padding">
+                                        <h5 class="text-gray">Front Side</h5>
+                                    </div>
+                                    <div class="col-md-12 zero-padding">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label class="drop_target docs">
+                                                            <input type="file" ng-model="FrontPermit" name="VehiclePermit" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" required minnum="1" ng-change="FrontPermitupload()"  maxlength="16">
+                                                        </label>
+                                            </div>
+                                            <div class="col-md-8 zero-padding" style="overflow: hidden">
+                                                <p class="text-gray">{{FrontPermit[0].filename}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" col-md-12 zero-padding">
+                                    <div class="col-md-12 zero-padding">
+                                        <h5 class="text-gray mt-2">Back Side</h5>
+                                    </div>
+                                    <div class="col-md-12 zero-padding">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label class="drop_target docs">
+                                                            <input type="file" ng-model="BackPermit" name="BackPermit" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" required minnum="1" ng-change="BackPermitupload()"  maxlength="16">
+                                                        </label>
+                                            </div>
+                                            <div class="col-md-8 zero-padding" style="overflow: hidden">
+                                                <p class="text-gray">{{BackPermit[0].filename}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                            </div>
+                            <div class="col-md-8 col-sm-12 col-xs-12 mt-2">
+                            <input class="form-control txt-field" type="text" name="VehiclePermit" ng-model="VehiclePermit" placeholder="Vehicle Permit">
+
+                            </div>
+                        </div>
+                        <div class="form-group row ml-0 mt-2">
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-secondary text-capitalize" ng-click="SubmitDrivervp()">Upload Licence <i class="fa fa-arrow-up"></i></button>
+
+                                <!-- <button type="reset" class="btn genric-btn primary-border radius btn-lg btn-block text-center text-uppercase" ng-click="ShowStep(3)">Back</button> -->
+                            </div>
+                        </div>
+                    
+                    
+                          </div>
+           <div class="modal-footer">
+               <button type="button" class="btn btn-outline-danger" data-dismiss="modal" style="float: right;">Close <i class="fa fa-times"></i></button>
+           </div>
+        </div>
+     </div>
+</div>
+<!-- ENd -->
+<!-- Puc Certificate document upload -->
+<div id="pucModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+           <!-- Modal content-->
+           <div class="modal-content">
+              <div class="modal-header" style="display: block;">
+                 <button type="button" class="close" data-dismiss="modal">&times;</button>
+                 <h4 class="modal-title">Select Document</h4>
+              </div>
+              <div class="modal-body">
+                    <div class="from-group">
+                            <div class="col-md-12">
+        
+                                <div class=" col-md-12 zero-padding">
+                                    <div class="col-md-12 zero-padding">
+                                        <h5 class="text-gray">Front Side</h5>
+                                    </div>
+                                    <div class="col-md-12 zero-padding">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label class="drop_target docs">
+                                                            <input type="file" ng-model="FrontPucCard" name="FrontPucCard" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" required minnum="1" ng-change="FrontPucCardUploading()"  maxlength="16">
+                                                        </label>
+                                            </div>
+                                            <div class="col-md-8 zero-padding" style="overflow: hidden">
+                                                <p class="text-gray">{{FrontPucCard[0].filename}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                            </div>
+                            <div class="col-md-8 col-sm-12 col-xs-12 mt-2">
+                            <input class="form-control txt-field" type="text" name="pucCert" ng-model="pucCert" placeholder="Puc Certificate Number">
+
+                            </div>
+                        </div>
+                        <div class="form-group row ml-0 mt-2">
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-secondary text-capitalize" ng-click="SubmitDriverPuc()">Upload Licence <i class="fa fa-arrow-up"></i></button>
+
+                                <!-- <button type="reset" class="btn genric-btn primary-border radius btn-lg btn-block text-center text-uppercase" ng-click="ShowStep(3)">Back</button> -->
+                            </div>
+                        </div>
+                      
+                            
+           </div>
+           <div class="modal-footer">
+               <button type="button" class="btn btn-outline-danger" data-dismiss="modal" style="float: right;">Close <i class="fa fa-times"></i></button>
+           </div>
+        </div>
+     </div>
+</div>
+<!-- End -->
+<div class="overlay" ng-click="toggleButton()"></div>
+
+
+<script type="text/javascript">
+// $('.file-upload').file_upload();
+// function readURL(input) {
+//     if (input.files && input.files[0]) {
+//         var reader = new FileReader();
+        
+//         reader.onload = function (e) {
+//             $('#blah').attr('src', e.target.result);
+//         }
+        
+//         reader.readAsDataURL(input.files[0]);
+//     }
+// }
+
+// $("#imgInp").change(function(){
+//     readURL(this);
+// });
+
+
+
+function openProfile(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+
+
+// to toggle psswrod
+$(".toggle-password").click(function() {
+$(this).toggleClass("fa-eye fa-eye-slash");
+var input = $($(this).attr("toggle"));
+if (input.attr("type") == "password") {
+input.attr("type", "text");
+} else {
+input.attr("type", "password");
+}
+});
+
+function myFunction1() {
+var x = document.getElementById("password-field");
+if (x.type === "password") {
+x.type = "text";
+} else {
+x.type = "password";
+}
+}
+
+// for accordion
+$('.d-accordion').on('show.bs.collapse', function(n) {
+        $(n.target).siblings('.panel-heading').find('.panel-title i').toggleClass('fa-chevron-up fa-chevron-down ');
+    });
+
+    $('.d-accordion').on('hide.bs.collapse', function(n) {
+        $(n.target).siblings('.panel-heading').find('.panel-title i').toggleClass('fa-chevron-down fa-chevron-up ');
+    });
+   
+</script>

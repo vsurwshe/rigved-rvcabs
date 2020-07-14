@@ -1,0 +1,698 @@
+<style>
+    /* ----------Map with 100% width------------- */
+
+    #map {
+        display: block;
+        width: 100%;
+        /*height: 50%;*/
+        overflow: visible;
+    }
+
+    /* ----Fixed map pin at center of screen----- */
+
+    .angular-google-map-container:after {
+        width: 22px;
+        height: 40px;
+        display: block;
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -40px 0 0 -11px;
+        background: url('assets/img/map-pin.png');
+        background-size: 22px 40px;
+        background-repeat: no-repeat;
+        /* Since I used the HiDPI marker version this compensates for the 2x size */
+        
+        /* This disables clicks on the marker. Not fully supported by all major browsers, though */
+    }
+
+    a {
+        cursor: pointer;
+    }
+
+    /* ----------------------------------------- */
+
+    .row {
+        margin: 0;
+    }
+
+    .rightside {
+        background: url('assets/img/dog_car.jpg');
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 100%;
+        background-position: bottom;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+
+
+    }
+
+    .Empty-msg {
+        font-weight: 500;
+        font-size: 30px;
+        color: #fff;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        margin-bottom: 10px;
+    }
+
+    .Empty-msg-child {
+        font-weight: 500;
+        font-size: 15px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        color: #fff;
+
+    }
+
+    .msg {
+        top: 40%;
+        position: fixed;
+        padding: 20px;
+    }
+
+    .hastag {
+        color: #f7f108;
+        line-height: 4.4em !important;
+    }
+
+    .input-form {
+        height: 150px;
+        padding: 15px;
+    }
+
+    .form-control {
+        margin-bottom: 7px !important;
+    }
+
+    @media screen and (max-width: 768px) {
+        .hideonMobile {
+            display: none;
+        }
+
+    }
+
+    .angular-google-map-container {
+        height: 420px;
+    }
+
+    .currentlocation {
+        cursor: pointer;
+    }
+
+
+    .location-msg {
+        min-height: 40px;
+        background-color: #e67a0b;
+        padding: 10px;
+        transition-duration: 0.5s;
+        position: fixed;
+        max-width: 568px;
+        z-index: 9999;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* --------------main container css-------- */
+
+    .row {
+        position: fixed !important;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+
+    /* ----------------input box css------------------------ */
+
+    .row-sm {
+        display: block;
+        height: 40px;
+        line-height: 20px;
+        position: relative;
+        padding: 10px 0px;
+    }
+
+    .label {
+        font-size: 13px;
+        color: #898989;
+    }
+
+
+    .text {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    .h-full {
+        height: 100%;
+        line-height: 40px;
+        top: 0;
+    }
+
+    .left {
+        position: absolute;
+        width: 64px;
+        padding-left: 8px;
+    }
+
+    .right {
+        position: absolute;
+        left: 64px;
+        right: 8px;
+    }
+
+    .value {
+        font-size: 15px;
+        color: black;
+    }
+
+    .card {
+        position: relative;
+        border: 1px solid #e5e5e5;
+        margin: 8px 0px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .no-border {
+        border: none !important;
+    }
+
+
+    .bg-dark {
+        background: #fff !important;
+    }
+
+    .address {
+        padding: 20px;
+    }
+
+    .Confirm {
+        background-color: #353434;
+        color: #f5f504;
+    }
+
+    /* ----------------sidebar css-------------------------- */
+
+    #sidebar1 {
+        width: 280px !important;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        z-index: 999;
+        color: #fff;
+        transition: all 0.4s;
+        margin-top: 0px !important;
+    }
+
+    #sidebar1.active {
+        margin-left: -280px;
+    }
+
+    #sidebar1 .sidebar-header {
+        padding: 20px;
+        /* background: #343a40; */
+        background: #ffffff;
+    }
+
+    #sidebar1 ul.components {
+        padding: 20px 0px;
+        border-bottom: 1px solid #47748b;
+    }
+
+    #sidebar1 ul p {
+        color: #fff;
+        padding: 10px;
+    }
+
+    #sidebar1 ul li a {
+        padding: 10px 20px;
+        font-size: 16px;
+        display: block;
+        color: #333 !important;
+        font-weight: 500;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    }
+
+    .myfont {
+        font-weight: 500;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    }
+
+    #sidebar1 ul li a:hover {
+        color: #fefeff;
+
+    }
+
+    #sidebar1 ul li:hover {
+        background: #ebebeb;
+    }
+
+    #sidebar1 ul li.active>a,
+    a[aria-expanded="true"] {
+        color: #fff;
+        background: #ebebeb;
+    }
+
+
+    a[data-toggle="collapse"] {
+        position: relative;
+    }
+
+    .dropdown-toggle::after {
+        display: block;
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+    }
+
+    ul ul a {
+        font-size: 0.9em !important;
+        padding-left: 30px !important;
+        background: #6d7fcc;
+    }
+
+    ul.CTAs {
+        padding: 20px;
+    }
+
+    ul.CTAs a {
+        text-align: center;
+        font-size: 0.9em !important;
+        display: block;
+        background-color: transparent !important;
+        margin-bottom: 5px;
+    }
+
+    a.download {
+        background: #fff;
+        color: #7386D5;
+    }
+
+    a.article,
+    a.article:hover {
+        color: #fff !important;
+    }
+
+    .imgIco {
+        margin-right: 15px;
+    }
+
+    .profile {
+        border-radius: 100%;
+        width: 50px;
+        height: 50px;
+        padding-right: 0px;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        min-height: 100px;
+        background-color: #1b1919;
+        padding: 20px 5px 5px 20px;
+        border-radius: 3px;
+    }
+
+    .nav-profile:hover .dropdown-content {
+        display: block;
+    }
+
+    .desc {
+        text-align: left;
+        font-weight: 600;
+        color: gainsboro;
+        cursor: pointer;
+    }
+
+
+    @media (max-width: 3000px) {
+        #sidebar1 {
+            margin-left: -280px;
+        }
+        #sidebar1.active {
+            margin-left: 0;
+        }
+        #content {
+            width: 100%;
+            padding: 15px !important;
+        }
+        #content.active {
+            width: 100%;
+        }
+        #sidebarCollapse1 span {
+            display: none;
+        }
+        #sidebarCollapse1 {
+            display: block !important;
+        }
+        #hideButton {
+            display: none !important;
+        }
+        .brand-logo {
+            width: 50%;
+        }
+        #sidebarCollapse2 {
+            display: block !important;
+            /* background: transparent !important; */
+        }
+        .myFont {
+            font-size: 4.5vw;
+        }
+
+
+    }
+
+    .overlay {
+        display: none;
+        width: 100%;
+        background: rgba(66, 65, 64, 0.7);
+        z-index: 998;
+        opacity: 0;
+        transition: all 0.5s ease-in-out;
+        cursor: pointer;
+    }
+
+    .overlay.active {
+        display: block;
+        opacity: 1;
+
+    }
+
+    /* --------------Header css--------- */
+
+    .headerTool {
+        position: relative;
+        height: 40px;
+        text-align: center;
+        margin: 10px;
+        background-color:
+    }
+
+    .ham-ico {
+        cursor: pointer;
+    }
+
+    .hamberger {
+        left: 0;
+        position: absolute;
+        padding: 0px 0px 0px 10px;
+        width: 10%;
+        top: 5px;
+        text-align: left;
+
+    }
+
+    .brandlogo {
+        position: absolute;
+        width: 70%;
+        text-align: center;
+        left: 10%;
+        height: 100%;
+    }
+
+    .userprofile {
+        width: 10%;
+        position: absolute;
+        /* left: 81%; */
+        height: 100%;
+        right: 0;
+    }
+
+    .pro-pic {
+        height: 100%;
+        cursor: pointer;
+    }
+
+    /* ------------profile section css-------- */
+
+    .profileheader {
+        height: 28px;
+        padding: 11px 0px 12px 0px;
+        text-align: center;
+    }
+
+    .backbtn {
+        padding-left: 10px;
+        display: inline-block;
+        float: left;
+        color: #2b2b2b;
+        z-index: 1;
+        position: relative;
+    }
+
+    .profilecontainer {
+        padding-top: 50px;
+        margin: 0 10px 20px 10px;
+    }
+
+    .profiledetail {
+        text-align: center;
+        margin-bottom: 16px;
+
+    }
+
+    .user-pic {
+        max-height: 70px;
+        margin-bottom: 20px;
+    }
+
+    .user-name {
+        margin: 10px 0px 10px 0px;
+        font-size: 24px;
+    }
+
+    .user-email {
+        margin: 10px 0px 10px 0px;
+        font-size: 16px;
+    }
+
+    .user-phone {
+        margin: 10px 0px 10px 0px;
+        font-size: 16px;
+    }
+
+    .modules {
+        position: relative;
+        border: 1px solid #e5e5e5;
+        margin: 8px 0px;
+        border-radius: 4px;
+        background-color: #fff;
+    }
+
+    .submodule {
+        height: 47px;
+        display: block;
+        line-height: 20px;
+        position: relative;
+        padding: 10px 0px;
+        cursor: pointer;
+    }
+
+    .subdetail {
+        height: 100%;
+        line-height: 25px;
+        top: 0;
+        font-size: 17px;
+        color: #448aff;
+    }
+
+</style>
+<div id="map" style="display: none;"></div>
+<nav id="sidebar1" class=" bg-dark " >
+    <div class="sidebar-header">
+        <a href="#bookcab"><img class="brand-logo" src="assets/img/RV_cabs_logo.png" alt="logo" width="100%" /></a>
+        <button type="button" id="sidebarCollapse2" class="btn btn-danger" style="float: right; display: none;">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+    </div>
+    <ul class="list-unstyled components">
+        <li class={{bookyourrides}}><a href="#maps"><img src="assets/img/taxi.png" style="margin-right: 12px;">Book Your Ride</a></li>
+        <li class={{yourrides}}><a href="#ride-history"><img src="assets/img/clock.png" style="margin-right: 12px;">Your Rides</a></li>
+        <li class=""><a href="#profile"><img src="assets/img/man.png" style="margin-right: 12px;">Profile Settings</a></li>
+        <li><a href="" ng-click="logout()"><img src="assets/img/logout_new.png" style="margin-right: 12px;">Logout</a></li>
+    </ul>
+    <ul class="list-unstyled CTAs">
+        <li>
+            <a href="https://www.apple.com/in/iphone/" target="_blank" class="article"><img src="assets/img/appstore.png" width="70%"></a>
+        </li>
+        <li>
+            <a href="https://play.google.com/store/apps?hl=en" target="_blank" class="article"><img src="assets/img/googleplay.png" width="70%"></a>
+        </li>
+    </ul>
+</nav>
+<div class="row">
+    <div class="col-sm-12 col-md-5 nopadding" style="overflow-y: scroll;">
+        <div class="col-sm-12 nopadding" ng-show="!showProfile">
+            <div class="headerTool">
+                <div class="hamberger" id="sidebarCollapse1">
+                    <img class="ham-ico" src="assets/img/mapsmenu.png">
+                </div>
+                <div class="brandlogo">
+                    <img src="assets/img/RV_cabs_logo.png" height="85%">
+                </div>
+                <div class="userprofile">
+                    <a href="#profile" >
+                    <img class="img-fluid rounded-circle pro-pic" alt="user pic" src="{{profileData.profileUrl || 'assets/img/user-demo.png'}}" >
+                </a>
+                </div>
+            </div>
+            <div class="address" ng-show="!ShowAddress">
+                <center>
+                    <h4 class="Empty-msg" style="color: #71716e">Book Your Ride Now</h4>
+                </center>
+                <div class="card bg-dark no-border" ng-click="showSourceMap()">
+                    <div class="row-sm ptr">
+                        <div class="left h-full text label">Pickup</div>
+                        <div class="right h-full text value"><span class="myfont">{{directions.origin || 'Search For Pickup Location'}}</span></div>
+                    </div>
+                </div>
+                <div class="card bg-dark no-border" ng-click="showDestinationMap()">
+                    <div class="row-sm ptr">
+                        <div class="left h-full text label">Drop</div>
+                        <div class="right h-full text value"><span class="myfont">{{directions.destination || 'Search For Drop Location'}}</span></div>
+                    </div>
+                </div>
+                <div class="card bg-dark no-border">
+                    <div class="row-sm ptr">
+                        <div class="left h-full text label">Time</div>
+                        <div class="right h-full text value"><span class="myfont">Now</span></div>
+                    </div>
+                </div>
+                <div class="card bg-dark no-border">
+                    <div class="row-sm ptr">
+                        <div class="left h-full text label">For</div>
+                        <div class="right h-full text value"><span class="myfont">Myself</span></div>
+                    </div>
+                </div>
+                <center>
+                    <button type="button" class="btn btn-info btn-block Confirm" ng-click="BookRide()" ng-show="!loading" myfont><span class="myfont">Book Your Taxi</span></button>
+                    <button type="button" class="btn btn-info btn-block Confirm" ng-click="BookRide()" ng-show="loading" disabled><span class="myfont">Please wait, finding rides...</span></button>
+                </center>
+            </div>
+            <div class="nopadding" ng-show="ShowAddress1">
+                <div class="col-sm-12 nopadding location-msg" ng-if="locationFinding">
+                    <center>
+                        <h5 class="Empty-msg-child" style="color: #f7eeee;">Deletcting your location...</h5>
+                    </center>
+                </div>
+                <div class="col-sm-12 nopadding input-form">
+                    <center>
+                        <h4 class="Empty-msg" style="color: #71716e">Search For Pickup Point</h4>
+                    </center>
+                    <input id="origin-input" class="form-control txt-field" type="text" autofocus name="src" placeholder="Source" ng-selected="setSrc(directions.origin)" ng-model="directions.origin" autocomplete="off">
+                    <button type="button" class="btn btn-info btn-block Confirm" ng-disabled="!directions.origin" ng-click="showAddressDiv()">Confirm Pickup Location</button>
+                </div>
+                <div class="col-sm-12 pin nopadding" style="height: 420px;">
+                    <div class="overlay1">
+                        <div ng-show="ShowMap" class="banner-content col-lg-12 col-md-12" style="padding: 0">
+                            <center>
+                                <h5 class="Empty-msg-child" style="color: #71716e">Move map to adjust location</h5>
+                            </center>
+                            <center><img class="currentlocation" src="assets/img/location-found.png" ng-click="SetCurrentLocation(1);"></center>
+                            <google-map control="map.control" center="map.center" zoom="map.zoom" events="map.events" option="map.options" draggable="true">
+                                <marker coords="marker.center"></marker>
+                            </google-map>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nopadding" ng-show="ShowAddress2">
+                <div class="col-sm-12 nopadding location-msg" ng-if="locationFinding">
+                    <center>
+                        <h5 class="Empty-msg-child" style="color: #f7eeee;">Deletcting your location...</h5>
+                    </center>
+                </div>
+                <div class="col-sm-12 nopadding input-form">
+                    <center>
+                        <h4 class="Empty-msg" style="color: #71716e">Search For Drop Point</h4>
+                    </center>
+                    <input id="destination-input" class="form-control txt-field" type="text" autofocus name="dest" placeholder="Destination" ng-selected="setDest(directions.destination)" ng-model="directions.destination" autocomplete="off">
+                    <button type="button" class="btn btn-info btn-block Confirm" ng-disabled="!directions.destination" ng-click="showAddressDiv()">Confirm Drop Location</button>
+                </div>
+                <div class="col-sm-12 pin nopadding" style="height: 420px;">
+                    <div class="overlay1">
+                        <div ng-show="ShowMap" class="banner-content col-lg-12 col-md-12" style="padding: 0">
+                            <center>
+                                <h5 class="Empty-msg-child" style="color: #71716e">Move map to adjust location</h5>
+                            </center>
+                            <center><img class="currentlocation" src="assets/img/location-found.png" ng-click="SetCurrentLocation(2);"></center>
+                            <google-map control="map1.control" center="map1.center" zoom="map1.zoom" events="map1.events" option="map1.options" draggable="true">
+                                <marker coords="marker.center"></marker>
+                            </google-map>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 nopadding" ng-show="showProfile">
+            <header>
+                <div class="profileheader">
+                    <a class="backbtn" ng-click="toggleprofile()"><i class="fas fa-arrow-left"></i></a>
+                </div>
+            </header>
+            <div class="profilecontainer">
+                <div class="profiledetail">
+                    <div class="user-pic">
+                        <img class="img-fluid rounded-circle" alt="user pic" src="{{profileData.profileUrl || 'assets/img/user-demo.png'}}" width="70px;" height="100%">
+                    </div>
+                    <div class="user-name myfont">{{profileData.firstName}} {{profileData.lastName}}</div>
+                    <div class="user-email myfont">ankitkeshri2013@gmail.com</div>
+                    <div class="user-phone myfont">{{Mobile || '--'}}</div>
+                </div>
+                <div class="modules">
+                    <div class="submodule">
+                        <div class="text-center blue-link subdetail myfont" ng-click="gotoRideList()">See all rides</div>
+                    </div>
+                </div>
+                <div class="modules">
+                    <div class="submodule" ng-click="logout()">
+                        <div class="text-center subdetail myfont" style="color: #fe554c !important">Logout</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="overlay"></div>
+    </div>
+    <div class="col-md-7 nopadding hideonMobile">
+        <div class="rightside">
+            <div class="msg">
+                <h4 class="Empty-msg">Everyday city commute</h4>
+                <h5 class="Empty-msg-child">Affordable AC rides at </h5>
+                <h5 class="Empty-msg-child">your doorstep </h5>
+                <h5 class="hastag">#RvCabsForWeb </h5>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#sidebar1").mCustomScrollbar({
+            theme: "minimal"
+        });
+        $('.overlay').removeClass('active');
+        $('#sidebarCollapse1, #sidebarCollapse2, .overlay').on('click', function() {
+            $('#sidebar1, #content').toggleClass('active');
+            $('.overlay').toggleClass('active');
+
+            $('.collapse.in').toggleClass('in');
+
+            $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+        });
+    });
+</script>

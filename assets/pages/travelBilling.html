@@ -1,0 +1,563 @@
+<style>
+    /* -------------Content Css-------------- */
+
+    .wrapper {
+        display: flex;
+        width: 200%;
+    }
+
+
+    #content {
+        width: calc(100% - 220px);
+        padding: 10px 40px 20px 40px !important;
+        min-height: 100vh;
+        transition: all 0.3s;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-image: url('assets/img/background.jpg')!important;
+        
+    }
+
+    #content.active {
+        width: 100%;
+    }
+
+    /* ------------------------------------- */
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    /* Zebra striping */
+
+    tr:nth-of-type(odd) {
+        background: #eee;
+    }
+
+    th {
+        background: #333;
+        color: white;
+        font-weight: bold;
+    }
+
+    td,
+    th {
+        padding: 6px;
+        border: 1px solid #ccc;
+        text-align: left;
+    }
+
+    @media only screen and (max-width: 760px),
+    (min-device-width: 768px) and (max-device-width: 1024px) {
+
+        /* Force table to not be like tables anymore */
+        table.responsive,
+        .responsive thead,
+        .responsive tbody,
+        .responsive th,
+        .responsive td,
+        .responsive tr {
+            display: block;
+        }
+
+        /* Hide table headers (but not display: none;, for accessibility) */
+        .responsive thead tr {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+
+        .responsive tr {
+            border: 1px solid #ccc;
+        }
+
+        .responsive td {
+            /* Behave  like a "row" */
+            border: none;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: 50%;
+        }
+
+        .responsive td:before {
+            /* Now like a table header */
+            position: absolute;
+            /* Top/left values mimic padding */
+            top: 6px;
+            left: 6px;
+            width: 45%;
+            padding-right: 10px;
+            white-space: nowrap;
+        }
+
+        /*Label the data*/
+        .responsive td:before {
+            content: attr(data-table-header);
+        }
+    }
+
+    .table-responsive .bootstrap {
+        min-height: .01%;
+        overflow-x: auto;
+    }
+    .text1{
+        text-align:center; 
+                /* border:1px solid black;  */
+                padding:50px 
+    }
+
+    @media screen and (max-width: 767px) {
+        .table-responsive.bootstrap {
+            width: 100%;
+            margin-bottom: 15px;
+            overflow-y: hidden;
+            -ms-overflow-style: -ms-autohiding-scrollbar;
+            border: 1px solid #ddd;
+        }
+        .table-responsive.bootstrap>.table {
+            margin-bottom: 0;
+        }
+        .table-responsive.bootstrap>.table>thead>tr>th,
+        .table-responsive.bootstrap>.table>tbody>tr>th,
+        .table-responsive.bootstrap>.table>tfoot>tr>th,
+        .table-responsive.bootstrap>.table>thead>tr>td,
+        .table-responsive.bootstrap>.table>tbody>tr>td,
+        .table-responsive.bootstrap>.table>tfoot>tr>td {
+            white-space: nowrap;
+        }
+        .table-responsive.bootstrap>.table-bordered {
+            border: 0;
+        }
+        .table-responsive.bootstrap>.table-bordered>thead>tr>th:first-child,
+        .table-responsive.bootstrap>.table-bordered>tbody>tr>th:first-child,
+        .table-responsive.bootstrap>.table-bordered>tfoot>tr>th:first-child,
+        .table-responsive.bootstrap>.table-bordered>thead>tr>td:first-child,
+        .table-responsive.bootstrap>.table-bordered>tbody>tr>td:first-child,
+        .table-responsive.bootstrap>.table-bordered>tfoot>tr>td:first-child {
+            border-left: 0;
+        }
+        .table-responsive.bootstrap>.table-bordered>thead>tr>th:last-child,
+        .table-responsive.bootstrap>.table-bordered>tbody>tr>th:last-child,
+        .table-responsive.bootstrap>.table-bordered>tfoot>tr>th:last-child,
+        .table-responsive.bootstrap>.table-bordered>thead>tr>td:last-child,
+        .table-responsive.bootstrap>.table-bordered>tbody>tr>td:last-child,
+        .table-responsive.bootstrap>.table-bordered>tfoot>tr>td:last-child {
+            border-right: 0;
+        }
+        .table-responsive.bootstrap>.table-bordered>tbody>tr:last-child>th,
+        .table-responsive.bootstrap>.table-bordered>tfoot>tr:last-child>th,
+        .table-responsive.bootstrap>.table-bordered>tbody>tr:last-child>td,
+        .table-responsive.bootstrap>.table-bordered>tfoot>tr:last-child>td {
+            border-bottom: 0;
+        }
+        
+        .header-board{
+            padding: 0px !important;
+                box-shadow:  1px 3px 10px 5px #cecece !important;
+        }
+    }
+
+    /* ---------------User info Section--------------------- */
+
+    .label {
+        width: 70px;
+
+    }
+    .modal-lg{
+        width: 1200px;
+        max-width: 900px;
+    }
+
+    .label,
+    .phone,
+    .mobile,
+    .email {
+        display: inline-block;
+    }
+
+    .phone,
+    .mobile,
+    .email {
+        font-weight: 600;
+    }
+
+    .details-td {
+        padding: 10px;
+        border: none;
+        background-color: #ffff;
+    }
+
+    /* -----------------button------------------------- */
+
+    .button {
+        padding: 5px 20px;
+        border: 2px solid #494a49;
+        border-radius: 5px;
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: #494a49;
+        background-color: #fff;
+
+
+    }
+
+    .button:hover {
+        color: #494a49;
+        background-color: #f1f50b;
+        cursor: pointer;
+
+    }
+
+
+    .button-small {
+        padding: 3px 15px;
+        border: 2px solid #494a49;
+        border-radius: 5px;
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: #494a49;
+        background-color: #fff;
+
+
+    }
+
+    .button-small:hover {
+        color: #494a49;
+        background-color: #f1f50b;
+        cursor: pointer;
+
+    }
+    .overlay {
+        display: none;
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 998;
+        opacity: 0;
+        transition: all 0.5s ease-in-out;
+    }
+
+    .overlay.active {
+        display: block;
+        opacity: 1;
+    }
+</style>
+
+<div id="page-loading" ng-show="loading" class="ng-hide">
+    <div class="loader">
+        <img src="assets/img/giphy.gif" width="100" height="100" style="padding: 0">
+    </div>
+</div>
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <ng-include src="'assets/pages/MysideBar.html'"></ng-include>
+    <!-- Page Content  -->
+    <div id="content">
+        <ng-include src="'assets/pages/MynavBar.html'"></ng-include>
+        <div class="col-md-12 table-responsive header-board">
+            <table class="responsive table" id="tableDta">
+                <thead>
+                    <tr>
+                        <th scope="col">Selection <input type="checkbox" onclick="checkAll(this)"></th>
+                        <th scope="col">Company Name</th>
+                        <th scope="col">GST</th>
+                        <th scope="col">Cost center</th>
+                        <th scope="col">Emp.No</th>
+                        <th scope="col">Emp.Name</th>
+                        <th scope="col">Travel Id</th>
+                        <th scope="col">From Date</th>
+                        <th scope="col"> To Date</th>
+                        <th scope="col">Type of Duty</th>
+                        <th scope="col">Vehicle Segment</th>
+                        <th scope="col"> Vehicle Model</th>
+                        <th scope="col">Vehicle Number</th>
+                        <th scope="col">Per Kms Rate</th>
+                        <th scope="col">Total Kms</th>
+                        <th scope="col"> Per hrs Rate</th>
+                        <th scope="col">Total Hrs</th>
+                        <th scope="col">Total Amount</th>                        
+                        <th scope="col">Toll-park</th>
+                        <th scope="col">D.A+Night allowences</th>
+                        <th scope="col">Grand Total</th>
+                        
+                        <th scope="col"> Actions</th>
+                        
+                        
+                        <!-- <th scope="col">Action</th> -->
+                    </tr>
+
+                </thead>
+                <tbody>
+                    <tr  ng-repeat = "data in filtedData">
+                     <td><input id="chkCustomer_{{fruit.FruitId}}" type="checkbox" ng-model="data.Selected" />
+                        
+                     <td>{{data.nameOfCompany}}</td>
+                     <td>{{data.gstNo}}</td>
+                     <td>{{data.costCentre}}</td>
+                     <td>{{data.empNo}}</td>
+                     <td>{{data.empName}}</td>
+                     <td>{{data.travelId}}</td>
+                     <td>{{data.fromDate}}</td>
+                     <td>{{data.toDate}}</td>
+                     <td>{{data.typeOfDuty}}</td>
+                     <td>{{data.vehicleSeg}}</td>
+                     <td>{{data.vehicleType}}</td>
+                     <td>{{data.carNo}}</td>
+                     <td>{{data.perKmRate}}</td>
+                     <td>{{data.totalKm}}</td>
+                     <td>{{data.perHrRate}}</td>
+                     <td>{{data.totalHr}}</td>
+                     <td>{{data.totalHrAmt}}</td>
+                     <td>{{data.tolllPark}}</td>
+                     <td>{{data.naDa}}</td>
+                     <td>{{data.totalTripBill}}</td>
+                     <td></td>
+                     <tr>
+                        <td colspan="23">
+                            <center>
+                                <button class="btn ripple-infinite btn-round btn-primary materialButtons" ng-hide="no_morerecord" ng-click="showMorefilterData()">
+                                    <div> <span>Show More</span> </div>
+                                </button>
+                            </center>
+                            <center>
+                                <div class="popoverAlert ng-hide" ng-show="no_morerecord">No More Records Found</div>
+                            </center>
+                        </td>
+                    </tr>
+
+
+                    </tr>
+
+         
+                </tbody>
+            </table>
+            <div class="row">
+                
+                <div class="col-md-4">
+                    <button class="btn btn-success" ng-click="download()">Report</button>
+                    <button class="btn btn-primary" ng-click = "generateInvoice()">Invoice</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="overlay"></div>
+
+<div class="modal" tabindex="-1" role="dialog" id="exampleModal">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+     
+        <div class="modal-body">
+           <table class="table table-bordered">
+            <tr>
+                <td colspan="10" class="text-center"><h3>RIGVED Technologies Private Ltd</h3></td>
+            </tr>
+            <tr>
+                <td  colspan="10" class="text-center"><h6>408, Rupa Solitaire Park, Millennium Business Park, Sector 1, Mahape, Navi Mumbai, Maharashtra- 400710</h6></td>
+            </tr>
+            <tr>
+                <td colspan="10" class="text-center">
+                    <h4>TAX INVOICE</h4>
+                </td>
+            </tr>
+            <tr>
+              
+                <td colspan="10" style="position: relative; left: 500px;">Invoice No : <b>{{invoiceData.invoiceNo}}</b></td>
+              
+            </tr>
+            <tr>             
+                <td colspan="10" style="position: relative; left: 500px;">Invoice Date : <b>{{invoiceData.invoiceDate}}</b></td>           
+            </tr>
+            <tr>          
+                <table>
+                    <tr>
+                        <td><h6>To</h6></td>
+                        <td>Vendor Name : <b>{{invoiceData.fromCompanyName}}</b></td>
+                        
+                    </tr>
+                    <tr>
+                        <td><b>{{invoiceData.toCompanyAddress}}</b></td>
+                       <td>GST Number :<b>{{invoiceData.fromGstNo}}</b></td>
+                       
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>PAN :<b>{{invoiceData.fromPANNo}}</b></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>SAC CODE :<b>{{invoiceData.fromSACCode}}</b></td>
+                    </tr>
+               
+             
+                    <tr>
+                        <td>GST NO <b>{{invoiceData.toGstNo}}</b></td>
+                        <td>STATE CODE :<b>{{invoiceData.fromStateCode}}</b></td>
+                    </tr>
+                    <tr>
+                        <td>State Name : <b>{{invoiceData.toCompanyState}}</b></td>
+                        <td>Place of supply :<b>{{invoiceData.fromcompanyAddress}}</b></td>
+                    </tr>
+                    <tr>
+                        <td>State Code :<b>{{invoiceData.toStateCode}}</b></td>
+                        <td>Description of Service :<b>{{invoiceData.desOfService}}</b></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td> Vendor Code : <b>{{invoiceData.fromVendorCode}}</b></td>
+                    </tr>
+                </table>
+            </tr>
+            <tr>
+                <table>
+                    <tr>
+                        <td class="text-center"><h6>PARTICULAR</h6></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">Renting of motor vehicle service for the period from </td>
+                    </tr>
+                    <tr>
+                        <td><h6>Scheduled of Rates</h6></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">Service Description : Rental Services Of Road Vehicles Including Buses, Coaches, Cars, Trucks And Other Motor Vehicles, With Or Without Operator</td>
+                    </tr>
+                </table>
+               
+            </tr>
+            <tr>
+                <table>
+                    <tr>
+                        <td>Suplied cars  </td>
+                        <td>As per the BDC attached</td>
+                        <td rowspan = "2" colspan="2"><h6>Total Amount</h6></td>
+                    </tr>
+                    <tr>
+                        <td>Hire Charges</td>
+                        <td>As Per Annexure</td>
+                      
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td > GST Description Under RCM  </td>
+                        <td ></td>
+                        <td colspan="2">{{invoiceData.billWitoutGST}}</td>
+                        
+                        
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td >SGST/UTGS :<b>{{invoiceData.sgstutgs}}</b></td>
+                        <td ></td>
+                        <td></td>
+                        
+                        
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td >CGST : <b>{{invoiceData.cgst}}</b></td>
+                        <td ></td>
+                        <td></td>
+                        
+                        
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td >IGST : <b>{{invoiceData.igst}}</b></td>
+                        <td ></td>
+                        <td></td>
+                        
+                        
+                    </tr>
+                    <tr>
+                        <td colspan="3">Net Total</td>
+                        <td><b>{{invoiceData.billWitGST}}</b></td>
+                    </tr>
+                    <tr>
+                        <td>Value Rupees in words</td>
+                        <td colspan="3"></td>
+                    </tr>
+                  
+                  
+                </table>
+            </tr>
+            <tr>
+               
+            </tr>
+         
+           </table>
+           <table>
+
+            <tr>
+                <td colspan="0" class="text1" ><h6>For RIGVED Technologies Private Ltd</h6></td>
+            </tr>
+            
+       
+            <tr>
+                <td colspan="0" class="text1" ><h6>Authorised Signatory</h6></td>
+            </tr>
+           </table>
+
+           <div class="text-center">
+                <!-- <button class="btn btn-success">Save</button>
+                <button class="btn btn-success">Print</button> -->
+                <button class="btn btn-success" data-dismiss="modal">Close</button>
+           </div> 
+       </div>
+       
+        </div>
+        <!-- <div class="modal-footer">
+         
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+<script >
+    function exportTableToExcel(tableID, filename = ''){
+    var downloadLink;
+    var dataType = 'application/vnd.ms-excel';
+    var tableSelect = document.getElementById(tableID);
+    var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+    
+    // Specify file name
+    filename = filename?filename+'.xls':'excel_data.xls';
+    
+    // Create download link element
+    downloadLink = document.createElement("a");
+    
+    document.body.appendChild(downloadLink);
+    
+    if(navigator.msSaveOrOpenBlob){
+        var blob = new Blob(['\ufeff', tableHTML], {
+            type: dataType
+        });
+        navigator.msSaveOrOpenBlob( blob, filename);
+    }else{
+        // Create a link to the file
+        downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+    
+        // Setting the file name
+        downloadLink.download = filename;
+        
+        //triggering the function
+        downloadLink.click();
+    }
+}
+function checkAll(bx) {
+  var cbs = document.getElementsByTagName('input');
+  for(var i=0; i < cbs.length; i++) {
+    if(cbs[i].type == 'checkbox') {
+      cbs[i].checked = bx.checked;
+    }
+  }
+}
+</script>

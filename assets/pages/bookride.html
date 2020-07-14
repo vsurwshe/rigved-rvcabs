@@ -1,0 +1,274 @@
+<style>
+    /* -------------Content Css-------------- */
+
+    .wrapper {
+        display: flex;
+        width: 100%;
+    }
+
+
+    #content {
+        width: calc(100% - 220px);
+        padding: 10px 40px 20px 40px !important;
+        min-height: 100vh;
+        transition: all 0.3s;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-image: url('assets/img/background.jpg');
+    }
+
+    #content.active {
+        width: 100%;
+    }
+
+    .overlay {
+        display: none;
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 998;
+        opacity: 0;
+        transition: all 0.5s ease-in-out;
+    }
+
+    .overlay.active {
+        display: block;
+        opacity: 1;
+    }
+
+    /* ------------------------------------- */
+
+    .mapContainer {
+        padding: 81px 0px 0px 55px;
+    }
+
+    form {
+        margin: 0px;
+    }
+
+    .input-field {
+        position: relative;
+        width: 100%;
+        height: 70px;
+        line-height: 44px;
+    }
+
+
+
+    input {
+        width: 100%;
+        border: 0;
+        outline: 0;
+        padding: 0;
+        border-bottom: 2px solid white;
+        background-color: transparent;
+        color: white;
+    }
+
+    input:focus,
+    input:valid {
+        /*border-color: #00dd22;*/
+    }
+
+    .form-div {
+
+
+        background-color: #171616;
+        opacity: 0.8;
+        padding: 25px;
+    }
+
+    .route-list {
+
+        top: 130px;
+        background-color: #fff;
+        max-height: 410px;
+        overflow: hidden;
+    }
+
+    .header-right {
+        background-color: transparent !important;
+        border: none !important;
+        margin-top: 0 !important;
+    }
+
+    @media (max-width: 480px) {
+        .header-right {
+            margin: 1px !important;
+        }
+        .header-board {
+            padding: 2px;
+        }
+    }
+
+    /* -----------------button------------------------- */
+
+    .button {
+        padding: 5px 50px;
+        border: 2px solid #494a49;
+        border-radius: 5px;
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: #494a49;
+        background-color: #fff;
+
+
+    }
+
+    .button:hover {
+        color: #494a49;
+        background-color: #f1f50b;
+        cursor: pointer;
+
+    }
+
+    #map {
+        display: none !important;
+    }
+
+    .mendatory {
+        color: red;
+    }
+
+    /* -----------typeahead  custom template css--------- */
+
+    .UserDemography.dropuser-list {
+        padding: 0px !important;
+    }
+
+    .UserDemography.dropuser-list li {
+        padding: 10px 30px;
+        background: #f3f3f3;
+        border-radius: 10px;
+    }
+
+    .UserDemography.dropuser-list:before {
+        content: '';
+        position: absolute;
+        border-width: 8px 8px 8px 0;
+        border-style: solid solid solid none;
+        border-color: transparent #49baeb transparent;
+        top: 30px;
+        left: 0px;
+    }
+
+    [uib-typeahead-popup].dropdown-menu {
+        display: block;
+        width: 94%;
+        overflow: hidden;
+        overflow-y: scroll;
+        max-height: 292px;
+        background: #CC95C0;
+        /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0);
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0);
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+
+    .font {
+        font-size: 16px;
+        font-weight: 600;
+        color: red;
+
+    }
+
+    .uib-typeahead-match {
+        cursor: pointer;
+    }
+
+</style>
+
+<div id="page-loading" ng-show="loading" class="ng-hide">
+    <div class="loader">
+        <img src="assets/img/giphy.gif" width="100" height="100" style="padding: 0">
+    </div>
+</div>
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <ng-include src="'assets/pages/MysideBar.html'"></ng-include>
+    <!-- Page Content  -->
+    <div id="content">
+        <ng-include src="'assets/pages/MynavBar.html'"></ng-include>
+        <div id="map" style="width: 100%; height: 100vh; display: none"></div>
+
+        <div class="col-sm-12 header-board">
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <div class="col-md-12 col-sm-12 row header-right nopadding">
+                        <div class="from-group  col-sm-12">
+                            <lable for="">Mobile Number<span class="mendatory">*</span></lable>
+                            <input class="form-control txt-field" ng-model="Book_Mobile" type="tel" name="Book_Cust_Mobile" placeholder="Search For Customer's Mobile Number" uib-typeahead="mobile as mobile.mobilNumber for mobile in getCustMobile($viewValue)" typeahead-template-url="personTemplate" typeahead-on-select="selectCustomer(Book_Mobile)" typeahead-loading="loadingLocations" typeahead-no-results="noResults" onkeypress="return isNumber(event)" maxlength="10">
+                            <!--<i ng-show="loadingLocations" class="fas fa-camera"></i>-->
+                            <div ng-show="noResults">
+                                <img src="assets/img/cross.png"><span class="font">    No Customer Found. Continue Booking Cab.</span>
+                            </div>
+                        </div>
+                        <div class="from-group  col-sm-12">
+                            <lable for="">First Name<span class="mendatory">*</span></lable>
+                            <input class="form-control txt-field" ng-model="Book_fname" type="text" name="Book_fname" placeholder="Customer's First Name">
+                        </div>
+                        <div class="from-group  col-sm-12">
+                            <lable for="">Last name<span class="mendatory">*</span></lable>
+                            <input class="form-control txt-field" ng-model="Book_lname" type="text" name="Book_lname" placeholder="Customer's Last Name">
+                        </div>
+                        <div class="from-group  col-sm-12">
+                            <lable for="">Email<span class="mendatory">*</span></lable>
+                            <input class="form-control txt-field" ng-model="Book_Email" type="email" name="Book_Email" placeholder="Customer's Email Id">
+                        </div>
+                        <div class="from-group  col-sm-12">
+                            <lable for="">Source<span class="mendatory">*</span></lable>
+                            <input class="form-control txt-field" id="autocompleteLocation" ng-model="origin" type="text" name="fName" placeholder="Search Source">
+                        </div>
+                        <div class="from-group  col-sm-12">
+                            <lable for="">Destination<span class="mendatory">*</span></lable>
+                            <input class="form-control txt-field" id="autocompleteDestination" ng-model="destination" type="text" name="fName" placeholder="Search Destination">
+                        </div>
+                        <div class="from-group  col-sm-12">
+                            <lable for="">Date/Time</lable>
+                            <input class="form-control txt-field" id="dtTimePicker" datetime-picker ng-model="TripDateTime" type="text" placeholder="Travel Date/Time">
+                        </div>
+
+                        <div class="col-sm-12" style="margin-top: 10px;">
+                            <center>
+                                <button type="button" class="button btn-block" ng-click="bookraideforCustomer()" ng-disabled="!Book_Mobile || !Book_fname || !Book_lname || !Book_Email || !origin || !destination || !TripDateTime">Book Ride</button>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="sidebar-header">
+                        <h4>Route</h4>
+                    </div>
+                    <div id="directionsList" class="panel panel-primary"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="overlay"></div>
+<!-- --------------------Typeahed custom template---------------- -->
+<script type="text/ng-template" id="personTemplate">
+    <a class="LIST_Items dropuser-list">
+        <li style="padding: 10px;">
+            <img class="rounded-circle" src="{{ match.model.profileUrl|| 'assets/img/userGuy.png'}}" alt="UserImage" width="13%">
+            <span class="name">{{match.model.firstName}}&nbsp;{{match.model.lastName}}</span>
+            <span><i class="fas fa-phone"></i> &nbsp;{{match.model.mobilNumber || '--' }}</span>
+        </li>
+    </a>
+</script>
+<script>
+    function isNumber(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            return false;
+        }
+        return true;
+    }
+
+</script>

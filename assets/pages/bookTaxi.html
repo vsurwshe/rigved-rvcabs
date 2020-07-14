@@ -1,0 +1,129 @@
+<style>
+    /* -------------Content Css-------------- */
+
+    .wrapper {
+        display: flex;
+        width: 100%;
+    }
+
+
+    #content {
+        width: calc(100% - 220px);
+        padding: 10px 0px 20px 0px !important;
+        min-height: 100vh;
+        transition: all 0.3s;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    #content.active {
+        width: 100%;
+    }
+
+    .overlay {
+        display: none;
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 998;
+        opacity: 0;
+        transition: all 0.5s ease-in-out;
+    }
+
+    .overlay.active {
+        display: block;
+        opacity: 1;
+    }
+
+    /* ------------------------------------- */
+
+    form {
+        margin: 0px;
+    }
+
+    .input-field {
+        position: relative;
+        width: 100%;
+        height: 70px;
+        line-height: 44px;
+    }
+
+
+
+    input {
+        width: 100%;
+        border: 0;
+        outline: 0;
+        padding: 0;
+        border-bottom: 2px solid white;
+        background-color: transparent;
+        color: white;
+    }
+
+    input:focus,
+    input:valid {
+        border-color: #00dd22;
+    }
+
+    .form-div {
+        position: fixed;
+        top: 120px;
+        right: 25px;
+        background-color: #171616;
+        opacity: 0.8;
+        padding: 25px;
+    }
+
+    .route-list {
+        position: fixed;
+        top: 130px;
+        background-color: #fff;
+        max-height: 410px;
+        overflow: hidden;
+    }
+
+    .navbar {
+        margin-bottom: 0px !important;
+    }
+
+    map {
+        display: block;
+        width: 100%;
+        height: 50%;
+        overflow: visible;
+    }
+
+    map:after {
+        width: 22px;
+        height: 40px;
+        display: block;
+        content: ' ';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -40px 0 0 -11px;
+        background: url('https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi_hdpi.png');
+        background-size: 22px 40px;
+        /* Since I used the HiDPI marker version this compensates for the 2x size */
+        pointer-events: none;
+        /* This disables clicks on the marker. Not fully supported by all major browsers, though */
+    }
+
+</style>
+
+<div id="page-loading" ng-show="loading" class="ng-hide">
+    <div class="loader">
+        <img src="assets/img/giphy.gif" width="100" height="100" style="padding: 0">
+    </div>
+</div>
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <ng-include src="'assets/pages/MysideBar.html'"></ng-include>
+    <!-- Page Content  -->
+    <div id="content">
+        <map on-create="mapCreated(map)" mapoptions="mapOptions"></map>
+    </div>
+</div>
+<div class="overlay"></div>

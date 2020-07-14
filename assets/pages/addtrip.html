@@ -1,0 +1,684 @@
+<style>
+    /* -------------Content Css-------------- */
+
+    .wrapper {
+        display: flex;
+        width: 100%;
+    }
+
+
+    #content {
+        width: calc(100% - 220px);
+        padding: 10px 40px 20px 40px !important;
+        min-height: 100vh;
+        transition: all 0.3s;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-image: url('assets/img/background.jpg');
+    }
+
+    #content.active {
+        width: 100%;
+    }
+
+    .overlay {
+        display: none;
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 998;
+        opacity: 0;
+        transition: all 0.5s ease-in-out;
+    }
+
+    .overlay.active {
+        display: block;
+        opacity: 1;
+    }
+
+    /* ------------------------------------- */
+
+    .mapContainer {
+        padding: 81px 0px 0px 55px;
+    }
+
+    form {
+        margin: 0px;
+    }
+
+    .input-field {
+        position: relative;
+        width: 100%;
+        height: 70px;
+        line-height: 44px;
+    }
+
+    input {
+        width: 100%;
+        border: 0;
+        outline: 0;
+        padding: 0;
+        border-bottom: 2px solid white;
+        background-color: transparent;
+        color: white;
+    }
+
+    input:focus,
+    input:valid {
+        /*border-color: #00dd22;*/
+    }
+
+    .form-div {
+        background-color: #171616;
+        opacity: 0.8;
+        padding: 25px;
+    }
+
+    .form-control {
+        border-radius: 0rem !important;
+    }
+
+    .route-list {
+
+        top: 130px;
+        background-color: #fff;
+        max-height: 410px;
+        overflow: hidden;
+    }
+
+    .header-right {
+        background-color: transparent !important;
+        border: none !important;
+        margin-top: 0 !important;
+    }
+
+    @media (max-width: 480px) {
+        .header-right {
+            margin: 1px !important;
+        }
+
+        .header-board {
+            padding: 2px;
+        }
+    }
+
+    /* -----------------button------------------------- */
+
+    .button {
+        padding: 5px 50px;
+        border: 2px solid #494a49;
+        border-radius: 5px;
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: #494a49;
+        background-color: #fff;
+
+
+    }
+
+    .button:hover {
+        color: #494a49;
+        background-color: #f1f50b;
+        cursor: pointer;
+
+    }
+
+    #map {
+        display: none !important;
+    }
+
+    .mendatory {
+        color: red;
+    }
+
+    /* -----------typeahead  custom template css--------- */
+
+    .UserDemography.dropuser-list {
+        padding: 0px !important;
+    }
+
+    .UserDemography.dropuser-list li {
+        padding: 10px 30px;
+        background: #f3f3f3;
+        border-radius: 10px;
+    }
+
+    .UserDemography.dropuser-list:before {
+        content: '';
+        position: absolute;
+        border-width: 8px 8px 8px 0;
+        border-style: solid solid solid none;
+        border-color: transparent #49baeb transparent;
+        top: 30px;
+        left: 0px;
+    }
+
+    [uib-typeahead-popup].dropdown-menu {
+        display: block;
+        width: 94%;
+        overflow: hidden;
+        overflow-y: scroll;
+        max-height: 292px;
+
+    }
+
+    .font {
+        font-size: 16px;
+        font-weight: 600;
+        color: red;
+
+    }
+
+    .uib-typeahead-match {
+        cursor: pointer;
+    }
+
+    .button {
+        padding: 5px 20px;
+        border: 2px solid #494a49;
+        border-radius: 5px;
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: #494a49;
+        background-color: #fff;
+
+
+    }
+
+    .button:hover {
+        color: #494a49;
+        background-color: #f1f50b;
+        cursor: pointer;
+
+    }
+
+
+    .button-small {
+        padding: 3px 15px;
+        border: 2px solid #494a49;
+        border-radius: 5px;
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: #494a49;
+        background-color: #fff;
+    }
+
+    .button-small:hover {
+        color: #494a49;
+        background-color: #f1f50b;
+        cursor: pointer;
+    }
+
+    .btn-link {
+        font-weight: 400;
+        color: #203b70;
+        background-color: transparent;
+    }
+
+    input:checked+.slider {
+        background-color: #2196F3;
+    }
+
+    input:focus+.slider {
+        box-shadow: 0 0 1px #2196F3;
+    }
+
+    input:checked+.slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+    }
+
+    .typeahead-demo .custom-popup-wrapper {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 1000;
+        display: none;
+        background-color: #f9f9f9;
+    }
+
+    .typeahead-demo .custom-popup-wrapper>.message {
+        padding: 10px 20px;
+        border-bottom: 1px solid #ddd;
+        color: #868686;
+    }
+
+    .form-horizontal {
+        width: 500px;
+    }
+
+    .datetime-picker-dropdown {}
+
+    .datetime-picker-dropdown>li.date-picker-menu div>table .btn-default {
+        border: 0;
+    }
+
+    .datetime-picker-dropdown>li.time-picker-menu div>table {}
+
+
+    .typeahead-demo .custom-popup-wrapper>.dropdown-menu {
+        position: static;
+        float: none;
+        display: block;
+        min-width: 160px;
+        background-color: transparent;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+    }
+</style>
+
+<div id="page-loading" ng-show="loading" class="ng-hide">
+    <div class="loader">
+        <img src="assets/img/giphy.gif" width="100" height="100" style="padding: 0">
+    </div>
+</div>
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <ng-include src="'assets/pages/MysideBar.html'"></ng-include>
+    <!-- Page Content  -->
+    <div id="content">
+        <ng-include src="'assets/pages/MynavBar.html'"></ng-include>
+        <div id="map" style="width: 100%; height: 100vh; display: none"></div>
+
+        <div class="col-sm-12 header-board">
+            <div class="col-md-12  col-sm-12 mb-2" style="text-align: right">
+                <a href="#managetrip">
+                    <button type="button" class="button-small" style="cursor: pointer" ng-show="!upcomingList"><span
+                            class="myfont">Manage Trip</span></button>
+                </a>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="col-md-12 col-sm-12 row header-right nopadding">
+                        <div id="accordion" class="col-md-12">
+                            <div class="card">
+                                <div class="card-header" id="headingOne">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link font-weight-bold" data-toggle="collapse"
+                                            data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            Company Details
+                                        </button>
+                                    </h5>
+                                </div>
+
+                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                    data-parent="#accordion">
+                                    <div class="card-body row">
+                                        <div class="from-group  col-sm-4">
+                                            <lable for="">Cost Center</lable>
+                                            <input class="form-control txt-field " placeholder="Enter Cost Center"
+                                            ng-model="costCenter"
+                                            
+                                            uib-typeahead="company as company.name for company in getCostCenter($viewValue)"
+                                            typeahead-loading="loadingLocations" typeahead-no-results="noResults"
+                                            class="form-control" typeahead-show-hint="false" typeahead-min-length="0" ng-focus = "getCostCenter()">
+                                        <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+                                        <div ng-show="noResults">
+                                            <i class="glyphicon glyphicon-remove"></i> No Results Found
+                                        </div>
+                                        </div>
+                                        <div class="from-group  col-sm-4" id="remote">
+                                            <lable for="">Company name<span class="mendatory">*</span></lable>
+                                            <input class="form-control txt-field " placeholder="Enter Company Name"
+                                                ng-model="company"
+                                                typeahead-on-select="onCompanySelected($item, $model, $label)"
+                                                uib-typeahead="company as company.companyName for company in getCompany($viewValue)"
+                                                typeahead-loading="loadingLocations" typeahead-no-results="noResults"
+                                                class="form-control" typeahead-show-hint="false" typeahead-min-length="0" ng-focus = "getCompany()">
+                                            <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+                                            <div ng-show="noResults">
+                                                <i class="glyphicon glyphicon-remove"></i> No Results Found
+                                            </div>
+                                        </div>
+                                        <div class="from-group  col-sm-4">
+                                            <lable for="">GST Number</lable>
+                                            <input class="form-control txt-field" ng-model="gstNum" type="text"
+                                                placeholder="GST Number">
+                                        </div>
+                                        <div class="from-group  col-sm-4">
+                                            <lable for="">Travel Id<span class="mendatory"></span></lable>
+                                            <input class="form-control txt-field " placeholder="Enter Company Name"
+                                            ng-model="travel_Id"
+                                           
+                                            uib-typeahead="company as company.name for company in getTravelId($viewValue)"
+                                            typeahead-loading="loadingLocations" typeahead-no-results="noResults"
+                                            class="form-control" typeahead-show-hint="false" typeahead-min-length="0" ng-focus = "getTravelId()">
+                                        <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+                                        <div ng-show="noResults">
+                                            <i class="glyphicon glyphicon-remove"></i> No Results Found
+                                        </div>
+                                        </div>
+                                        <div class="from-group  col-sm-4">
+                                            <lable for="">Requested By<span class="mendatory">*</span></lable>
+                                            <input class="form-control txt-field" ng-model="Book_req" type="text"
+                                                name="Book_req" placeholder="Customer Name" maxlength="20">
+
+                                        </div>
+                                        <div class="from-group  col-sm-4">
+                                            <lable for="">Email-Id<span class="mendatory"></span></lable>
+                                            <input class="form-control txt-field" ng-model="Book_email" type="text"
+                                                name="Book_email" placeholder="Email Id">
+                                        </div>
+                                    
+                                   
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingTwo">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link font-weight-bold collapsed" data-toggle="collapse"
+                                            data-target="#collapseTwo" aria-expanded="false"
+                                            aria-controls="collapseTwo">
+                                            Travel Details
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                                    data-parent="#accordion">
+                                    <div class="card-body row">
+                                        <div class="from-group  col-sm-4" id="remote">
+                                            <lable for="">Car Segment Type<span class="mendatory">*</span></lable>
+                                            <input class="form-control txt-field " placeholder="Enter a Type"
+                                                ng-model="carSegName"
+                                                uib-typeahead="company as company.name for company in getSubType($viewValue)"
+                                                typeahead-loading="loadingLocations" typeahead-no-results="noResults"
+                                                class="form-control" typeahead-show-hint="false" typeahead-min-length="0" ng-focus = "getSubType()">
+                                            <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+                                            <div ng-show="noResults">
+                                                <i class="glyphicon glyphicon-remove"></i> No Results Found
+                                            </div>
+                                        </div>
+                                        <div class="from-group  col-sm-4" id="remote">
+                                            <lable for="">Car Brand<span class="mendatory">*</span></lable>
+                                            <input class="form-control txt-field " placeholder="Enter Car Name"
+                                                ng-model="carBrand"
+                                                uib-typeahead="company as company.name for company in getCarBarand($viewValue)"
+                                                typeahead-loading="loadingLocations" typeahead-no-results="noResults"
+                                                class="form-control" typeahead-show-hint="false" typeahead-min-length="0" ng-focus ="getCarBarand()">
+                                            <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+                                            <div ng-show="noResults">
+                                                <i class="glyphicon glyphicon-remove"></i> No Results Found
+                                            </div>
+                                        </div>
+                                 
+
+                                        <div class="from-group  col-sm-4">
+                                            <lable for="">From Date Of Travel</lable>
+                                            <p class="input-group">
+
+                                                <input type="text" class="form-control"
+                                                    uib-datepicker-popup="{{format}}" ng-click="open1()"
+                                                    ng-model="fromDate" is-open="popup1.opened"
+                                                    datepicker-options="dateOptions" ng-required="true"
+                                                    close-text="Close" alt-input-formats="altInputFormats" />
+
+                                            </p>
+                                        </div>
+                                        <div class="from-group  col-sm-4">
+                                            <lable for="">To Date Of Travel</lable>
+                                            <p class="input-group">
+                                                <input type="text" class="form-control"
+                                                    uib-datepicker-popup="{{format}}" ng-click="open2()"
+                                                    ng-model="toDate" is-open="popup2.opened"
+                                                    datepicker-options="dateOptions1" ng-required="true"
+                                                    close-text="Close" alt-input-formats="altInputFormats" />
+
+                                            </p>
+                                        </div>
+
+                                        <div class="from-group  col-sm-4">
+                                            <lable for="">Pick-Up Time </lable>
+                                            <input class="form-control txt-field" type="text" ng-model = "picktime" id="timepicker"/>
+                                        </div>
+                                        <div class="from-group  col-sm-4">
+                                            <lable for="">Pick-Up City</lable>
+                                            <input class="form-control txt-field" ng-model="fromCity" type="text"
+                                                placeholder="Pick Up From City">
+                                        </div>
+
+                                        <div class="from-group  col-sm-4">
+                                            <lable for="">Pick-Up Location</lable>
+                                            <input class="form-control txt-field" ng-model="pickUpLocation" type="text"
+                                                placeholder="Pick Up Location">
+                                        </div>
+                                        <div class="from-group  col-sm-4">
+                                            <lable for="">Pick-Up Address</lable>
+                                            <input class="form-control txt-field" ng-model="repAdd" type="text"
+                                                placeholder="Reporting Address">
+                                        </div>
+                                        <div class="from-group  col-sm-4">
+                                            <lable for="">Release Time</lable>
+                                            <input class="form-control txt-field" type="text" ng-model = "releasetime" id="timepicker1"/>o
+                                        </div>
+                                        <div class="from-group  col-sm-4">
+                                            <lable for="">Release Location</lable>
+                                            <input class="form-control txt-field" ng-model="dropLocation" type="text"
+                                                placeholder="Drop Location">
+                                        </div>
+
+                                        <div class="from-group  col-sm-4">
+                                            <lable for="">Release Address</lable>
+                                            <input class="form-control txt-field" ng-model="relAdd" type="text"
+                                                placeholder="Release Address">
+                                        </div>
+                                        <div class="form-group col-sm-4">
+                                            <label for="exampleFormControlSelect1">Car Hire</label>
+                                            <select class="form-control txt-field" id="exampleFormControlSelect1"
+                                                ng-model=carHire>
+                                                <option>One Way</option>
+                                                <option>Return</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group  col-sm-4">
+                                            <lable for="">For Use</lable>
+                                            <input class="form-control txt-field " placeholder="Enter For Use"
+                                                ng-model="forUse"
+                                                uib-typeahead="company as company.name for company in getForUse($viewValue)"
+                                                typeahead-loading="loadingLocations"typeahead-show-hint="false" typeahead-min-length="0" typeahead-no-results="noResults"
+                                                class="form-control">
+                                            <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+                                            <div ng-show="noResults">
+                                                <i class="glyphicon glyphicon-remove"></i> No Results Found
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-sm-4">
+                                            <label for="">Specific Instruction</label>
+                                            <textarea class="form-control txt-field" ng-model="specificIns" cols="30"
+                                                rows="2"></textarea>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link font-weight-bold collapsed" data-toggle="collapse"
+                                            data-target="#collapseThree" aria-expanded="false"
+                                            aria-controls="collapseThree">
+                                            Traveler Details
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                                    data-parent="#accordion">
+                                    <div class="card-body row">
+                                        <div class="from-group  col-sm-6">
+                                            <lable for="">Traveler's Mobile Number</lable>
+                                            <input class="form-control txt-field" ng-model="travelerMobNum" type="text"
+                                                placeholder="Traveler's Mobile Number">
+                                        </div>
+                                        <div class="from-group  col-sm-6">
+                                            <lable for="">Employee Id</lable>
+                                            <input class="form-control txt-field" ng-model="empId" type="text"
+                                                placeholder="Employee Id">
+                                        </div>
+                                        <div class="from-group  col-sm-6">
+                                            <lable for="">Traveler First Name</lable>
+                                            <input class="form-control txt-field" ng-model="fname" type="text"
+                                                placeholder="Traveler First Name">
+                                        </div>
+                                        <div class="from-group  col-sm-6">
+                                            <lable for="">Traveler Last Name</lable>
+                                            <input class="form-control txt-field" ng-model="lname" type="text"
+                                                placeholder="Traveler Last Name">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingFour">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link font-weight-bold collapsed" data-toggle="collapse"
+                                            data-target="#collapseFour" aria-expanded="false"
+                                            aria-controls="collapseFour">
+                                            Driver Details
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
+                                    data-parent="#accordion">
+
+                                    <div class="card-body row">
+                                        <div class="col-md-12 text-right">
+                                            <h4 class="mt-2 mb-2">Assign Ride</h4>
+                                            <ul style="right: 50%;display:inline-flex;">
+                                                <li>
+                                                    <label class="switch">
+                                                        <input type="checkbox" checked ng-model="online"
+                                                            ng-click="ToggleOnline(online)">
+                                                        <span class="slider round"></span>
+                                                    </label>
+                                                </li>
+                                                <li class="online-status myfont" ng-show="online">
+                                                    <span> Auto</span>
+                                                </li>
+                                                <li class="offline-status myfont" ng-show="!online">
+                                                    <span> Manual</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="from-group  col-sm-6" style="position: absolute;" ng-show="!online">
+                                            <lable for="">Select a Driver</lable>
+                                            <input class="form-control txt-field " placeholder="Enter For Use"
+                                            ng-model="driver"
+                                            uib-typeahead="company as company.name for company in getDriverList($viewValue)"
+                                            typeahead-loading="loadingLocations"typeahead-show-hint="false" typeahead-min-length="0" typeahead-no-results="noResults"
+                                            class="form-control" ng-focus = getDriverList()> 
+                                        <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+                                        <div ng-show="noResults">
+                                            <i class="glyphicon glyphicon-remove"></i> No Results Found
+                                        </div>
+                                        </div>
+                                        <!-- <div class="from-group  col-sm-4" ng-show="!online">
+                                          <lable for="">Vehicle Number</lable>
+                                          <input class="form-control txt-field" ng-model="VehicleNum" type="text" placeholder="Vehicle Number">
+                                      
+                                      
+                                        </div> -->
+                                        <div ng-show="onlinei">
+                                            <div class="from-group  col-sm-4">
+                                                <lable for="">First Name</lable>
+                                                <input class="form-control txt-field" ng-model="dFname" type="text"
+                                                    placeholder="First">
+                                            </div>
+                                            <div class="from-group  col-sm-4">
+                                                <lable for="">Last Name</lable>
+                                                <input class="form-control txt-field" ng-model="dLname" type="text"
+                                                    placeholder="Last Name">
+                                            </div>
+                                            <div class="from-group  col-sm-4">
+                                                <lable for="">Mobile Number</lable>
+                                                <input class="form-control txt-field" ng-model="mobNum" type="text"
+                                                    placeholder="Mobile Number">
+                                            </div>
+                                            <!-- <div class="form-group col-sm-4">
+                                          <img src="{{}}">
+
+                                      </div> -->
+                                            <div class="form-group col-sm-4">
+                                                <label for="">Vehicle Segment/Type</label>
+                                                <select class="form-control txt-field">
+                                                    <option>Micro</option>
+                                                    <option>Mini</option>
+                                                    <option>Sedan</option>
+                                                    <option>prime</option>
+                                                    <option>SUV</option>
+                                                </select>
+                                            </div>
+                                            <div class="from-group  col-sm-4">
+                                                <lable for="">Vehicle Brand</lable>
+                                                <input class="form-control txt-field" ng-model="vehBrand" type="text"
+                                                    placeholder="Vehicle Brand">
+                                            </div>
+                                            <div class="from-group  col-sm-4">
+                                                <lable for="">Vehicle Model</lable>
+                                                <input class="form-control txt-field" ng-model="vehModel" type="text"
+                                                    placeholder="Vehicle Model">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12" style="margin-top: 10px;">
+                            <center>
+                                <button type="button" class="button btn-block" ng-click="tripBooking()">Assign
+                                    Ride</button>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="col-md-6 col-sm-12">
+                    <div class="sidebar-header">
+                        <h4>Route</h4>
+                    </div>
+                    <div id="directionsList" class="panel panel-primary"></div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="overlay"></div>
+<!-- --------------------Typeahed custom template---------------- -->
+<script type="text/ng-template" id="personTemplate">
+    <a class="LIST_Items dropuser-list">
+        <li style="padding: 10px;">
+            <img class="rounded-circle" src="{{ match.model.profileUrl|| 'assets/img/userGuy.png'}}" alt="UserImage" width="13%">
+            <span class="name">{{match.model.firstName}}&nbsp;{{match.model.lastName}}</span>
+            <span><i class="fas fa-phone"></i> &nbsp;{{match.model.mobilNumber || '--' }}</span>
+        </li>
+    </a>
+</script>
+<script>
+    function isNumber(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            return false;
+        }
+        return true;
+    }
+
+</script>
+<script>
+    $(document).ready(function(){
+      $('#timepicker').mdtimepicker({format: 'h:mm'}); //Initializes the time picker and uses the specified format (i.e. 23:30)
+    });
+  </script>
+  <script>
+    $(document).ready(function(){
+      $('#timepicker1').mdtimepicker({format: 'h:mm'}); //Initializes the time picker and uses the specified format (i.e. 23:30)
+    });
+  </script>

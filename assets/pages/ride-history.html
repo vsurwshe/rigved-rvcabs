@@ -1,0 +1,745 @@
+<style>
+    /* ----Fixed map pin at center of screen----- */
+
+    .pin:after {
+        width: 22px;
+        height: 40px;
+        display: block;
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -30px 0 0 -13px;
+        background: url('assets/img/map-pin.png');
+        background-size: 22px 40px;
+        background-repeat: no-repeat;
+        /* Since I used the HiDPI marker version this compensates for the 2x size */
+        pointer-events: none;
+        /* This disables clicks on the marker. Not fully supported by all major browsers, though */
+    }
+
+    a {
+        cursor: pointer;
+    }
+
+    /* ----------------------------------------- */
+
+    .row {
+        margin: 0;
+    }
+
+    .rightside {
+        background: url('assets/img/dog_car.jpg');
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 100%;
+        background-position: bottom;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+
+
+    }
+
+    .Empty-msg {
+        font-weight: 500;
+        font-size: 30px;
+        color: #fff;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        margin-bottom: 10px;
+    }
+
+    .Empty-msg-child {
+        font-weight: 500;
+        font-size: 15px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        color: #fff;
+
+    }
+
+    .msg {
+        top: 40%;
+        position: fixed;
+        padding: 20px;
+    }
+
+    .hastag {
+        color: #f7f108;
+        line-height: 4.4em !important;
+    }
+
+    .input-form {
+        height: 150px;
+        padding: 15px;
+    }
+
+    .form-control {
+        margin-bottom: 7px !important;
+    }
+
+    @media screen and (max-width: 768px) {
+        .hideonMobile {
+            display: none;
+        }
+    }
+
+    .angular-google-map-container {
+        height: 420px;
+
+    }
+
+    .currentlocation {
+        cursor: pointer;
+    }
+
+
+    .location-msg {
+        min-height: 40px;
+        background-color: #e67a0b;
+        padding: 10px;
+        transition-duration: 0.5s;
+        position: fixed;
+        max-width: 568px;
+        z-index: 9999;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* --------------main container css-------- */
+
+    .row {
+        position: fixed !important;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+
+    /* ----------------input box css------------------------ */
+
+    .row-sm {
+        display: block;
+        height: 40px;
+        line-height: 20px;
+        position: relative;
+        padding: 10px 0px;
+    }
+
+    .label {
+        font-size: 13px;
+        color: #898989;
+    }
+
+
+    .text {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    .h-full {
+        height: 100%;
+        line-height: 40px;
+        top: 0;
+    }
+
+    .left {
+        position: absolute;
+        width: 64px;
+        padding-left: 8px;
+    }
+
+    .right {
+        position: absolute;
+        left: 64px;
+        right: 8px;
+    }
+
+    .value {
+        font-size: 15px;
+        color: black;
+    }
+
+
+
+    .no-border {
+        border: none !important;
+    }
+
+
+    .bg-dark {
+        background: #fff !important;
+    }
+
+    .address {
+        padding: 20px;
+    }
+
+    .Confirm {
+        background-color: #353434;
+        color: #f5f504;
+    }
+
+
+
+    .myfont {
+        font-weight: 500;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    }
+
+
+
+    a.article,
+    a.article:hover {
+        color: #fff !important;
+    }
+
+    .imgIco {
+        margin-right: 15px;
+    }
+
+    .profile {
+        border-radius: 100%;
+        width: 50px;
+        height: 50px;
+        padding-right: 0px;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        min-height: 100px;
+        background-color: #1b1919;
+        padding: 20px 5px 5px 20px;
+        border-radius: 3px;
+    }
+
+    .nav-profile:hover .dropdown-content {
+        display: block;
+    }
+
+    .desc {
+        text-align: left;
+        font-weight: 600;
+        color: gainsboro;
+        cursor: pointer;
+    }
+
+
+
+
+    .overlay {
+        display: none;
+        width: 100%;
+        background: rgba(66, 65, 64, 0.7);
+        z-index: 998;
+        opacity: 0;
+        transition: all 0.5s ease-in-out;
+        cursor: pointer;
+    }
+
+    .overlay.active {
+        display: block;
+        opacity: 1;
+
+    }
+
+    /* --------------Header css--------- */
+
+    .headerTool {
+        position: relative;
+        height: 40px;
+        text-align: center;
+        margin: 10px;
+        background-color:
+    }
+
+    .ham-ico {
+        cursor: pointer;
+    }
+
+    .hamberger {
+        left: 0;
+        position: absolute;
+        padding: 0px 0px 0px 10px;
+        width: 10%;
+        top: 5px;
+        text-align: left;
+
+    }
+
+    .brandlogo {
+        position: absolute;
+        width: 70%;
+        text-align: center;
+        left: 10%;
+        height: 100%;
+    }
+
+    .userprofile {
+        width: 10%;
+        position: absolute;
+        /* left: 81%; */
+        height: 100%;
+        right: 0;
+    }
+
+    .pro-pic {
+        height: 100%;
+        cursor: pointer;
+    }
+
+    /* ------------profile section css-------- */
+
+    .profileheader {
+        height: 28px;
+        padding: 11px 0px 12px 0px;
+        text-align: center;
+    }
+
+    .backbtn {
+        padding-left: 10px;
+        display: inline-block;
+        float: left;
+        color: #2b2b2b;
+        z-index: 1;
+        position: relative;
+    }
+
+    .profilecontainer {
+        padding-top: 50px;
+        margin: 0 10px 20px 10px;
+    }
+
+    .profiledetail {
+        text-align: center;
+        margin-bottom: 16px;
+
+    }
+
+    .user-pic {
+        max-height: 70px;
+        margin-bottom: 20px;
+    }
+
+    .user-name {
+        margin: 10px 0px 10px 0px;
+        font-size: 24px;
+    }
+
+    .user-email {
+        margin: 10px 0px 10px 0px;
+        font-size: 16px;
+    }
+
+    .user-phone {
+        margin: 10px 0px 10px 0px;
+        font-size: 16px;
+    }
+
+    .modules {
+        position: relative;
+        border: 1px solid #e5e5e5;
+        margin: 8px 8px;
+        border-radius: 4px;
+        background-color: #fff;
+    }
+
+    .submodule {
+        height: 47px;
+        display: block;
+        line-height: 20px;
+        position: relative;
+        padding: 10px 0px;
+        cursor: pointer;
+    }
+
+    .subdetail {
+        height: 100%;
+        line-height: 25px;
+        top: 0;
+        font-size: 17px;
+        color: #E41D08;
+    }
+
+    /* ------------------------Ride list css--------------- */
+    .heading {
+        height: 100%;
+        display: inline-block;
+        line-height: 27px;
+        font-size: 18px;
+        font-weight: 500;
+        vertical-align: top;
+        position: absolute;
+        left: 0;
+        right: 0;
+        color: #000;
+    }
+
+    .ridesCont {
+        top: 70px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        position: absolute;
+        padding: 0 8px;
+        display: block;
+        -webkit-overflow-scrolling: touch;
+        overflow: auto;
+        min-height: 200px;
+    }
+
+    .emptyRide {
+        top: 70px;
+        left: 0;
+        right: 0;
+        position: absolute;
+        padding: 0 8px;
+        display: block;
+        -webkit-overflow-scrolling: touch;
+        overflow: auto;
+        min-height: 200px;
+        text-align: center;
+    }
+
+    .ride-details {
+        min-height: 90px;
+        line-height: 18px;
+        padding: 13px 0px 11px 0;
+        overflow: auto;
+        position: relative;
+        background-color: white;
+        border-radius: 3px;
+        margin: 5px 0px 10px 0px;
+        cursor: pointer;
+    }
+
+    .ride-details:hover {
+        box-shadow: -14.142px 14.142px 20px 0px rgba(157, 157, 157, 0.5);
+        transition: all 0.4s;
+    }
+
+
+    .vehicle {
+        position: absolute;
+        width: 64px;
+        padding-left: 8px;
+    }
+
+    .middlecont {
+        position: relative;
+        padding-left: 72px;
+        padding-right: 50px;
+        left: 0;
+        width: 100%;
+        min-height: 65px;
+    }
+
+    .ride-date {
+        padding-bottom: 2px;
+        font-weight: 500;
+        font-size: 14px;
+        color: #000;
+    }
+
+    .add-point {
+        display: inline-block;
+        height: 6px;
+        width: 6px;
+        border-radius: 50%;
+        vertical-align: top;
+        margin: 7px 0 0;
+
+    }
+
+    .green-dot {
+        background-color: #54a624;
+    }
+
+    .red-dot {
+        background-color: #ff665a;
+    }
+
+    .add-name {
+        width: 90%;
+        color: #999999;
+        display: inline-block;
+        line-height: 20px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        padding-left: 5px;
+        font-size: 13px;
+    }
+
+    .otp {
+        color: #000 !important;
+    }
+
+    .status {
+        position: absolute;
+        width: 60px;
+        right: 0px;
+        text-align: center;
+        line-height: 40px;
+        top: 0;
+        height: 100%;
+        min-height: 65px;
+    }
+
+    .success-msg {
+        color: #54a624;
+    }
+
+    .cancle-msg {
+        color: #ff665a;
+    }
+
+    .otherList {
+        top: 40px;
+        text-align: right;
+        padding-right: 5px;
+        position: absolute;
+        right: 0;
+    }
+
+    /* ----------------popup css------------------- */
+
+    #map {
+
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        position: absolute;
+
+    }
+
+    .map-container {
+        height: 200px;
+    }
+
+    .modal-content {
+        border-radius: 0px !important;
+    }
+
+    .row-line {
+        text-align: center;
+        height: 1px;
+        background: #e5e5e5;
+    }
+
+    .trip-row {
+        padding: 12px 0;
+        line-height: 24px;
+    }
+
+    .driver-img {
+        margin: auto;
+        top: -4px;
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .middlename {
+        padding-right: 10px;
+        line-height: 15px;
+        left: 80px;
+        font-size: 15px;
+        color: black;
+        right: 40px;
+        position: absolute;
+    }
+
+    .pan {
+        margin-right: 36px;
+        font-size: 14px;
+        font-weight: 500;
+        margin-top: -4px;
+        display: inline-block;
+        margin-left: 20px;
+    }
+
+    #yetToStartCSS{
+        color: #FF9300;
+    } 
+    #ongoingCSS{
+       color:  #008F00;
+    } 
+    #completedCSS{
+        color: #E41D08;
+    }
+    #CancelledCSS{
+        color: #E41D08;
+    }
+
+</style>
+<div class="row">
+    <div class="col-sm-12 col-md-5 nopadding">
+        <header>
+            <div class="profileheader">
+                <a class="backbtn" href="#maps"><i class="fas fa-arrow-left"></i></a>
+                <div class="heading myfont">Your Rides</div>
+            </div>
+        </header>
+        <div class="otherList myfont" style="color:#000;"><a ng-click="ListOtherRide();" ng-show="showUpcoming" class="btn btn-outline-warning gray">See Other Rides</a></div>
+        <div class="otherList myfont" style="color:#000;"><a ng-click="ListUpcomingRide();" ng-show="!showUpcoming" class="btn btn-outline-warning gray">See Upcoming Rides</a></div>
+        <div class="upcoming" ng-show="showUpcoming">
+            <div class="ridesCont" ng-show="!noRideHis">
+                <div class="ride-details" ng-repeat="ride in UpcomingListData" ng-show="!noRideHis" ng-click="readTrip(ride.id)">
+                    <div class="vehicle">
+                        <img src="assets/img/car-side.png">
+                    </div>
+                    <div class="middlecont">
+                        <div class="text ride-date myfont">{{ride.tripStartTime | date : "medium"}}</div>
+                        <div class="address-cont">
+                            <div class="add-point green-dot"></div>
+                            <div class="add-name">{{ride.source || '--'}}</div>
+                        </div>
+                        <div class="address-cont">
+                            <div class="add-point red-dot"></div>
+                            <div class="add-name">{{ride.destination || '--'}}</div>
+                        </div>
+                        <div class="otp myfont">OTP: {{ride.otp || '--'}}</div>
+                        <div class="myfont" id="yetToStartCSS" ng-show="ride.tripStatus == '3'">Yet To Start</div>
+                        <div class="myfont" id="ongoingCSS" ng-show="ride.tripStatus == '4'">On Going</div>
+                        <div class="myfont" id="completedCSS" ng-show="ride.tripStatus == '5'">Completed</div>
+                        <div class="myfont" id="CancelledCSS" ng-show="ride.tripStatus == '6'">Cancelled</div>
+                    </div>
+                </div>
+            </div>
+            <div class="emptyRide" ng-show="noRideHis">
+                <div class="emptylogo">
+                    <img src="assets/img/sand_timer.png" alt="error logo" width="11%;">
+                </div>
+                <div class="myfont" style="font-size: 20px;">It seems you haven't any upcoming ride.</div>
+                <div class="myfont"><a href="#maps">Click here to book a ride.</a></div>
+            </div>
+        </div>
+        <div class="upcoming" ng-show="!showUpcoming">
+            <div class="ridesCont" ng-show="!noOtherRideHis">
+                <div class="ride-details" ng-repeat="ride in OtherListData" ng-show="!noOtherRideHis" ng-click="readTrip(ride.id)">
+                    <div class="vehicle">
+                        <img src="assets/img/car-side.png">
+                    </div>
+                    <div class="middlecont">
+                        <div class="text ride-date myfont">{{ride.tripStartTime | date : "medium"}}</div>
+                        <div class="address-cont">
+                            <div class="add-point green-dot"></div>
+                            <div class="add-name">{{ride.source || '--'}}</div>
+                        </div>
+                        <div class="address-cont">
+                            <div class="add-point red-dot"></div>
+                            <div class="add-name">{{ride.destination || '--'}}</div>
+                        </div>
+                        <!--<div class="otp myfont">OTP: {{ride.otp || '--'}}</div>-->
+                        <div class="myfont" id="yetToStartCSS" ng-show="ride.tripStatus == '3'">Yet To Start</div>
+                        <div class="myfont" id="ongoingCSS" ng-show="ride.tripStatus == '4'">On Going</div>
+                        <div class="myfont" id="completedCSS" ng-show="ride.tripStatus == '5'">Completed</div>
+                        <div class="myfont" id="CancelledCSS" ng-show="ride.tripStatus == '6'">Cancelled</div>
+                    </div>
+                </div>
+            </div>
+            <div class="emptyRide" ng-show="noOtherRideHis">
+                <div class="emptylogo">
+                    <img src="assets/img/sand_timer.png" alt="error logo" width="11%;">
+                </div>
+                <div class="myfont" style="font-size: 20px;">It seems you haven't taken any ride.</div>
+                <div class="myfont"><a href="#maps">Click here to book a ride.</a></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-7 nopadding hideonMobile">
+        <div class="rightside">
+            <div class="msg">
+                <h4 class="Empty-msg">Everyday city commute</h4>
+                <h5 class="Empty-msg-child">Affordable AC rides at </h5>
+                <h5 class="Empty-msg-child">your doorstep </h5>
+                <h5 class="hastag">#DotForWeb </h5>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Trip ID: {{tripDetailArray.id}}</h4>&nbsp;
+                <h4 class="modal-title" id="{{tripCSS}}" style="padding-left: 70px;">{{tripStatus}}</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body nopadding" style="min-height: 250px;">
+                <div class="col-sm-12 nopadding map-container">
+                    <div id="map"></div>
+                </div>
+                <div class="row-line"></div>
+                <div class="trip-row" style="height: 60px;">
+                    <div class="left lable">
+                        <div class="driver-img">
+                            <img src="assets/img/speed-meter.png" width="100%;">
+                        </div>
+                    </div>
+                    <div class="right value text">
+                        <div class="pan myfont">{{tripDetailArray.bookingTxDetailsDto.totalDistOfTrip}} Km</div>
+                        <div class="pan myfont">₹ {{tripDetailArray.bookingTxDetailsDto.toatalbillamount}}</div>
+                    </div>
+                </div>
+                <div class="row-line"></div>
+                <div class="trip-row" style="height: 60px;">
+                    <div class="left lable">
+                        <div class="driver-img">
+                            <img src="assets/img/pages/t1.jpg" width="100%;">
+                        </div>
+                    </div>
+                    <div class="middlename">
+                        <div class="myfont">{{tripDetailArray.driverName}}</div>
+                    </div>
+                </div>
+                <div class="row-line"></div>
+                <div class="trip-row" style="height: 70px;">
+                    <div class="address-cont" style="padding-left: 20px;">
+                        <div class="add-point green-dot"></div>
+                        <div class="add-name">{{tripDetailArray.source}}</div>
+                    </div>
+                    <div class="address-cont" style="padding-left: 20px;">
+                        <div class="add-point red-dot"></div>
+                        <div class="add-name">{{tripDetailArray.destination}}</div>
+                    </div>
+                </div>
+                <div class="row-line"></div>
+                <div class="trip-row" style="height: 60px;">
+                    <div class="left lable">
+                        <div class="myfont" style="color: #000">Payment</div>
+                        <div class="myfont">Cash</div>
+                    </div>
+                    <div class="middlename" style="text-align: right;line-height: 70px;">
+                        <div class="myfont">₹ {{tripDetailArray.bookingTxDetailsDto.toatalbillamount}}</div>
+                    </div>
+                </div>
+                <div class="row-line"></div>
+                <div class="trip-row">
+                    <div class="modules" ng-show="tripDetailArray.tripbookingstatus == '3'">
+                    <div class="submodule">
+                        <div class="text-center subdetail myfont" ng-click="cancleRide(tripDetailArray.id)">Cancle this ride</div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,57 @@
+<style>
+    .header-right {
+        margin-bottom: 20px !important;
+        margin-top: 15px !important;
+    }
+
+    .header-right .genric-btn.primary-border {
+        color: #fab700;
+        border: 1px solid #fab700;
+        background: transparent !important;
+    }
+
+    .cal-btn {
+        border-radius: 0px;
+        padding: 7px 1.75rem;
+    }
+
+</style>
+<!-- -------------Navbar section-------------------------- -->
+<ng-include src="'assets/pages/navbar.html'"></ng-include>
+<!-- ----------------------------------------------------- -->
+<section class="banner-area relative" id="home">
+    <div class="overlay overlay-bg"></div>
+    <div class="container">
+        <div class="row fullscreen d-flex align-items-center justify-content-center">
+            <div class="banner-content col-lg-7 col-md-6 ">
+                <h6 class="text-white ">the Royal Essence of Journey</h6>
+                <h1 class="text-white text-uppercase">
+                    Relaxed Journey Ever
+                </h1>
+                <p class="pt-20 pb-20 text-white">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+                <!--<a href="#" class="primary-btn text-uppercase">Rent Car Now</a>-->
+            </div>
+            <div ng-show="Reg_Step == 1" class="col-lg-5  col-md-6 header-right">
+                <h4 class="text-white pb-30">User Registration</h4>
+                <h6 class="text-white pb-30">Fill the following form to register your customer</h6>
+                <div class="from-group">
+                    <input class="form-control txt-field" ng-model="firstName" type="text" name="fname" placeholder="First Name" autofocus>
+                    <input class="form-control txt-field" ng-model="lastName" type="text" name="lname" placeholder="Last Name">
+                    <input class="form-control txt-field" ng-model="emailID" type="email" name="email" placeholder="Email Address">
+                    <input class="form-control txt-field" ng-model="MobNumb" type="tel" name="phone" placeholder="Phone Number(Primary)">
+                    <input class="form-control txt-field" ng-model="masterNumber" type="tel" name="Mphone" placeholder="Driver's Mobile Number">
+                    <input class="form-control txt-field" ng-model="Password" type="password" name="pass" placeholder="Password">
+                    <input class="form-control txt-field" ng-model="C_Password" type="password" name="confirm_pass" placeholder="Confirm Password">
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <button type="reset" class="btn btn-default btn-lg btn-block text-center text-uppercase" ng-click="RegisterForUser()" ng-disabled="!firstName || !lastName || !emailID || !masterNumber || !Password || !C_Password">Register User</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End banner Area -->

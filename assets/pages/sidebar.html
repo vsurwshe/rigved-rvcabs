@@ -1,0 +1,199 @@
+<style>
+    @media only screen and (min-width: 0px) {
+        .left{
+            margin-top: 50px;
+        }
+        
+
+    }
+    @media only screen and (min-width: 480px) {
+        .left{
+            margin-top: 60px;
+        }
+        
+    }
+    @media only screen and (min-width: 768px) {
+        .left{
+            margin-top: 81px;
+        }
+        .left .main-menu  .logout{
+            display: none;
+        }
+    }
+    @media only screen and (min-width: 1024px) {
+        .left{
+            margin-top: 81px;
+        }
+        .left .main-menu .logout{
+            display: none;
+        }
+    }    
+
+    td,
+    th {
+        vertical-align: middle !important;
+    }
+
+    .left {
+        float: left;
+        height: 100%;
+    }
+
+    .left {
+        background: #222222;
+        display: inline-block;
+        white-space: nowrap;
+        width: 55px;
+        transition: width 0.5s;
+        padding: 10px 0px 0px 10px;
+        overflow: hidden;
+        background-image: url("assets/img/sidebarImg.jpg");
+        position: fixed;
+        z-index: 2;
+    }
+
+    .left:hover {
+        width: 250px;
+    }
+
+    #expand: {
+        width: 250px;
+    }
+
+    .item:hover {
+        background-color: #ccc;
+    }
+
+    .left .glyphicon {
+        margin: 15px;
+        width: 20px;
+        color: #fff;
+    }
+
+    .left .main-menu>ul {
+        margin: 7px 0;
+    }
+
+    .left .main-menu li {
+        position: relative;
+        display: block;
+        width: 250px;
+        height: 44px;
+    }
+
+    .left .main-menu li>a {
+        position: relative;
+        display: table;
+        border-collapse: collapse;
+        border-spacing: 0;
+        color: white;
+        font-family: 'Roboto', sans-serif !important;
+        font-size: 15px;
+        text-decoration: none;
+        -webkit-transform: translateZ(0) scale(1, 1);
+        -webkit-transition: all .1s linear;
+        transition: all 0.15s linear;
+        width: 98%;
+        font-weight: 300;
+        line-height: 36px;
+        font-weight: 400;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+
+    }
+
+    .left .no-touch .scrollable.hover {
+        overflow-y: hidden;
+    }
+
+    .left .no-touch .scrollable.hover:hover {
+        overflow-y: auto;
+        overflow: visible;
+    }
+
+    .left a:hover,
+    a:focus {
+        text-decoration: none;
+    }
+
+    .left nav {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -o-user-select: none;
+        user-select: none;
+    }
+
+    .left nav ul,
+    #sidebarMenuNnav li {
+        outline: 0;
+        margin: 0;
+        padding: 0;
+    }
+
+    .left .main-menu li:hover>a {
+        /* color:#fff; */
+        color: white;
+        text-shadow: 0 0 5px rgba(15, 216, 93, 0.13);
+        font-weight: 600;
+        font-size: 16px;
+
+    }
+
+    .left .area {
+        float: left;
+        background: #e2e2e2;
+        width: 100%;
+        height: 100%;
+    }
+
+    img {
+        padding-right: 20px;
+    }
+
+</style>
+<div class="left" id="expand" ng-controller="sidebarCtrl">
+    <!--<div class="item active">
+        <span class="glyphicon glyphicon-th-large"></span>dsfsdfsd
+    </div>
+    <div class="item ">
+        <span class="glyphicon glyphicon-th-list"></span> Все документы</div>
+    <div class="item">
+        <span class="glyphicon glyphicon-log-out"></span> Расходные накладные</div>
+    <div class="item">
+        <span class="glyphicon glyphicon-log-in"></span> Приходные накладные</div>
+    <div class="item">
+        <span class="glyphicon glyphicon-random"></span> Акты переоценки</div>
+    <div class="item">
+        <span class="glyphicon glyphicon-remove"></span> Акты списания</div>-->
+    <nav class="main-menu">
+        <ul class="nav sidebar-nav">
+            
+            <li>
+                <a href="#bookcab"><img class="imgIco" src="assets/img/home.png" /> Book Now</a>
+            </li>
+            <li>
+                <a href="#rideList"><img class="imgIco" src="assets/img/car-list.png" /> Ride List</a>
+            </li>
+            <li ng-show="LoginRole == '2'">
+                <a href="#customerList"><img class="imgIco" src="assets/img/customer-list.png" /> Customer List</a>
+            </li>
+            <li ng-show="LoginRole == '2'">
+                <a href="#approveMember"><img class="imgIco" src="assets/img/approveList.png" /> Approve Member</a>
+            </li>
+            <li ng-show="LoginRole == '2'">
+                <a href="#myMember"><img class="imgIco" src="assets/img/approve.png" /> My Member</a>
+            </li>
+            <li ng-show="LoginRole == '2'">
+                <a href="#ratecard"><img class="imgIco" src="assets/img/rupee-indian.png" /> Rate Card</a>
+            </li>
+            <li ng-show="LoginRole == '2'">
+                <a href="#farechart"><img class="imgIco" src="assets/img/rupee-indian.png" /> Fare Chart</a>
+            </li>
+            <li class="logout">
+                <a href="#" ng-click="logout()"><img class="imgIco" src="assets/img/logout.png" /> Logout</a>
+            </li>
+
+        </ul>
+    </nav>
+</div>

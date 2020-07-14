@@ -1,0 +1,148 @@
+<style>
+    /* -------------Content Css-------------- */
+
+    .wrapper {
+        display: flex;
+        width: 100%;
+    }
+
+
+    #content {
+        width: calc(100% - 220px);
+        padding: 10px 0px 20px 0px !important;
+        min-height: 100vh;
+        transition: all 0.3s;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-image: url('assets/img/background.jpg');
+
+    }
+
+    #content.active {
+        width: 100%;
+    }
+
+    .overlay {
+        display: none;
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 998;
+        opacity: 0;
+        transition: all 0.5s ease-in-out;
+    }
+
+    .overlay.active {
+        display: block;
+        opacity: 1;
+    }
+
+    /* ------------------------------------- */
+
+    .mapContainer {
+        padding: 81px 0px 0px 55px;
+    }
+
+    form {
+        margin: 0px;
+    }
+
+    .input-field {
+        position: relative;
+        width: 100%;
+        height: 70px;
+        line-height: 44px;
+    }
+
+
+
+    input {
+        width: 100%;
+        border: 0;
+        outline: 0;
+        padding: 0;
+        border-bottom: 2px solid white;
+        background-color: transparent;
+        color: white;
+    }
+
+    input:focus,
+    input:valid {
+        border-color: #00dd22;
+    }
+
+    .form-div {
+        position: fixed;
+        top: 120px;
+        right: 25px;
+        background-color: #171616;
+        opacity: 0.8;
+        padding: 25px;
+    }
+
+    .route-list {
+        position: fixed;
+        top: 130px;
+        background-color: #fff;
+        max-height: 410px;
+        overflow: hidden;
+    }
+
+    .navbar {
+        margin-bottom: 0px !important;
+    }
+
+    .location {
+        position: fixed;
+        top: 178px;
+        right: 40px;
+        cursor: pointer;
+    }
+
+</style>
+
+<div id="page-loading" ng-show="loading" class="ng-hide">
+    <div class="loader">
+        <img src="assets/img/giphy.gif" width="100" height="100" style="padding: 0">
+    </div>
+</div>
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <ng-include src="'assets/pages/MysideBar.html'"></ng-include>
+    <!-- Page Content  -->
+    <div id="content">
+        <ng-include src="'assets/pages/MynavBar.html'"></ng-include>
+        <div id="map" style="width: 100%; height: 100vh;"></div>
+        <div class="col-sm-4 route-list">
+            <div class="sidebar-header">
+                <h4>Route</h4>
+            </div>
+            <div id="directionsList" class="panel panel-primary"></div>
+        </div>
+
+        <div class="col-sm-3 form-div">
+            <div class="col-sm-12">
+                <center>
+                    <h4 style="color: #fff">Book Your Ride</h4>
+                </center>
+                <div class="input-field">
+                    <input type="text" id="autocompleteLocation" placeholder="Enter Source" ng-model="origin" autofocus/>
+                </div>
+                <span class="location"><img src="assets/img/location.png" ng-click=initializeLocation();></span>
+                <div class="input-field">
+                    <input type="text" id="autocompleteDestination" placeholder="Enter Destination" ng-model="destination" />
+                </div>
+                <div class="from-group" style="padding: 10px 0px 20px 0px">
+                    <input id="dtTimePicker" class="form-control txt-field" datetime-picker ng-model="TripDateTime" placeholder="Select Date And Time" />
+                </div>
+                <div class="from-group">
+                    <button class="btn btn-default btn-lg btn-block text-center text-uppercase" ng-click="BookRide()">Book Ride</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="overlay"></div>

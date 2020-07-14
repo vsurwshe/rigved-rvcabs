@@ -1,0 +1,128 @@
+<style>
+    @media only screen and (min-width: 0px) {
+        .dashnav {
+            padding: 0px 20px 0px 20px;
+            background-color: #222;
+            height: 50px;
+        }
+        .brand-logo {
+            height: 100%;
+        }
+        .profile{
+            display:none;
+        }
+
+    }
+
+    @media only screen and (min-width: 480px) {
+        .dashnav {
+            padding: 0px 20px 0px 20px;
+            background-color: #222;
+            height: 60px;
+        }
+        .brand-logo {
+            height: 100%;
+        }
+        .profile{
+            display:none;
+        }
+
+    }
+
+    @media only screen and (min-width: 768px) {
+        .dashnav {
+            padding: 0px 40px 0px 20px;
+            background-color: #222;
+            height: 81px;
+        }
+        .brand-logo {
+            height: 100%;
+        }
+        .profile{
+            padding-top: 1%;
+             display:inline;
+        }
+        
+
+    }
+
+    @media only screen and (min-width: 1024px) {
+        .dashnav {
+            padding: 0px 40px 0px 20px;
+            background-color: #222;
+            height: 81px;
+        }
+        .brand-logo {
+            height: 100%;
+        }
+        .profile{
+            padding-top: 1%;
+             display:inline;
+        }
+        .dropdown-content {
+            margin-left: 10px;
+        }
+
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        min-height: 100px;
+        background-color: #1b1919;
+        padding: 20px 5px 5px 20px;
+        border-radius: 3px;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .desc {
+        text-align: left;
+        font-weight: 600;
+        color: gainsboro;
+        cursor: pointer;
+    }
+
+    .profile {
+        border-radius: 100%;
+        width: 50px;
+        height: 50px;
+        padding-right: 0px;
+    }
+
+</style>
+<div class="row dashnav" ng-controller="DashNavBarCtrl">
+    <!--<div id="logo">
+        <a href="#dashboard"><img src="assets/img/logo_dotstaxi.png" alt="logo" title="" /></a>
+    </div>
+    -->
+    <button type="button" data-target="#expand" data-toggle="collapse" class="navbar-toggler"  style="outline: none; color:#fff">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </button>
+    <div class="col-sm-2">
+        <a href="#bookcab"><img class="brand-logo" src="assets/img/logo_dotstaxi.png" alt="logo" /></a>
+    </div>
+    <div class=" col-sm-3 ml-auto profile">
+        
+                <div class="dropdown" style="float: right;">
+                    <span style="color: aliceblue">Ankit Kumar Keshri</span>
+                    <img class="profile" src="assets/img/pages/t1.jpg" alt="user_img">
+                    <div class="dropdown-content">
+                        <div class="desc">Profile</div>
+                        <div class="desc" ng-click="logout();">Logout</div>
+                    </div>
+                </div>
+           
+    </div>
+</div>

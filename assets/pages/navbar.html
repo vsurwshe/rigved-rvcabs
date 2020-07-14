@@ -1,0 +1,74 @@
+<style>
+    /* -------------nav bar css starts------------------ */
+
+    .navbar-light .navbar-nav .nav-link {
+        color: #203b70;
+    }
+
+    .navbar-light .navbar-nav .nav-link:hover {
+        color: yellow;
+    }
+
+    .navbar-light .navbar-nav .nav-link:focus {
+        color: yellow;
+    }
+    .nav-link.active{
+      
+        -size: 18px !important;
+        text-decoration: underline;
+    }
+#navbarNavDropdown{
+       z-index: 99999;  
+   }
+.bg-dark{
+    background-color: #d9d9d9 !important;
+}
+   .navbar-light .navbar-nav .show > .nav-link, .navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .nav-link.active {
+    color: yellow!important;
+}
+
+</style>
+<nav class="navbar navbar-expand-lg navbar-light bg-dark" ng-controller="NavBarCtrl">
+    <a class="navbar-brand" href="#"><img src="assets/img/RV_cabs_logo.png" width="160"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item "><a class="nav-link  {{CoomingSoonActive}}" href="#">Home</a></li>
+        
+            <li class="nav-item"><a class="nav-link {{loginActive}}" href="#">Login</a></li>
+            
+        </ul>
+    </div>
+</nav>
+<!---------------------------------Conf Model-------------------------------- -->
+<div id="ConfOk" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content custom-modal">
+            <div class="modal-body custom-body" style="text-align: center;">
+                <div class="Conficon">
+                    <img src="assets/img/checked.png" width="100%;">
+                </div>
+                <h1>Congratulations!</h1>
+                <p>{{ConfOkMsg}}</p>
+                <button type="button" class="btn btn-outline-success okbtn"  ng-click="routeRefresh()">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ------------------------------------------------------------------------- -->
+<div id="ConfError" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content custom-modal">
+            <div class="modal-body custom-body" style="text-align: center;">
+                <div class="Conficon">
+                    <img src="assets/img/cancel.png" width="100%;">
+                </div>
+                <h1>OOPS!</h1>
+                <p>{{ConfOkMsg}}</p>
+                <button type="button" class="btn btn-outline-danger okbtn" data-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>

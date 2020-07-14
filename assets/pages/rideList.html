@@ -1,0 +1,666 @@
+<style>
+    /* -------------Content Css-------------- */
+
+    .wrapper {
+        display: flex;
+        width: 100%;
+    }
+
+
+    #content {
+        width: calc(100% - 220px);
+        padding: 10px 40px 20px 40px !important;
+        min-height: 100vh;
+        transition: all 0.3s;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-image: url('assets/img/background.jpg');
+
+    }
+
+    #content.active {
+        width: 100%;
+    }
+
+    .overlay {
+        display: none;
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 998;
+        opacity: 0;
+        transition: all 0.5s ease-in-out;
+    }
+
+    .overlay.active {
+        display: block;
+        opacity: 1;
+    }
+
+    /* ------------------------------------- */
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    /* Zebra striping */
+
+    tr:nth-of-type(odd) {
+        background: #eee;
+    }
+
+    th {
+        background: #333;
+        color: white;
+        font-weight: bold;
+    }
+
+    td,
+    th {
+        padding: 6px;
+        border: 1px solid #ccc;
+        text-align: left;
+    }
+
+    @media only screen and (max-width: 760px),
+    (min-device-width: 768px) and (max-device-width: 1024px) {
+
+        /* Force table to not be like tables anymore */
+        table.responsive,
+        .responsive thead,
+        .responsive tbody,
+        .responsive th,
+        .responsive td,
+        .responsive tr {
+            display: block;
+        }
+
+        /* Hide table headers (but not display: none;, for accessibility) */
+        .responsive thead tr {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+
+        .responsive tr {
+            border: 1px solid #ccc;
+        }
+
+        .responsive td {
+            /* Behave  like a "row" */
+            border: none;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: 50%;
+        }
+
+        .responsive td:before {
+            /* Now like a table header */
+            position: absolute;
+            /* Top/left values mimic padding */
+            top: 6px;
+            left: 6px;
+            width: 45%;
+            padding-right: 10px;
+            white-space: nowrap;
+        }
+
+        /*Label the data*/
+        .responsive td:before {
+            content: attr(data-table-header);
+        }
+    }
+
+    .table-responsive .bootstrap {
+        min-height: .01%;
+        overflow-x: auto;
+    }
+
+    @media screen and (max-width: 767px) {
+        .table-responsive.bootstrap {
+            width: 100%;
+            margin-bottom: 15px;
+            overflow-y: hidden;
+            -ms-overflow-style: -ms-autohiding-scrollbar;
+            border: 1px solid #ddd;
+        }
+        .table-responsive.bootstrap>.table {
+            margin-bottom: 0;
+        }
+        .table-responsive.bootstrap>.table>thead>tr>th,
+        .table-responsive.bootstrap>.table>tbody>tr>th,
+        .table-responsive.bootstrap>.table>tfoot>tr>th,
+        .table-responsive.bootstrap>.table>thead>tr>td,
+        .table-responsive.bootstrap>.table>tbody>tr>td,
+        .table-responsive.bootstrap>.table>tfoot>tr>td {
+            white-space: nowrap;
+        }
+        .table-responsive.bootstrap>.table-bordered {
+            border: 0;
+        }
+        .table-responsive.bootstrap>.table-bordered>thead>tr>th:first-child,
+        .table-responsive.bootstrap>.table-bordered>tbody>tr>th:first-child,
+        .table-responsive.bootstrap>.table-bordered>tfoot>tr>th:first-child,
+        .table-responsive.bootstrap>.table-bordered>thead>tr>td:first-child,
+        .table-responsive.bootstrap>.table-bordered>tbody>tr>td:first-child,
+        .table-responsive.bootstrap>.table-bordered>tfoot>tr>td:first-child {
+            border-left: 0;
+        }
+        .table-responsive.bootstrap>.table-bordered>thead>tr>th:last-child,
+        .table-responsive.bootstrap>.table-bordered>tbody>tr>th:last-child,
+        .table-responsive.bootstrap>.table-bordered>tfoot>tr>th:last-child,
+        .table-responsive.bootstrap>.table-bordered>thead>tr>td:last-child,
+        .table-responsive.bootstrap>.table-bordered>tbody>tr>td:last-child,
+        .table-responsive.bootstrap>.table-bordered>tfoot>tr>td:last-child {
+            border-right: 0;
+        }
+        .table-responsive.bootstrap>.table-bordered>tbody>tr:last-child>th,
+        .table-responsive.bootstrap>.table-bordered>tfoot>tr:last-child>th,
+        .table-responsive.bootstrap>.table-bordered>tbody>tr:last-child>td,
+        .table-responsive.bootstrap>.table-bordered>tfoot>tr:last-child>td {
+            border-bottom: 0;
+        }
+    }
+
+    /* ---------------User info Section--------------------- */
+
+    .label {
+        width: 70px;
+
+    }
+
+    .label,
+    .phone,
+    .mobile,
+    .email {
+        display: inline-block;
+    }
+
+    .phone,
+    .mobile,
+    .email {
+        font-weight: 600;
+    }
+
+    .details-td {
+        padding: 10px;
+        border: none;
+        background-color: #ffff;
+    }
+
+    /* -----------------button------------------------- */
+
+    .button {
+        padding: 5px 20px;
+        border: 2px solid #494a49;
+        border-radius: 5px;
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: #494a49;
+        background-color: #fff;
+
+
+    }
+
+    .button:hover {
+        color: #494a49;
+        background-color: #f1f50b;
+        cursor: pointer;
+
+    }
+
+
+    .button-small {
+        padding: 3px 15px;
+        border: 2px solid #494a49;
+        border-radius: 5px;
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: #494a49;
+        background-color: #fff;
+
+
+    }
+
+    .button-small:hover {
+        color: #494a49;
+        background-color: #f1f50b;
+        cursor: pointer;
+
+    }
+
+    /* ----------------input box css------------------------ */
+
+    .text {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    .left {
+        position: absolute;
+        width: 64px;
+        padding-left: 8px;
+    }
+
+    .right {
+        position: absolute;
+        left: 64px;
+        right: 8px;
+    }
+
+    .value {
+        font-size: 15px;
+        color: black;
+    }
+
+    .submodule {
+        height: 47px;
+        display: block;
+        line-height: 20px;
+        position: relative;
+        padding: 10px 0px;
+        cursor: pointer;
+    }
+
+    .subdetail {
+        height: 100%;
+        line-height: 25px;
+        top: 0;
+        font-size: 17px;
+        color: #E41D08;
+    }
+
+
+
+    /* -------------------ride list css---------- */
+
+    .myfont {
+        font-weight: 500;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    }
+
+    .heading {
+        height: 100%;
+        display: inline-block;
+        line-height: 27px;
+        font-size: 18px;
+        font-weight: 500;
+        vertical-align: top;
+        position: absolute;
+        left: 0;
+        right: 0;
+        color: #000;
+    }
+
+    .ridesCont {
+        top: 70px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        position: absolute;
+        padding: 0 8px;
+        display: block;
+        -webkit-overflow-scrolling: touch;
+        overflow: auto;
+        min-height: 200px;
+    }
+
+    .emptyRide {
+        top: 70px;
+        left: 0;
+        right: 0;
+        position: absolute;
+        padding: 0 8px;
+        display: block;
+        -webkit-overflow-scrolling: touch;
+        overflow: auto;
+        min-height: 200px;
+        text-align: center;
+    }
+
+    .ride-details {
+        min-height: 90px;
+        line-height: 18px;
+        padding: 13px 0px 11px 0;
+        overflow: auto;
+        position: relative;
+        background-color: white;
+        border-radius: 0px;
+        margin: 5px 0px 10px 0px;
+        cursor: pointer;
+    }
+
+    .ride-details:hover {
+        box-shadow: -14.142px 14.142px 20px 0px rgba(157, 157, 157, 0.5);
+        transition: all 0.4s;
+    }
+
+    .vehicle {
+        position: absolute;
+        width: 64px;
+        padding-left: 8px;
+    }
+
+    .middlecont {
+        position: relative;
+        padding-left: 72px;
+        padding-right: 50px;
+        left: 0;
+        width: 100%;
+        min-height: 65px;
+    }
+
+    .ride-date {
+        padding-bottom: 2px;
+        font-weight: 500;
+        font-size: 14px;
+        color: #000;
+    }
+
+    .add-point {
+        display: inline-block;
+        height: 6px;
+        width: 6px;
+        border-radius: 50%;
+        vertical-align: top;
+        margin: 7px 0 0;
+
+    }
+
+    .green-dot {
+        background-color: #54a624;
+    }
+
+    .red-dot {
+        background-color: #ff665a;
+    }
+
+    .add-name {
+        width: 90%;
+        color: #999999;
+        display: inline-block;
+        line-height: 20px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        padding-left: 5px;
+        font-size: 13px;
+    }
+
+    .otp {
+        color: #000 !important;
+    }
+
+    .status {
+        position: absolute;
+        width: 60px;
+        right: 0px;
+        text-align: center;
+        line-height: 40px;
+        top: 0;
+        height: 100%;
+        min-height: 65px;
+    }
+
+    .success-msg {
+        color: #54a624;
+    }
+
+    .cancle-msg {
+        color: #ff665a;
+    }
+
+    .otherList {
+        top: 40px;
+        text-align: right;
+        padding-right: 5px;
+        position: absolute;
+        right: 0;
+    }
+
+    /* ----------------popup css------------------- */
+
+    #map {
+
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        position: absolute;
+
+    }
+
+    .map-container {
+        height: 200px;
+    }
+
+    .modal-content {
+        border-radius: 0px !important;
+    }
+
+    .row-line {
+        text-align: center;
+        height: 1px;
+        background: #e5e5e5;
+    }
+
+    .trip-row {
+        padding: 12px 0;
+        line-height: 24px;
+    }
+
+    .driver-img {
+        margin: auto;
+        top: -4px;
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .middlename {
+        padding-right: 10px;
+        line-height: 15px;
+        left: 80px;
+        font-size: 15px;
+        color: black;
+        right: 40px;
+        position: absolute;
+    }
+
+    .pan {
+        margin-right: 36px;
+        font-size: 14px;
+        font-weight: 500;
+        margin-top: -4px;
+        display: inline-block;
+        margin-left: 20px;
+    }
+
+    #yetToStartCSS {
+        color: #FF9300;
+    }
+
+    #ongoingCSS {
+        color: #008F00;
+    }
+
+    #completedCSS {
+        color: #E41D08;
+    }
+
+    #CancelledCSS {
+        color: #E41D08;
+    }
+
+</style>
+<div id="page-loading" ng-show="loading" class="ng-hide">
+    <div class="loader">
+        <img src="assets/img/giphy.gif" width="100" height="100" style="padding: 0">
+    </div>
+</div>
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <ng-include src="'assets/pages/MysideBar.html'"></ng-include>
+    <!-- Page Content  -->
+    <div id="content">
+        <ng-include src="'assets/pages/MynavBar.html'"></ng-include>
+
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-4 col-sm-12">
+                    <p class="myfont" style="color: #000; font-size: 20px; text-decoration: underline;" ng-show="!upcomingList">Upcoming Rides</p>
+                    <p class="myfont" style="color: #000; font-size: 20px; text-decoration: underline;" ng-show="upcomingList">Other Rides</p>
+                </div>
+                <div class="col-md-8 col-sm-12" style="text-align: right">
+                    <button type="button" class="button-small" style="cursor: pointer" ng-click="ListUpcomingRide(); toggle();" ng-show="!upcomingList"><span class="myfont">View other Rides</span></button>
+                    <button type="button" class="button-small" style="cursor: pointer" ng-click="upcomingRideList(); toggle();" ng-show="upcomingList"><span class="myfont">View upcoming Rides</span></button>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-md-12 nopadding" ng-show="!upcomingList">
+            <div class="ride-details" ng-show="!noupcomList" ng-repeat="ride in UpcomingListData" ng-click="readTrip(ride.id)">
+                <div class="vehicle">
+                    <img src="assets/img/car-side.png">
+                </div>
+                <div class="middlecont">
+                    <div class="text ride-date myfont">22 Jul 2018 07:50 PM</div>
+                    <div class="address-cont">
+                        <div class="add-point green-dot"></div>
+                        <div class="add-name">404, Challaghatta, Bengaluru, Karnataka 560017, India</div>
+                    </div>
+                    <div class="address-cont">
+                        <div class="add-point red-dot"></div>
+                        <div class="add-name">8th Main Rd, Krishna Reddy Layout Domlur, Bengaluru, Karnataka 560071, India</div>
+                    </div>
+                    <div class="otp myfont">OTP: 9879</div>
+                    <div class="myfont" id="yetToStartCSS">Yet To Start</div>
+                    <div class="myfont" id="ongoingCSS" ng-show="ride.tripStatus == '4'">On Going</div>
+                    <div class="myfont" id="completedCSS" ng-show="ride.tripStatus == '5'">Completed</div>
+                    <div class="myfont" id="CancelledCSS" ng-show="ride.tripStatus == '6'">Cancelled</div>
+                </div>
+            </div>
+            <div class="emptyRide" ng-show="noupcomList">
+                <div class="emptylogo">
+                    <img src="assets/img/sand_timer.png" alt="error logo">
+                </div>
+                <div class="myfont" style="font-size: 20px;">It seems you haven't any upcoming ride.</div>
+                <div class="myfont"><a href="#bookride">Click here to book a ride.</a></div>
+            </div>
+        </div>
+        <div class="col-md-12 nopadding" ng-show="upcomingList">
+            <div class="ride-details" ng-show="!noOtherList" ng-repeat="ride in OtherListData" ng-click="readTrip(ride.id)">
+                <div class="vehicle">
+                    <img src="{{ride.picUrl || 'assets/img/user-demo.png'}}" class="rounded-circle" alt="customer" width="50px;">
+                </div>
+                <div class="middlecont">
+                    <div class="text ride-date myfont">{{ride.name}}</div>
+                    <div class="text ride-date myfont">{{ride.tripStartTime | date : "medium"}}</div>
+                    <div class="address-cont">
+                        <div class="add-point green-dot"></div>
+                        <div class="add-name">{{ride.source || '--'}}</div>
+                    </div>
+                    <div class="address-cont">
+                        <div class="add-point red-dot"></div>
+                        <div class="add-name">{{ride.destination || '--'}}</div>
+                    </div>
+                    <div class="otp myfont">Trip id: {{ride.id || '--'}}</div>
+                    <div class="myfont" id="yetToStartCSS" ng-show="ride.tripStatus == '3'">Yet To Start</div>
+                    <div class="myfont" id="ongoingCSS" ng-show="ride.tripStatus == '4'">On Going</div>
+                    <div class="myfont" id="completedCSS" ng-show="ride.tripStatus == '5'">Completed</div>
+                    <div class="myfont" id="CancelledCSS" ng-show="ride.tripStatus == '6'">Cancelled</div>
+                </div>
+            </div>
+            <div class="emptyRide" ng-show="noOtherList">
+                <div class="emptylogo">
+                    <img src="assets/img/sand_timer.png" alt="error logo">
+                </div>
+                <div class="myfont" style="font-size: 20px;">It seems you haven't any ride yet.</div>
+                <div class="myfont"><a href="#bookride">Click here to book a ride.</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Trip ID: {{tripDetailArray.id}}</h4>&nbsp;
+                <h4 class="modal-title" id="{{tripCSS}}" style="padding-left: 70px;">{{tripStatus}}</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body nopadding" style="min-height: 250px;">
+                <div class="col-sm-12 nopadding map-container">
+                    <div id="map"></div>
+                </div>
+                <div class="row-line"></div>
+                <div class="trip-row" style="height: 60px;">
+                    <div class="left lable">
+                        <div class="driver-img">
+                            <img src="assets/img/speed-meter.png" width="100%;">
+                        </div>
+                    </div>
+                    <div class="right value text">
+                        <div class="pan myfont">{{tripDetailArray.bookingTxDetailsDto.totalDistOfTrip}} Km</div>
+                        <div class="pan myfont">₹ {{tripDetailArray.bookingTxDetailsDto.toatalbillamount}}</div>
+                    </div>
+                </div>
+                <div class="row-line"></div>
+                <div class="trip-row" style="height: 60px;">
+                    <div class="left lable">
+                        <div class="driver-img">
+                            <img src="{{tripDetailArray.userProfUrl || 'assets/img/pages/t1.jpg'}}" width="100%;">
+                        </div>
+                    </div>
+                    <div class="middlename">
+                        <div class="myfont">{{tripDetailArray.userName}}</div>
+                        <div class="myfont">{{tripDetailArray.userNumber}}</div>
+                    </div>
+                </div>
+                <div class="row-line"></div>
+                <div class="trip-row" style="height: 70px;">
+                    <div class="address-cont" style="padding-left: 20px;">
+                        <div class="add-point green-dot"></div>
+                        <div class="add-name">{{tripDetailArray.source}}</div>
+                    </div>
+                    <div class="address-cont" style="padding-left: 20px;">
+                        <div class="add-point red-dot"></div>
+                        <div class="add-name">{{tripDetailArray.destination}}</div>
+                    </div>
+                </div>
+                <div class="row-line"></div>
+                <div class="trip-row" style="height: 60px;">
+                    <div class="left lable">
+                        <div class="myfont" style="color: #000">Payment</div>
+                        <div class="myfont">Cash</div>
+                    </div>
+                    <div class="middlename" style="text-align: right;line-height: 70px;">
+                        <div class="myfont">₹ {{tripDetailArray.bookingTxDetailsDto.toatalbillamount}}</div>
+                    </div>
+                </div>
+                <div class="row-line"></div>
+                <div class="trip-row">
+                    <div class="modules" ng-show="tripDetailArray.tripbookingstatus == '4'">
+                        <div class="submodule">
+                            <div class="text-center subdetail myfont" ng-click="cancleRide(tripDetailArray.id)">Cancle this ride</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="overlay"></div>

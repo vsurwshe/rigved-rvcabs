@@ -1,0 +1,2447 @@
+<style>
+        /* -------------Content Css-------------- */
+    
+        .wrapper {
+            display: flex;
+            width: 100%;
+        }
+    
+        /* .card{
+            background: none!important;
+            border: 0px;
+        } */
+        #content {
+            width: calc(100% - 220px);
+            padding: 10px 40px 20px 40px !important;
+            min-height: 100vh;
+            transition: all 0.3s;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+    
+        #content.active {
+            width: 100%;
+        }
+    
+        /* ------------------------------------- */
+    
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+    
+        /* Zebra striping */
+    
+        tr:nth-of-type(odd) {
+            background: #eee;
+        }
+    
+        th {
+            background: #333;
+            color: white;
+            font-weight: bold;
+        }
+    
+        td,
+        th {
+            padding: 6px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+    
+        @media only screen and (max-width: 760px),
+        (min-device-width: 768px) and (max-device-width: 1024px) {
+    
+            /* Force table to not be like tables anymore */
+            table.responsive,
+            .responsive thead,
+            .responsive tbody,
+            .responsive th,
+            .responsive td,
+            .responsive tr {
+                display: block;
+            }
+    
+            /* Hide table headers (but not display: none;, for accessibility) */
+            .responsive thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+    
+            .responsive tr {
+                border: 1px solid #ccc;
+            }
+    
+            .responsive td {
+                /* Behave  like a "row" */
+                border: none;
+                border-bottom: 1px solid #eee;
+                position: relative;
+                padding-left: 50%;
+            }
+    
+            .responsive td:before {
+                /* Now like a table header */
+                position: absolute;
+                /* Top/left values mimic padding */
+                top: 6px;
+                left: 6px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+            }
+    
+            /*Label the data*/
+            .responsive td:before {
+                content: attr(data-table-header);
+            }
+        }
+    
+        .table-responsive .bootstrap {
+            min-height: .01%;
+            overflow-x: auto;
+        }
+    
+        @media screen and (max-width: 767px) {
+            .table-responsive.bootstrap {
+                width: 100%;
+                margin-bottom: 15px;
+                overflow-y: hidden;
+                -ms-overflow-style: -ms-autohiding-scrollbar;
+                border: 1px solid #ddd;
+            }
+            .table-responsive.bootstrap>.table {
+                margin-bottom: 0;
+            }
+            .table-responsive.bootstrap>.table>thead>tr>th,
+            .table-responsive.bootstrap>.table>tbody>tr>th,
+            .table-responsive.bootstrap>.table>tfoot>tr>th,
+            .table-responsive.bootstrap>.table>thead>tr>td,
+            .table-responsive.bootstrap>.table>tbody>tr>td,
+            .table-responsive.bootstrap>.table>tfoot>tr>td {
+                white-space: nowrap;
+            }
+            .table-responsive.bootstrap>.table-bordered {
+                border: 0;
+            }
+            .table-responsive.bootstrap>.table-bordered>thead>tr>th:first-child,
+            .table-responsive.bootstrap>.table-bordered>tbody>tr>th:first-child,
+            .table-responsive.bootstrap>.table-bordered>tfoot>tr>th:first-child,
+            .table-responsive.bootstrap>.table-bordered>thead>tr>td:first-child,
+            .table-responsive.bootstrap>.table-bordered>tbody>tr>td:first-child,
+            .table-responsive.bootstrap>.table-bordered>tfoot>tr>td:first-child {
+                border-left: 0;
+            }
+            .table-responsive.bootstrap>.table-bordered>thead>tr>th:last-child,
+            .table-responsive.bootstrap>.table-bordered>tbody>tr>th:last-child,
+            .table-responsive.bootstrap>.table-bordered>tfoot>tr>th:last-child,
+            .table-responsive.bootstrap>.table-bordered>thead>tr>td:last-child,
+            .table-responsive.bootstrap>.table-bordered>tbody>tr>td:last-child,
+            .table-responsive.bootstrap>.table-bordered>tfoot>tr>td:last-child {
+                border-right: 0;
+            }
+            .table-responsive.bootstrap>.table-bordered>tbody>tr:last-child>th,
+            .table-responsive.bootstrap>.table-bordered>tfoot>tr:last-child>th,
+            .table-responsive.bootstrap>.table-bordered>tbody>tr:last-child>td,
+            .table-responsive.bootstrap>.table-bordered>tfoot>tr:last-child>td {
+                border-bottom: 0;
+            }
+    
+            .header-board {
+                padding: 0px !important;
+                box-shadow: 1px 3px 10px 5px #cecece !important;
+            }
+        }
+    
+        /* ---------------User info Section--------------------- */
+    
+        .label {
+            width: 70px;
+    
+        }
+    
+        .label,
+        .phone,
+        .mobile,
+        .email {
+            display: inline-block;
+        }
+    
+        .phone,
+        .mobile,
+        .email {
+            font-weight: 600;
+        }
+    
+        .details-td {
+            padding: 10px;
+            border: none;
+            background-color: #ffff;
+        }
+    
+        /* -----------------button------------------------- */
+    
+        .button {
+            padding: 5px 20px;
+            border: 2px solid #494a49;
+            border-radius: 5px;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: #494a49;
+            background-color: #fff;
+    
+    
+        }
+    
+        .button:hover {
+            color: #494a49;
+            background-color: #f1f50b;
+            cursor: pointer;
+    
+        }
+    
+    
+        .button-small {
+            padding: 3px 15px;
+            border: 2px solid #494a49;
+            border-radius: 5px;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: #494a49;
+            background-color: #fff;
+    
+    
+        }
+    
+        .button-small:hover {
+            color: #494a49;
+            background-color: #f1f50b;
+            cursor: pointer;
+    
+        }
+    
+        .overlay {
+            display: none;
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 998;
+            opacity: 0;
+            transition: all 0.5s ease-in-out;
+        }
+    
+        .overlay.active {
+            display: block;
+            opacity: 1;
+        }
+    
+        .middle-div {
+            display: table;
+            width: 100%;
+            height: 100%;
+        }
+    
+        .inner-middle-div {
+            display: table-cell;
+            vertical-align: middle;
+        }
+        .user-profile-card {       
+            padding: 15px;
+            /* background-color: #fff; */
+            border-radius: 7px;
+            /* box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); */
+            /* background-image: url('assets/img/28228.jpg'); */
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+            text-align: center;
+            color: #fff;
+        }
+    
+        .user-profile-card:before {
+            position: absolute;
+            content: "";
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(1, 61, 64, 0.5);
+            z-index: -1;
+            border-radius: 7px;
+        }
+    
+        .user-profile-card .card-body {
+            margin-bottom: 30px;
+        }
+    
+        .user-profile-card .card-body .user-info .user-pic {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            margin: auto;
+            border-radius: 100%;
+            background-image: url('assets/img/elements/g5.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            border: 3px solid #fff;
+            z-index: 1;
+        }
+    
+        .user-profile-card .card-body .user-info .user-pic .edit {
+            position: absolute;
+            content: "";
+            bottom: 0;
+            right: 0;
+            width: 28px;
+            height: 28px;
+            background-color: #feca4a;
+            z-index: -1;
+            border-radius: 100%;
+            text-align: center;
+            line-height: 27px;
+            cursor: pointer;
+        }
+    
+        .user-profile-card .card-body .user-info .user-pic .edit i {
+            font-size: 14px;
+            vertical-align: middle;
+        }
+    
+        .user-profile-card .card-body .user-info .user-name {
+            margin: 15px 0 0 0;
+            font-weight: 400;
+            font-size: 2em;
+            font-weight: 600;
+            color: #fff;
+        }
+    
+        .user-profile-card .card-body .user-info p {
+            margin: 5px 0 0 0;
+            font-size: 20px;
+            font-weight: 400;
+        }
+    
+        .user-profile-card .card-footer .list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: inline-block;
+            vertical-align: middle;
+        }
+    
+        .user-profile-card .card-footer .list li {
+            float: left;
+        }
+    
+        .user-profile-card .card-footer .list li+li {
+            margin-left: 60px;
+        }
+    
+        .user-profile-card .card-footer .list li span {
+            display: block;
+        }
+    
+        .user-profile-card .card-footer .list li span+span {
+            font-size: 14px;
+            font-weight: 400;
+            opacity: 0.7;
+        }
+    
+        .user-profile-card .card-footer .list li .count {
+            font-weight: 400;
+            font-size: 1.3em;
+            padding-bottom: 5px;
+        }
+    
+        .profile-card {       
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 7px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+            background-image: url('assets/img/28228.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+            text-align: center;
+            color: #fff;
+        }
+    
+        .profile-card:before {
+            position: absolute;
+            content: "";
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(1, 61, 64, 0.5);
+            z-index: -1;
+            border-radius: 7px;
+        }
+    
+        .profile-card .card-body {
+            margin-bottom: 30px;
+        }
+    
+        .profile-card .card-body .user-info .user-pic {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            margin: auto;
+            border-radius: 100%;
+            background-image: url('assets/img/elements/g5.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            border: 3px solid #fff;
+            z-index: 1;
+        }
+    
+        .profile-card .card-body .user-info .user-pic .edit {
+            position: absolute;
+            content: "";
+            bottom: 0;
+            right: 0;
+            width: 28px;
+            height: 28px;
+            background-color: #feca4a;
+            z-index: -1;
+            border-radius: 100%;
+            text-align: center;
+            line-height: 27px;
+            cursor: pointer;
+        }
+    
+        .profile-card .card-body .user-info .user-pic .edit i {
+            font-size: 14px;
+            vertical-align: middle;
+        }
+    
+        .profile-card .card-body .user-info .user-name {
+            margin: 15px 0 0 0;
+            font-weight: 400;
+            font-size: 2em;
+            font-weight: 600;
+            color: #fff;
+        }
+    
+        .profile-card .card-body .user-info p {
+            margin: 5px 0 0 0;
+            font-size: 20px;
+            font-weight: 400;
+        }
+    
+        .profile-card .card-footer .list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: inline-block;
+            vertical-align: middle;
+        }
+    
+        .profile-card .card-footer .list li {
+            float: left;
+        }
+    
+        .profile-card .card-footer .list li+li {
+            margin-left: 60px;
+        }
+    
+        .profile-card .card-footer .list li span {
+            display: block;
+        }
+    
+        .profile-card .card-footer .list li span+span {
+            font-size: 14px;
+            font-weight: 400;
+            opacity: 0.7;
+        }
+    
+        .profile-card .card-footer .list li .count {
+            font-weight: 400;
+            font-size: 1.3em;
+            padding-bottom: 5px;
+        }
+    
+        /* side bar */
+        #content {
+        width: calc(100% - 220px);
+        padding: 10px 40px 20px 40px !important;
+        min-height: 100vh;
+        transition: all 0.3s;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    #content.active {
+        width: 100%;
+    }
+        #sidebar{
+            margin-top:0px!important;
+        }
+     .sidebar {
+      margin: 0;
+      padding: 0;
+      width: 200px;
+      background-color: #343a40!important;
+      color: #fff;
+      position: static;
+      height: auto;
+      overflow: auto;
+    }
+    
+ .sidebar a {
+      display: block;
+      color: white;
+      padding: 14px;
+      text-decoration: none;
+      /* float: left; */
+    }
+     
+     .sidebar a.active {
+      background-color: #fab700;
+      color: white;
+      /* width: 100%; */
+    }
+    
+      .sidebar a:hover:not(.active) {
+      background-color: #555;
+      color: white;
+    }
+     /* .btn-default{
+        
+         } */
+    div .textconetnt
+     {
+      margin-left: 200px;
+      padding: 1px 16px;
+      height: 1000px;
+    }
+     @media screen and (max-width: 768px){
+        .sidebar {
+        width: 100%;
+        height: auto;
+        display: block;
+        position: relative;
+        scrollbar-color: red;
+      }
+      .sidebar a {
+          float: left;
+          /* padding: 10px; */
+      }
+         .sidebar a.active{
+        width: auto!important;
+        height: auto;
+        /* display: block; */
+        position: relative;
+        scrollbar-color: red;
+      }
+
+      .sidebar a > .fa-user , .fa-key ,.fa-file, .fa-question, .fa-envelope, .fa-file-powerpoint{
+              /* padding: 2px; */
+              margin: 3px;
+          }
+    } 
+    @media screen and (max-width: 1080px) {
+         .sidebar {
+        width: 100%;
+        height: auto;
+        display: block;
+        position: relative;
+        scrollbar-color: red;
+      }
+        .sidebar a {
+          float: left;
+          /* padding: 10px; */
+          }
+        .sidebar a > .fa-user , .fa-key ,.fa-file, .fa-question, .fa-envelope, .fa-file-powerpoint{
+              /* padding: 2px; */
+              margin: 3px;
+          }
+    
+   div.content {margin-left: 0;}
+ .sidebar a.active {
+    background-color: #fab700;
+    color: white;
+    width: 100%;
+}
+}
+    @media screen and (max-width: 400px) {
+      .sidebar a {
+        text-align: center;
+        float: none;
+      }
+      /* .profileM .sidebar a > i{
+        display: none;
+      } */
+    }
+    @media (min-width: 576px){
+.container {
+    max-width: 100%;
+}
+}
+    /*for profile upload*/
+    .heading{
+    Font-size:20px;
+    text-align: initial!important;
+}
+ol{
+    margin: 0;
+    padding: 0;
+    list-style: number;
+}
+ .a{
+    list-style-type: lower-alpha!important;
+}
+    .sidePane {
+            min-height: 150px;
+            width: 100%;
+            margin-top: 0px;
+            border:none;
+            /* border-right: 1px solid #42c7be;
+            border-left: 1px solid #42c7be; */
+            border-radius: 10px;
+            box-shadow: none;
+        }
+        .edit-pic{
+            position: absolute;
+            top: 118px;
+            right: 87px;
+            width: 55px;
+            height: 55px;
+            background: rgba(0, 0, 0, 0.14);
+            text-align: center;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .ce-pencil{
+            position: relative;
+            top: 17px;
+            font-size: 20px;
+        }
+        .edit-pic:hover {
+            background:#fab700;
+            opacity: .7;
+        }
+        .edit-pic:hover > .ce-pencil{
+            font-size: 17px;
+            transition: .3s;
+            color:#ecd8d8;
+        }
+    
+        /* eyeposition */
+        .eyeposition {
+        position: relative;
+        bottom: 23px;
+        float: right;
+        margin-right: 6px;
+        cursor: pointer;
+        z-index: 999;
+    }
+    
+    /* accordion css */
+     /* -----------Accordian------------------- */
+    
+     .i-accordion .panel-heading,
+        .d-accordion .panel-heading,
+        .accordion-2a .panel-heading,
+        .accordion-2b .panel-heading,
+        .accordion-3 .panel-heading {
+            cursor: pointer;
+        }
+    
+        .d-accordion .panel-heading.collapsed .fa-chevron-up:before {
+            content: '\f078';
+        }
+    
+        .panel-heading {
+            background-color: transparent;
+            min-height: 45px;
+            padding: 10px 20px 10px 20px;
+            background: transparent;
+            margin-top: 15px;
+            border: 1px solid;
+            border-radius: 22px;
+        }
+    
+        .panel-body {
+            border: 1px solid #dad6d6;
+            border-top: 0pc;
+            padding: 30px 20px 20px 20px;
+            color: #777777;
+            font-family: sans-serif;
+            font-size: 15px;
+            border-radius: 30px;
+            box-shadow: 2px 2px #e2dddd;
+        }
+        .header-right {
+            background-color: transparent !important;
+            border: none !important;
+            margin-top: 0 !important;
+        }
+    </style>
+    
+    
+    <div id="page-loading" ng-show="loading" class="ng-hide">
+        <div class="loader">
+            <img src="assets/img/giphy.gif" width="100" height="100" style="padding: 0">
+        </div>
+    </div>
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        
+        <ng-include src="'assets/pages/MysideBar.html'"></ng-include>
+        <!-- Page Content  -->
+        <div id="content">
+            <ng-include src="'assets/pages/MynavBar.html'"></ng-include>
+    
+            <div class="col-md-12 nopadding" ng-if="profileData.masterId == '1'">
+                <div class="profile-card">
+                    <div class="middle-div">
+                        <div class="inner-middle-div">
+                            <div class="card-body">
+                                <div class="user-info">
+                                    <div class="user-pic" style="background-image: url({{profileData.profileUrl || 'assets/img/user-demo.png'}})">
+                                        <span class="edit" data-toggle="modal" data-target="#ProfilePicture" ng-click="toggleButton()"><i class="fas fa-camera"></i></span>
+                                    </div>
+                                    <h3 class="user-name">{{profileData.firstName}} {{profileData.lastName}}</h3>
+                                    <p><img src="assets/img/telephone.png"> &nbsp;{{Mobile || '--'}}</p> 
+                                    <p><img src="assets/img/email.png"> &nbsp;{{profileData.emailId || '--'}}</p> 
+                                </div>
+                            </div>
+                            <!--<div class="card-footer">
+                                <ul class="list">
+                                    <li class="list-item">
+                                        <span class="count">3</span>
+                                        <span>Posts</span>
+                                    </li>
+                                    <li class="list-item">
+                                        <span class="count">80</span>
+                                        <span>Followers</span>
+                                    </li>
+                                    <li class="list-item">
+                                        <span class="count">7</span>
+                                        <span>Following</span>
+                                    </li>
+                                </ul>
+                            </div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid h-100">
+                <div class="row h-100">
+                    <aside class="col-12 col-md-2 p-0 bg-dark">
+                        <nav class="navbar navbar-expand navbar-dark bg-dark flex-md-column flex-row align-items-start">
+                            <div class="collapse navbar-collapse">
+                                <ul class="flex-md-column flex-row navbar-nav w-100 justify-content-between">
+                                    <li class="nav-item">
+                                        <a class="nav-link pl-0" href="#">Link</a>
+                                    </li>
+                                    ..
+                                </ul>
+                            </div>
+                        </nav>
+                    </aside>
+                    <main class="col">
+                        ..
+                    </main>
+                </div>
+            </div>
+            
+            <div class="container p-3" style="background: #f8f9fa; height: auto;" ng-hide="profileData.masterId == '1'">
+                <div class="row ">
+                    <div class="col-md-3 col-sm-12 col-xs-12">
+                            <div class="sidebar" id="menubar">
+                                    <a  class="tablinks"  onclick="openProfile(event, 'update')" id="defaultOpen">Update Profile <i class="fa fa-user pull-right"></i></a>
+                                    <a class="tablinks" ng-if="acctDetail == '1'" onclick="openProfile(event, 'documents')">Documents <i class="fa fa-file pull-right"></i></i></a>
+                                    <a class="tablinks" onclick="openProfile(event, 'chngPwd')">Change Password <i class="fa fa-key pull-right"></i></a>
+                                    <!-- <a class="tablinks" onclick="openProfile(event, 'about')">About <i class="fa fa-arrow-up pull-right"></i></a>
+                                     -->
+                                    <!-- <a class="tablinks" onclick="openProfile(event, 'hwIt')">How It Works <i class="fa fa-user pull-right"></i></a>
+                                    <a class="tablinks" onclick="openProfile(event, 'faq')">FAQ <i class="fa fa-question pull-right"></i></a>
+                                    <a class="tablinks" onclick="openProfile(event, 'support')" >Support <i class="fa fa-envelope pull-right"></i></a> -->
+                                    <!-- <a class="tablinks" onclick="openProfile(event, 'terms')" >Terms And Conditions <i class="fa fa-file pull-right"></i></a>
+                                    <a class="tablinks" onclick="openProfile(event, 'privacy')" >Privacy Policy <i class="fa fa-file-powerpoint pull-right"></i></a> -->
+                                  </div>
+                              
+                    </div>
+    
+                    <div class="col-md-9 col-sm-9 col-xs-12 ">
+                            <div class="tabcontent" id="update">
+                                <h3 class="mt-3">Update Your Profile</h3>
+                                <hr>
+    
+                                <div class="row mt-3" style="padding: 0 25px;">
+                                        <div class="col-md-6 col-sm-12 col-xs-12">
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="form-group">
+                                                            <label class="mb-2">First Name</label>
+                                                            <input  type="text" class="form-control  txt-field" ng-model="firstName" tabindex="21">
+                                                     </div>
+                                            </div>
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="form-group">
+                                                            <label class="mb-2">Last Name</label>
+                                                            <input type="text"  class="form-control  txt-field" ng-model="lastName" tabindex="22">
+                                                         </div>
+                                            </div>
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="form-group">
+                                                            <label class="mb-2">Email-Id</label>
+                                                        <input type="text"  class="form-control  txt-field" ng-model="emailId" >
+                                                        </div>
+                                            </div>
+                                             
+                                            
+                                                                                                                                                           
+                                        </div>
+                                        <div class="col-md-6 col-sm-12 col-xs-12">
+                                            
+                                            <!-- <section class="sidePane">
+                                               <div class="card" style="background: none;border: 0;">
+                                               <div class="card-body">
+                                                   <center> <img ng-src='{{profileData.profileUrl  || "assets/img/user-demo.png" }}' class=" rounded-circle img-thumbnail" width="150" />
+                                                       <div class="edit-pic" title="Edit Pic" data-toggle="modal" data-target="#ProfilePicture">
+                                                          <a class="fas fa-camera ce-pencil"  ></a>
+                                                       </div>
+                                                   </center>
+                                               </div>
+                                           </div>
+                                       
+                                       </section> -->
+                                       <div class="col-md-12 nopadding">
+                                           <div class=" user-profile-card"> 
+                                              <div class="middle-div">
+                                                  <div class="inner-middle-div">
+                                                      <div class="card-body">
+                                                          <div class="user-info">
+                                                              <div class="user-pic" style="background-image: url({{profileData.profileUrl || 'assets/img/user-demo.png'}})">
+                                                                  <span class="edit" data-toggle="modal" data-target="#ProfilePicture" ng-click="toggleButton()"><i class="fas fa-camera"></i></span>
+                                                              </div>
+                                                              <!-- <h3 class="user-name">{{profileData.firstName}} {{profileData.lastName}}</h3>
+                                                              <p><img src="assets/img/telephone.png"> &nbsp;{{Mobile || '--'}}</p> 
+                                                              <p><img src="assets/img/email.png"> &nbsp;{{profileData.emailId || '--'}}</p>  -->
+                                                          </div>
+                                                      </div>
+                                                      
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div> 
+                                       <!-- <div class="user-info">
+                                               <div class="user-pic" style="background-image: url({{profileData.profileUrl || 'assets/img/user-demo.png'}})">
+                                                   <span class="edit" data-toggle="modal" data-target="#ProfilePicture" ng-click="toggleButton()"><i class="fas fa-camera"></i></span>
+                                               </div>
+                                               </div> -->
+                                       </div>
+                                        <div class="col-md-6 col-sm-12 col-xs">
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="form-group" ng-if="acctDetail == 1">
+                                                            <label class="mb-2">Mobile Number </label>
+                                                            <input type="text" class="form-control txt-field" ng-model="Mobile" name="Mobile" ng-disabled="true">
+                                                        </div>
+                                                        <div class="form-group" ng-hide="acctDetail == 1">
+                                                            <label class="mb-2">Mobile Number</label>
+                                                            <input type = "text" class="form-control txt-field" ng-model="mobile[1].name"  name="mobile" ng-disabled="true">
+
+                                                  </div>
+                                             </div>
+                                             </div>
+                                             <div class="col-md-6 col-sm-12 col-xs-12">
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="form-group" ng-if="acctDetail == 1">
+                                                    <label class="mb-2">Secondary Mobile Number</label>
+                                                    <input type="text" class="form-control txt-field" ng-model="secNum" name="secNum" maxlength="10">
+                                                    </div>   
+                                                   </div>
+                                            </div>
+                                 </div> 
+                                  
+                                    <!-- <div class="col-md-6 col-sm-12 col-xs-12">
+                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                            <div class="form-group">
+                                                    <label class="mb-2">Status </label>
+                                                    <input type="text" class="form-control  txt-field" ng-model="status" name="status" ng-disabled="true">
+                                                </div>
+                                     </div>
+
+                                    </div> -->
+                                
+                                       
+                                        
+                                        
+                        <div class="clearfix"></div>
+                                        
+    
+                                        <div class="col-md-12 col-sm-12 col-xs-12 ml-3">
+                                                <button type="submit" class="btn btn-success text-uppercase " ng-click="updateProfile()"  style="padding: 6px 40px;font-size:14px;">Update <i class="fa fa-arrow-up"></i></button>
+    
+                                        </div>
+                                    </div>
+    
+                                <div class="tabcontent" id="documents">
+                                    <h3 class="mt-3">Upload Documents</h3>
+                                    <hr>
+                                    <div class="col-md-12 nopadding">
+                                            <div class="panel-group d-accordion">
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading" data-toggle="collapse" data-parent=".d-accordion" href="#DriverLicence">
+                                                        <h4 class="panel-title">Driver Licence <i class="fa fa-chevron-down pull-right"></i></h4>
+                                                    </div>
+                                                    <div id="DriverLicence" class="panel-collapse collapse in">
+                                                        <div class="panel-body">
+                                                            <div class="row">
+                                                                <!-- <div class="col-sm-12" style="margin-top: 10px;">
+                                                                    <center>
+                                                                        <button type="button" class="button " ng-click="openFrontDL(0)">Front Side Licence</button>
+                                                                        <button type="button" class="button " ng-click="openBackDL(0)">Back Side Licence</button>
+                                                                    </center>
+                                                                </div> -->
+                                                                
+                                                                        <div class=" col-md-12 text-center ml-5" > 
+                                                                                <div class="text-center">
+                                                                                        <p>Driving Licence front and Back</p>
+                                                                                </div>
+                                                                                
+                                                                                 <a href="{{imageDl[0].frontImagePath}} || {{frontImagePath}}"  class="pr-4" target="_blank" ng-hide="imageDl[0] == null || imageDl[0] == '' ">
+                                                                                    <img ng-src="{{imageDl[0].frontImagePath}}" class="img-thumbnail" width="200" alt="Driving Licence">
+                            
+                                                                                            </a>
+                                                                                        <a href="{{imageDl[0].backImagePath}}" target="_blank" ng-hide="imageDl[0] == null || imageDl[0] == '' ">
+                                                                                                <img ng-src="{{imageDl[0].backImagePath}}" class="img-thumbnail" width="200" alt="Driving Licence">
+                                                                                            </a>
+                                                                                
+                                                                                    <button class="btn btn btn-outline-info pull-right p-1 mt-5"  data-toggle="modal" data-target="#dlModal" ng-click="clearDl()">Edit <i class="fas fa-pencil-alt"></i></button>
+                                                                                            
+                                                                                
+                                                                            </div>
+                                                                
+                                                                
+                                                                
+                                                                <div class="col-md-12 row header-right">
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Licence number</lable>
+                                                                        <input class="form-control txt-field" ng-model="DLnum" type="text" name="DLnum" placeholder="Licence number" maxlength="15">
+                                                                    </div>
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">First name</lable>
+                                                                        <input class="form-control txt-field" ng-model="fName" type="text" name="fName" placeholder="First name" maxlength="26"  >
+                                                                    </div>
+                            
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Last name</lable>
+                                                                        <input class="form-control txt-field" ng-model="lName" type="text" name="lName" placeholder="Last name" maxlength="26"  >
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12 row header-right">
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Date of birth</lable>
+                                                                        <input class="form-control txt-field" ng-model="dob" type="text" name="dob" placeholder="Date of birth" maxlength="10"  >
+                                                                    </div>
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Gender</lable>
+                                                                        <input class="form-control txt-field" ng-model="gender" type="text" name="gender" placeholder="Gender" maxlength="6"  >
+                                                                    </div>
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Blood group</lable>
+                                                                        <input class="form-control txt-field" ng-model="blood" type="text" name="blood" placeholder="Blood group" maxlength="6"  >
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12 row header-right">
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">RTO name</lable>
+                                                                        <input class="form-control txt-field" ng-model="rto" type="text" name="rto" placeholder="RTO name" maxlength="26"  >
+                                                                    </div>
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Issued date</lable>
+                                                                        <input class="form-control txt-field" ng-model="Idate" type="text" name="Idate" placeholder="Issued date" maxlength="10"   >
+                                                                    </div>
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Date of expiry</lable>
+                                                                        <input class="form-control txt-field" ng-model="Edate" type="text" name="Edate" placeholder="Expiry date" maxlength="10"  >
+                                                                    </div>
+                                                                </div>
+                                                                <div class="  col-md-12 row header-right">
+                            
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Type of vehicle</lable>
+                                                                        <input class="form-control txt-field" ng-model="VType" type="text" name="VType" placeholder="Type of vehicle" maxlength="10"  >
+                                                                    </div>
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Remark</lable>
+                                                                        <input class="form-control txt-field" ng-model="Remark" type="text" name="Remark" placeholder="Remark" maxlength="50"  >
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12" style="margin-top: 10px;">
+                                                                    <center>
+                                                                        <button type="button" class="button " ng-click="updateDocument(0)">Update</button>
+                                                                    </center>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel-group d-accordion">
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading" data-toggle="collapse" data-parent=".d-accordion" href="#VehicleInsurance">
+                                                        <h4 class="panel-title">Vehicle Insurance <i class="fa fa-chevron-down pull-right"></i></h4>
+                                                    </div>
+                                                    <div id="VehicleInsurance" class="panel-collapse collapse in">
+                                                        <div class="panel-body">
+                                                            <div class="row">
+                                                                <!-- <div class="col-md-12" style="margin-top: 10px;">
+                                                                    <center>
+                                                                        <button type="button" class="button " ng-click="openFrontDL(1)">Front Side Insurance</button>
+                                                                        <button type="button" class="button " ng-click="openBackDL(1)">Back Side Insurance</button>
+                                                                    </center>
+                                                                </div> -->
+                                                                <div class="col-md-12 text-center  ml-5" >
+                                                                    <div class="text-center">
+                                                                        <p>Vehical Insurance  Front And Back Side </p>
+                                                                    </div>
+                            
+                                                                    <a href="{{imageDl[1].frontImagePath}}"  class="pr-4" target="_blank" ng-hide="imageDl[1] == null || imageDl[1] == ''">
+                                                                        <img ng-src="{{imageDl[1].frontImagePath}}" class="img-thumbnail" width="200" alt="Vehicle Insurance" title="Vehicle Insurance Front Side">
+                                
+                                                                    </a>
+                                                                    <a href="{{imageDl[1].backImagePath}}" target="_blank" ng-hide="imageDl[1] == null || imageDl[1] == ''">
+                                                                        <img ng-src="{{imageDl[1].backImagePath}}" class="img-thumbnail" width="200" alt="Vehicle Insurance" title="Vehicle Insurance Back Side">
+                                                                    </a>
+                                                                    <button class="btn btn btn-outline-info pull-right p-1 mt-5"  data-toggle="modal" data-target="#viModal" ng-click="clearIns();">Edit <i class="fas fa-pencil-alt"></i></button>
+    
+                                                                </div>
+                                                                <div class="  col-md-12 row header-right">
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Policy number</lable>
+                                                                        <input class="form-control txt-field" ng-model="PolicyNumer" type="text" name="fname" placeholder="Policy number" maxlength="26"  >
+                                                                    </div>
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Issued date</lable>
+                                                                        <input class="form-control txt-field" ng-model="InsuStartDate" type="text" name="fname" placeholder="Issued date" maxlength="10"  >
+                                                                    </div>
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Expiry date</lable>
+                                                                        <input class="form-control txt-field" ng-model="InsuEndDate" type="text" name="fname" placeholder="Expiry date" maxlength="10"  >
+                                                                    </div>
+                                                                </div>
+                                                                <div class="  col-md-12 row header-right">
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Insurance Provider</lable>
+                                                                        <input class="form-control txt-field" ng-model="InsuProvider" type="text" name="fname" placeholder="Insurance Provider" maxlength="26"  >
+                                                                    </div>
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Document number</lable>
+                                                                        <input class="form-control txt-field" ng-model="DocNumber" type="text" name="fname" placeholder="Document number" maxlength="24"  >
+                                                                    </div>
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Insurance type</lable>
+                                                                        <input class="form-control txt-field" ng-model="InsuType" type="text" name="fname" placeholder="Insurance type" maxlength="10"  >
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12" style="margin-top: 10px;">
+                                                                    <center>
+                                                                        <button type="button" class="button " ng-click="updateDocument(1)">Update</button>
+                                                                    </center>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel-group d-accordion">
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading" data-toggle="collapse" data-parent=".d-accordion" href="#VehiclePermit">
+                                                        <h4 class="panel-title">Vehicle Permit <i class="fa fa-chevron-down pull-right"></i></h4>
+                                                    </div>
+                                                    <div id="VehiclePermit" class="panel-collapse collapse in">
+                                                        <div class="panel-body">
+                                                            <div class="row">
+                                                                <!-- <div class="col-md-12" style="margin-top: 10px;">
+                                                                    <center>
+                                                                        <button type="button" class="button " ng-click="openFrontDL(2)">Front Side Permit</button>
+                                                                        <button type="button" class="button " ng-click="openBackDL(2)">Back Side Permit</button>
+                                                                    </center>
+                                                                </div> -->
+                                                                <div class="col-md-12 text-center ml-5" > 
+                                                                    <div>
+                                                                        <p>Vehicle Permit</p>
+                                                                    </div>
+                                                                    <a href="{{imageDl[2].frontImagePath}}"  class="pr-4" target="_blank" ng-hide="imageDl[2] == null || imageDl[2] == '' ">
+                                                                        <img ng-src="{{imageDl[2].frontImagePath}}" class="img-thumbnail" width="200" alt="Vehicle Permit">
+                                
+                                                                    </a>
+                                                                    <a href="{{imageDl[2].backImagePath}}" target="_blank" ng-hide="imageDl[2] == null || imageDl[2] == '' ">
+                                                                        <img ng-src="{{imageDl[2].backImagePath}}" class="img-thumbnail" width="200" alt="Vehicle Permit">
+                                                                    </a>
+                                                                    <button class="btn btn btn-outline-info pull-right p-1 mt-5"  data-toggle="modal" data-target="#vpModal" ng-click="clearPer();">Edit <i class="fas fa-pencil-alt"></i></button>
+    
+                                                                </div>
+                                                                <div class="  col-md-12 row header-right">
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Permit number</lable>
+                                                                        <input class="form-control txt-field" ng-model="permitNum" type="text" name="permitNum" placeholder="Permit number" maxlength="8"  >
+                                                                    </div>
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Issued date</lable>
+                                                                        <input class="form-control txt-field" ng-model="PermitIssueDate" type="text" name="PermitIssueDate" placeholder="Issued date" maxlength="10"  >
+                                                                    </div>
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Expiry date</lable>
+                                                                        <input class="form-control txt-field" ng-model="PermitExpDate" type="text" name="fname" placeholder="Expiry date" maxlength="10"  >
+                                                                    </div>
+                                                                </div>
+                                                                <div class="  col-md-12 row header-right">
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Permit Sate</lable>
+                                                                        <input class="form-control txt-field" ng-model="PermitSate" type="text" name="fname" placeholder="Permit Sate" maxlength="20"  >
+                                                                    </div>
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Vehicle number</lable>
+                                                                        <input class="form-control txt-field" ng-model="VehicleNum" type="text" name="fname" placeholder="Vehicle number" maxlength="10"  >
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12" style="margin-top: 10px;">
+                                                                    <center>
+                                                                        <button type="button" class="button " ng-click="updateDocument(2)">Update</button>
+                                                                    </center>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel-group d-accordion">
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading" data-toggle="collapse" data-parent=".d-accordion" href="#VehicleRegistration">
+                                                        <h4 class="panel-title">Vehicle Registration <i class="fa fa-chevron-down pull-right"></i></h4>
+                                                    </div>
+                                                    <div id="VehicleRegistration" class="panel-collapse collapse in">
+                                                        <div class="panel-body">
+                                                            <div class="row">
+                                                                <!-- <div class="col-md-12" style="margin-top: 10px;">
+                                                                    <center>
+                                                                        <button type="button" class="button " ng-click="openFrontDL(3)">Front Side Registration</button>
+                                                                        <button type="button" class="button " ng-click="openBackDL(3)">Back Side Registration</button>
+                                                                    </center>
+                                                                </div> -->
+                                                                <div class="col-md-12 text-center ml-5" >
+                                                                    <div>
+                                                                        <p>Vehicle Registration Front And Back</p>
+                                                                    </div> 
+                                                                    <a href="{{imageDl[3].frontImagePath}}"  class="pr-4" target="_blank" ng-hide="imageDl[3] == null || imageDl[3] == '' ">
+                                                                        <img ng-src="{{imageDl[3].frontImagePath}}" class="img-thumbnail" width="200" alt="Vehicle Registration"  title="vehicle Registration Front">
+                                
+                                                                    </a>
+                                                                    <a href="{{imageDl[3].backImagePath}}" target="_blank" ng-hide="imageDl[3] == null || imageDl[3] == '' ">
+                                                                        <img ng-src="{{imageDl[3].backImagePath}}" class="img-thumbnail" width="200" alt="Vehicle Registration" data-title="Vehical Registration Back">
+                                                                    </a>
+                                                                    <button type="button" class="btn btn-outline-info pull-right p-1 mt-5 text-capitalize" data-toggle= "modal"  data-target="#vrModal" ng-click="clearReg();"> Edit <i class="fas fa-pencil-alt"></i></button>
+                                                      
+                                                                </div>
+                                                                <div class="  col-md-12 row header-right">
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Registration number</lable>
+                                                                        <input class="form-control txt-field" ng-model="RegNum" type="text" name="fname" placeholder="Registration number" maxlength="10"  >
+                                                                    </div>
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Registration date</lable>
+                                                                        <input class="form-control txt-field" ng-model="RegDate" type="text" name="fname" placeholder="Registration date" maxlength="10"  >
+                                                                    </div>
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Registration office</lable>
+                                                                        <input class="form-control txt-field" ng-model="RegOffice" type="text" name="fname" placeholder="Registration office" maxlength="26"  >
+                                                                    </div>
+                                                                </div>
+                                                                <div class="  col-md-12 row header-right">
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Owner name</lable>
+                                                                        <input class="form-control txt-field" ng-model="ownerName" type="text" name="fname" placeholder="Owner name" maxlength="26"  >
+                                                                    </div>
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Gender</lable>
+                                                                        <input class="form-control txt-field" ng-model="Ownergender" type="text" name="fname" placeholder="Gender" maxlength="6"  >
+                                                                    </div>
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Age</lable>
+                                                                        <input class="form-control txt-field" ng-model="age" type="text" name="fname" placeholder="Age" maxlength="3"  >
+                                                                    </div>
+                                                                </div>
+                                                                <div class="  col-md-12 row header-right">
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Manufacturer</lable>
+                                                                        <input class="form-control txt-field" ng-model="mfg" type="text" name="fname" placeholder="Manufacturer" maxlength="26"  >
+                                                                    </div>
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Model</lable>
+                                                                        <input class="form-control txt-field" ng-model="Vehiclemodel" type="text" name="fname" placeholder="Model" maxlength="10"  >
+                                                                    </div>
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Vehicle base</lable>
+                                                                        <input class="form-control txt-field" ng-model="VehicleBase" type="text" name="fname" placeholder="Vehicle base" maxlength="20"  >
+                                                                    </div>
+                                                                </div>
+                                                                <div class="  col-md-12 row header-right">
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Mfg. date</lable>
+                                                                        <input class="form-control txt-field" ng-model="MfgDate" type="text" name="fname" placeholder="Mfg. date" maxlength="10"  >
+                                                                    </div>
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Fuel type</lable>
+                                                                        <input class="form-control txt-field" ng-model="Fuel" type="text" name="fname" placeholder="Fuel type" maxlength="10"  >
+                                                                    </div>
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Reg upto</lable>
+                                                                        <input class="form-control txt-field" ng-model="RegUpto" type="text" name="fname" placeholder="Reg upto" maxlength="10"  >
+                                                                    </div>
+                                                                </div>
+                                                                <div class="  col-md-12 row header-right">
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Tax upto</lable>
+                                                                        <input class="form-control txt-field" ng-model="TaxUpto" type="text" name="fname" placeholder="Tax upto"  maxlength="10"  >
+                                                                    </div>
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Class</lable>
+                                                                        <input class="form-control txt-field" ng-model="Class" type="text" name="fname" placeholder="Class" maxlength="10"  >
+                                                                    </div>
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Color</lable>
+                                                                        <input class="form-control txt-field" ng-model="VehicleColor" type="text" name="fname" placeholder="Color" maxlength="10"  >
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12" style="margin-top: 10px;">
+                                                                    <center>
+                                                                        <button type="button" class="button " ng-click="updateDocument(3)">Update</button>
+                                                                    </center>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                            
+                                            <div class="panel-group d-accordion">
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading" data-toggle="collapse" data-parent=".d-accordion" href="#PucCertificate">
+                                                        <h4 class="panel-title">PUC Certificate <i class="fa fa-chevron-down pull-right"></i></h4>
+                                                    </div>
+                                                    <div id="PucCertificate" class="panel-collapse collapse in">
+                                                        <div class="panel-body">
+                                                            <div class="row">
+                                                                <!-- <div class="col-md-12" style="margin-top: 10px;">
+                                                                    <center>
+                                                                        <button type="button" class="button " ng-click="openFrontDL(4)">Front Side Puc Certificate</button>
+                                                                        <!-- <button type="button" class="button " ng-click="openBackDL(4)">Back Side Registration</button> ->
+                                                                    </center>
+                                                                </div> -->
+                                                                <div class="col-md-12 text-center ml-5" > 
+                                                                    <div>
+                                                                        <p>PUC Certificate </p>
+                                                                    </div>
+                                                                    <a href="{{imageDl[4].frontImagePath}}"  class="pr-4" target="_blank" ng-hide="imageDl[4] == null || imageDl[4] == ''">
+                                                                        <img ng-src="{{imageDl[4].frontImagePath}}" class="img-thumbnail" width="200" alt="Vehicle Registration"  title="Puc Certificate">
+                                
+                                                                    </a>
+                                                                    <!-- <a href="{{imageDl[6].backImagePath}}" target="_blank">
+                                                                        <img ng-src="{{imageDl[6].backImagePath}}" class="img-thumbnail" width="200" alt="Vehicle Registration" data-title="Vehical Registration">
+                                                                    </a> -->
+                                                                    <button class="btn btn btn-outline-info pull-right p-1 mt-5"  data-toggle="modal" data-target="#pucModal" ng-click="clearPuc();">Edit <i class="fas fa-pencil-alt"></i></button>
+    
+                                                                </div>
+                                                                <div class="  col-md-12 row header-right">
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="licenceNum">Licence number</lable>
+                                                                        <input class="form-control txt-field" id="licenceNum" ng-model="licenceNum" type="text" name="licenceNum" placeholder="Licence Number" maxlength="10"  >
+                                                                    </div>
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Center Name</lable>
+                                                                        <input class="form-control txt-field" ng-model="centerName" type="text" name="centerName" placeholder="Center Name" maxlength="26"  >
+                                                                    </div>
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Center Address</lable>
+                                                                        <textarea class="form-control txt-field" ng-model="centerAdd" rows="2" cols="30" name="centerAdd" maxlength="100"  ></textarea>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12 row header-right">
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">PUC Number</lable>
+                                                                        <input class="form-control txt-field" ng-model="pucNum" type="text" name="pucNum" placeholder="Puc Number" maxlength="10"  >
+                                                                    </div>
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Type Of Engine</lable>
+                                                                        <input class="form-control txt-field" ng-model="engineType" type="text" name="engineType" placeholder="Type Of Engine" maxlength="10"  >
+                                                                    </div>
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Fuel Type</lable>
+                                                                        <input class="form-control txt-field" ng-model="fuelType" type="text" name="fuelType" placeholder="fuel Type" maxlength="10"  >
+                                                                    </div>
+                                                                </div>
+                                                                <div class="  col-md-12 row header-right">
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Catalyst</lable>
+                                                                        <input class="form-control txt-field" ng-model="catalyst" type="text" name="catalyst" placeholder="Catalyst" maxlength="8"  >
+                                                                    </div>
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Test Date</lable>
+                                                                        <input class="form-control txt-field" ng-model="testDate" type="text" name="testDate" placeholder="Test Date" maxlength="10"  >
+                                                                    </div>
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Validity Date</lable>
+                                                                        <input class="form-control txt-field" ng-model="validityDate" type="text" name="validityDate" placeholder="Validity Date" maxlength="10"  >
+                                                                    </div>
+                                                                </div>
+                                                                
+                                            
+                                                                <div class="col-md-12" style="margin-top: 10px;">
+                                                                    <center>
+                                                                        <button type="button" class="button " ng-click="updateDocument(6)">Update</button>
+                                                                    </center>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel-group d-accordion">
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading" data-toggle="collapse" data-parent=".d-accordion" href="#PanCard">
+                                                        <h4 class="panel-title">Pan Card <i class="fa fa-chevron-down pull-right"></i></h4>
+                                                    </div>
+                                                    <div id="PanCard" class="panel-collapse collapse in">
+                                                        <div class="panel-body">
+                                                            <div class="row">
+                                                                <!-- <div class="col-md-12" style="margin-top: 10px;">
+                                                                    <center>
+                                                                        <button type="button" class="button " ng-click="openFrontDL(4)">Front Side Pan</button>
+                                                                    </center>
+                                                                </div> -->
+                                                                <div class="col-md-12 text-center ml-5" >
+                                                                    <div >
+                                                                        <p>Pan Card </p>
+                                                                    </div> 
+                                                                    <a href="{{imageDl[4].frontImagePath}}"  class="pr-4" target="_blank" ng-hide="imageDl[4] == null || imageDl[4] == ''">
+                                                                        <img ng-src="{{imageDl[4].frontImagePath}}" class="img-thumbnail" width="200" alt="Pan Card"  title="Pan Card">
+                                                                    </a>
+                                                                    <button class="btn btn btn-outline-info pull-right p-1 mt-5"  data-toggle="modal" data-target="#panModal" ng-click="clearPan();">Edit <i class="fas fa-pencil-alt"></i></button>
+                                                                   
+                                                                </div>
+                                                                
+                                                                <div class="col-md-12 row header-right">
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Pan number</lable>
+                                                                        <input class="form-control txt-field" ng-model="pan" type="text" name="fname" placeholder="Pan number"  maxlength="10"  >
+                                                                    </div>
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">First Name</lable>
+                                                                        <input class="form-control txt-field" ng-model="PanFName" type="text" name="fname" placeholder="First Name" maxlength="26"   >
+                                                                    </div>
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Last Name</lable>
+                                                                        <input class="form-control txt-field" ng-model="PanlName" type="text" name="fname" placeholder="Last Name" maxlength="26"  >
+                                                                    </div>
+                                                                </div>
+                                                                <div class="  col-md-12 row header-right">
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Date of birth</lable>
+                                                                        <input class="form-control txt-field" ng-model="Pandob" type="text" name="fname" placeholder="DD/MM/YYYY" maxlength="10"  >
+                                                                    </div>
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Gender</lable>
+                                                                        <input class="form-control txt-field" ng-model="Pangender" type="text" name="fname" placeholder="Gender" maxlength="6"  >
+                                                                    </div>
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Farher's name</lable>
+                                                                        <input class="form-control txt-field" ng-model="PanFatherName" type="text" name="fname" placeholder="Farher's name" maxlength="26"  >
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12" style="margin-top: 10px;">
+                                                                    <center>
+                                                                        <button type="button" class="button " ng-click="updateDocument(4)">Update</button>
+                                                                    </center>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                            
+                            
+                                            <div class="panel-group d-accordion">
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading" data-toggle="collapse" data-parent=".d-accordion" href="#AadharCard">
+                                                        <h4 class="panel-title">Aadhar Card <i class="fa fa-chevron-down pull-right"></i></h4>
+                                                    </div>
+                                                    <div id="AadharCard" class="panel-collapse collapse in">
+                                                        <div class="panel-body">
+                                                            <div class="row">
+                                                                <!-- <div class="col-md-12" style="margin-top: 10px;">
+                                                                    <center>
+                                                                        <button type="button" class="button " ng-click="openFrontDL(5)">Front Side Aadhar</button>
+                                                                        <button type="button" class="button " ng-click="openBackDL(5)">Back Side Aadhar</button>
+                                                                        
+                                                                    </center>
+                                                                </div> -->
+                                                                <div class="col-md-12 text-center ml-5" > 
+                                                                    <div >
+                                                                        <p>Aadhar Card</p>
+                                                                    </div>
+                                                                    <a href="{{imageDl[5].frontImagePath}}"  class="pr-4" target="_blank" ng-hide="imageDl[5] == null || imageDl[5] == ''">
+                                                                        <img ng-src="{{imageDl[5].frontImagePath}}" class="img-thumbnail" width="200" alt="Aadhar Card front"  title="Aadhar Card front">
+                                
+                                                                    </a>
+                                                                    <a href="{{imageDl[5].backImagePath}}" target="_blank" ng-hide="imageDl[5] == null || imageDl[5] == ''">
+                                                                        <img ng-src="{{imageDl[5].backImagePath}}" class="img-thumbnail" width="200" alt="Aadhar Card Back" data-title="Aadhar Card black">
+                                                                    </a>
+                                                                    <!-- <button class="btn btn btn-outline-info">Edit <i class="fas fa-pencil-alt"></i></button> -->
+                                                                    <button class="btn btn btn-outline-info p-1 mt-5 pull-right"  data-toggle="modal" data-target="#aadharModal" ng-click="clearAadhar();">Edit <i class="fas fa-pencil-alt"></i></button>
+                                                                    
+                                                                </div>
+                                                                
+                                                                <div class="  col-md-12 row header-right">
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Aadhar number</lable>
+                                                                        <input class="form-control txt-field" ng-model="aadharno" type="text" name="aadharno" placeholder="Aadhar number" maxlength="12"  >
+                                                                    </div>
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">First Name</lable>
+                                                                        <input class="form-control txt-field" ng-model="AadharFName" type="text" name="AadharFName" placeholder="First Name" maxlength="26"  >
+                                                                    </div>
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Last Name</lable>
+                                                                        <input class="form-control txt-field" ng-model="AadharlName" type="text" name="AadharlName" placeholder="Last Name" maxlength="26"  >
+                                                                    </div>
+                                                                </div>
+                                                                <div class="  col-md-12 row header-right">
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Date of birth</lable>
+                                                                        <input class="form-control txt-field" ng-model="Aaddhardob" type="text" name="Aaddhardob" placeholder="DD/MM/YYYY" maxlength="10"  >
+                                                                    </div>
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Gender</lable>
+                                                                        <input class="form-control txt-field" ng-model="Aadhargender" type="text" name="Aadhargender" placeholder="Gender" maxlength="6"  >
+                                                                    </div>
+                                                                    <div class="from-group col-md-4">
+                                                                        <lable for="">Address</lable>
+                                                                        <textarea ng-model="Aadharaddress" type="text" class="form-control txt-field" name="Aadharaddress" placeholder="Address" rows="1" cols="40"   ></textarea>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12" style="margin-top: 10px;">
+                                                                    <center>
+                                                                        <button type="button" class="button " ng-click="updateDocument(5)">Update</button>
+                                                                    </center>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="col-md-12" style="margin-top: 10px;">
+                                            <center>
+                                                <button type="button" class="btn btn-success " ng-click="updateDocument(5)"><img class="imgIco" src="assets/img/correct.png" />Update
+                                                
+                                                </button>
+                                                <!-- <button type="button" class="button " ng-click="approveMemberConf(userDetails.driverId, 0)"><img class="imgIco" src="assets/img/cross.png" />Reject</button> ->
+                                            </center>
+                                        </div> -->
+                                </div>
+    
+                                <div class="tabcontent" id="chngPwd">
+                                        <!-- <div class="col-sm-12"> -->
+                                                <!-- <div class="row">
+                                        <div class="col-md-12 col-sm-12"> -->
+                                            <div class="col-md-12">
+                                                    <h3 class="mt-3">Create Your New Password</h3>
+                                                    <hr>
+                                            </div>
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-12 col-xs-12">     
+                                            <form name="Form.userForm" role="form" novalidate>
+                                    
+                                              <div class="form-group col-md-12 col-sm-12">
+                                                      <label>New Password</label>
+                                                      <input type="password" id="password-field" class="form-control txt-field" ng-model="newPasswrd" name="newPassword" data-ng-change="checkPasswordCriteria(newPasswrd)" data-ng-focus="isCollapsed = !isCollapsed" data-ng-blur="isCollapsed = !isCollapsed"  ng-model-options="{allowInvalid : true}"	 ng-autocomplete=off maxlength="16">
+                                                      <span toggle="#login-password" class="fa fa-fw fa-eye field-icon toggle-password eyeposition" onclick="myFunction1()"></span>
+                                                      <!-- <span class="bar"></span> -->
+                                                      
+                                                  </div>
+                                     
+                                                  <div class="form-group col-md-12  col-sm-12">
+                                                          <label>Confirm Password</label>
+          
+                                                      <input type="password" class="form-control txt-field" ng-model="confPassword" data-ng-change="confirmEnteredPassword(confPassword)"> 
+                                                      <span class="bar"></span>
+                                                     
+                                                  </div>
+                                          
+                                         
+                                          <button type="submit" class="btn btn-success ml-3" ng-click="changepassword()" ng-disabled="newPasswrd != confPassword ">Change <i class="fas fa-pencil-alt"></i></button>&nbsp;&nbsp;
+                                          <!-- <a ng-click="goBack()"><button class="btn btn-info"><i class="fa fa-arrow-left"></i> Back</button></a> -->
+                                      </form>
+                                      </div>
+                                      <div class="clearfix"></div>
+                                      <div class="col-md-6 col-sm-12 col-xs-12">
+                                          <div class="col-md-12">
+                                              <div class="row">
+                                                  <div class="col-sm-4">
+                                                      <img src="assets/img/opt_password.png" class="img-circle" alt="Cinque Terre"> 
+                                                  </div>
+                                                  <div class="col-sm-8"> 
+                                                      <p style="color:black;">Change your password periodically.Use a secure alphanumeric password that cannot be easily guessed.</p>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="col-md-12">
+                                              <div class="row">
+                                                  <div class="col-sm-4">
+                                                      <img src="assets/img/opt_otp.png" class="img-circle" alt="Cinque Terre"> 
+                                                  </div>
+                                                  <div class="col-sm-8">
+                                                      <p style="color:black;">For security reason,do not use your first name or last name in your password.</p>
+                                                  </div>
+                                              </div>
+                                          </div> 
+                                          <div class="col-md-12">
+                                              <div class="row">
+                                                  <div class="col-sm-4">
+                                                      <img src="assets/img/opt_share.png" class="img-circle" alt="Cinque Terre"> 
+                                                  </div>
+                                                  <div class="col-sm-8"> 
+                                                      <p style="color:black;">Please donot share your password with anyone.Your security is your own hand.</p>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                    </div>
+                                              
+                                    <!-- </div>
+                                          -->
+                                    <!-- </div> -->
+                                            <!-- </div> -->
+
+    
+    
+                                </div>
+                                <div class="tabcontent" id="about">
+                                    <h3>About RV cabs</h3>
+                                    <hr>
+
+
+                                </div>
+                                <div class="tabcontent" id="hwIt">
+                                        <div class="container border mt-3  p-3" ng-show="acctDetail.role == 1">
+    
+                                    <h3>How it works</h3>
+                                    <hr>
+                                        <p>
+                                                   taxi connects you with a reliable rides in minutes. One tap a car comes directly to you. Your driver knows exactly where to go. And you can pay either cash or card
+                                        </p>
+                                        <ul>
+                                            <li>To register as driver under RV cabs, click on the “REGISTER” button from Login screen, Sign Up screen will display.
+                                                </li>
+                                                <li>
+                                                        Password  fields to do the Sign Up with    driver application. After entering the required sign up fields driver need to tap on Next to fill the  Vehicle Details.
+                                                </li>
+                                        </ul>
+                                        <P> ----Add Vehicle Details page will display where driver has to provide the vehicle details.
+                                            </P>
+                                            <p>
+                                                ----Enter valid document number (in this case it is Driving License number) and upload front 	and back image of the document. Click on “SAVE” button save the details uplaoded.
+    
+                                            </p>
+                                            <p>----Once the documents are uploaded successfully, “Green Tick Mark” will be shown </p>
+                                            <P>
+                                                    Follow the above step to upload all the necessary documents listed in “Upload Documents” screen will display. Once all the documents are uploaded successfully.
+                                            </P>
+                                            <div>
+                                                    <h5>
+                                                            Process to approve driver:--
+             
+                                                    </h5>
+                                                    <p>Master driver has to approve the driver and then Driver can login to the application by entering mobile no, password and click on the LOGIN button.After login to the application the below page will display.
+                                                        </p>
+                                            </div>
+                                            <div>
+                                                <h5>How driver receive notification from user?
+                                                    </h5>
+                                                    <p>Driver should be always  Online to receive trip request from nearby rider .
+                                                            Driver’s phone flashes and beeps when driver receive a trip request. To accept it, tap on it.
+                                                            </p>
+    
+                                            </div>
+                                            <div>
+                                                <h5>Earnings:---</h5>
+                                                <p>The earnings section of driver app contain a Today and Weekly summary.
+                                                        In TODAY , My Earnings, Distance, Completed Trip will display.</p>
+                                            </div>
+                                            <div>
+                                                <h5>Ratings:--</h5>
+                                                <p>
+                                                        Driver can see the rating in the Ratings tab in the bottom of the screen.
+    
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <h5>Driver profile:-</h5>
+                                                <p>Driver profile allow you to tell riders about yourself. It is customizable and can showcase things
+                                                        like your interests, achievement badges and rider compliments.
+                                                      </p>
+                                            </div>
+                                            <div>
+                                                <h5>
+                                                        Ride list:--
+                                                </h5>
+                                                <p>
+                                                        Under ride list    It will display the upcoming and other rides. In upcoming rides if no rides available it will display under it.
+                                                </p>
+                                            </div>
+    
+                                    </div>
+                                    <div class="container border mt-3 p-3" ng-hide="acctDetail.role == 1">
+    
+                                        <h3>How it works </h3>
+                                        <hr>
+                                            <p>
+                                                    To use   Taxi first user has to register himself/herself.Once the registration is done successfully,it will navigate to main page where user can book a ride.
+    
+    
+                                            </p>
+                                            <p>
+                                                    For booking an ride user has to give pick up and drop location then notifications will go to nearby driver.
+    
+                                                </p>
+                                          <p>
+                                                Driver has to confirm the ride,once the driver confirms the ride, All details of driver will come to user.If in any case user wants he/she can contact with driver.
+                                          </p>
+                                          <p>
+                                                User can cancel the ride if any situations or circumstances came to cancel.If user face any inconvinence situations then can call to customer support which will be available to them 24*7.
+                                          </p>
+                                          <P>
+                                                User can  see his/ride all the rides which are finished and upcoming rides will display under ride list.Now you have to do payment by using paytm or cash.All details of ride will display at end of the trip.User can give ratings to driver.
+                                          </P>
+                                           
+                                        </div>
+                                </div>
+                                <div class="tabcontent" id="faq">
+                                    <h3 class="mt-3">FAQ</h3>
+                                    <hr>
+                                    <div class="panel panel-defaul p-3" style="background: #494a49;" ng-if ="acctDetail.role == '1'">
+                                    <div class="card mb-2">
+                                            <div class="card-header">
+                                                  <h5> <i class="fa fa-question-circle fa-spin" aria-hidden="true"></i> How will I know when I'm getting a ride request? How do I accept?</h5> 
+                                            </div>
+                                            <div class="card-body">
+                                              <blockquote class=" mb-0">
+                                                <p>When you get a trip request, your screen will flash and a sound will ping. You have 30 seconds to accept the trip request. Just press accept on your screen to accept.
+                                                    </p>
+                                                <!-- <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer> -->
+                                              </blockquote>
+                                            </div>
+                                          </div>
+                                          <div class="card mb-2">
+                                                <div class="card-header">
+                                                      <h5><i class="fa fa-question-circle fa-spin" aria-hidden="true"></i> I didn't start or end a trip on-time. What do I do?
+                                                        </h5> 
+                                                </div>
+                                                <div class="card-body">
+                                                  <blockquote class=" mb-0">
+                                                    <p>Go into your Trip History and tap on the trip. At the bottom of the screen, tap "Need Help" and then "I had an issue with this fare." You can raise issue "I didn't begin or end the trip on time" and fill in the pick-up and drop-off locations. We'll make the adjustment!
+    
+                                                        </p>
+                                                    <!-- <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer> -->
+                                                  </blockquote>
+                                                </div>
+                                              </div>
+                                              <div class="card mb-2">
+                                                    <div class="card-header">
+                                                          <h5><i class="fa fa-question-circle" aria-hidden="true"></i> My rider wants me to wait. What should I do?
+    
+                                                            </h5> 
+                                                    </div>
+                                                    <div class="card-body">
+                                                      <blockquote class=" mb-0">
+                                                    <p>If a rider asks you to wait, you're welcome to do so. Just keep the trip running. However, if you don't want to or can't wait, just ask the rider to request another Uber when they're done.
+                                                        </p>
+        
+                                                            
+                                                        <!-- <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer> -->
+                                                      </blockquote>
+                                                    </div>
+                                                  </div>
+                                                  <div class="card mb-2">
+                                                        <div class="card-header">
+                                                              <h5><i class="fa fa-question-circle fa-spin" aria-hidden="true"></i> What if the rider wants to change destinations or make multiple stops?
+    
+        
+                                                                </h5> 
+                                                        </div>
+                                                        <div class="card-body">
+                                                          <blockquote class=" mb-0">
+                                                        <p>That's OK! Don't end the trip, just ask the rider to delete their previous destination in the rider app and enter the new address. You'll still be paid for any time and distance traveled.
+                                                            </p>
+            
+                                                                
+                                                            <!-- <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer> -->
+                                                          </blockquote>
+                                                        </div>
+                                                      </div>
+                                                      <div class="card mb-2">
+                                                            <div class="card-header">
+                                                                  <h5><i class="fa fa-question-circle fa-spin" aria-hidden="true"></i> When and how do I get paid?
+        
+            
+                                                                    </h5> 
+                                                            </div>
+                                                            <div class="card-body">
+                                                              <blockquote class=" mb-0">
+                                                            <p>RV cabs are paid via direct deposit weekly  for money earned. Payment is made by direct deposit only. 
+                                                                </p>
+                
+                                                                    
+                                                                <!-- <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer> -->
+                                                              </blockquote>
+                                                            </div>
+                                                          </div>
+                                                          </div>
+                                                          <div class="panel panel-defaul p-3" style="background: #494a49;" ng-if ="acctDetail.role != '1'">
+                                                                <div class="card mb-2">
+                                                                        <div class="card-header">
+                                                                              <h5> <i class="fa fa-question-circle fa-spin" aria-hidden="true"></i> Do I need to register on Your site to book  ride?</h5> 
+                                                                        </div>
+                                                                        <div class="card-body">
+                                                                          <blockquote class=" mb-0">
+                                                                            <p>Yes,You need to download the app then you have to register yourself as user.You have to provide all details for registration.
+                                                                                </p>
+                                                                            <!-- <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer> -->
+                                                                          </blockquote>
+                                                                        </div>
+                                                                      </div>
+                                                                      <div class="card mb-2">
+                                                                            <div class="card-header">
+                                                                                  <h5><i class="fa fa-question-circle fa-spin" aria-hidden="true"></i> What if the car doesnt show up?
+    
+                                                                                    </h5> 
+                                                                            </div>
+                                                                            <div class="card-body">
+                                                                              <blockquote class=" mb-0">
+                                                                                <p>In case the vehicle  you doesnot show then  can contact to us by customer support,we are there to help you.
+    
+                                
+                                                                                    </p>
+                                                                                <!-- <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer> -->
+                                                                              </blockquote>
+                                                                            </div>
+                                                                          </div>
+                                                                          <div class="card mb-2">
+                                                                                <div class="card-header">
+                                                                                      <h5><i class="fa fa-question-circle fa-spin" aria-hidden="true"></i> What is    peak time charge?
+                                
+                                                                                        </h5> 
+                                                                                </div>
+                                                                                <div class="card-body">
+                                                                                  <blockquote class=" mb-0">
+                                                                                <p>   peak time charge is little more than usual charge,it is a fare-rationalizing rule of using a multiplier X.
+    
+                                                                                    </p>
+                                    
+                                                                                        
+                                                                                    <!-- <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer> -->
+                                                                                  </blockquote>
+                                                                                </div>
+                                                                              </div>
+                                                                              <div class="card mb-2">
+                                                                                    <div class="card-header">
+                                                                                          <h5><i class="fa fa-question-circle fa-spin" aria-hidden="true"></i> Can i request a taxi to wait at a place?
+    
+                                
+                                    
+                                                                                            </h5> 
+                                                                                    </div>
+                                                                                    <div class="card-body">
+                                                                                      <blockquote class=" mb-0">
+                                                                                    <p>We require the pick up address be a business address or a user known address.
+    
+                                                                                        </p>
+                                        
+                                                                                            
+                                                                                        <!-- <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer> -->
+                                                                                      </blockquote>
+                                                                                    </div>
+                                                                                  </div>
+                                                                                  <div class="card mb-2">
+                                                                                        <div class="card-header">
+                                                                                              <h5><i class="fa fa-question-circle fa-spin" aria-hidden="true"></i> Within how many Kilometer user can search for a driver?
+                                    
+                                        
+                                                                                                </h5> 
+                                                                                        </div>
+                                                                                        <div class="card-body">
+                                                                                          <blockquote class=" mb-0">
+                                                                                        <p>2km is the maximum distance.
+    
+                                                                                            </p>
+                                            
+                                                                                                
+                                                                                            <!-- <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer> -->
+                                                                                          </blockquote>
+                                                                                        </div>
+                                                                                      </div>
+                                                                                      </div>
+    
+                                </div>
+                               
+                    </div>
+                    
+                </div>
+                        
+                </div>
+            </div>
+            
+    
+        </div>
+             <!--Modal for Profile Picture -->
+         <div id="ProfilePicture" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+               <!-- Modal content-->
+               <div class="modal-content">
+                  <div class="modal-header" style="display: block;">
+                     <button type="button" class="close" data-dismiss="modal">&times;</button>
+                     <h4 class="modal-title">Select Profile Picture</h4>
+                  </div>
+                  <div class="modal-body" style="height:330px;">
+                     <style>
+                        .cropArea {
+                        background: #E4E4E4;
+                        overflow: hidden;
+                        width:350px;
+                        height:250px;
+                        }
+                        /* line 1, ../../source/scss/ng-img-crop.scss */
+                        img-crop {
+                        width: 100%;
+                        height: 100%;
+                        display: block;
+                        position: relative;
+                        overflow: hidden;
+                        }
+                        /* line 7, ../../source/scss/ng-img-crop.scss */
+                        img-crop canvas {
+                        display: block;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        outline: none;
+                        -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+                        /* mobile webkit */
+                        }
+                     </style>
+                     <center>
+                        <div ngf-drop ng-model="picFile" ngf-pattern="image/*" class="cropArea">
+                           <br/>
+                           <img-crop id="imgcropcanvas" image="picFile  | ngfDataUrl"  result-image="croppedDataUrl" ng-init="croppedDataUrl=''"></img-crop>
+                        </div>
+                        <br>
+                        <button class="btn btn-default btn-sm" ngf-select ng-model="picFile" accept="image/*"  ng-click="toggleButton()" style="color: #ababab !important;" >Select a photo from your computer</button>
+                     </center>
+                  </div>
+                  <div class="clearfix"></div>
+                  <div class="modal-footer" style="display: block;">
+                     <button ng-click="uploadDrProfilePic(croppedDataUrl, picFile.name, picFile.size)" class="profile-submit btn btn-outline-primary btn-sm pull-left"><img class="imgIco" src="assets/img/correct.png">Save Profile Picture</button>
+                     <button type="button" class="btn btn-default btn-sm" data-dismiss="modal" style="float: right;" >Close</button>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+        <!-- Fassword Change Message  -->
+        <div id="passChangeModals" class="modal fade">
+            <div class="modal-dialog modal-sm" style="border-radius:5px;">
+                <div class="modal-content">
+
+                    <div class="modal-header" style="background-color:#35c885;color:white">
+                         <h4 class="modal-title text-white" >Success</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body" style="padding: 27px" >
+                       <span style="color:#009933"><center><img src="assets\img\succss.png" style="margin-right: 9px;margin-left: 6px;"></center></img><br><center>Password changed successfully</center></br></span>
+                        
+                    </div>
+                    <div class="modal-footer" style="padding: 10px;">
+                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal" data-toggle="modal" >Close</button>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ------------------Model of Password not Matck Popup Conf------------------------------ -->
+          <div id="passNotMatch" class="modal fade">
+            <div class="modal-dialog modal-sm" style="border-radius:5px;">
+                <div class="modal-content">
+
+                    <div class="modal-header" style="background-color:#ff6656;color:white">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" >Warning</h4>
+                    </div>
+                    <div class="modal-body" style="padding: 27px" >
+                       <center><span style="color:#ff6656"><img src="assets\img\warng.png" style="margin-right: 9px; height: 32px; margin-left: 6px;"></center></img><br>Password And Confirm Password Didn't Match!</span><br>
+                    </div>
+                    <div class="modal-footer" style="padding: 10px;">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" >Close</button>		   
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- End -->
+
+        <!--Pan Card document upload  -->
+         <div id="panModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                   <!-- Modal content-->
+                   <div class="modal-content">
+                      <div class="modal-header" style="display: block;">
+                         <button type="button" class="close" data-dismiss="modal">&times;</button>
+                         <h4 class="modal-title">Select Document</h4>
+                      </div>
+                      <div class="modal-body">
+                            <div class="from-group">
+                                    <div class="col-md-12">
+                
+                                        <div class=" col-md-12 zero-padding">
+                                            <div class="col-md-12 zero-padding">
+                                                <h5 class="text-gray">Front Side</h5>
+                                            </div>
+                                            <div class="col-md-12 zero-padding">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <label class="drop_target docs">
+                                                                    <input type="file" ng-model="FrontPanCard" name="FrontPanCard" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" required minnum="1" ng-change="FrontPanCardUploading()"  maxlength="16">
+                                                                </label>
+                                                    </div>
+                                                    <div class="col-md-8 zero-padding" style="overflow: hidden">
+                                                        <p class="text-gray">{{FrontPanCard[0].filename}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                
+                                    </div>
+                                    <div class="col-md-8 col-sm-12 col-xs-12 mt-2">
+                                    <input class="form-control txt-field" type="text" name="PanCard" ng-model="PanCard" placeholder="Pan Card Number">
+    
+                                    </div>
+                                </div>
+                                <div class="form-group row ml-0 mt-2">
+                                    <div class="col-md-12">
+                                        <button type="submit" class="btn btn-secondary text-capitalize" ng-click="SubmitDriverPan()">Upload Licence <i class="fa fa-arrow-up"></i></button>
+    
+                                        <!-- <button type="reset" class="btn genric-btn primary-border radius btn-lg btn-block text-center text-uppercase" ng-click="ShowStep(3)">Back</button> -->
+                                    </div>
+                                </div>
+                                
+                                
+                       
+                   </div>
+                   <div class="modal-footer">
+                       <button type="button" class="btn btn-outline-danger" data-dismiss="modal" style="float: right;">Close <i class="fa fa-times"></i></button>
+                   </div>
+                </div>
+             </div>
+    </div>
+    <!-- End -->
+    <!-- Aadhar Crad document upload -->
+    <div id="aadharModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+               <!-- Modal content-->
+               <div class="modal-content">
+                  <div class="modal-header" style="display: block;">
+                     <button type="button" class="close" data-dismiss="modal">&times;</button>
+                     <h4 class="modal-title">Upload Document</h4>
+                  </div>
+                  <div class="modal-body">
+                        <div class="from-group">
+                                <div class="col-md-12">
+            
+                                        <div class=" col-md-12 zero-padding">
+                                                <div class="col-md-12 zero-padding">
+                                                    <h5 class="text-gray">Front Side</h5>
+                                                </div>
+                                                <div class="col-md-12 zero-padding">
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <label class="drop_target docs">
+                                                                        <input type="file" ng-model="FrontAadhar" name="FrontAadhar" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" required minnum="1" ng-change="FrontAadharUploading()"  maxlength="16">
+                                                                    </label>
+                                                        </div>
+                                                        <div class="col-md-8 zero-padding" style="overflow: hidden">
+                                                            <p class="text-gray">{{FrontAadhar[0].filename}}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class=" col-md-12 zero-padding">
+                                                <div class="col-md-12 zero-padding">
+                                                    <h5 class="text-gray mt-2">Back Side</h5>
+                                                </div>
+                                                <div class="col-md-12 zero-padding">
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <label class="drop_target docs">
+                                                                        <input type="file" ng-model="BackAadhar" name="BackAadhar" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" required minnum="1" ng-change="BackAadharUploading()"  maxlength="16">
+                                                                    </label>
+                                                        </div>
+                                                        <div class="col-md-8 zero-padding" style="overflow: hidden">
+                                                            <p class="text-gray mt-2">{{BackAadhar[0].filename}}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+            
+                                </div>
+                                <div class="col-md-8 col-sm-12 col-xs-12 mt-2">
+                                <input class="form-control txt-field" type="text" name="AadharCard" ng-model="AadharCard" placeholder="Aadhar Card Number">
+    
+                                </div>
+                            </div>
+                            <div class="form-group row ml-0 mt-2">
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-secondary text-capitalize" ng-click="SubmitAadharCard()">Upload Licence <i class="fa fa-arrow-up"></i></button>
+    
+                                    <!-- <button type="reset" class="btn genric-btn primary-border radius btn-lg btn-block text-center text-uppercase" ng-click="ShowStep(3)">Back</button> -->
+                                </div>
+                            </div>
+                            
+                            
+                   
+               </div>
+               <div class="modal-footer">
+                   <button type="button" class="btn btn-outline-danger" data-dismiss="modal" style="float: right;">Close <i class="fa fa-times"></i></button>
+               </div>
+            </div>
+         </div>
+    </div>
+    <!-- End -->
+    <!-- Vehicle Registraion document upload -->
+    <div id="vrModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+               <!-- Modal content-->
+               <div class="modal-content">
+                  <div class="modal-header" style="display: block;">
+                     <button type="button" class="close" data-dismiss="modal">&times;</button>
+                     <h4 class="modal-title">Upload Document</h4>
+                  </div>
+                  <div class="modal-body">
+                        <div class="from-group">
+                                <div class="col-md-12">
+                                    <div class=" col-md-12 zero-padding">
+                                        <div class="col-md-12 zero-padding">
+                                            <h5 class="text-gray">Front Side</h5>
+                                        </div>
+                                        <div class="col-md-12 zero-padding">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label class="drop_target docs">
+                                                                <input type="file" ng-model="FrontRegistration" name="FrontRegistration[]" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" required minnum="1" ng-change="FrontRegistrationUploading()"  maxlength="16">
+                                                            </label>
+                                                </div>
+                                                <div class="col-md-8 zero-padding" style="overflow: hidden">
+                                                    <p class="text-gray">{{FrontRegistration[0].filename}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class=" col-md-12 zero-padding">
+                                        <div class="col-md-12 zero-padding">
+                                            <h5 class="text-gray mt-2">Back Side</h5>
+                                        </div>
+                                        <div class="col-md-12 zero-padding">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label class="drop_target docs">
+                                                                <input type="file" ng-model="BackRegistration" name="BackRegistration" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" required minnum="1" ng-change="BackRegistrationUploading()"  maxlength="16">
+                                                            </label>
+                                                </div>
+                                                <div class="col-md-8 zero-padding" style="overflow: hidden">
+                                                    <p class="text-gray">{{BackRegistration[0].filename}}</p>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+            
+                                </div>
+                                <div class="col-md-8 col-sm-12 col-xs-12 mt-2">
+                                <input class="form-control txt-field" type="text" name="VehicleRegistration" ng-model="VehicleRegistration" placeholder="Vehicle Registration">
+
+                                </div>
+                            </div>
+                            <div class="form-group row ml-0 mt-2">
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-secondary text-capitalize" ng-click="SubmitDriverVr()">Upload Licence <i class="fa fa-arrow-up"></i></button>
+    
+                                    <!-- <button type="reset" class="btn genric-btn primary-border radius btn-lg btn-block text-center text-uppercase" ng-click="ShowStep(3)">Back</button> -->
+                                </div>
+                            </div>
+                            
+                            
+                   
+               </div>
+               <div class="modal-footer">
+                   <button type="button" class="btn btn-outline-danger" data-dismiss="modal" style="float: right;">Close <i class="fa fa-times"></i></button>
+               </div>
+            </div>
+         </div>
+    </div>
+    <!-- end -->
+    <!-- Driving Licence document upload -->
+    <div id="dlModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+               <!-- Modal content-->
+               <div class="modal-content">
+                  <div class="modal-header" style="display: block;">
+                     <button type="button" class="close" data-dismiss="modal">&times;</button>
+                     <h4 class="modal-title">Upload Document</h4>
+                  </div>
+                  <div class="modal-body">
+                        <div class="from-group">
+                                <div class="col-md-12">
+                                    <div class=" col-md-12 zero-padding">
+                                        <div class="col-md-12 zero-padding">
+                                            <h5 class="text-gray">Front Side</h5>
+                                        </div>
+                                        <div class="col-md-12 zero-padding">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label class="drop_target docs browse">
+                                                                <input type="file" ng-model="FrontDL" name="FrontDL" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" required minnum="1" ng-change="Uploading()"  maxlength="16">
+                                                            </label>
+
+                                                            <!-- <img id="blah" src="#" alt="your image"  width="200"/> -->
+                                                </div>
+                                               
+                                                <div class="col-md-8 zero-padding" style="overflow: hidden">
+                                                    <p class="text-gray" id="file">{{FrontDL[0].filename}}</p>
+                                                    <!-- <img src="https://placehold.it/80x80" id="preview" class="img-thumbnail"> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                       
+                                    <div class=" col-md-12 zero-padding">
+                                        <div class="col-md-12 zero-padding">
+                                            <h5 class="text-gray mt-2">Back Side</h5>
+                                        </div>
+                                        <div class="col-md-12 zero-padding">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label class="drop_target docs">
+                                                        <input type="file" ng-model="BackDL" name="BackDL" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" required minnum="1" ng-change="BackDLupload()"  maxlength="16">
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-8 zero-padding" style="overflow: hidden">
+                                                    <p class="text-gray">{{BackDL[0].filename}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-8 col-sm-12 col-xs-12 mt-2">
+                                        <input class="form-control txt-field" type="text" name="Licence_No" ng-model="LicenceNo" placeholder="Driving Licence Number">
+    
+                                </div>
+                            </div>
+                            <div class="form-group row ml-0 mt-2">
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-secondary text-capitalize" ng-click="SubmitDL()">Upload Licence <i class="fa fa-arrow-up"></i></button>
+    
+                                    <!-- <button type="reset" class="btn genric-btn primary-border radius btn-lg btn-block text-center text-uppercase" ng-click="ShowStep(3)">Back</button> -->
+                                </div>
+                            </div>
+                            
+                            
+                   
+               </div>
+               <div class="modal-footer">
+                   <button type="button" class="btn btn-outline-danger" data-dismiss="modal" style="float: right;">Close <i class="fa fa-times"></i></button>
+               </div>
+            </div>
+         </div>
+    </div>
+    </div>
+    <!-- ENd -->
+    <!-- Vehicle Insurance document upload -->
+    <div id="viModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+               <!-- Modal content-->
+               <div class="modal-content">
+                  <div class="modal-header" style="display: block;">
+                     <button type="button" class="close" data-dismiss="modal">&times;</button>
+                     <h4 class="modal-title">Upload Document</h4>
+                  </div>
+                  <div class="modal-body">
+                        <div class="from-group">
+                                <div class="col-md-12">
+                                    <div class=" col-md-12 zero-padding">
+                                        <div class="col-md-12 zero-padding">
+                                            <h5 class="text-gray">Front Side</h5>
+                                        </div>
+                                        <div class="col-md-12 zero-padding">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label class="drop_target docs">
+                                                        <input type="file" ng-model="FrontInsu" name="FrontInsu" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" required minnum="1" ng-change="FrontUploadInsu()"  maxlength="16">
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-8 zero-padding" style="overflow: hidden">
+                                                    <p class="text-gray">{{FrontInsu[0].filename}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class=" col-md-12 zero-padding">
+                                        <div class="col-md-12 zero-padding">
+                                            <h5 class="text-gray mt-2">Back Side</h5>
+                                        </div>
+                                        <div class="col-md-12 zero-padding">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label class="drop_target docs">
+                                                        <input type="file" ng-model="BackInsu" name="BackInsu" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" required minnum="1" ng-change="BackUploadInsu()"  maxlength="16">
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-8 zero-padding" style="overflow: hidden">
+                                                    <p class="text-gray">{{BackInsu[0].filename}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-8 col-sm-12 col-xs-12 mt-2">
+    
+                                <input class="form-control txt-field" type="text" name="VehicleInsurance" ng-model="VehicleInsurance" placeholder="Vehicle Insurance">
+                                 </div>   
+                            </div>
+                            <div class="form-group row ml-0 mt-2">
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-secondary text-capitalize" ng-click="SubmitDrivervehicleIns()">Upload Licence <i class="fa fa-arrow-up"></i></button>
+    
+                                    <!-- <button type="reset" class="btn genric-btn primary-border radius btn-lg btn-block text-center text-uppercase" ng-click="ShowStep(3)">Back</button> -->
+                                </div>
+                            </div>
+                            
+                            
+                   
+               </div>
+               <div class="modal-footer">
+                   <button type="button" class="btn btn-outline-danger" data-dismiss="modal" style="float: right;">Close <i class="fa fa-times"></i></button>
+               </div>
+            </div>
+         </div>
+    </div>
+    <!-- ENd -->
+    
+    <!-- Vehicle Permit document upload -->
+    <div id="vpModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+               <!-- Modal content-->
+               <div class="modal-content">
+                  <div class="modal-header" style="display: block;">
+                     <button type="button" class="close" data-dismiss="modal">&times;</button>
+                     <h4 class="modal-title">Upload Document</h4>
+                  </div>
+                  <div class="modal-body">
+                        <div class="from-group">
+                                <div class="col-md-12">
+            
+                                    <div class=" col-md-12 zero-padding">
+                                        <div class="col-md-12 zero-padding">
+                                            <h5 class="text-gray">Front Side</h5>
+                                        </div>
+                                        <div class="col-md-12 zero-padding">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label class="drop_target docs">
+                                                                <input type="file" ng-model="FrontPermit" name="VehiclePermit" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" required minnum="1" ng-change="FrontPermitupload()"  maxlength="16">
+                                                            </label>
+                                                </div>
+                                                <div class="col-md-8 zero-padding" style="overflow: hidden">
+                                                    <p class="text-gray">{{FrontPermit[0].filename}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class=" col-md-12 zero-padding">
+                                        <div class="col-md-12 zero-padding">
+                                            <h5 class="text-gray mt-2">Back Side</h5>
+                                        </div>
+                                        <div class="col-md-12 zero-padding">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label class="drop_target docs">
+                                                                <input type="file" ng-model="BackPermit" name="BackPermit" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" required minnum="1" ng-change="BackPermitupload()"  maxlength="16">
+                                                            </label>
+                                                </div>
+                                                <div class="col-md-8 zero-padding" style="overflow: hidden">
+                                                    <p class="text-gray">{{BackPermit[0].filename}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+            
+                                </div>
+                                <div class="col-md-8 col-sm-12 col-xs-12 mt-2">
+                                <input class="form-control txt-field" type="text" name="VehiclePermit" ng-model="VehiclePermit" placeholder="Vehicle Permit">
+    
+                                </div>
+                            </div>
+                            <div class="form-group row ml-0 mt-2">
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-secondary text-capitalize" ng-click="SubmitDrivervp()">Upload Licence <i class="fa fa-arrow-up"></i></button>
+    
+                                    <!-- <button type="reset" class="btn genric-btn primary-border radius btn-lg btn-block text-center text-uppercase" ng-click="ShowStep(3)">Back</button> -->
+                                </div>
+                            </div>
+                        
+                        
+                              </div>
+               <div class="modal-footer">
+                   <button type="button" class="btn btn-outline-danger" data-dismiss="modal" style="float: right;">Close <i class="fa fa-times"></i></button>
+               </div>
+            </div>
+         </div>
+    </div>
+    <!-- ENd -->
+    <!-- Puc Certificate document upload -->
+    <div id="pucModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+               <!-- Modal content-->
+               <div class="modal-content">
+                  <div class="modal-header" style="display: block;">
+                     <button type="button" class="close" data-dismiss="modal">&times;</button>
+                     <h4 class="modal-title">Select Document</h4>
+                  </div>
+                  <div class="modal-body">
+                        <div class="from-group">
+                                <div class="col-md-12">
+            
+                                    <div class=" col-md-12 zero-padding">
+                                        <div class="col-md-12 zero-padding">
+                                            <h5 class="text-gray">Front Side</h5>
+                                        </div>
+                                        <div class="col-md-12 zero-padding">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label class="drop_target docs">
+                                                                <input type="file" ng-model="FrontPucCard" name="FrontPucCard" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" required minnum="1" ng-change="FrontPucCardUploading()"  maxlength="16">
+                                                            </label>
+                                                </div>
+                                                <div class="col-md-8 zero-padding" style="overflow: hidden">
+                                                    <p class="text-gray">{{FrontPucCard[0].filename}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+            
+                                </div>
+                                <div class="col-md-8 col-sm-12 col-xs-12 mt-2">
+                                <input class="form-control txt-field" type="text" name="pucCert" ng-model="pucCert" placeholder="Puc Certificate Number">
+    
+                                </div>
+                            </div>
+                            <div class="form-group row ml-0 mt-2">
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-secondary text-capitalize" ng-click="SubmitDriverPuc()">Upload Licence <i class="fa fa-arrow-up"></i></button>
+    
+                                    <!-- <button type="reset" class="btn genric-btn primary-border radius btn-lg btn-block text-center text-uppercase" ng-click="ShowStep(3)">Back</button> -->
+                                </div>
+                            </div>
+                          
+                                
+               </div>
+               <div class="modal-footer">
+                   <button type="button" class="btn btn-outline-danger" data-dismiss="modal" style="float: right;">Close <i class="fa fa-times"></i></button>
+               </div>
+            </div>
+         </div>
+    </div>
+    <!-- End -->
+    <div class="overlay" ng-click="toggleButton()"></div>
+    
+    
+    <script type="text/javascript">
+    // $('.file-upload').file_upload();
+    // function readURL(input) {
+    //     if (input.files && input.files[0]) {
+    //         var reader = new FileReader();
+            
+    //         reader.onload = function (e) {
+    //             $('#blah').attr('src', e.target.result);
+    //         }
+            
+    //         reader.readAsDataURL(input.files[0]);
+    //     }
+    // }
+    
+    // $("#imgInp").change(function(){
+    //     readURL(this);
+    // });
+
+
+
+    function openProfile(evt, cityName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(cityName).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+    
+    
+    // to toggle psswrod
+    $(".toggle-password").click(function() {
+    $(this).toggleClass("fa-eye fa-eye-slash");
+    var input = $($(this).attr("toggle"));
+    if (input.attr("type") == "password") {
+    input.attr("type", "text");
+    } else {
+    input.attr("type", "password");
+    }
+    });
+    
+    function myFunction1() {
+  var x = document.getElementById("password-field");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+    
+    // for accordion
+    $('.d-accordion').on('show.bs.collapse', function(n) {
+            $(n.target).siblings('.panel-heading').find('.panel-title i').toggleClass('fa-chevron-up fa-chevron-down ');
+        });
+    
+        $('.d-accordion').on('hide.bs.collapse', function(n) {
+            $(n.target).siblings('.panel-heading').find('.panel-title i').toggleClass('fa-chevron-down fa-chevron-up ');
+        });
+       
+    </script>

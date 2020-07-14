@@ -1,0 +1,100 @@
+<style>
+    /* -------------nav bar css starts------------------ */
+
+    .navbar-light .navbar-nav .nav-link {
+        color: white;
+    }
+
+    .navbar-light .navbar-nav .nav-link:hover {
+        color: yellow;
+    }
+
+    .navbar-light .navbar-nav .nav-link:focus {
+        color: yellow;
+    }
+
+
+
+    .navbar-btn {
+        box-shadow: none;
+        outline: none !important;
+        border: none;
+    }
+
+    .line {
+        width: 100%;
+        height: 1px;
+        border-bottom: 1px dashed #ddd;
+        margin: 40px 0;
+    }
+
+    .profile {
+        border-radius: 100%;
+        width: 50px;
+        height: 50px;
+        padding-right: 0px;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        min-height: 100px;
+        background-color: #1b1919;
+        padding: 15px 10px 5px 10px;
+        border-radius: 3px;
+    }
+
+    .nav-profile:hover .dropdown-content {
+        display: block;
+    }
+
+    .desc {
+        text-align: left;
+        font-weight: 600;
+        color: #fff;
+        cursor: pointer;
+    }
+    .desc:hover{
+        color: yellow;
+    }
+hr {
+    margin-top: 0rem;
+    margin-bottom: 1rem;
+    border: 1;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-color: #fff;
+}
+
+</style>
+<nav class="navbar navbar-expand-lg navbar-light bg-dark" ng-controller="DashNavBarCtrl">
+    <a class="navbar-brand" href="#"><img src="assets/img/logo_dotstaxi.png" width="190" height="70"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item">
+                </li>
+                <li class="nav-item nav-profile">
+                    <h5 style="display: inline; color: #fff;">{{profileData.firstName}} {{profileData.lastName}}</h5>
+                    <img class="profile" src="{{profileData.profileUrl || 'assets/img/man.png'}}" alt="user_img">
+                    <div class="dropdown-content center">
+                        <div class="desc" ng-click="gotoRideList()"><img src="assets/img/rode.png">&nbsp Ride List</div>
+                        <hr>
+                        <div class="desc" ng-click="gotoProfile()"><img src="assets/img/user.png">&nbsp Profile</div>
+                        <hr>
+                        <div class="desc" ng-click="logout();"><img src="assets/img/logout-16px.png">&nbsp Logout</div>
+                        <hr>
+                    </div>
+                </li>
+
+            </ul>
+
+        </ul>
+    </div>
+</nav>

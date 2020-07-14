@@ -1,0 +1,398 @@
+<style>
+#content {
+        width: calc(100% - 220px);
+        padding: 10px 40px 20px 40px !important;
+        min-height: 100vh;
+        transition: all 0.3s;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-image: url('assets/img/background.jpg')!important;
+
+    }
+
+    #content.active {
+        width: 100%;
+    }
+.nav-link{
+  padding: 0.5rem 3rem;
+}
+  .nav-pills .nav-link {
+    border-radius: 0rem;
+    color: #343a40;
+    font-weight: 600;
+    }
+  .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #343a40;
+    font-weight: 600;
+    background-color: #ffff0069!important;
+    border-bottom: 2px solid orange;
+}
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  background-color: #ffff0069!important;
+  color: #343a40;
+  font-weight: 600;
+}
+@media screen and (max-width: 748px) {
+  .nav-link{
+  padding: 0.5rem 1rem;
+}
+}
+@media (min-width: 576px){
+.container {
+    max-width: 100%;
+}
+}
+
+</style>
+
+<div id="page-loading" ng-show="loading" class="ng-hide">
+    <div class="loader">
+        <img src="assets/img/giphy.gif" width="100" height="100" style="padding: 0">
+    </div>
+</div>
+
+<div class="wrapper">
+    <ng-include src="'assets/pages/MysideBar.html'"></ng-include>
+    <div id="content">
+        <ng-include src="'assets/pages/MynavBar.html'"></ng-include>
+        <div class="col-sm-12 header-board">
+            <div class="row">
+
+        <ul class="nav nav-pills  text-center " id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="hwt-tab" data-toggle="tab" data-target="#hwt" href="" role="tab" aria-controls="how it works" aria-selected="true">How It Works</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="faq-tab" data-toggle="tab" data-target="#faq" href="" role="tab" aria-controls="faq" aria-selected="false">FAQ</a>
+            </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link" id="support-tab" data-toggle="tab" data-target="#support" href="" role="tab" aria-controls="support" aria-selected="false">Support</a>
+            </li> -->
+          </ul>
+
+
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="hwt" role="tabpanel" aria-labelledby="hwt-tab">
+            <!-- <h1>How it Works</h1>  -->
+            <div class="container border mt-3 p-3" ng-if="acctDetail == '0'">
+    
+                <h3>How it works</h3>
+                <hr>
+                    <p>
+                            rv Cabs connects you with a reliable rides in minutes. One tap a car comes directly to you. Your driver knows exactly where to go. And you can pay either cash or card
+                    </p>
+                    <ul>
+                        <li>To register as driver under rv Cabs, click on the “REGISTER” button from Login screen, Sign Up screen will display.
+                            </li>
+                            <li>
+                                    Password  fields to do the Sign Up with rv Cabs driver application. After entering the required sign up fields driver need to tap on Next to fill the  Vehicle Details.
+                            </li>
+                    </ul>
+                    <P> ----Add Vehicle Details page will display where driver has to provide the vehicle details.
+                        </P>
+                        <p>
+                            ----Enter valid document number (in this case it is Driving License number) and upload front 	and back image of the document. Click on “SAVE” button save the details uplaoded.
+
+                        </p>
+                        <p>----Once the documents are uploaded successfully, “Green Tick Mark” will be shown </p>
+                        <P>
+                                Follow the above step to upload all the necessary documents listed in “Upload Documents” screen will display. Once all the documents are uploaded successfully.
+                        </P>
+                        <div>
+                                <h5>
+                                        Process to approve driver:--
+
+                                </h5>
+                                <p>Master driver has to approve the driver and then Driver can login to the application by entering mobile no, password and click on the LOGIN button.After login to the application the below page will display.
+                                    </p>
+                        </div>
+                        <div>
+                            <h5>How driver receive notification from user?
+                                </h5>
+                                <p>Driver should be always  Online to receive trip request from nearby rider .
+                                        Driver’s phone flashes and beeps when driver receive a trip request. To accept it, tap on it.
+                                        </p>
+
+                        </div>
+                        <div>
+                            <h5>Earnings:---</h5>
+                            <p>The earnings section of driver app contain a Today and Weekly summary.
+                                    In TODAY , My Earnings, Distance, Completed Trip will display.</p>
+                        </div>
+                        <div>
+                            <h5>Ratings:--</h5>
+                            <p>
+                                    Driver can see the rating in the Ratings tab in the bottom of the screen.
+
+                            </p>
+                        </div>
+                        <div>
+                            <h5>Driver profile:-</h5>
+                            <p>Driver profile allow you to tell riders about yourself. It is customizable and can showcase things
+                                    like your interests, achievement badges and rider compliments.
+                                  </p>
+                        </div>
+                        <div>
+                            <h5>
+                                    Ride list:--
+                            </h5>
+                            <p>
+                                    Under ride list    It will display the upcoming and other rides. In upcoming rides if no rides available it will display under it.
+                            </p>
+                        </div>
+
+                </div>   
+                <div class="container border mt-3 p-3" ng-if="acctDetail == '1'">
+    
+                  <h3>How it works </h3>
+                  <hr>
+                      <p>
+                              To use rv Cabs first user has to register himself/herself.Once the registration is done successfully,it will navigate to main page where user can book a ride.
+
+
+                      </p>
+                      <p>
+                              For booking an ride user has to give pick up and drop location then notifications will go to nearby driver.
+
+                          </p>
+                    <p>
+                          Driver has to confirm the ride,once the driver confirms the ride, All details of driver will come to user.If in any case user wants he/she can contact with driver.
+                    </p>
+                    <p>
+                          User can cancel the ride if any situations or circumstances came to cancel.If user face any inconvinence situations then can call to customer support which will be available to them 24*7.
+                    </p>
+                    <P>
+                          User can  see his/ride all the rides which are finished and upcoming rides will display under ride list.Now you have to do payment by using paytm or cash.All details of ride will display at end of the trip.User can give ratings to driver.
+                    </P>
+                     
+                  </div>
+
+           </div>
+            <div class="tab-pane fade" id="faq" role="tabpanel" aria-labelledby="faq-tab">
+                <h3 class="mt-3">FAQ</h3>
+                <hr>
+                <div class="panel panel-defaul p-3" style="background: #494a49;" ng-if ="acctDetail == '1'">
+                <div class="card mb-2">
+                        <div class="card-header">
+                              <h5> <i class="fa fa-question-circle fa-spin" aria-hidden="true"></i> How will I know when I'm getting a ride request? How do I accept?</h5> 
+                        </div>
+                        <div class="card-body">
+                          <blockquote class=" mb-0">
+                            <p>When you get a trip request, your screen will flash and a sound will ping. You have 30 seconds to accept the trip request. Just press accept on your screen to accept.
+                                </p>
+                            <!-- <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer> -->
+                          </blockquote>
+                        </div>
+                      </div>
+                      <div class="card mb-2">
+                            <div class="card-header">
+                                  <h5><i class="fa fa-question-circle fa-spin" aria-hidden="true"></i> I didn't start or end a trip on-time. What do I do?
+                                    </h5> 
+                            </div>
+                            <div class="card-body">
+                              <blockquote class=" mb-0">
+                                <p>Go into your Trip History and tap on the trip. At the bottom of the screen, tap "Need Help" and then "I had an issue with this fare." You can raise issue "I didn't begin or end the trip on time" and fill in the pick-up and drop-off locations. We'll make the adjustment!
+
+                                    </p>
+                                <!-- <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer> -->
+                              </blockquote>
+                            </div>
+                          </div>
+                          <div class="card mb-2">
+                                <div class="card-header">
+                                      <h5><i class="fa fa-question-circle fa-spin" aria-hidden="true"></i> My rider wants me to wait. What should I do?
+
+                                        </h5> 
+                                </div>
+                                <div class="card-body">
+                                  <blockquote class=" mb-0">
+                                <p>If a rider asks you to wait, you're welcome to do so. Just keep the trip running. However, if you don't want to or can't wait, just ask the rider to request another Uber when they're done.
+                                    </p>
+
+                                        
+                                    <!-- <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer> -->
+                                  </blockquote>
+                                </div>
+                              </div>
+                              <div class="card mb-2">
+                                    <div class="card-header">
+                                          <h5><i class="fa fa-question-circle fa-spin" aria-hidden="true"></i> What if the rider wants to change destinations or make multiple stops?
+
+
+                                            </h5> 
+                                    </div>
+                                    <div class="card-body">
+                                      <blockquote class=" mb-0">
+                                    <p>That's OK! Don't end the trip, just ask the rider to delete their previous destination in the rider app and enter the new address. You'll still be paid for any time and distance traveled.
+                                        </p>
+
+                                            
+                                        <!-- <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer> -->
+                                      </blockquote>
+                                    </div>
+                                  </div>
+                                  <div class="card mb-2">
+                                        <div class="card-header">
+                                              <h5><i class="fa fa-question-circle fa-spin" aria-hidden="true"></i> When and how do I get paid?
+
+
+                                                </h5> 
+                                        </div>
+                                        <div class="card-body">
+                                          <blockquote class=" mb-0">
+                                        <p>rv Cabs are paid via direct deposit weekly  for money earned. Payment is made by direct deposit only. 
+                                            </p>
+
+                                                
+                                            <!-- <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer> -->
+                                          </blockquote>
+                                        </div>
+                                      </div>
+                                      </div>
+
+                                      <div class="panel panel-defaul p-3" style="background: #494a49;" ng-if ="acctDetail != '0'">
+                                        <div class="card mb-2">
+                                                <div class="card-header">
+                                                      <h5> <i class="fa fa-question-circle fa-spin" aria-hidden="true"></i> Do I need to register on Your site to book  ride?</h5> 
+                                                </div>
+                                                <div class="card-body">
+                                                  <blockquote class=" mb-0">
+                                                    <p>Yes,You need to download the app then you have to register yourself as user.You have to provide all details for registration.
+                                                        </p>
+                                                    <!-- <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer> -->
+                                                  </blockquote>
+                                                </div>
+                                              </div>
+                                              <div class="card mb-2">
+                                                    <div class="card-header">
+                                                          <h5><i class="fa fa-question-circle fa-spin" aria-hidden="true"></i> What if the car doesnt show up?
+
+                                                            </h5> 
+                                                    </div>
+                                                    <div class="card-body">
+                                                      <blockquote class=" mb-0">
+                                                        <p>In case the vehicle  you doesnot show then  can contact to us by customer support,we are there to help you.
+
+        
+                                                            </p>
+                                                        <!-- <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer> -->
+                                                      </blockquote>
+                                                    </div>
+                                                  </div>
+                                                  <div class="card mb-2">
+                                                        <div class="card-header">
+                                                              <h5><i class="fa fa-question-circle fa-spin" aria-hidden="true"></i> What is rv Cabs peak time charge?
+        
+                                                                </h5> 
+                                                        </div>
+                                                        <div class="card-body">
+                                                          <blockquote class=" mb-0">
+                                                        <p>rv Cabs peak time charge is little more than usual charge,it is a fare-rationalizing rule of using a multiplier X.
+
+                                                            </p>
+            
+                                                                
+                                                            <!-- <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer> -->
+                                                          </blockquote>
+                                                        </div>
+                                                      </div>
+                                                      <div class="card mb-2">
+                                                            <div class="card-header">
+                                                                  <h5><i class="fa fa-question-circle fa-spin" aria-hidden="true"></i> Can i request a  to wait at a place?
+
+        
+            
+                                                                    </h5> 
+                                                            </div>
+                                                            <div class="card-body">
+                                                              <blockquote class=" mb-0">
+                                                            <p>We require the pick up address be a business address or a user known address.
+
+                                                                </p>
+                
+                                                                    
+                                                                <!-- <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer> -->
+                                                              </blockquote>
+                                                            </div>
+                                                          </div>
+                                                          <div class="card mb-2">
+                                                                <div class="card-header">
+                                                                      <h5><i class="fa fa-question-circle fa-spin" aria-hidden="true"></i> Within how many Kilometer user can search for a driver?
+            
+                
+                                                                        </h5> 
+                                                                </div>
+                                                                <div class="card-body">
+                                                                  <blockquote class=" mb-0">
+                                                                <p>2km is the maximum distance.
+
+                                                                    </p>
+                    
+                                                                        
+                                                                    <!-- <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer> -->
+                                                                  </blockquote>
+                                                                </div>
+                                                              </div>
+                                                              </div>
+
+            </div>
+                      <!-- <div class="tab-pane fade" id="support" role="tabpanel" aria-labelledby="support-tab">
+                          <div class="container">
+                          <h3 class="mt-3">Support</h3>
+                                              <hr>
+                                              
+                                              <div class="row">
+                                                  <div class="col-md-6">
+                                                      <div class="col-md-12 col-sm-12 col-xs-12">
+                                                          <div class="form-group">
+                                                              <label>Email-Id</label>
+                                                              <input type="text" class="form-control " ng-model="email" name="email" placeholder="support@rv Cabs.com" ng-disabled ="true" >
+                                                          </div>
+                                                      </div>
+                                                      <div class="col-md-12 col-sm-12 col-xs-12">
+                                                          <div class="form-group">
+                                                              <label>Subject</label>
+                                                              <input type="text" class="form-control" ng-model="subject" name="subject">
+                                                          </div>
+                                                      </div>
+                                                      <div class="col-md-12 col-sm-12 col-xs-12">
+                                                              <div class="form-group">
+                                                                  <label>Message</label>
+                                                                  <textarea class="form-control" row="8" cols="50" ng-model="message" name="message" ></textarea>
+                                                              </div>
+                                                          </div>
+                                                  </div>
+              
+              
+                                                  
+                                                  <div class="col-md-6 border" style="max-width: 46%;">
+                                                      <div class="card" style="border: 0;background: none;">
+                                                          <div class="card-body">
+                                                              <div class="text-center" style="border-bottom:1px solid #8f9294">
+              
+                                                              <h5> <i class="fa fa-envelope"></i> Support Email</h5>
+                                                              <p class="mt-2" style="font-weight:600">&nbsp;<a href = "mailto:support@rv Cabs.com" style="color:#fab700">support@rv Cabs.com</a></p>
+                                                              
+                                                          </div>
+                                                          <div class="text-center mt-3">
+                                                              <h5><i class="fa fa-phone-square"></i> Call Us</h5>
+                                                              <p class="mt-2" style="font-weight:600;">&nbsp; <a href="tel: 1800 4587 5859" style="color:#fab700">1800 4587 5859</a></p>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="col-md-12 col-sm-12 col-xs-12">
+                                                  <button type="submit" class="btn btn-success btn-sm" ng-click="sendMail()">Send <i class="fas fa-share"></i></button>
+                                              </div>
+                                              </div>
+                      </div> -->
+          </div>
+
+    </div>
+
+</div>
+</div>
+
+</div>

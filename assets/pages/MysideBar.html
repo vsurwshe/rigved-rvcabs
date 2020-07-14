@@ -1,0 +1,264 @@
+<style>
+    #sidebar1 {
+        width: 220px !important;
+        background: #203b70;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        z-index: 999;
+        color: #fff;
+        transition: all 0.1s;
+        margin-top: 0px !important;
+    }
+
+    #sidebar1.active {
+        margin-left: -250px;
+    }
+
+    #sidebar1 .sidebar-header {
+        padding: 20px;
+        /* background: #343a40;
+         */
+         background: #d9d9d9;
+         border-bottom: 1px solid #ff0000;
+    }
+
+    #sidebar1 ul.components {
+        padding: 20px 0;
+        border-bottom: 1px solid #47748b;
+    }
+
+    #sidebar1 ul p {
+        color: #fff;
+        padding: 10px;
+    }
+
+    #sidebar1 ul li a {
+        padding: 10px;
+        font-size: 1.1em;
+        display: block;
+        color: #ffff !important;
+    }
+
+    #sidebar1 ul li a:hover {
+        color: #fefeff;
+        /* background: #4e4c4c; */
+        background: #a6a6a6;
+    }
+
+    #sidebar1 ul li.active>a,
+    a[aria-expanded="true"] {
+        color: #fff;
+        background: #a6a6a6;
+    }
+
+
+    a[data-toggle="collapse"] {
+        position: relative;
+    }
+
+    .dropdown-toggle::after {
+        display: block;
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+    }
+
+    ul ul a {
+        font-size: 0.9em !important;
+        padding-left: 30px !important;
+        background: #6d7fcc;
+    }
+
+    ul.CTAs {
+        padding: 20px;
+    }
+
+    ul.CTAs a {
+        text-align: center;
+        font-size: 0.9em !important;
+        display: block;
+        background-color: transparent !important;
+        margin-bottom: 5px;
+    }
+
+    a.download {
+        background: #fff;
+        color: #7386D5;
+    }
+
+    a.article,
+    a.article:hover {
+        
+        color: #fff !important;
+    }
+    
+        .imgIco {
+        margin-right: 15px;
+    }
+
+    .profile {
+        border-radius: 100%;
+        width: 50px;
+        height: 50px;
+        padding-right: 0px;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        min-height: 100px;
+        background-color: #1b1919;
+        padding: 20px 5px 5px 20px;
+        border-radius: 3px;
+    }
+
+    .nav-profile:hover .dropdown-content {
+        display: block;
+    }
+
+    .desc {
+        text-align: left;
+        font-weight: 600;
+        color: gainsboro;
+        cursor: pointer;
+    }
+    
+    
+        @media (max-width: 768px) {
+        #sidebar1 {
+            margin-left: -220px;
+        }
+        #sidebar1.active {
+            margin-left: 0;
+        }
+        #content {
+            width: 100%;
+            padding: 15px !important;
+        }
+        #content.active {
+            width: 100%;
+        }
+        #sidebarCollapse1 span {
+            display: none;
+        }
+        #sidebarCollapse1 {
+            display: block !important;
+        }
+        #hideButton {
+            display: none !important;
+        }
+        .brand-logo {
+            width: 50%;
+        }
+        #sidebarCollapse2 {
+            display: block !important;
+            background: transparent !important;
+        }
+        .myFont {
+            font-size: 4.5vw;
+        }
+
+
+    }
+
+</style>
+<nav id="sidebar1" class="" ng-controller="sidebarCtrl"  >
+    <div class="sidebar-header">
+        <a href="#bookride"><img class="brand-logo" src="assets/img/RV_cabs_logo.png" alt="logo" width="100%"/></a>
+        <button type="button" id="sidebarCollapse2" class="btn btn-info" style="float: right; display: none;">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+    </div>
+
+
+    <ul class="list-unstyled components">
+        <!-- <p class="text-white font-weight-bold">Call: +91 88808 55551</p> -->
+          <li class={{rideList}}>
+            <a href="#profile"><img class="imgIco" src="assets/img/car-list.png" /> Profile</a>
+        </li>
+        <li class="{{manageTrip}}">
+            <a href="#managetrip"><img class="imgIco" src="assets/img/customer-list.png">Manage Trip</a>
+        </li>
+        <!-- <li class={{bookcab}}>
+            <a href="#bookride"><img class="imgIco" src="assets/img/home.png" /> Book Now</a>
+        </li> -->
+        <!-- <li class={{rideList}}>
+            <a href="#rideList"><img class="imgIco" src="assets/img/car-list.png" /> Ride List</a>
+        </li> -->
+        <li class={{customerList}} >
+            <a href="#customerList"><img class="imgIco" src="assets/img/customer-list.png" /> Traveller List</a>
+        </li>
+        <li class={{approveMember}} >
+            <a href="#approveMember"><img class="imgIco" src="assets/img/approveList.png" /> Driver Management</a>
+        </li>
+        <!-- <li class="{{travelerReg}}">
+            <a href="#travelerReg"><img class="imgIco" src="assets/img/approveList.png">Traveller Registration</a>
+        </li> -->
+        <li class="{{manageVendor}}">
+            <a href="#manageVendor"><img class="imgIco" src="assets/img/approveList.png">Manage Vendor</a>
+        </li>
+        <li class="{{manageClient}}">
+            <a href="#manageClient"><img class="imgIco" src="assets/img/approveList.png">Manage Client</a>
+        </li>
+
+        <!-- <li class={{myMember}} >
+            <a href="#myMember"><img class="imgIco" src="assets/img/approve.png" /> My Member</a>
+        </li> -->
+        <!-- <li class={{ratecard}} >
+            <a href="#ratecard"><img class="imgIco" src="assets/img/rupee-indian.png" /> Rate Card</a>
+        </li> -->
+        <li class={{farechart}}>
+            <a href="#travelBilling"><img class="imgIco" src="assets/img/rupee-indian.png" /> Travel Billing</a>
+        </li>
+
+        <li class="{{help}}">
+            <a href="#help"><img class="imgIco" src="assets/img/mobile-phone.png" /> Help</a>
+        </li>
+        <li class="{{support}}">
+            <a href="#support"><img class="imgIco" src="assets/img/support.png"/>support</a>
+        </li>
+        
+          <li class="{{terms}}" >
+              <a href="#terms"><img class="imgIco" src="assets/img/clipboard-and-notebook.png" /> Terms & Conditions</a>
+          
+            </li>
+          <li class="{{privacy}}}">
+              <a href="#privacy"><img class="imgIco" src="assets/img/approveList.png" />Privacy Policy</a>
+          </li>
+
+        <!-- <li class={{bookyourrides}} >
+            <a href="#maps"><img src="assets/img/taxi.png" style="margin-right: 12px;">Book Your Ride</a>
+        </li>
+        <li class={{yourrides}} >
+            <a href="#ride-history"><img src="assets/img/clock.png" style="margin-right: 12px;">Your Rides</a>
+        </li> -->
+        <!-- <li class="{{profile}}">
+            <a href="#profile"><img src="assets/img/man.png" style="margin-right: 12px;">Profile Settings</a>
+        </li> -->
+        <li class="logout" style="cursor: pointer">
+            <a ng-click="logout()"><img class="imgIco" src="assets/img/logout.png" /> Logout</a>
+        </li>
+    </ul>
+
+    <ul class="list-unstyled CTAs">
+        <li>
+            <a href="https://www.apple.com/in/iphone/" target="_blank" class="article"><img src="assets/img/appstore.png" width="100%"></a>
+        </li>
+        <li>
+            <a href="https://play.google.com/store/apps?hl=en" target="_blank" class="article"><img src="assets/img/googleplay.png" width="100%"></a>
+        </li>
+    </ul>
+</nav>
+

@@ -1,0 +1,556 @@
+<style>
+    /* -------------Content Css-------------- */
+
+    .wrapper {
+        display: flex;
+        width: 100%;
+    }
+
+
+    #content {
+        width: calc(100% - 220px);
+        padding: 10px 40px 20px 40px !important;
+        min-height: 100vh;
+        transition: all 0.3s;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-image: url('assets/img/background.jpg');
+    }
+
+    #content.active {
+        width: 100%;
+    }
+
+    .overlay {
+        display: none;
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 998;
+        opacity: 0;
+        transition: all 0.5s ease-in-out;
+    }
+
+    .overlay.active {
+        display: block;
+        opacity: 1;
+    }
+
+    /* ------------------------------------- */
+
+    .mapContainer {
+        padding: 81px 0px 0px 55px;
+    }
+
+    form {
+        margin: 0px;
+    }
+
+    .input-field {
+        position: relative;
+        width: 100%;
+        height: 70px;
+        line-height: 44px;
+    }
+    input {
+        width: 100%;
+        border: 0;
+        outline: 0;
+        padding: 0;
+        border-bottom: 2px solid white;
+        background-color: transparent;
+        color: white;
+    }
+
+    input:focus,
+    input:valid {
+        /*border-color: #00dd22;*/
+    }
+
+    .form-div {
+        background-color: #171616;
+        opacity: 0.8;
+        padding: 25px;
+    }
+    .form-control{
+        border-radius: 0rem!important;
+    }
+    .route-list {
+
+        top: 130px;
+        background-color: #fff;
+        max-height: 410px;
+        overflow: hidden;
+    }
+
+    .header-right {
+        background-color: transparent !important;
+        border: none !important;
+        margin-top: 0 !important;
+    }
+
+    @media (max-width: 480px) {
+        .header-right {
+            margin: 1px !important;
+        }
+        .header-board {
+            padding: 2px;
+        }
+    }
+
+    /* -----------------button------------------------- */
+
+    .button {
+        padding: 5px 50px;
+        border: 2px solid #494a49;
+        border-radius: 5px;
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: #494a49;
+        background-color: #fff;
+
+
+    }
+
+    .button:hover {
+        color: #494a49;
+        background-color: #f1f50b;
+        cursor: pointer;
+
+    }
+
+    #map {
+        display: none !important;
+    }
+
+    .mendatory {
+        color: red;
+    }
+
+    /* -----------typeahead  custom template css--------- */
+
+    .UserDemography.dropuser-list {
+        padding: 0px !important;
+    }
+
+    .UserDemography.dropuser-list li {
+        padding: 10px 30px;
+        background: #f3f3f3;
+        border-radius: 10px;
+    }
+
+    .UserDemography.dropuser-list:before {
+        content: '';
+        position: absolute;
+        border-width: 8px 8px 8px 0;
+        border-style: solid solid solid none;
+        border-color: transparent #49baeb transparent;
+        top: 30px;
+        left: 0px;
+    }
+
+    [uib-typeahead-popup].dropdown-menu {
+        display: block;
+        width: 94%;
+        overflow: hidden;
+        overflow-y: scroll;
+        max-height: 292px;
+        background: #CC95C0;
+        /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0);
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0);
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+
+    .font {
+        font-size: 16px;
+        font-weight: 600;
+        color: red;
+
+    }
+
+    .uib-typeahead-match {
+        cursor: pointer;
+    }
+
+    .button {
+        padding: 5px 20px;
+        border: 2px solid #494a49;
+        border-radius: 5px;
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: #494a49;
+        background-color: #fff;
+
+
+    }
+
+    .button:hover {
+        color: #494a49;
+        background-color: #f1f50b;
+        cursor: pointer;
+
+    }
+
+
+    .button-small {
+        padding: 3px 15px;
+        border: 2px solid #494a49;
+        border-radius: 5px;
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: #494a49;
+        background-color: #fff;
+    }
+
+    .button-small:hover {
+        color: #494a49;
+        background-color: #f1f50b;
+        cursor: pointer;
+    }
+
+    .btn-link {
+    font-weight: 400;
+    color: #203b70;
+    background-color: transparent;
+}
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+/* profile Picture */
+.middle-div {
+            display: table;
+            width: 100%;
+            height: 100%;
+        }
+    
+        .inner-middle-div {
+            display: table-cell;
+            vertical-align: middle;
+        }
+        .user-profile-card {       
+            padding: 15px;
+            /* background-color: #fff; */
+            border-radius: 7px;
+            /* box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); */
+            /* background-image: url('assets/img/28228.jpg'); */
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+            text-align: center;
+            color: #fff;
+        }
+    
+        .user-profile-card:before {
+            position: absolute;
+            content: "";
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            z-index: -1;
+            border-radius: 7px;
+        }
+    
+        .user-profile-card .card-body {
+            margin-bottom: 30px;
+        }
+    
+        .user-profile-card .card-body .user-info .user-pic {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            margin: auto;
+            border-radius: 100%;
+            background-image: url('assets/img/elements/g5.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            border: 3px solid #fff;
+            z-index: 1;
+        }
+    
+        .user-profile-card .card-body .user-info .user-pic .edit {
+            position: absolute;
+            content: "";
+            bottom: 0;
+            right: 0;
+            width: 28px;
+            height: 28px;
+            background-color: #eedd11;
+            z-index: -1;
+            border-radius: 100%;
+            text-align: center;
+            line-height: 27px;
+            cursor: pointer;
+        }
+    
+        .user-profile-card .card-body .user-info .user-pic .edit i {
+            font-size: 14px;
+            vertical-align: middle;
+        }
+    
+        .user-profile-card .card-body .user-info .user-name {
+            margin: 15px 0 0 0;
+            font-weight: 400;
+            font-size: 2em;
+            font-weight: 600;
+            color: #fff;
+        }
+    
+        .user-profile-card .card-body .user-info p {
+            margin: 5px 0 0 0;
+            font-size: 20px;
+            font-weight: 400;
+        }
+    
+        .user-profile-card .card-footer .list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: inline-block;
+            vertical-align: middle;
+        }
+    
+        .user-profile-card .card-footer .list li {
+            float: left;
+        }
+    
+        .user-profile-card .card-footer .list li+li {
+            margin-left: 60px;
+        }
+    
+        .user-profile-card .card-footer .list li span {
+            display: block;
+        }
+    
+        .user-profile-card .card-footer .list li span+span {
+            font-size: 14px;
+            font-weight: 400;
+            opacity: 0.7;
+        }
+    
+        .user-profile-card .card-footer .list li .count {
+            font-weight: 400;
+            font-size: 1.3em;
+            padding-bottom: 5px;
+        }
+    
+        .profile-card {       
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 7px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+            background-image: url('assets/img/28228.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+            text-align: center;
+            color: #fff;
+        }
+    
+        .profile-card:before {
+            position: absolute;
+            content: "";
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(1, 61, 64, 0.5);
+            z-index: -1;
+            border-radius: 7px;
+        }
+    
+        .profile-card .card-body {
+            margin-bottom: 30px;
+        }
+    
+        .profile-card .card-body .user-info .user-pic {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            margin: auto;
+            border-radius: 100%;
+            background-image: url('assets/img/elements/g5.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            border: 3px solid #fff;
+            z-index: 1;
+        }
+    
+        .profile-card .card-body .user-info .user-pic .edit {
+            position: absolute;
+            content: "";
+            bottom: 0;
+            right: 0;
+            width: 28px;
+            height: 28px;
+            background-color: #feca4a;
+            z-index: -1;
+            border-radius: 100%;
+            text-align: center;
+            line-height: 27px;
+            cursor: pointer;
+        }
+    
+        .profile-card .card-body .user-info .user-pic .edit i {
+            font-size: 14px;
+            vertical-align: middle;
+        }
+    
+</style>
+
+<div id="page-loading" ng-show="loading" class="ng-hide">
+    <div class="loader">
+        <img src="assets/img/giphy.gif" width="100" height="100" style="padding: 0">
+    </div>
+</div>
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <ng-include src="'assets/pages/MysideBar.html'"></ng-include>
+    <!-- Page Content  -->
+    <div id="content">
+        <ng-include src="'assets/pages/MynavBar.html'"></ng-include>
+        <div id="map" style="width: 100%; height: 100vh; display: none"></div>
+
+        <div class="col-sm-12 header-board">
+            <!-- <div class="col-md-12  col-sm-12 mb-2" style="text-align: right">
+                <a href="#managetrip">
+                <button type="button" class="button-small" style="cursor: pointer"  ng-show="!upcomingList"><span class="myfont">Manage Trip</span></button>         
+            </a>
+            </div> -->
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="col-md-12 col-sm-12 row header-right nopadding">
+                        <div id="accordion" class="col-md-12">
+                            <div class="card">
+                              <div class="card-header" id="headingOne">
+                                <h5 class="mb-0">
+                                  <button class="btn btn-link font-weight-bold" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Register Traveller
+                                  </button>
+                                </h5>
+                              </div>
+                          
+                              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                <div class="card-body row ">
+                            <div class="col-md-9 row">
+                                <div class="from-group  col-sm-6">
+                                    <lable for="">First Name<span class="mendatory">*</span></lable>
+                                    <input class="form-control txt-field" ng-model="traveler_fname" type="text" name="traveler_fname" placeholder="First Name">
+                                </div>
+                                <div class="from-group  col-sm-6">
+                                    <lable for="">Last Name</lable>
+                                    <input class="form-control txt-field" ng-model="traveler_lname" type="text" placeholder="Last Name">
+                                </div>
+                                <div class="from-group  col-sm-6">
+                                    <lable for="">Mobile Number<span class="mendatory"></span></lable>
+                                    <input class="form-control txt-field" ng-model="traveler_mobNum" type="text" name="traveler_mobNum" placeholder="Mobile Number"  maxlength="20">
+                                   
+                                </div>
+                                <div class="from-group  col-sm-6">
+                                    <lable for="">Secondary Mobile Number<span class="mendatory"></span></lable>
+                                    <input class="form-control txt-field" ng-model="traveler_secMobNum" type="text" name="traveler_secMobNum" placeholder="Secondary Mobile Number">
+                                </div>
+                                <div class="from-group  col-sm-6">
+                                    <lable for="">Email-Id<span class="mendatory"></span></lable>
+                                    <input class="form-control txt-field" ng-model="traveler_email" type="email" name="traveler_email" placeholder="Email Id">
+                                </div>
+<!--                                 
+                                <div class="from-group  col-sm-6">
+                                    <lable for="">Client/Program</lable>
+                                    <input class="form-control txt-field" ng-model="client" type="text" placeholder="Cost Center">
+                                </div> -->
+                            </div>
+                                   
+                                <div class="col-md-3">
+                                    <div class="form-group col-md-12">
+                                        <div class=" user-profile-card" style="background-color: transparent!important;"> 
+                                           <div class="middle-div">
+                                               <div class="inner-middle-div">
+                                                   <div class="card-body">
+                                                       <div class="user-info">
+                                                           <div class="user-pic" style="background-image: url({{profileData.profileUrl || 'assets/img/user-demo.png'}})">
+                                                               <span class="edit" data-toggle="modal" data-target="#ProfilePicture" ng-click="toggleButton()"><i class="fas fa-camera"></i></span>
+                                                           </div>
+                                                           <!-- <h3 class="user-name">{{profileData.firstName}} {{profileData.lastName}}</h3>
+                                                           <p><img src="assets/img/telephone.png"> &nbsp;{{Mobile || '--'}}</p> 
+                                                           <p><img src="assets/img/email.png"> &nbsp;{{profileData.emailId || '--'}}</p>  -->
+                                                       </div>
+                                                   </div>
+                                                   
+                                               </div>
+                                           </div>
+                                       </div>
+                                   </div>
+                                </div>
+                            </div>
+
+                              </div>
+                            </div>
+                            
+                           
+                            
+                          </div>                  
+                        <div class="col-sm-12" style="margin-top: 10px;">
+                            <center>
+                                <button type="button" class="button btn-block" ng-click="registerTraveller()">Register Traveler</button>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="col-md-6 col-sm-12">
+                    <div class="sidebar-header">
+                        <h4>Route</h4>
+                    </div>
+                    <div id="directionsList" class="panel panel-primary"></div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="overlay"></div>
+<!-- --------------------Typeahed custom template---------------- -->
+<script type="text/ng-template" id="personTemplate">
+    <a class="LIST_Items dropuser-list">
+        <li style="padding: 10px;">
+            <img class="rounded-circle" src="{{ match.model.profileUrl|| 'assets/img/userGuy.png'}}" alt="UserImage" width="13%">
+            <span class="name">{{match.model.firstName}}&nbsp;{{match.model.lastName}}</span>
+            <span><i class="fas fa-phone"></i> &nbsp;{{match.model.mobilNumber || '--' }}</span>
+        </li>
+    </a>
+</script>
+<script>
+    function isNumber(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            return false;
+        }
+        return true;
+    }
+
+</script>

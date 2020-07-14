@@ -1,0 +1,91 @@
+<style>
+    .header-right {
+        margin-bottom: 20px;
+    }
+
+    .header-right .genric-btn.primary-border {
+        color: #fab700;
+        border: 1px solid #fab700;
+        background: transparent !important;
+    }
+
+    
+    .main-seaction{
+       
+        position: absolute;
+        top: 85px;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        min-height: 500px;
+    }
+      .eyeposition {
+        position: relative;
+        bottom: 45px;
+        float: right;
+        cursor: pointer;
+        z-index: 999;
+    }
+
+</style>
+
+
+<!-- -------------Navbar section-------------------------- -->
+<ng-include src="'assets/pages/navbar.html'"></ng-include>
+<!-- ----------------------------------------------------- -->
+
+<!-- ------------Login Loader------------------------ -->
+<section class="banner-area relative main-seaction" id="home">
+    <div class="overlay overlay-bg"></div>
+    <div id="page-loading" ng-show="loading" class="ng-hide">
+        <div class="loader">
+            <img src="assets/img/giphy.gif" width="100" height="100" style="padding: 0">
+        </div>
+    </div>
+    <div class="container">
+        <div class="row fullscreen d-flex align-items-center justify-content-center">
+            <div class="banner-content col-lg-7 col-md-6 col-sm-12 ">
+                <h6 class="text-white ">the Royal Essence of Journey</h6>
+                <h1 class="text-white text-uppercase">
+                    Relaxed Journey Ever
+                </h1>
+                <p class="pt-20 pb-20 text-white">
+                RV cabs will provide you the best way to travel to your destination whether its city taxi, outstation trips or a car rental.
+                </p>
+                <!--<a href="#" class="primary-btn text-uppercase">Rent Car Now</a>-->
+            </div>
+            <div class="col-lg-5  col-md-6 col-sm-12 header-right">
+                <h4 class="text-white pb-30">Login</h4>
+                <h6 class="text-white pb-30">Flexible timing, its you who decide when you hit the road!</h6>
+                <form autocomplete="off">
+                    <div class="from-group">
+                        <input class="form-control txt-field" ng-model="userName" type="tel" name="tel" placeholder="Mobile  Number">
+                        <input class="form-control txt-field" id="Password" ng-model="password" type="password" name="Password" autocomplete="off"  required="required" placeholder="Password">
+                        <!--<span toggle="#Password" class="fa fa-fw fa-eye field-icon toggle-password eyeposition"></span>-->
+                    </div>
+                     
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-default btn-lg btn-block text-center text-uppercase" ng-click="Login()" ng-disabled="!userName || !password">Login</button>
+                        </div>
+                    </div>
+                    <h6 class="text-white pb-30">Not a member yet? <a href="#Registration-user">Register here</a></h6>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End banner Area -->
+<script>
+// View password eye icon in password field
+	$(".toggle-password").click(function() {
+
+		$(this).toggleClass("fa-eye fa-eye-slash");
+		var input = $($(this).attr("toggle"));
+		if (input.attr("type") == "password") {
+		input.attr("type", "text");
+		} else {
+		input.attr("type", "password");
+		}
+	});
+</script>

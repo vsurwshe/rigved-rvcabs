@@ -1,0 +1,703 @@
+<style>
+    .header-right {
+        margin-bottom: 20px !important;
+        margin-top: 15px !important;
+    }
+
+    .header-right .genric-btn.primary-border {
+        color: #fab700;
+        border: 1px solid #fab700;
+        background: transparent !important;
+    }
+
+    .cal-btn {
+        border-radius: 0px;
+        padding: 7px 1.75rem;
+    }
+
+</style>
+<!-- -------------Navbar section-------------------------- -->
+<ng-include src="'assets/pages/navbar.html'"></ng-include>
+<!-- ----------------------------------------------------- -->
+<section class="banner-area relative" id="home">
+    <div class="overlay overlay-bg"></div>
+    <div class="container">
+        <div class="row fullscreen d-flex align-items-center justify-content-center">
+            <div class="banner-content col-lg-7 col-md-6 ">
+                <h6 class="text-white ">the Royal Essence of Journey</h6>
+                <h1 class="text-white text-uppercase">
+                    Relaxed Journey Ever
+                </h1>
+                <p class="pt-20 pb-20 text-white">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+                <!--<a href="#" class="primary-btn text-uppercase">Rent Car Now</a>-->
+            </div>
+            <div ng-show="Reg_Step == 1" class="col-lg-5  col-md-6 header-right">
+                <h4 class="text-white pb-30">Be Your Own Boss!</h4>
+                <h6 class="text-white pb-30">Flexible timing, its you who decide how much You want to work!</h6>
+                <div class="from-group">
+                    <input class="form-control txt-field" ng-model="firstName" type="text" name="fname" placeholder="First Name" autofocus>
+                    <input class="form-control txt-field" ng-model="lastName" type="text" name="lname" placeholder="Last Name">
+                    <input class="form-control txt-field" ng-model="emailID" type="email" name="email" placeholder="Email Address">
+                    <input class="form-control txt-field" ng-model="MobNumb" type="tel" name="phone" placeholder="Mobile Number(Primary)">
+                    <i data-toggle="collapse" data-target="#demo" class="fa fa-plus pull-right"  style="position: relative;right: 4px;bottom: 40px;"></i>
+                    <p class = "text-warning" style="font-weight: 600;">{{result}}</p>
+                    <input class="form-control txt-field collapse" ng-model="secNum" type="tel" name="secMobile" placeholder="Mobile Number (Secondary)" id="demo">
+                    <input class="form-control txt-field" ng-model="masterNumber" type="tel" name="Mphone" placeholder="Master Mobile Number">
+                    <input class="form-control txt-field" ng-model="Password" type="password" name="pass" placeholder="Password">
+                    <input class="form-control txt-field" ng-model="C_Password" type="password" name="confirm_pass" placeholder="Confirm Password">
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <button type="reset" class="btn btn-default btn-lg btn-block text-center text-uppercase" ng-click="ShowStep(2)" ng-disabled="!firstName || !lastName || !emailID || !MobNumb|| !masterNumber || !Password || !C_Password">Next</button>
+                    </div>
+                </div>
+            </div>
+            <!-- step 2 -->
+            <div ng-show="Reg_Step == 2" class="col-lg-5  col-md-6 header-right">
+                <h4 class="text-white pb-30">Capture Vehicle</h4>
+                <div class="from-group">
+                    <div class="settings_wrap">
+                        <label class="drop_target car">
+				                <div class="image_preview"></div>
+								<!-- <input id="inputFile_car" type="file" ngf-select="uploadFiles($files, $invalidFiles)" accept="image/*" ngf-max-height="1000" ngf-max-size="1MB"/> -->
+                                <input type="file" ng-model="carImage" name="carImage" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" required minnum="1" ng-change="carImgUploading()"  maxlength="16">
+                               
+                                <div class="col-md-8 zero-padding" style="overflow: hidden">
+                                    <p class="text-gray">{{carImage[0].filename}}</p>
+                                </div>
+
+                            </label>
+                        <div class="settings_actions vertical">
+                            <!-- <a data-action="choose_from_uploaded"><i class="fa fa-picture-o"></i> Choose Your Local System</a>
+                            <a class="disabled" data-action="remove_current_image"><i class="fa fa-ban"></i> Remove Current Image</a> -->
+                            <button type="submit" class=" btn btn-outline-warning text-uppercase  text-capitalize" style="font-size: 13px;" ng-click="SubmitCarImage()">Upload <i class="fa fa-taxi" aria-hidden="true"></i></button>
+                                
+                        </div>
+                        <div class="image_details">
+                            <label class="input_line image_title">
+								<input type="text" placeholder="Title"/>
+				            </label>
+                        </div>
+                    </div>
+                    <input class="form-control txt-field" ng-model="Car_Brand" type="text" name="Brand" placeholder="Search Brand" uib-typeahead="CarBrand as CarBrand.name for CarBrand in getCarBrand($viewValue)" typeahead-show-hint="true" typeahead-min-length="0" ng-focus="getCarBrand()">
+                    <input class="form-control txt-field" ng-model="Car_Modal" type="text" name="Modal" placeholder="Search Modal" uib-typeahead="CarModal as CarModal.name for CarModal in getCarModal($viewValue)" typeahead-show-hint="true" typeahead-min-length="0" ng-focus="getCarModal()">
+                    <input class="form-control txt-field" ng-model="Car_Year" type="tel" name="Year" placeholder="Year">
+                    <input class="form-control txt-field" ng-model="Car_Color" type="text" name="Color" placeholder="Search Car Color"  uib-typeahead="CarColor as CarColor.name for CarColor in getCarColor($viewValue)" typeahead-show-hint="true" typeahead-min-length="0" ng-focus="getCarColor()">
+                    <input class="form-control txt-field" ng-model="Car_InteriorColor" type="text" name="Interior_Color" placeholder="Interior Color"  uib-typeahead="CarInterrior as CarInterrior.name for CarInterrior in getCarInterrior($viewValue)" typeahead-show-hint="true" typeahead-min-length="0" ng-focus="getCarBrand()">
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <button type="reset" class="btn btn-default btn-lg btn-block text-center text-uppercase" ng-click="ShowStep(3)" ng-disabled="!Car_Brand.id || !Car_Modal.id">Next</button>
+                        <button type="reset" class="btn genric-btn primary-border radius  btn-lg btn-block text-center text-uppercase" ng-click="ShowStep(1)">Back</button>
+                    </div>
+                </div>
+            </div>
+            <!-- step 3 All Documents List-->
+            <div ng-show="Reg_Step == 3" class="col-lg-5  col-md-6 header-right">
+                <h4 class="text-white pb-30">Upload Documents</h4>
+                <div class="from-group">
+                    <div class="panel-group Acco" id="accordion-cat-1">
+                        <div class="panel panel-default panel-faq">
+                            <div class="panel-heading">
+                                <a data-toggle="collapse" data-parent="#accordion-cat-1" data-target="#faq-cat-1-sub-1">
+                                    <h4 class="panel-title">
+                                        Document 1: Driver Licence
+                                        <span class="pull-right"><i class="fa fa-caret-down"></i></span>
+                                    </h4>
+                                </a>
+                            </div>
+                            <div id="faq-cat-1-sub-1" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul class="panelList">
+                                        <li ng-click="ShowStep(4)"><span class="pull-left text-warning"><i class="fa fa-check-circle"></i></span> 1. Please upload your Driving Licence
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default panel-faq">
+                            <div class="panel-heading">
+                                <a data-toggle="collapse" data-parent="#accordion-cat-1" data-target="#faq-cat-1-sub-4">
+                                    <h4 class="panel-title">
+                                        Document 2: Vehicle Registration
+                                        <span class="pull-right"><i class="glyphicon glyphicon-plus"></i></span>
+                                    </h4>
+                                </a>
+                            </div>
+                            <div id="faq-cat-1-sub-4" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul class="panelList">
+                                        <li ng-click="ShowStep(7)"><span class="pull-left text-warning"><i class="fa fa-check-circle"></i></span> 1. Please upload your Vehicle Documents
+                                        </li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default panel-faq">
+                            <div class="panel-heading">
+                                <a data-toggle="collapse" data-parent="#accordion-cat-1" data-target="#faq-cat-1-sub-2">
+                                    <h4 class="panel-title">
+                                        Document 3: Vehicle Insurance
+                                        <span class="pull-right"><i class="glyphicon glyphicon-plus"></i></span>
+                                    </h4>
+                                </a>
+                            </div>
+                            <div id="faq-cat-1-sub-2" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul class="panelList">
+                                        <li ng-click="ShowStep(5)"><span class="pull-left text-warning"><i class="fa fa-check-circle"></i></span> 1. Please upload your Vehicle Insurance Documents
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default panel-faq">
+                            <div class="panel-heading">
+                                <a data-toggle="collapse" data-parent="#accordion-cat-1" data-target="#faq-cat-1-sub-3">
+                                    <h4 class="panel-title">
+                                        Document 4: Vehicle Permit
+                                        <span class="pull-right"><i class="glyphicon glyphicon-plus"></i></span>
+                                    </h4>
+                                </a>
+                            </div>
+                            <div id="faq-cat-1-sub-3" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul class="panelList">
+                                        <li ng-click="ShowStep(6)"><span class="pull-left text-warning"><i class="fa fa-check-circle"></i></span> 1. Please upload your Vehicle Permit Documents
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default panel-faq">
+                            <div class="panel-heading">
+                                <a data-toggle="collapse" data-parent="#accordion-cat-1" data-target="#faq-cat-1-sub-6">
+                                    <h4 class="panel-title">
+                                        Document 5: PUC Certificate
+                                        <span class="pull-right"><i class="glyphicon glyphicon-plus"></i></span>
+                                    </h4>
+                                </a>
+                            </div>
+                            <div id="faq-cat-1-sub-6" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul class="panelList">
+                                        <li ng-click="ShowStep(9)"><span class="pull-left text-warning"><i class="fa fa-check-circle"></i></span> 1. Please upload your PUC Certificate
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default panel-faq">
+                            <div class="panel-heading">
+                                <a data-toggle="collapse" data-parent="#accordion-cat-1" data-target="#faq-cat-1-sub-5">
+                                    <h4 class="panel-title">
+                                        Document 6: Pan Card
+                                        <span class="pull-right"><i class="glyphicon glyphicon-plus"></i></span>
+                                    </h4>
+                                </a>
+                            </div>
+                            <div id="faq-cat-1-sub-5" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul class="panelList">
+                                        <li ng-click="ShowStep(8)"><span class="pull-left text-warning"><i class="fa fa-check-circle"></i></span> 1. Please upload your Pan Card
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                       
+                        <div class="panel panel-default panel-faq">
+                            <div class="panel-heading">
+                                <a data-toggle="collapse" data-parent="#accordion-cat-1" data-target="#faq-cat-1-sub-7">
+                                    <h4 class="panel-title">
+                                        Document 7: Aadhar card
+                                        <span class="pull-right"><i class="glyphicon glyphicon-plus"></i></span>
+                                    </h4>
+                                </a>
+                            </div>
+                            <div id="faq-cat-1-sub-7" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul class="panelList">
+                                        <li ng-click="ShowStep(10)"><span class="pull-left text-warning"><i class="fa fa-check-circle"></i></span> 1. Please upload your Aadhar Card
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <button type="reset" class="btn btn-default btn-lg btn-block text-center text-uppercase" data-target="#otpModal" data-toggle="modal"  ng-disabled="!uploadDLURL || !uploadInsuURL || !uploadPermitURL || !uploadRegURL">Register Driver</button>
+                        <button type="reset" class="btn genric-btn primary-border radius btn-lg btn-block text-center text-uppercase" ng-click="ShowStep(2)">Back</button>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- step 4 Driving Licence -->
+            <div ng-show="Reg_Step == 4" class="col-lg-5  col-md-6 header-right">
+                <h4 class="text-white pb-30">Upload Driving Licence</h4>
+                <div class="from-group">
+                    <div class="col-md-12">
+                        <div class=" col-md-12 zero-padding">
+                            <div class="col-md-12 zero-padding">
+                                <h5 class="text-white">Front Side</h5>
+                            </div>
+                            <div class="col-md-12 zero-padding">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label class="drop_target docs">
+                                                    <input type="file" ng-model="FrontDL" name="FrontDL" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" required minnum="1" ng-change="Uploading()"  maxlength="16">
+                                                </label>
+                                    </div>
+                                    <div class="col-md-8 zero-padding" style="overflow: hidden">
+                                        <p class="text-white">{{FrontDL[0].filename}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" col-md-12 zero-padding">
+                            <div class="col-md-12 zero-padding">
+                                <h5 class="text-white">Back Side</h5>
+                            </div>
+                            <div class="col-md-12 zero-padding">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label class="drop_target docs">
+                                            <input type="file" ng-model="BackDL" name="BackDL" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" required minnum="1" ng-change="BackDLupload()"  maxlength="16">
+                                        </label>
+                                    </div>
+                                    <div class="col-md-8 zero-padding" style="overflow: hidden">
+                                        <p class="text-white">{{BackDL[0].filename}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <input class="form-control txt-field" type="text" name="Licence_No" ng-model="LicenceNo" placeholder="Driving Licence Number">
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <button type="reset" class="btn btn-default btn-lg btn-block text-center text-uppercase" ng-click="SubmitDL()" ng-disabled="!FrontDL || !BackDL">Upload Licence</button>
+                        <button type="reset" class="btn genric-btn primary-border radius btn-lg btn-block text-center text-uppercase" ng-click="ShowStep(3)">Back</button>
+                    </div>
+                </div>
+            </div>
+            <!-- step 5 Driving Licence -->
+            <div ng-show="Reg_Step == 5" class="col-lg-5  col-md-6 header-right">
+                <h4 class="text-white pb-30">Upload Vehicle Insurance</h4>
+                <div class="from-group">
+                    <div class="col-md-12">
+                        <div class=" col-md-12 zero-padding">
+                            <div class="col-md-12 zero-padding">
+                                <h5 class="text-white">Front Side</h5>
+                            </div>
+                            <div class="col-md-12 zero-padding">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label class="drop_target docs">
+                                            <input type="file" ng-model="FrontInsu" name="FrontInsu" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" required minnum="1" ng-change="FrontUploadInsu()"  maxlength="16">
+                                        </label>
+                                    </div>
+                                    <div class="col-md-8 zero-padding" style="overflow: hidden">
+                                        <p class="text-white">{{FrontInsu[0].filename}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" col-md-12 zero-padding">
+                            <div class="col-md-12 zero-padding">
+                                <h5 class="text-white">Back Side</h5>
+                            </div>
+                            <div class="col-md-12 zero-padding">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label class="drop_target docs">
+                                            <input type="file" ng-model="BackInsu" name="BackInsu" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" required minnum="1" ng-change="BackUploadInsu()"  maxlength="16">
+                                        </label>
+                                    </div>
+                                    <div class="col-md-8 zero-padding" style="overflow: hidden">
+                                        <p class="text-white">{{BackInsu[0].filename}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <input class="form-control txt-field" type="text" name="VehicleInsurance" ng-model="VehicleInsurance" placeholder="Vehicle Insurance">
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <button type="reset" class="btn btn-default btn-lg btn-block text-center text-uppercase" ng-click="SubmitInsu()">Upload Insurance</button>
+                        <button type="reset" class="btn genric-btn primary-border radius btn-lg btn-block text-center text-uppercase" ng-click="ShowStep(3)">Back</button>
+                    </div>
+                </div>
+
+            </div>
+            <!-- step 6 Driving Licence -->
+            <div ng-show="Reg_Step == 6" class="col-lg-5  col-md-6 header-right">
+                <h4 class="text-white pb-30">Upload Vehicle Permit</h4>
+
+                <div class="from-group">
+                    <div class="col-md-12">
+
+                        <div class=" col-md-12 zero-padding">
+                            <div class="col-md-12 zero-padding">
+                                <h5 class="text-white">Front Side</h5>
+                            </div>
+                            <div class="col-md-12 zero-padding">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label class="drop_target docs">
+                                                    <input type="file" ng-model="FrontPermit" name="VehiclePermit" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" required minnum="1" ng-change="FrontPermitupload()"  maxlength="16">
+                                                </label>
+                                    </div>
+                                    <div class="col-md-8 zero-padding" style="overflow: hidden">
+                                        <p class="text-white">{{FrontPermit[0].filename}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" col-md-12 zero-padding">
+                            <div class="col-md-12 zero-padding">
+                                <h5 class="text-white">Back Side</h5>
+                            </div>
+                            <div class="col-md-12 zero-padding">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label class="drop_target docs">
+                                                    <input type="file" ng-model="BackPermit" name="BackPermit" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" required minnum="1" ng-change="BackPermitupload()"  maxlength="16">
+                                                </label>
+                                    </div>
+                                    <div class="col-md-8 zero-padding" style="overflow: hidden">
+                                        <p class="text-white">{{BackPermit[0].filename}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <input class="form-control txt-field" type="text" name="VehiclePermit" ng-model="VehiclePermit" placeholder="Vehicle Permit">
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <button type="reset" class="btn btn-default btn-lg btn-block text-center text-uppercase" ng-click="SubmitVehiclePermit()">Upload Permit</button>
+                        <button type="reset" class="btn genric-btn primary-border radius btn-lg btn-block text-center text-uppercase" ng-click="ShowStep(3)">Back</button>
+                    </div>
+                </div>
+
+            </div>
+            <!-- step 7 Driving Licence -->
+            <div ng-show="Reg_Step == 7" class="col-lg-5  col-md-6 header-right">
+                <h4 class="text-white pb-30">Upload Vehicle Registration</h4>
+
+                <div class="from-group">
+                    <div class="col-md-12">
+                        <div class=" col-md-12 zero-padding">
+                            <div class="col-md-12 zero-padding">
+                                <h5 class="text-white">Front Side</h5>
+                            </div>
+                            <div class="col-md-12 zero-padding">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label class="drop_target docs">
+                                                    <input type="file" ng-model="FrontRegistration" name="FrontRegistration" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" required minnum="1" ng-change="FrontRegistrationUploading()"  maxlength="16">
+                                                </label>
+                                    </div>
+                                    <div class="col-md-8 zero-padding" style="overflow: hidden">
+                                        <p class="text-white">{{FrontRegistration[0].filename}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" col-md-12 zero-padding">
+                            <div class="col-md-12 zero-padding">
+                                <h5 class="text-white">Back Side</h5>
+                            </div>
+                            <div class="col-md-12 zero-padding">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label class="drop_target docs">
+                                                    <input type="file" ng-model="BackRegistration" name="BackRegistration" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" required minnum="1" ng-change="BackRegistrationUploading()"  maxlength="16">
+                                                </label>
+                                    </div>
+                                    <div class="col-md-8 zero-padding" style="overflow: hidden">
+                                        <p class="text-white">{{BackRegistration[0].filename}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <input class="form-control txt-field" type="text" name="VehicleRegistration" ng-model="VehicleRegistration" placeholder="Vehicle Registration">
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-default btn-lg btn-block text-center text-uppercase" ng-click="SubmitVehicleReg()">Upload Registration</button>
+                        <button type="reset" class="btn genric-btn primary-border radius btn-lg btn-block text-center text-uppercase" ng-click="ShowStep(3)">Back</button>
+                    </div>
+                </div>
+
+            </div>
+            <!-- step 8 Driving Licence -->
+            <div ng-show="Reg_Step == 8" class="col-lg-5  col-md-6 header-right">
+                <h4 class="text-white pb-30">Upload Pan Card</h4>
+
+                <div class="from-group">
+                    <div class="col-md-12">
+
+                        <div class=" col-md-12 zero-padding">
+                            <div class="col-md-12 zero-padding">
+                                <h5 class="text-white">Front Side</h5>
+                            </div>
+                            <div class="col-md-12 zero-padding">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label class="drop_target docs">
+                                                    <input type="file" ng-model="FrontPanCard" name="FrontPanCard" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" required minnum="1" ng-change="FrontPanCardUploading()"  maxlength="16">
+                                                </label>
+                                    </div>
+                                    <div class="col-md-8 zero-padding" style="overflow: hidden">
+                                        <p class="text-white">{{FrontPanCard[0].filename}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class=" col-md-12 zero-padding">
+                            <div class="col-md-12 zero-padding">
+                                <h5 class="text-white">Back Side</h5>
+                            </div>
+                            <div class="col-md-12 zero-padding">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label class="drop_target docs">
+                                                    <input type="file" ng-model="BackPanCard" name="BackPanCard" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" required minnum="1" ng-change="BackPanCardUploading()"  maxlength="16">
+                                                </label>
+                                    </div>
+                                    <div class="col-md-8 zero-padding" style="overflow: hidden">
+                                        <p class="text-white">{{BackPanCard[0].filename}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+
+
+                    </div>
+                    <input class="form-control txt-field" type="text" name="PanCard" ng-model="PanCard" placeholder="Pan Card Number">
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-default btn-lg btn-block text-center text-uppercase" ng-click="SubmitPanCard()">Upload Licence</button>
+                        <button type="reset" class="btn genric-btn primary-border radius btn-lg btn-block text-center text-uppercase" ng-click="ShowStep(3)">Back</button>
+                    </div>
+                </div>
+
+            </div>
+            <div ng-show="Reg_Step == 9" class="col-lg-5  col-md-6 header-right">
+                <h4 class="text-white pb-30">Upload PUC Certificate</h4>
+
+                <div class="from-group">
+                    <div class="col-md-12">
+
+                        <div class=" col-md-12 zero-padding">
+                            <div class="col-md-12 zero-padding">
+                                <h5 class="text-white">Front Side</h5>
+                            </div>
+                            <div class="col-md-12 zero-padding">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label class="drop_target docs">
+                                                    <input type="file" ng-model="FrontPuc" name="FrontPuc" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" required minnum="1" ng-change="FrontPucCardUploading()"  maxlength="16">
+                                                </label>
+                                    </div>
+                                    <div class="col-md-8 zero-padding" style="overflow: hidden">
+                                        <p class="text-white">{{FrontPucCard[0].filename}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class=" col-md-12 zero-padding">
+                            <div class="col-md-12 zero-padding">
+                                <h5 class="text-white">Back Side</h5>
+                            </div>
+                            <div class="col-md-12 zero-padding">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label class="drop_target docs">
+                                                    <input type="file" ng-model="BackPuc" name="BackPuc" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" required minnum="1" ng-change="BackPucUploading()"  maxlength="16">
+                                                </label>
+                                    </div>
+                                    <div class="col-md-8 zero-padding" style="overflow: hidden">
+                                        <p class="text-white">{{BackPuc[0].filename}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                        
+
+                    </div>
+                    <input class="form-control txt-field" type="text" name="PucCard" ng-model="PucCard" placeholder="PUC Certificate Number">
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-default btn-lg btn-block text-center text-uppercase" ng-click="SubmitPucCard()">Upload Licence</button>
+                        <button type="reset" class="btn genric-btn primary-border radius btn-lg btn-block text-center text-uppercase" ng-click="ShowStep(3)">Back</button>
+                    </div>
+                </div>
+
+            </div>
+            <div ng-show="Reg_Step == 10" class="col-lg-5  col-md-6 header-right">
+                <h4 class="text-white pb-30">Upload Aadhar Card</h4>
+
+                <div class="from-group">
+                    <div class="col-md-12">
+
+                        <div class=" col-md-12 zero-padding">
+                            <div class="col-md-12 zero-padding">
+                                <h5 class="text-white">Front Side</h5>
+                            </div>
+                            <div class="col-md-12 zero-padding">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label class="drop_target docs">
+                                                    <input type="file" ng-model="FrontAadhar" name="FrontAadhar" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" required minnum="1" ng-change="FrontAadharUploading()"  maxlength="16">
+                                                </label>
+                                    </div>
+                                    <div class="col-md-8 zero-padding" style="overflow: hidden">
+                                        <p class="text-white">{{FrontAadhar[0].filename}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" col-md-12 zero-padding">
+                            <div class="col-md-12 zero-padding">
+                                <h5 class="text-white">Back Side</h5>
+                            </div>
+                            <div class="col-md-12 zero-padding">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label class="drop_target docs">
+                                                    <input type="file" ng-model="BackAadhar" name="BackAadhar" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" required minnum="1" ng-change="BackAadharUploading()"  maxlength="16">
+                                                </label>
+                                    </div>
+                                    <div class="col-md-8 zero-padding" style="overflow: hidden">
+                                        <p class="text-white">{{BackAadhar[0].filename}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <input class="form-control txt-field" type="text" name="AadharCard" ng-model="AadharCard" placeholder="Aadhar Card Number">
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-default btn-lg btn-block text-center text-uppercase" ng-click="SubmitAadharCard()">Upload Licence</button>
+                        <button type="reset" class="btn genric-btn primary-border radius btn-lg btn-block text-center text-uppercase" ng-click="ShowStep(3)">Back</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="otpModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                   <!-- Modal content-->
+                   <div class="modal-content">
+                      <div class="modal-header" style="display: block;">
+                         <button type="button" class="close" data-dismiss="modal">&times;</button>
+                         <h4 class="modal-title">Select Document</h4>
+                      </div>
+                      <div class="modal-body">
+                            <div class="from-group">
+                                    <div class="col-md-12">
+                
+                                        <div class=" col-md-12 zero-padding">
+                                            <div class="col-md-12 zero-padding">
+                                                <h5 class="text-gray">Verify OTP</h5>
+                                            </div>
+                                            <div class="col-md-12 zero-padding">
+                                                <div class="row">
+                                                    <div class="form-group">
+                                                        <div class="col-md-12 col-sm-12 col-xs-12 mt-2">
+                                                            <input class="form-control txt-field" type="text" name="MobNumb" ng-model="MobNumb" placeholder="Enter mobile Number" maxlength="6">
+                            
+                                                            </div>
+                                                    </div>
+                                                 
+                                                    <div class="form-group">
+                                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                                            <button type="submit" class="btn btn-default btn-warning  text-center text-uppercase text-white" ng-show="!showOTP" ng-click="sendOtp()" ng-disabled="!MobNumb">Send OTP</button>
+                                                        </div>
+                                                    </div>
+                                                        <div ng-show ="showOTP">
+                                                            <div class="form-group" >
+                                                                <div class="col-md-12 col-sm-12 col-xs-12 mt-2">
+                                                               <input type="text" class="form-control txt-field"  ng-model = "sendotp" placeholder="Enter OTP"  autocomplete="off" required>
+                                                            </div>
+                                                            </div>
+                                                            <div class="form-group row ml-0 mt-2">
+                                                                <div class="col-md-12">
+                                                                <!-- <button type="reset" class="btn btn-default btn-lg btn-block text-center text-uppercase" ng-click="RegisterDriver()" ng-disabled="!uploadDLURL || !uploadInsuURL || !uploadPermitURL || !uploadRegURL || !uploadPanURL">Register Driver</button> -->
+                                                                    <button type="submit" class="btn btn-secondary text-capitalize" ng-click="RegisterDriver()" ng-disabled="!sendotp">Submit <i class="fa fa-arrow-up"></i></button>
+
+                                                                    
+                                                                    <!-- <button type="reset" class="btn genric-btn primary-border radius btn-lg btn-block text-center text-uppercase" ng-click="ShowStep(3)">Back</button> -->
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                       
+                                                        <!-- <div class="countdown">
+                                                            {{counter}}
+                                                        </div> -->
+                                                        
+                    
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div id="some_div" class="text-danger" style="font-weight: 600;">
+                                                    </div>
+                                                    <div class="row">
+                                                        <h6>Didn't Receive OTP ?? &nbsp;&nbsp;&nbsp;</h6>
+                                                    <a ng-click="resendOtp()" id="demoText" class="text-warning" style="font-weight: 600;margin-top:-4px;"></a>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                
+                                    </div>
+                                   
+                                </div>
+                                
+                                
+                                
+                       
+                   </div>
+                   <div class="modal-footer">
+                       <button type="button" class="btn btn-outline-danger" data-dismiss="modal" style="float: right;">Close <i class="fa fa-times"></i></button>
+                   </div>
+                </div>
+             </div>
+    </div>
+
+    </div>
+    </div>
+</section>
+
+<ng-include src="'assets/pages/footer.html'"></ng-include>
+
+
+
+<!-- End banner Area -->
+<!-- <script>
+$(document).ready(function() {
+  $("#formButton").click(function() {
+    $("#form1").toggle();
+  });
+});
+</script> -->

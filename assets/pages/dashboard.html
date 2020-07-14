@@ -1,0 +1,211 @@
+<style>
+    .angular-google-map-container {
+        height: 520px;
+        margin-bottom: 15px;
+    }
+
+    .panel-primary {
+        padding: 15px;
+    }
+
+
+
+
+    #description {
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+    }
+
+    #infowindow-content .title {
+        font-weight: bold;
+    }
+
+    #infowindow-content {
+        display: none;
+    }
+
+    #map #infowindow-content {
+        display: inline;
+    }
+
+    .pac-card {
+        margin: 10px 10px 0 0;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        background-color: #fff;
+        font-family: Roboto;
+    }
+
+    #pac-container {
+        padding-bottom: 12px;
+        margin-right: 12px;
+    }
+
+    .pac-controls {
+        display: inline-block;
+        padding: 5px 11px;
+    }
+
+    .pac-controls label {
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 300;
+    }
+
+    #pac-input {
+        background-color: #fff;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        margin-left: 12px;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 400px;
+    }
+
+    #pac-input:focus {
+        border-color: #4d90fe;
+    }
+
+    #title {
+        color: #fff;
+        background-color: #4d90fe;
+        font-size: 25px;
+        font-weight: 500;
+        padding: 6px 12px;
+    }
+
+    #target {
+        width: 345px;
+    }
+
+    #map {
+        height: 400px;
+    }
+
+
+    #sidebar {
+        background: #efefefd1;
+        color: #fff;
+    }
+
+    #sidebar .sidebar-header {
+        padding: 8px 15px !important;
+        background: #fab701 !important;
+    }
+
+    #sidebar .sidebar-header h4 {
+        color: #fff !important
+    }
+
+    #sidebar.active {
+        margin-left: -392px;
+    }
+
+    #sidebarCollapse {
+        position: absolute;
+        bottom: 370px;
+        left: 10px;
+        z-index: 996;
+        background: #42423e;
+        border: none;
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
+        border-radius: 0px;
+    }
+
+</style>
+<!--  <div class="panel panel-default">
+		<div class="panel-body">
+		 
+		  <form class="form-horizontal" role="form">
+			<div class="form-group">
+			  <label for="origin" class="col-sm-2 control-label">Origin</label>
+			  <div class="col-sm-8">
+				<input type="text" id="origin" class="form-control" ng-model="directions.origin" />
+			  </div>
+			</div>
+			<div class="form-group">
+			  <label for="destination" class="col-sm-2 control-label">Destination</label>
+			  <div class="col-sm-8">
+				<input type="text" id="destination" class="form-control" ng-model="directions.destination" />
+			  </div>
+			</div>
+			<div class="form-group">
+			  <div class="col-sm-offset-2 col-sm-8">
+				<button class="btn btn-primary" ng-click="getDirections()">Get Directions</button>
+			  </div>
+			</div>
+		  </form> 
+		  
+		  <div id="directionsList" ng-show="directions.showList" class="panel panel-primary"></div> 
+		</div>
+	  </div> -->
+
+<header id="header" id="home">
+    <ng-include src="'assets/pages/dashboardNavbar.html'"></ng-include>
+</header>
+
+<!-- Sidebar -->
+<ng-include src="'assets/pages/sidebar.html'"></ng-include>
+<div class="container wrap_container">
+    <div class="col-md-12 header-board">
+        <h3>Book Your Cab</h3>
+    </div>
+
+    <div id="map" style="display: none"></div>
+    <!-- start banner Area -->
+    <section class="banner-area relative wrapper" id="home">
+        <!-- sidebar -->
+        <nav id="sidebar" class="active" ng-show="directions.showList">
+            <div class="sidebar-header">
+                <h4>Route</h4>
+            </div>
+            <div id="directionsList" class="panel panel-primary"></div>
+        </nav>
+        <div class="overlay overlay-bg">
+            <div ng-show="ShowMap" class="banner-content col-lg-12 col-md-12 MapBOX" style="padding: 0">
+                <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                Route<img src="assets/img/map.png">
+                </button>
+                <google-map control="map.control" center="map.center" zoom="map.zoom" option="map.options" draggable="true">
+                    <marker coords="marker.center"></marker>
+                </google-map>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row fullscreen d-flex align-items-center justify-content-center">
+                <div ng-hide="ShowMap" class="banner-content col-lg-7 col-md-6 ">
+                    <h6 class="text-white ">the Royal Essence of Journey</h6>
+                    <h1 class="text-white text-uppercase">
+                        Relaxed Journey Ever
+                    </h1>
+                    <p class="pt-20 pb-20 text-white">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </p>
+                    <!--<a href="#" class="primary-btn text-uppercase">Get Your Cab Now</a>-->
+                </div>
+                <div ng-show="ShowMap" class="banner-content col-lg-7 col-md-6 "></div>
+
+                <div class="col-lg-5  col-md-6 header-right">
+                    <h4 class="text-white pb-30">Book Your Cab Today!</h4>
+                    <form class="form" role="form">
+                        <div class="from-group">
+                            <input id="origin-input" class="form-control txt-field" type="text" name="src" placeholder="Source" ng-selected="setSrc(directions.origin)" ng-model="directions.origin" autocomplete="off">
+                            <input id="destination-input" class="form-control txt-field" type="text" name="dst" placeholder="Destination" ng-model="directions.destination" autocomplete="off">
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <button class="btn btn-default btn-lg btn-block text-center text-uppercase" ng-click="getDirections()">Next</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End banner Area -->
+</div>
