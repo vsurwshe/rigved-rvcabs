@@ -14,7 +14,7 @@ app.constant('DotsCons', {
     'GET_COST_CENTER': ip+'masterdata/costCenterSearch/',
     'GET_TRAVEL_ID': ip +'masterdata/travelIdSearch',
     'GET_EMPLOYEE_ID': ip +'masterdata/costEmployIdSearch',
-    'SEARCH_MODEL': ip + 'masterdata/carBrandSubTypeSearch/0/',
+    'SEARCH_MODEL': ip + 'masterdata/carBrandSubTypeSearch/',
     'SEARCH_BRAND': ip + 'masterdata/carBrandSearch/',
     'SUB_TYPE': ip + 'masterdata/carCategorySearch/',
     'SEARCH_INTERRIOR': ip + 'masterdata/carIntColorSearch/',
@@ -36,6 +36,8 @@ app.constant('DotsCons', {
     'CUSTEMER_LIST':ip+'masterdata/costomerSearch',
     'VENDOR_LIST' :ip + 'masterdata/companyDetailsSearch',
     'TRAVELLER_REGISTRATION' : ip+"file/userSignup",
+    'ADD_CLIENT':ip+'masterdata/addCustomer',
+    'GET_CLIENT_LIST':ip+ 'masterdata/costomerSearch',
     //'APPROVE_MEMBER_LIST': ip + 'userInfo/driverApproveList',
     'ACCPET_RIDE':ip + 'booking/bookingNotificationResponse',
     'RE_ASSIGN_RIDE' :ip +"booking/allotingDriver/",
@@ -313,7 +315,7 @@ app.config(['$routeProvider', function ($routeProvider) {
                     var token = authService.getCookie('globals');
                     return $http({
                         method: 'get',
-                        url: DotsCons.VENDOR_LIST+"/0/10/",
+                        url: DotsCons.VENDOR_LIST+"/0/20/",
                         data: "",
                         headers: {
                             'Content-Type': 'application/json',
@@ -335,16 +337,42 @@ app.config(['$routeProvider', function ($routeProvider) {
             controller: addvendorCtrl
         })
         .when('/manageClient', {
-            templateUrl: 'assets/pages/manageClient.html'
+            templateUrl: 'assets/pages/manageClient.html',
+            controller : manageClientCtrl,
+            resolve: {
+                GET_CLIENT_DATA: function (authService, DotsCons, $http) {
+                    var token = authService.getCookie('globals');
+                    return $http({
+                        method: 'get',
+                        url: DotsCons.GET_CLIENT_LIST+"/0/20/",
+                        data: "",
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': token.currentUser.tokenDto.token
+                        }
+                    }).then(function (response) {
+                        return response.data;
+                    },
+                        function (errResponse) {
+                            console.error('Error !!');
+                            return $q.reject(errResponse);
+                        })
+                    
+                },
+            
+            }
         }).when('/addClient', {
-            templateUrl: 'assets/pages/addClient.html'
+            templateUrl: 'assets/pages/addClient.html',
+            controller : addClientController,
         })
         .when('/profile', {
             templateUrl: 'assets/pages/profile.html',
             controller :profileCtrl
         })
         
-
+        .when('/help',{
+            templateUrl:'assets/pages/help.html'
+        })
       
    
         .when("/logout", {
@@ -353,6 +381,8 @@ app.config(['$routeProvider', function ($routeProvider) {
 
         }).when("/terms", {
             templateUrl: 'assets/pages/terms.html'
+        }).when("/support", {
+            templateUrl: 'assets/pages/support.html'
         })
       
         .otherwise({
@@ -511,6 +541,7 @@ app.controller("DashNavBarCtrl", function ($scope, $http, authService, $location
                 break;
             case '/addClient':
                 $scope.Route = "Add Client";
+
             break;
             case '/travelBilling':
             $scope.Route = "Travel Billing";

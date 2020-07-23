@@ -315,13 +315,10 @@
                                     data-parent="#accordion">
                                     <div class="card-body row">
                                         <div class="from-group  col-sm-4">
-                                            <lable for="">Cost Center</lable>
+                                            <lable for="">Cost Center<span class="mendatory">*</span></lable>
                                             <input class="form-control txt-field " placeholder="Enter Cost Center"
                                             ng-model="costCenter"
-                                            
-                                            uib-typeahead="company as company.name for company in getCostCenter($viewValue)"
-                                            typeahead-loading="loadingLocations" typeahead-no-results="noResults"
-                                            class="form-control" typeahead-show-hint="false" typeahead-min-length="0" ng-focus = "getCostCenter()">
+                                           >
                                         <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
                                         <div ng-show="noResults">
                                             <i class="glyphicon glyphicon-remove"></i> No Results Found
@@ -341,18 +338,15 @@
                                             </div>
                                         </div>
                                         <div class="from-group  col-sm-4">
-                                            <lable for="">GST Number</lable>
+                                            <lable for="">GST Number<span class="mendatory">*</span></lable>
                                             <input class="form-control txt-field" ng-model="gstNum" type="text"
                                                 placeholder="GST Number">
                                         </div>
                                         <div class="from-group  col-sm-4">
-                                            <lable for="">Travel Id<span class="mendatory"></span></lable>
+                                            <lable for="">Travel Id<span class="mendatory">*</span></lable>
                                             <input class="form-control txt-field " placeholder="Enter Company Name"
                                             ng-model="travel_Id"
-                                           
-                                            uib-typeahead="company as company.name for company in getTravelId($viewValue)"
-                                            typeahead-loading="loadingLocations" typeahead-no-results="noResults"
-                                            class="form-control" typeahead-show-hint="false" typeahead-min-length="0" ng-focus = "getTravelId()">
+                                           >
                                         <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
                                         <div ng-show="noResults">
                                             <i class="glyphicon glyphicon-remove"></i> No Results Found
@@ -365,7 +359,7 @@
 
                                         </div>
                                         <div class="from-group  col-sm-4">
-                                            <lable for="">Email-Id<span class="mendatory"></span></lable>
+                                            <lable for="">Email-Id<span class="mendatory">*</span></lable>
                                             <input class="form-control txt-field" ng-model="Book_email" type="text"
                                                 name="Book_email" placeholder="Email Id">
                                         </div>
@@ -414,7 +408,7 @@
                                  
 
                                         <div class="from-group  col-sm-4">
-                                            <lable for="">From Date Of Travel</lable>
+                                            <lable for="">From Date Of Travel<span class="mendatory">*</span></lable>
                                             <p class="input-group">
 
                                                 <input type="text" class="form-control"
@@ -426,7 +420,7 @@
                                             </p>
                                         </div>
                                         <div class="from-group  col-sm-4">
-                                            <lable for="">To Date Of Travel</lable>
+                                            <lable for="">To Date Of Travel<span class="mendatory">*</span></lable>
                                             <p class="input-group">
                                                 <input type="text" class="form-control"
                                                     uib-datepicker-popup="{{format}}" ng-click="open2()"
@@ -438,42 +432,42 @@
                                         </div>
 
                                         <div class="from-group  col-sm-4">
-                                            <lable for="">Pick-Up Time </lable>
+                                            <lable for="">Pick-Up Time<span class="mendatory">*</span></lable>
                                             <input class="form-control txt-field" type="text" ng-model = "picktime" id="timepicker"/>
                                         </div>
                                         <div class="from-group  col-sm-4">
-                                            <lable for="">Pick-Up City</lable>
+                                            <lable for="">Pick-Up City<span class="mendatory">*</span></lable>
                                             <input class="form-control txt-field" ng-model="fromCity" type="text"
                                                 placeholder="Pick Up From City">
                                         </div>
 
                                         <div class="from-group  col-sm-4">
-                                            <lable for="">Pick-Up Location</lable>
+                                            <lable for="">Pick-Up Location<span class="mendatory">*</span></lable>
                                             <input class="form-control txt-field" ng-model="pickUpLocation" type="text"
                                                 placeholder="Pick Up Location">
                                         </div>
                                         <div class="from-group  col-sm-4">
-                                            <lable for="">Pick-Up Address</lable>
+                                            <lable for="">Pick-Up Address<span class="mendatory">*</span></lable>
                                             <input class="form-control txt-field" ng-model="repAdd" type="text"
                                                 placeholder="Reporting Address">
                                         </div>
                                         <div class="from-group  col-sm-4">
-                                            <lable for="">Release Time</lable>
+                                            <lable for="">Release Time<span class="mendatory">*</span></lable>
                                             <input class="form-control txt-field" type="text" ng-model = "releasetime" id="timepicker1"/>o
                                         </div>
                                         <div class="from-group  col-sm-4">
-                                            <lable for="">Release Location</lable>
+                                            <lable for="">Release Location<span class="mendatory">*</span></lable>
                                             <input class="form-control txt-field" ng-model="dropLocation" type="text"
                                                 placeholder="Drop Location">
                                         </div>
 
                                         <div class="from-group  col-sm-4">
-                                            <lable for="">Release Address</lable>
+                                            <lable for="">Release Address<span class="mendatory">*</span></lable>
                                             <input class="form-control txt-field" ng-model="relAdd" type="text"
                                                 placeholder="Release Address">
                                         </div>
                                         <div class="form-group col-sm-4">
-                                            <label for="exampleFormControlSelect1">Car Hire</label>
+                                            <label for="exampleFormControlSelect1">Car Hire<span class="mendatory">*</span></label>
                                             <select class="form-control txt-field" id="exampleFormControlSelect1"
                                                 ng-model=carHire>
                                                 <option>One Way</option>
@@ -481,7 +475,7 @@
                                             </select>
                                         </div>
                                         <div class="form-group  col-sm-4">
-                                            <lable for="">For Use</lable>
+                                            <lable for="">For Use<span class="mendatory">*</span></lable>
                                             <input class="form-control txt-field " placeholder="Enter For Use"
                                                 ng-model="forUse"
                                                 uib-typeahead="company as company.name for company in getForUse($viewValue)"
@@ -515,22 +509,22 @@
                                     data-parent="#accordion">
                                     <div class="card-body row">
                                         <div class="from-group  col-sm-6">
-                                            <lable for="">Traveler's Mobile Number</lable>
+                                            <lable for="">Traveler's Mobile Number<span class="mendatory">*</span></lable>
                                             <input class="form-control txt-field" ng-model="travelerMobNum" type="text"
-                                                placeholder="Traveler's Mobile Number">
+                                                placeholder="Traveler's Mobile Number" maxlength="10">
                                         </div>
                                         <div class="from-group  col-sm-6">
-                                            <lable for="">Employee Id</lable>
+                                            <lable for="">Employee Id<span class="mendatory">*</span></lable>
                                             <input class="form-control txt-field" ng-model="empId" type="text"
                                                 placeholder="Employee Id">
                                         </div>
                                         <div class="from-group  col-sm-6">
-                                            <lable for="">Traveler First Name</lable>
+                                            <lable for="">Traveler First Name<span class="mendatory">*</span></lable>
                                             <input class="form-control txt-field" ng-model="fname" type="text"
                                                 placeholder="Traveler First Name">
                                         </div>
                                         <div class="from-group  col-sm-6">
-                                            <lable for="">Traveler Last Name</lable>
+                                            <lable for="">Traveler Last Name<span class="mendatory">*</span></lable>
                                             <input class="form-control txt-field" ng-model="lname" type="text"
                                                 placeholder="Traveler Last Name">
                                         </div>
@@ -570,7 +564,7 @@
                                             </ul>
                                         </div>
                                         <div class="from-group  col-sm-6" style="position: absolute;" ng-show="!online">
-                                            <lable for="">Select a Driver</lable>
+                                            <lable for="">Select a Driver<span class="mendatory">*</span></lable>
                                             <input class="form-control txt-field " placeholder="Enter For Use"
                                             ng-model="driver"
                                             uib-typeahead="company as company.name for company in getDriverList($viewValue)"
@@ -634,8 +628,7 @@
                         </div>
                         <div class="col-sm-12" style="margin-top: 10px;">
                             <center>
-                                <button type="button" class="button btn-block" ng-click="tripBooking()">Assign
-                                    Ride</button>
+                                <button type="button" class="button btn-block" ng-click="tripBooking()">Assign Ride</button>
                             </center>
                         </div>
                     </div>

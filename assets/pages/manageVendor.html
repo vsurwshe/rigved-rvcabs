@@ -324,6 +324,7 @@
                 <thead>
                     <tr>
                         <th scope="col">Vendor Name</th>
+                        <th scope="col"> Contact Person</th>
                         <th scope="col">Mobile Number</th>
                         <th scope="col">GST </th>
                         <th scope="col">Action</th>
@@ -332,7 +333,8 @@
                 <tbody>
                     <tr  ng-repeat = "data in vendorList">
                         <td >{{data.companyName}}</td>
-                        <td></td>
+                        <td>{{data.contactPersonDtoList[0].firstName}}</td>
+                        <td>{{data.contactPersonDtoList[0].mobileNumber}}</td>
                         <td >{{data.gstnumber}}</td>
                         <!-- <td data-table-header="Email">test@gmail.com</td> -->
                         <!-- <td data-table-header="Car Brand/Model">{{record.carDetailDtos[0].type.name}}/{{record.carDetailDtos[0].subType.name}}</td> -->

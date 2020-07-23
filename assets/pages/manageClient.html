@@ -325,21 +325,19 @@
                     <tr>
                         <th scope="col">Client Name</th>
                         <th scope="col">Mobile Number</th>
-                        <!-- <th scope="col">Date</th> -->
+                        <th scope="col">Email</th>
                         <th scope="col">Action</th>
+                    </tr>
+                    <tr ng-repeat = "client in client_list">
+                        <td>{{client.firstName}}&nbsp;{{client.lastName}}</td>
+                        <td>{{client.mobileNumber}}</td>
+                        <td>{{client.emailId}}</td>
+                        <td></td>
+
                     </tr>
                 </thead>
                 <tbody>
-                    <tr >
-                        <td data-table-header="Name">Test</td>
-                        <td data-table-header="Mobile Number">9999999999</td>
-                        <!-- <td data-table-header="Email">test@gmail.com</td> -->
-                        <!-- <td data-table-header="Car Brand/Model">{{record.carDetailDtos[0].type.name}}/{{record.carDetailDtos[0].subType.name}}</td> -->
-                        <td data-table-header="Action">
-                            <button type="button" class="button-small" ng-click="showDriverDetails(record)" uib-tooltip='more info' data-toggle="modal" data-target="#editModal"><i class="fa fa-search-minus" aria-hidden="true"></i></button>
-                            <button type="button" class="button-small" data-toggle="modal" data-target="#editModal" uib-tooltip='Edit Trip'><i class="fas fa-edit"></i></button>
-                        </td>
-                    </tr>
+                    
                     <tr ng-show="NoDriverList">
                         <td colspan="5">
                             <center><img class="imgIco" src="assets/img/fuel.png" />

@@ -157,20 +157,77 @@ $scope.loading = true;
                 mode: "dark",
             })
             $location.path('/customerList')
-        } else {
+        } 
+    },
+        function (errResponse) {
+            console.error('Error !!');
+            $scope.loading = false;
             $.iaoAlert({
                 msg: "Somthing went wrong...Try agian!",
                 type: "error",
                 mode: "dark",
             })
-        }
-
-    },
-        function (errResponse) {
-            console.error('Error !!');
             return $q.reject(errResponse);
         })
   }
+}
+function addClientController(authService, $location, $scope, $http, DotsCons){
+    var token = authService.getCookie('globals');
+
+
+  $scope.addClient = function(){
+      $scope.loading = true
+    var reqBody = {
+        "countryCode": "IN",
+        "name": $scope.Book_cname,
+        "emailId": $scope.emailId,
+        "mobileNumber": $scope.mobileNum,
+        "contactPerson": $scope.contactPerson,
+        "gstNum": $scope.gstNum,
+        "address": $scope.address,
+        "area": $scope.area,
+        "city": $scope.vendor_city,
+        "state": $scope.vendor_state,
+        "pincode": $scope.pincode,
+        "active": true
+        }
+        
+    $http({
+        method: 'post',
+        url: DotsCons.ADD_CLIENT,
+        data: reqBody,
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': token.currentUser.tokenDto.token
+        }
+    }).then(function (response) {
+        console.log(response)
+        if (response.status == '200') {
+            $scope.loading = false;
+            $.iaoAlert({
+                msg: "Client Registered Successfully ..!",
+                type: "success",
+                mode: "dark",
+            })
+            $location.path('/manageClient')
+        } 
+    },
+        function (errResponse) {
+            console.error('Error !!');
+            $scope.loading = false;
+            $.iaoAlert({
+                msg: "Somthing went wrong...Try agian!",
+                type: "error",
+                mode: "dark",
+            })
+            return $q.reject(errResponse);
+        })
+  }
+}
+function manageClientCtrl(authService, $location, $scope, $http, DotsCons,GET_CLIENT_DATA){
+    if(GET_CLIENT_DATA != null){
+        $scope.client_list = GET_CLIENT_DATA;
+    }
 }
 
 
@@ -562,7 +619,7 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
             "sysCarMasterDto": {
                 "id": $scope.carBrand.id,
             },
-            "travelId": $scope.travel_Id.name,
+            "travelId": $scope.travel_Id,
             "traveldeskEmailId": $scope.Book_email,
             "traveldeskname": $scope.Book_req,
             "travelerDetailDto": {
@@ -642,8 +699,11 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
             $location.path('/managetrip')
         },
             function (errResponse) {
-                console.error('Error !!');
-                return $q.reject(errResponse);
+                $.iaoAlert({
+                    msg: "Trip Booked Successfully ..!",
+                    type: "success",
+                    mode: "dark",
+                })
             })
 
     }
@@ -725,7 +785,7 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
         }
         return $http({
             method: 'GET',
-            url: DotsCons.SEARCH_MODEL+0+'/10/'+val,
+            url: DotsCons.SEARCH_MODEL+0+"/"+$scope.carBrandSubType.id,
             data: "",
             headers: {
                 'Content-Type': 'application/json',
@@ -830,7 +890,7 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
         }   
     }
     $scope.Uploading = function () {
-      
+      $scope.loading = true;
        
         $scope.sizeIsmore = false;
         if ($scope.dffiles.length != 0) {
@@ -878,6 +938,12 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
                             'Authorization': token.currentUser.tokenDto.token
                         }
                     }).then(function (response) {
+                        $scope.loading = false;
+                        $.iaoAlert({
+                            msg: "File Uploaded Successfully ..!",
+                            type: "success",
+                            mode: "dark",
+                        })
                         console.log(response.data);
                     },
                         function (errResponse) {
@@ -897,7 +963,7 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
     }
     $scope.UploadingBack= function () {
       
-       
+        $scope.loading = true;
         $scope.sizeIsmore = false;
         if ($scope.dbfiles.length != 0) {
             var uploadedFiles = [];
@@ -945,6 +1011,12 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
                         }
                     }).then(function (response) {
                         console.log(response.data);
+                        $scope.loading = false;
+                        $.iaoAlert({
+                            msg: "File Uploaded Successfully ..!",
+                            type: "success",
+                            mode: "dark",
+                        })
                     },
                         function (errResponse) {
                             console.error('Error !!');
@@ -1780,17 +1852,17 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
                     mode: "dark",
                 })
                 $location.path('/')
-            } else {
+            } 
+
+        },
+            function (errResponse) {
+                console.error('Error !!');
+                $scope.loading = false;
                 $.iaoAlert({
                     msg: "Somthing went wrong...Try agian!",
                     type: "error",
                     mode: "dark",
                 })
-            }
-
-        },
-            function (errResponse) {
-                console.error('Error !!');
                 return $q.reject(errResponse);
             })
 
@@ -2050,6 +2122,8 @@ $scope.acceptRide = function(data){
   
 }
 $scope.reAssignRide = function(data){
+
+    if($scope.driver != null || $scope.driver != undefined){
     $scope.loading = true;
     $http({
         method: 'GET',
@@ -2072,10 +2146,19 @@ $scope.reAssignRide = function(data){
         }
     },
         function (errResponse) {
+            $scope.loading = false;
+            $.iaoAlert({
+                msg: "Unable to Re assign Trip...please try again..!",
+                type: "error",
+                mode: "dark",
+            })
+            $("#exampleModal1").modal("hide")
             console.error('Error !!');
             return $q.reject(errResponse);
         })
-  
+    }else{
+        alert("please select a Driver")
+    }
 }
 
   
@@ -2532,15 +2615,32 @@ $scope.reAssignRide = function(data){
     // }
 
 }
-function addvendorCtrl($scope, $http, DotsCons, authService, $localStorage, $q, toaster) {
+function addvendorCtrl($scope, $http, DotsCons, authService, $localStorage, $q,$location, toaster) {
     var token = authService.getCookie('globals');
     $scope.addVendor = function () {
+        $scope.loading = true;
         var postData = {
-            "companyName": $scope.Book_cname,
-            "costCenter": $scope.vendor_city,
-            "emailId": $scope.emailId,
-            "gstnumber": $scope.gstNum,
-            "traveldeskname": $scope.contactPerson
+            // "companyName": $scope.Book_cname,
+            // "costCenter": $scope.vendor_city,
+            // "emailId": $scope.emailId,
+            // "gstnumber": $scope.gstNum,
+            // "traveldeskname": $scope.contactPerson
+            
+                "companyName": $scope.Book_cname,
+                "address":"",
+                "city": $scope.vendor_city,
+                "gstnumber": $scope.gstNum,
+                "state":$scope.vendor_state ,
+                "pincode": "",
+                "contactPersonDtoList": [
+                  {
+                    "firstName": $scope.contactPerson,
+                    "lastName": "",
+                    "emailId": $scope.emailId,
+                    "mobileNumber": $scope.mobileNum
+                  }
+                ]
+              
         }
         $http({
             method: 'post',
@@ -2552,12 +2652,24 @@ function addvendorCtrl($scope, $http, DotsCons, authService, $localStorage, $q, 
             }
         }).then(function (response) {
             console.log(response)
-            if (response.data.status == '200') {
-                toaster.pop('success', "success", "text");
+            if (response.status == '200') {
+                $scope.loading = false;
+                $.iaoAlert({
+                    msg: "Vendor Created Successfully ..!",
+                    type: "success",
+                    mode: "dark",
+                })
+                $location.path('/manageVendor')
             }
         },
             function (errResponse) {
                 console.error('Error !!');
+                $scope.loading = false;
+                $.iaoAlert({
+                    msg: "Error While Creating Vendor ..!",
+                    type: "error",
+                    mode: "dark",
+                })
                 return $q.reject(errResponse);
             })
     }
