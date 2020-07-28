@@ -868,14 +868,14 @@ input:checked + .slider:before {
                                                     <input class="form-control txt-field" ng-model="inType" type="text" name="traveler_mobNum" placeholder="Insurance Type"  maxlength="20">
                                                 </div>
                                                 <div class="from-group  col-sm-6">
-                                                    <lable for="">Pan front Image<span class="mendatory"></span></lable>
-                                                    <input type="file" ng-model="files" name="files" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000"  ng-change="Uploading()"> 
-                                                    <label for="">{{getFile}}</label>
+                                                    <lable for="">Insurance front Image<span class="mendatory"></span></lable>
+                                                    <input type="file" ng-model="infiles" name="files" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000"  ng-change="Uploadingin()"> 
+                                                    <label for="">{{insurance_front}}</label>
                                                 </div>
                                                 <div class="from-group  col-sm-6">
-                                                    <lable for="">Pan Back Image<span class="mendatory"></span></lable>
-                                                    <input type="file" ng-model="file" name="files" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000"  ng-change="Uploading()"> 
-                                                    <label for="">{{getFile}}</label> 
+                                                    <lable for="">Insurance Back Image<span class="mendatory"></span></lable>
+                                                    <input type="file" ng-model="in1file" name="files" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000"  ng-change="Uploadingin1()"> 
+                                                    <label for="">{{insurance_back}}</label> 
                                                 </div>                                        
                                             </div>
                                         </div>
@@ -936,13 +936,13 @@ input:checked + .slider:before {
                                                 </div>
                                                 <div class="from-group  col-sm-6">
                                                     <lable for=""> front Image<span class="mendatory"></span></lable>
-                                                    <input type="file" ng-model="files" name="files" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000"  ng-change="Uploading()"> 
-                                                    <label for="">{{getFile}}</label>
+                                                    <input type="file" ng-model="vepfiles" name="files" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000"  ng-change="Uploadingvep()"> 
+                                                    <label for="">{{vep_front}}</label>
                                                 </div>
                                                 <div class="from-group  col-sm-6">
                                                     <lable for=""> Back Image<span class="mendatory"></span></lable>
-                                                    <input type="file" ng-model="file" name="files" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000"  ng-change="Uploading()"> 
-                                                    <label for="">{{getFile}}</label> 
+                                                    <input type="file" ng-model="vep1file" name="files" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000"  ng-change="Uploadingvep1()"> 
+                                                    <label for="">{{vep_back}}</label> 
                                                 </div>                                        
                                             </div>
                                         </div>
@@ -991,13 +991,13 @@ input:checked + .slider:before {
 
                                                 <div class="from-group  col-sm-6">
                                                     <lable for=""> front Image<span class="mendatory"></span></lable>
-                                                    <input type="file" ng-model="files" name="files" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000"  ng-change="Uploading()"> 
-                                                    <label for="">{{getFile}}</label>
+                                                    <input type="file" ng-model="rdfiles" name="files" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000"  ng-change="UploadingRD()"> 
+                                                    <label for="">{{rd_front}}</label>
                                                 </div>
                                                 <div class="from-group  col-sm-6">
                                                     <lable for=""> Back Image<span class="mendatory"></span></lable>
-                                                    <input type="file" ng-model="file" name="files" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000"  ng-change="Uploading()"> 
-                                                    <label for="">{{getFile}}</label> 
+                                                    <input type="file" ng-model="rd1file" name="files" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000"  ng-change="UploadingRD()"> 
+                                                    <label for="">{{rd_back}}</label> 
                                                 </div>                                        
                                             </div>
                                         </div>
@@ -1046,13 +1046,13 @@ input:checked + .slider:before {
 
                                                 <div class="from-group  col-sm-6">
                                                     <lable for=""> front Image<span class="mendatory"></span></lable>
-                                                    <input type="file" ng-model="files" name="files" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000"  ng-change="Uploading()"> 
-                                                    <label for="">{{getFile}}</label>
+                                                    <input type="file" ng-model="ftfiles" name="files" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000"  ng-change="UploadingFT()"> 
+                                                    <label for="">{{ft_front}}</label>
                                                 </div>
                                                 <div class="from-group  col-sm-6">
                                                     <lable for=""> Back Image<span class="mendatory"></span></lable>
-                                                    <input type="file" ng-model="file" name="files" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000"  ng-change="Uploading()"> 
-                                                    <label for="">{{getFile}}</label> 
+                                                    <input type="file" ng-model="ft1file" name="files" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000"  ng-change="UploadingFT1()"> 
+                                                    <label for="">{{ft_back}}</label> 
                                                 </div>                                        
                                             </div>
                                         </div>

@@ -202,12 +202,17 @@ app.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'assets/pages/travelBilling.html',
             controller: travelBillingCtrl,
             resolve: {
-                GET_CURRENT_DATA: function (authService, DotsCons, $http) {
+                GET_CURRENT_DATA: function (authService, DotsCons,$rootScope, $http) {
                     var token = authService.getCookie('globals');
+                    if($rootScope.data != null){
+                        var data = $rootScope.data
+                    }else{
+                        var data = {}
+                     }
                     return $http({
                         method: 'post',
                         url: DotsCons.GET_FILTERD_DATA+"/0/10/",
-                        data: {},
+                        data: data,
                         headers: {
                             'Content-Type': 'application/json',
                             'Authorization': token.currentUser.tokenDto.token
@@ -226,29 +231,8 @@ app.config(['$routeProvider', function ($routeProvider) {
         })
         .when('/travelBillingFilters', {
             templateUrl: 'assets/pages/travelBillingFilters.html',
-            controller: travelBillingCtrl,
-            resolve: {
-                GET_CURRENT_DATA: function (authService, DotsCons, $http) {
-                    var token = authService.getCookie('globals');
-                    return $http({
-                        method: 'post',
-                        url: DotsCons.GET_FILTERD_DATA+"/0/10/",
-                        data: {},
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Authorization': token.currentUser.tokenDto.token
-                        }
-                    }).then(function (response) {
-                        return response.data;
-                    },
-                        function (errResponse) {
-                            console.error('Error !!');
-                            return $q.reject(errResponse);
-                        })
-                    
-                },
-            
-            }
+            controller: travelBillingCtrl1
+     
         })
         .when('/customerList', {
             templateUrl: 'assets/pages/customerList.html',
@@ -1046,7 +1030,7 @@ app.directive('typeahead', function ($filter) {
                 } 
                 break;
               case 40: 
-                if (scope.selPos < scope.filteredItems.length-1) {
+                if (scope.selPos < scope.filteredItems.length-1) { 
                   scope.selPos++; 
                 }
                 break;

@@ -326,7 +326,7 @@
                                         </div>
                                         <div class="from-group  col-sm-4" id="remote">
                                             <lable for="">Company name<span class="mendatory">*</span></lable>
-                                            <input class="form-control txt-field " placeholder="Enter Company Name"
+                                            <input class="form-control txt-field " placeholder="Select Company Name"
                                                 ng-model="company"
                                                 typeahead-on-select="onCompanySelected($item, $model, $label)"
                                                 uib-typeahead="company as company.companyName for company in getCompany($viewValue)"
@@ -383,7 +383,7 @@
                                     <div class="card-body row">
                                         <div class="from-group  col-sm-4" id="remote">
                                             <lable for="">Car Segment Type<span class="mendatory">*</span></lable>
-                                            <input class="form-control txt-field " placeholder="Enter a Type"
+                                            <input class="form-control txt-field " placeholder="Select a Type"
                                                 ng-model="carSegName"
                                                 uib-typeahead="company as company.name for company in getSubType($viewValue)"
                                                 typeahead-loading="loadingLocations" typeahead-no-results="noResults"
@@ -395,7 +395,7 @@
                                         </div>
                                         <div class="from-group  col-sm-4" id="remote">
                                             <lable for="">Car Brand<span class="mendatory">*</span></lable>
-                                            <input class="form-control txt-field " placeholder="Enter Car Name"
+                                            <input class="form-control txt-field " placeholder="Select Car Name"
                                                 ng-model="carBrand"
                                                 uib-typeahead="company as company.name for company in getCarBarand($viewValue)"
                                                 typeahead-loading="loadingLocations" typeahead-no-results="noResults"
@@ -453,7 +453,7 @@
                                         </div>
                                         <div class="from-group  col-sm-4">
                                             <lable for="">Release Time<span class="mendatory">*</span></lable>
-                                            <input class="form-control txt-field" type="text" ng-model = "releasetime" id="timepicker1"/>o
+                                            <input class="form-control txt-field" type="text" ng-model = "releasetime" id="timepicker1"/>
                                         </div>
                                         <div class="from-group  col-sm-4">
                                             <lable for="">Release Location<span class="mendatory">*</span></lable>
@@ -565,7 +565,7 @@
                                         </div>
                                         <div class="from-group  col-sm-6" style="position: absolute;" ng-show="!online">
                                             <lable for="">Select a Driver<span class="mendatory">*</span></lable>
-                                            <input class="form-control txt-field " placeholder="Enter For Use"
+                                            <input class="form-control txt-field " placeholder="Select For Driver"
                                             ng-model="driver"
                                             uib-typeahead="company as company.name for company in getDriverList($viewValue)"
                                             typeahead-loading="loadingLocations"typeahead-show-hint="false" typeahead-min-length="0" typeahead-no-results="noResults"
@@ -585,7 +585,7 @@
                                             <div class="from-group  col-sm-4">
                                                 <lable for="">First Name</lable>
                                                 <input class="form-control txt-field" ng-model="dFname" type="text"
-                                                    placeholder="First">
+                                                    placeholder="First Name">
                                             </div>
                                             <div class="from-group  col-sm-4">
                                                 <lable for="">Last Name</lable>
@@ -667,11 +667,11 @@
 </script>
 <script>
     $(document).ready(function(){
-      $('#timepicker').mdtimepicker({format: 'h:mm'}); //Initializes the time picker and uses the specified format (i.e. 23:30)
+      $('#timepicker').mdtimepicker({format: 'hh:mm'}); //Initializes the time picker and uses the specified format (i.e. 23:30)
     });
   </script>
   <script>
     $(document).ready(function(){
-      $('#timepicker1').mdtimepicker({format: 'h:mm'}); //Initializes the time picker and uses the specified format (i.e. 23:30)
+      $('#timepicker1').mdtimepicker({format: 'hh:mm'}); //Initializes the time picker and uses the specified format (i.e. 23:30)
     });
   </script>

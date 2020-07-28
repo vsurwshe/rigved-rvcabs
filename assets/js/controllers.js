@@ -581,11 +581,13 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
 
 
     $scope.tripBooking = function () {
-         $scope.loading = true;
+$scope.loading = true;
+console.log($scope.releasetime)
+console.log($scope.picktime)
  var drpTime ="Wed Mar 25 2015 "+$scope.releasetime+":00 GMT+0530 (India Standard Time)";
 var pickTime ="Wed Mar 25 2015 "+$scope.picktime+":00 GMT+0530 (India Standard Time)";
-// console.log(pickTime)
-// console.log(Date.parse(pickTime))
+ console.log(pickTime)
+ console.log(Date.parse(pickTime))
 
 console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
 
@@ -678,33 +680,33 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
 
        // alert($scope.picktime)
         console.log(data)
-        $http({
-            method: 'post',
-            url: DotsCons.TRIP_BOOKING,
-            data: data,
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': token.currentUser.tokenDto.token
-            }
-        }).then(function (response) {
-            console.log(response)
-            if (response.status == '200') {
-                $scope.loading = false;
-                $.iaoAlert({
-                    msg: "Trip Booked Successfully ..!",
-                    type: "success",
-                    mode: "dark",
-                })
-            }
-            $location.path('/managetrip')
-        },
-            function (errResponse) {
-                $.iaoAlert({
-                    msg: "Trip Booked Successfully ..!",
-                    type: "success",
-                    mode: "dark",
-                })
-            })
+        // $http({
+        //     method: 'post',
+        //     url: DotsCons.TRIP_BOOKING,
+        //     data: data,
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //         'Authorization': token.currentUser.tokenDto.token
+        //     }
+        // }).then(function (response) {
+        //     console.log(response)
+        //     if (response.status == '200') {
+        //         $scope.loading = false;
+        //         $.iaoAlert({
+        //             msg: "Trip Booked Successfully ..!",
+        //             type: "success",
+        //             mode: "dark",
+        //         })
+        //     }
+        //     $location.path('/managetrip')
+        // },
+        //     function (errResponse) {
+        //         $.iaoAlert({
+        //             msg: "Trip Booked Successfully ..!",
+        //             type: "success",
+        //             mode: "dark",
+        //         })
+        //     })
 
     }
 
@@ -1035,7 +1037,7 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
     }
     $scope.UploadingPan= function () {
       
-       
+        $scope.loading = true;
         $scope.sizeIsmore = false;
         if ($scope.panfiles.length != 0) {
             var uploadedFiles = [];
@@ -1083,6 +1085,12 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
                         }
                     }).then(function (response) {
                         console.log(response.data);
+                        $scope.loading = false;
+                        $.iaoAlert({
+                            msg: "File Uploaded Successfully ..!",
+                            type: "success",
+                            mode: "dark",
+                        })
                     },
                         function (errResponse) {
                             console.error('Error !!');
@@ -1101,7 +1109,7 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
     }
     $scope.UploadingPan1= function () {
       
-       
+       $scope.loading = true;
         $scope.sizeIsmore = false;
         if ($scope.pan1files.length != 0) {
             var uploadedFiles = [];
@@ -1149,6 +1157,12 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
                         }
                     }).then(function (response) {
                         console.log(response.data);
+                        $scope.loading = false;
+                        $.iaoAlert({
+                            msg: "File Uploaded Successfully ..!",
+                            type: "success",
+                            mode: "dark",
+                        })
                     },
                         function (errResponse) {
                             console.error('Error !!');
@@ -1167,7 +1181,7 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
     }
     $scope.UploadingAdhar= function () {
       
-       
+       $scope.loading = true
         $scope.sizeIsmore = false;
         if ($scope.adharfiles.length != 0) {
             var uploadedFiles = [];
@@ -1202,6 +1216,7 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
                 }
             }).then(function (response) {
                 console.log("res",response.data);
+
              if(response.data  != null){
                 
                     $http({
@@ -1215,6 +1230,12 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
                         }
                     }).then(function (response) {
                         console.log(response.data);
+                        $scope.loading = false;
+                        $.iaoAlert({
+                            msg: "File Uploaded Successfully ..!",
+                            type: "success",
+                            mode: "dark",
+                        })
                     },
                         function (errResponse) {
                             console.error('Error !!');
@@ -1233,7 +1254,7 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
     }
     $scope.UploadingAdhar1= function () {
       
-       
+       $scope.loading = true
         $scope.sizeIsmore = false;
         if ($scope.adhar1files.length != 0) {
             var uploadedFiles = [];
@@ -1281,6 +1302,12 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
                         }
                     }).then(function (response) {
                         console.log(response.data);
+                        $scope.loading = false;
+                        $.iaoAlert({
+                            msg: "File Uploaded Successfully ..!",
+                            type: "success",
+                            mode: "dark",
+                        })
                     },
                         function (errResponse) {
                             console.error('Error !!');
@@ -1300,21 +1327,30 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
     $scope.acc4 = function(){
         $scope.card3 = true
     } 
+    $scope.acc3 = function(){
+        $scope.card2 = true
+    } 
+    $scope.acc6 = function(){
+        $scope.card5= true
+    } 
+    $scope.acc7= function(){
+        $scope.card6 = true
+    } 
     $scope.UploadingPV= function () {
-      
+      $scope.loading = true
        
         $scope.sizeIsmore = false;
-        if ($scope.adhar1files.length != 0) {
+        if ($scope.pvfiles.length != 0) {
             var uploadedFiles = [];
             var docData;
-            for (var i = 0; i < $scope.adhar1files.length; i++) {
-                var fname = $scope.adhar1files[i].filename.split(".");
+            for (var i = 0; i < $scope.pvfiles.length; i++) {
+                var fname = $scope.pvfiles[i].filename.split(".");
                 console.log(fname)
-                var bArray = $scope.adhar1files[i].base64;
-                var fname = $scope.adhar1files[i].filename;
-                var ftype = $scope.adhar1files[i].filetype.split("/");
+                var bArray = $scope.pvfiles[i].base64;
+                var fname = $scope.pvfiles[i].filename;
+                var ftype = $scope.pvfiles[i].filetype.split("/");
                 console.log(ftype)
-                var bArray = $scope.adhar1files[i].base64;
+                var bArray = $scope.pvfiles[i].base64;
                
                 docData = {
                     fileName: fname[0],
@@ -1350,6 +1386,12 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
                         }
                     }).then(function (response) {
                         console.log(response.data);
+                        $scope.loading = false;
+                        $.iaoAlert({
+                            msg: "File Uploaded Successfully ..!",
+                            type: "success",
+                            mode: "dark",
+                        })
                     },
                         function (errResponse) {
                             console.error('Error !!');
@@ -1368,19 +1410,19 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
     }
     $scope.UploadingPV1= function () {
       
-       
+       $scope.loading = true
         $scope.sizeIsmore = false;
-        if ($scope.adhar1files.length != 0) {
+        if ($scope.pv1file.length != 0) {
             var uploadedFiles = [];
             var docData;
-            for (var i = 0; i < $scope.adhar1files.length; i++) {
-                var fname = $scope.adhar1files[i].filename.split(".");
+            for (var i = 0; i < $scope.pv1file.length; i++) {
+                var fname = $scope.pv1file[i].filename.split(".");
                 console.log(fname)
-                var bArray = $scope.adhar1files[i].base64;
-                var fname = $scope.adhar1files[i].filename;
-                var ftype = $scope.adhar1files[i].filetype.split("/");
+                var bArray = $scope.pv1file[i].base64;
+                var fname = $scope.pv1file[i].filename;
+                var ftype = $scope.pv1file[i].filetype.split("/");
                 console.log(ftype)
-                var bArray = $scope.adhar1files[i].base64;
+                var bArray = $scope.pv1file[i].base64;
                
                 docData = {
                     fileName: fname[0],
@@ -1416,6 +1458,12 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
                         }
                     }).then(function (response) {
                         console.log(response.data);
+                        $scope.loading = false;
+                        $.iaoAlert({
+                            msg: "File Uploaded Successfully ..!",
+                            type: "success",
+                            mode: "dark",
+                        })
                     },
                         function (errResponse) {
                             console.error('Error !!');
@@ -1437,19 +1485,19 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
     } 
     $scope.UploadingVR= function () {
       
-       
+       $scope.loading = true
         $scope.sizeIsmore = false;
         if ($scope.vrFiles.length != 0) {
             var uploadedFiles = [];
             var docData;
-            for (var i = 0; i < $scope.adhar1files.length; i++) {
-                var fname = $scope.adhar1files[i].filename.split(".");
+            for (var i = 0; i < $scope.vrFiles.length; i++) {
+                var fname = $scope.vrFiles[i].filename.split(".");
                 console.log(fname)
-                var bArray = $scope.adhar1files[i].base64;
-                var fname = $scope.adhar1files[i].filename;
-                var ftype = $scope.adhar1files[i].filetype.split("/");
+                var bArray = $scope.vrFiles[i].base64;
+                var fname = $scope.vrFiles[i].filename;
+                var ftype = $scope.vrFiles[i].filetype.split("/");
                 console.log(ftype)
-                var bArray = $scope.adhar1files[i].base64;
+                var bArray = $scope.vrFiles[i].base64;
                
                 docData = {
                     fileName: fname[0],
@@ -1485,6 +1533,12 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
                         }
                     }).then(function (response) {
                         console.log(response.data);
+                        $scope.loading = false;
+                        $.iaoAlert({
+                            msg: "File Uploaded Successfully ..!",
+                            type: "success",
+                            mode: "dark",
+                        })
                     },
                         function (errResponse) {
                             console.error('Error !!');
@@ -1501,21 +1555,21 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
         }
     
     }
-    $scope.UploadingVR= function () {
+    $scope.UploadingVR1= function () {
       
-       
+       $scope.loading = true
         $scope.sizeIsmore = false;
-        if ($scope.vrFiles.length != 0) {
+        if ($scope.vr1Files.length != 0) {
             var uploadedFiles = [];
             var docData;
-            for (var i = 0; i < $scope.adhar1files.length; i++) {
-                var fname = $scope.adhar1files[i].filename.split(".");
+            for (var i = 0; i < $scope.vr1Files.length; i++) {
+                var fname = $scope.vr1Files[i].filename.split(".");
                 console.log(fname)
-                var bArray = $scope.adhar1files[i].base64;
-                var fname = $scope.adhar1files[i].filename;
-                var ftype = $scope.adhar1files[i].filetype.split("/");
+                var bArray = $scope.vr1Files[i].base64;
+                var fname = $scope.vr1Files[i].filename;
+                var ftype = $scope.vr1Files[i].filetype.split("/");
                 console.log(ftype)
-                var bArray = $scope.adhar1files[i].base64;
+                var bArray = $scope.vr1Files[i].base64;
                
                 docData = {
                     fileName: fname[0],
@@ -1551,6 +1605,12 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
                         }
                     }).then(function (response) {
                         console.log(response.data);
+                        $scope.loading = false;
+                        $.iaoAlert({
+                            msg: "File Uploaded Successfully ..!",
+                            type: "success",
+                            mode: "dark",
+                        })
                     },
                         function (errResponse) {
                             console.error('Error !!');
@@ -1567,6 +1627,438 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
         }
     
     }
+    $scope.Uploadingin= function () {
+      
+        $scope.loading = true
+         $scope.sizeIsmore = false;
+         if ($scope.infiles.length != 0) {
+             var uploadedFiles = [];
+             var docData;
+             for (var i = 0; i < $scope.infiles.length; i++) {
+                 var fname = $scope.infiles[i].filename.split(".");
+                 console.log(fname)
+                 var bArray = $scope.infiles[i].base64;
+                 var fname = $scope.infiles[i].filename;
+                 var ftype = $scope.infiles[i].filetype.split("/");
+                 console.log(ftype)
+                 var bArray = $scope.infiles[i].base64;
+                
+                 docData = {
+                     fileName: fname[0],
+                     content: bArray,
+                     contentType :ftype[1],
+                     "description" :"DriverDocument"
+                 }
+                 uploadedFiles.push(docData);
+                 console.log(uploadedFiles)
+             }
+             $scope.insurance_front= uploadedFiles[0].fileName+"."+uploadedFiles[0].contentType;
+             
+             $http({
+                 method: 'POST',
+                 url: DotsCons.UPLOAD_FILES,
+                 data: uploadedFiles,
+                 headers: {
+                     'Content-Type': 'application/json',
+                     'Authorization': token.currentUser.tokenDto.token
+                 }
+             }).then(function (response) {
+                 console.log("res",response.data);
+              if(response.data  != null){
+                 
+                     $http({
+                         method: 'GET',
+                         url: DotsCons.GET_FILES,
+                         data: '',
+                         params : {"path":response.data},
+                         headers: {
+                             'Content-Type': 'application/json',
+                             'Authorization': token.currentUser.tokenDto.token
+                         }
+                     }).then(function (response) {
+                         console.log(response.data);
+                         $scope.loading = false;
+                         $.iaoAlert({
+                             msg: "File Uploaded Successfully ..!",
+                             type: "success",
+                             mode: "dark",
+                         })
+                     },
+                         function (errResponse) {
+                             console.error('Error !!');
+                             return $q.reject(errResponse);
+                         })
+         
+              }
+             },
+                 function (errResponse) {
+                     console.error('Error !!');
+                     return $q.reject(errResponse);
+                 })
+             
+         }
+     
+     }
+     $scope.Uploadingin1= function () {
+      
+        $scope.loading = true
+         $scope.sizeIsmore = false;
+         if ($scope.in1file.length != 0) {
+             var uploadedFiles = [];
+             var docData;
+             for (var i = 0; i < $scope.in1file.length; i++) {
+                 var fname = $scope.in1file[i].filename.split(".");
+                 console.log(fname)
+                 var bArray = $scope.in1file[i].base64;
+                 var fname = $scope.in1file[i].filename;
+                 var ftype = $scope.in1file[i].filetype.split("/");
+                 console.log(ftype)
+                 var bArray = $scope.in1file[i].base64;
+                
+                 docData = {
+                     fileName: fname[0],
+                     content: bArray,
+                     contentType :ftype[1],
+                     "description" :"DriverDocument"
+                 }
+                 uploadedFiles.push(docData);
+                 console.log(uploadedFiles)
+             }
+             $scope.insurance_back= uploadedFiles[0].fileName+"."+uploadedFiles[0].contentType;
+             
+             $http({
+                 method: 'POST',
+                 url: DotsCons.UPLOAD_FILES,
+                 data: uploadedFiles,
+                 headers: {
+                     'Content-Type': 'application/json',
+                     'Authorization': token.currentUser.tokenDto.token
+                 }
+             }).then(function (response) {
+                 console.log("res",response.data);
+              if(response.data  != null){
+                 
+                     $http({
+                         method: 'GET',
+                         url: DotsCons.GET_FILES,
+                         data: '',
+                         params : {"path":response.data},
+                         headers: {
+                             'Content-Type': 'application/json',
+                             'Authorization': token.currentUser.tokenDto.token
+                         }
+                     }).then(function (response) {
+                         console.log(response.data);
+                         $scope.loading = false;
+                         $.iaoAlert({
+                             msg: "File Uploaded Successfully ..!",
+                             type: "success",
+                             mode: "dark",
+                         })
+                     },
+                         function (errResponse) {
+                             console.error('Error !!');
+                             return $q.reject(errResponse);
+                         })
+         
+              }
+             },
+                 function (errResponse) {
+                     console.error('Error !!');
+                     return $q.reject(errResponse);
+                 })
+             
+         }
+     
+     }
+     $scope.Uploadingvep= function () {
+      
+        $scope.loading = true
+         $scope.sizeIsmore = false;
+         if ($scope.in1file.length != 0) {
+             var uploadedFiles = [];
+             var docData;
+             for (var i = 0; i < $scope.vepfiles.length; i++) {
+                 var fname = $scope.vepfiles[i].filename.split(".");
+                 console.log(fname)
+                 var bArray = $scope.vepfiles[i].base64;
+                 var fname = $scope.vepfiles[i].filename;
+                 var ftype = $scope.vepfiles[i].filetype.split("/");
+                 console.log(ftype)
+                 var bArray = $scope.vepfiles[i].base64;
+                
+                 docData = {
+                     fileName: fname[0],
+                     content: bArray,
+                     contentType :ftype[1],
+                     "description" :"DriverDocument"
+                 }
+                 uploadedFiles.push(docData);
+                 console.log(uploadedFiles)
+             }
+             $scope.vep_front= uploadedFiles[0].fileName+"."+uploadedFiles[0].contentType;
+             
+             $http({
+                 method: 'POST',
+                 url: DotsCons.UPLOAD_FILES,
+                 data: uploadedFiles,
+                 headers: {
+                     'Content-Type': 'application/json',
+                     'Authorization': token.currentUser.tokenDto.token
+                 }
+             }).then(function (response) {
+                 console.log("res",response.data);
+              if(response.data  != null){
+                 
+                     $http({
+                         method: 'GET',
+                         url: DotsCons.GET_FILES,
+                         data: '',
+                         params : {"path":response.data},
+                         headers: {
+                             'Content-Type': 'application/json',
+                             'Authorization': token.currentUser.tokenDto.token
+                         }
+                     }).then(function (response) {
+                         console.log(response.data);
+                         $scope.loading = false;
+                         $.iaoAlert({
+                             msg: "File Uploaded Successfully ..!",
+                             type: "success",
+                             mode: "dark",
+                         })
+                     },
+                         function (errResponse) {
+                             console.error('Error !!');
+                             return $q.reject(errResponse);
+                         })
+         
+              }
+             },
+                 function (errResponse) {
+                     console.error('Error !!');
+                     return $q.reject(errResponse);
+                 })
+             
+         }
+     
+     }
+     $scope.Uploadingvep1= function () {
+      
+        $scope.loading = true
+         $scope.sizeIsmore = false;
+         if ($scope.in1file.length != 0) {
+             var uploadedFiles = [];
+             var docData;
+             for (var i = 0; i < $scope.vep1file.length; i++) {
+                 var fname = $scope.vep1file[i].filename.split(".");
+                 console.log(fname)
+                 var bArray = $scope.vep1file[i].base64;
+                 var fname = $scope.vep1file[i].filename;
+                 var ftype = $scope.vep1file[i].filetype.split("/");
+                 console.log(ftype)
+                 var bArray = $scope.vep1file[i].base64;
+                
+                 docData = {
+                     fileName: fname[0],
+                     content: bArray,
+                     contentType :ftype[1],
+                     "description" :"DriverDocument"
+                 }
+                 uploadedFiles.push(docData);
+                 console.log(uploadedFiles)
+             }
+             $scope.vep_back= uploadedFiles[0].fileName+"."+uploadedFiles[0].contentType;
+             
+             $http({
+                 method: 'POST',
+                 url: DotsCons.UPLOAD_FILES,
+                 data: uploadedFiles,
+                 headers: {
+                     'Content-Type': 'application/json',
+                     'Authorization': token.currentUser.tokenDto.token
+                 }
+             }).then(function (response) {
+                 console.log("res",response.data);
+              if(response.data  != null){
+                 
+                     $http({
+                         method: 'GET',
+                         url: DotsCons.GET_FILES,
+                         data: '',
+                         params : {"path":response.data},
+                         headers: {
+                             'Content-Type': 'application/json',
+                             'Authorization': token.currentUser.tokenDto.token
+                         }
+                     }).then(function (response) {
+                         console.log(response.data);
+                         $scope.loading = false;
+                         $.iaoAlert({
+                             msg: "File Uploaded Successfully ..!",
+                             type: "success",
+                             mode: "dark",
+                         })
+                     },
+                         function (errResponse) {
+                             console.error('Error !!');
+                             return $q.reject(errResponse);
+                         })
+         
+              }
+             },
+                 function (errResponse) {
+                     console.error('Error !!');
+                     return $q.reject(errResponse);
+                 })
+             
+         }
+     
+     }
+     $scope.UploadingRD= function () {
+      
+        $scope.loading = true
+         $scope.sizeIsmore = false;
+         if ($scope.rdfiles.length != 0) {
+             var uploadedFiles = [];
+             var docData;
+             for (var i = 0; i < $scope.rdfiles.length; i++) {
+                 var fname = $scope.rdfiles[i].filename.split(".");
+                 console.log(fname)
+                 var bArray = $scope.rdfiles[i].base64;
+                 var fname = $scope.rdfiles[i].filename;
+                 var ftype = $scope.rdfiles[i].filetype.split("/");
+                 console.log(ftype)
+                 var bArray = $scope.rdfiles[i].base64;
+                
+                 docData = {
+                     fileName: fname[0],
+                     content: bArray,
+                     contentType :ftype[1],
+                     "description" :"DriverDocument"
+                 }
+                 uploadedFiles.push(docData);
+                 console.log(uploadedFiles)
+             }
+             $scope.rd_front= uploadedFiles[0].fileName+"."+uploadedFiles[0].contentType;
+             
+             $http({
+                 method: 'POST',
+                 url: DotsCons.UPLOAD_FILES,
+                 data: uploadedFiles,
+                 headers: {
+                     'Content-Type': 'application/json',
+                     'Authorization': token.currentUser.tokenDto.token
+                 }
+             }).then(function (response) {
+                 console.log("res",response.data);
+              if(response.data  != null){
+                 
+                     $http({
+                         method: 'GET',
+                         url: DotsCons.GET_FILES,
+                         data: '',
+                         params : {"path":response.data},
+                         headers: {
+                             'Content-Type': 'application/json',
+                             'Authorization': token.currentUser.tokenDto.token
+                         }
+                     }).then(function (response) {
+                         console.log(response.data);
+                         $scope.loading = false;
+                         $.iaoAlert({
+                             msg: "File Uploaded Successfully ..!",
+                             type: "success",
+                             mode: "dark",
+                         })
+                     },
+                         function (errResponse) {
+                             console.error('Error !!');
+                             return $q.reject(errResponse);
+                         })
+         
+              }
+             },
+                 function (errResponse) {
+                     console.error('Error !!');
+                     return $q.reject(errResponse);
+                 })
+             
+         }
+     
+     }
+     $scope.UploadingRD1= function () {
+      
+        $scope.loading = true
+         $scope.sizeIsmore = false;
+         if ($scope.rd1file.length != 0) {
+             var uploadedFiles = [];
+             var docData;
+             for (var i = 0; i < $scope.rd1file.length; i++) {
+                 var fname = $scope.rd1file[i].filename.split(".");
+                 console.log(fname)
+                 var bArray = $scope.rd1file[i].base64;
+                 var fname = $scope.rd1file[i].filename;
+                 var ftype = $scope.rd1file[i].filetype.split("/");
+                 console.log(ftype)
+                 var bArray = $scope.rd1file[i].base64;
+                
+                 docData = {
+                     fileName: fname[0],
+                     content: bArray,
+                     contentType :ftype[1],
+                     "description" :"DriverDocument"
+                 }
+                 uploadedFiles.push(docData);
+                 console.log(uploadedFiles)
+             }
+             $scope.rd_back= uploadedFiles[0].fileName+"."+uploadedFiles[0].contentType;
+             
+             $http({
+                 method: 'POST',
+                 url: DotsCons.UPLOAD_FILES,
+                 data: uploadedFiles,
+                 headers: {
+                     'Content-Type': 'application/json',
+                     'Authorization': token.currentUser.tokenDto.token
+                 }
+             }).then(function (response) {
+                 console.log("res",response.data);
+              if(response.data  != null){
+                 
+                     $http({
+                         method: 'GET',
+                         url: DotsCons.GET_FILES,
+                         data: '',
+                         params : {"path":response.data},
+                         headers: {
+                             'Content-Type': 'application/json',
+                             'Authorization': token.currentUser.tokenDto.token
+                         }
+                     }).then(function (response) {
+                         console.log(response.data);
+                         $scope.loading = false;
+                         $.iaoAlert({
+                             msg: "File Uploaded Successfully ..!",
+                             type: "success",
+                             mode: "dark",
+                         })
+                     },
+                         function (errResponse) {
+                             console.error('Error !!');
+                             return $q.reject(errResponse);
+                         })
+         
+              }
+             },
+                 function (errResponse) {
+                     console.error('Error !!');
+                     return $q.reject(errResponse);
+                 })
+             
+         }
+     
+     }
     // $scope.documentType = function(){
     //     $http({
     //         method: 'GET',
@@ -1588,13 +2080,157 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
 
     // }
     // $scope.documentType()
+    $scope.UploadingFT= function () {
+      
+        $scope.loading = true
+         $scope.sizeIsmore = false;
+         if ($scope.ftfiles.length != 0) {
+             var uploadedFiles = [];
+             var docData;
+             for (var i = 0; i < $scope.ftfiles.length; i++) {
+                 var fname = $scope.ftfiles[i].filename.split(".");
+                 console.log(fname)
+                 var bArray = $scope.ftfiles[i].base64;
+                 var fname = $scope.ftfiles[i].filename;
+                 var ftype = $scope.ftfiles[i].filetype.split("/");
+                 console.log(ftype)
+                 var bArray = $scope.ftfiles[i].base64;
+                
+                 docData = {
+                     fileName: fname[0],
+                     content: bArray,
+                     contentType :ftype[1],
+                     "description" :"DriverDocument"
+                 }
+                 uploadedFiles.push(docData);
+                 console.log(uploadedFiles)
+             }
+             $scope.ft_front= uploadedFiles[0].fileName+"."+uploadedFiles[0].contentType;
+             
+             $http({
+                 method: 'POST',
+                 url: DotsCons.UPLOAD_FILES,
+                 data: uploadedFiles,
+                 headers: {
+                     'Content-Type': 'application/json',
+                     'Authorization': token.currentUser.tokenDto.token
+                 }
+             }).then(function (response) {
+                 console.log("res",response.data);
+              if(response.data  != null){
+                 
+                     $http({
+                         method: 'GET',
+                         url: DotsCons.GET_FILES,
+                         data: '',
+                         params : {"path":response.data},
+                         headers: {
+                             'Content-Type': 'application/json',
+                             'Authorization': token.currentUser.tokenDto.token
+                         }
+                     }).then(function (response) {
+                         console.log(response.data);
+                         $scope.loading = false;
+                         $.iaoAlert({
+                             msg: "File Uploaded Successfully ..!",
+                             type: "success",
+                             mode: "dark",
+                         })
+                     },
+                         function (errResponse) {
+                             console.error('Error !!');
+                             return $q.reject(errResponse);
+                         })
+         
+              }
+             },
+                 function (errResponse) {
+                     console.error('Error !!');
+                     return $q.reject(errResponse);
+                 })
+             
+         }
+     
+     }
+     $scope.UploadingFT1= function () {
+      
+        $scope.loading = true
+         $scope.sizeIsmore = false;
+         if ($scope.ft1file.length != 0) {
+             var uploadedFiles = [];
+             var docData;
+             for (var i = 0; i < $scope.ft1file.length; i++) {
+                 var fname = $scope.ft1file[i].filename.split(".");
+                 console.log(fname)
+                 var bArray = $scope.ft1file[i].base64;
+                 var fname = $scope.ft1file[i].filename;
+                 var ftype = $scope.ft1file[i].filetype.split("/");
+                 console.log(ftype)
+                 var bArray = $scope.ft1file[i].base64;
+                
+                 docData = {
+                     fileName: fname[0],
+                     content: bArray,
+                     contentType :ftype[1],
+                     "description" :"DriverDocument"
+                 }
+                 uploadedFiles.push(docData);
+                 console.log(uploadedFiles)
+             }
+             $scope.ft_back= uploadedFiles[0].fileName+"."+uploadedFiles[0].contentType;
+             
+             $http({
+                 method: 'POST',
+                 url: DotsCons.UPLOAD_FILES,
+                 data: uploadedFiles,
+                 headers: {
+                     'Content-Type': 'application/json',
+                     'Authorization': token.currentUser.tokenDto.token
+                 }
+             }).then(function (response) {
+                 console.log("res",response.data);
+              if(response.data  != null){
+                 
+                     $http({
+                         method: 'GET',
+                         url: DotsCons.GET_FILES,
+                         data: '',
+                         params : {"path":response.data},
+                         headers: {
+                             'Content-Type': 'application/json',
+                             'Authorization': token.currentUser.tokenDto.token
+                         }
+                     }).then(function (response) {
+                         console.log(response.data);
+                         $scope.loading = false;
+                         $.iaoAlert({
+                             msg: "File Uploaded Successfully ..!",
+                             type: "success",
+                             mode: "dark",
+                         })
+                     },
+                         function (errResponse) {
+                             console.error('Error !!');
+                             return $q.reject(errResponse);
+                         })
+         
+              }
+             },
+                 function (errResponse) {
+                     console.error('Error !!');
+                     return $q.reject(errResponse);
+                 })
+             
+         }
+     
+     }
     $scope.driverRegistration = function () {
         $scope.loading = true;
         $scope.docData = [];
         if( $scope.card == true){
            
             var dldoc =  {
-                "documentId": 1,
+                "documentType":{"id":1},
                 "docName": "Driving Licence",
                 "description": null,
                 "active": true,
@@ -1622,7 +2258,7 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
          if($scope.card2 == true){
             
             var adharData = {
-                "documentId": 2,
+                "documentType": {'id':2},
                 "docName": "Adhar Card",
                 "description": null,
                 "active": true,
@@ -1644,7 +2280,7 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
         if($scope.card1 ==true){
             var pandata = {
                 
-                    "documentId": 3,
+                "documentType": {'id':3},
                     "docName": "Pan Card",
                     "description": null,
                     "active": true,
@@ -1664,7 +2300,7 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
         if($scope.card3 ==true){
             var pvdata = {
                 
-                "documentId": 4,
+                "documentType": {'id':4},
                 "docName": "Police Verification",
                 "description": null,
                 "active": true,
@@ -1681,7 +2317,7 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
         }
         if($scope.card4 ==true){
             var regdata = {
-                "documentId": 5,
+                "documentType": {'id':5},
                 "docName": "Vehicle Registration",
                 "description": null,
                 "active": true,
@@ -1712,7 +2348,7 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
         if($scope.card5 ==true){
             var vidata = {
                 
-                "documentId": 6,
+                "documentType": {'id':6},
                 "docName": "Vehicle Insurance",
                 "description": null,
                 "active": true,
@@ -1732,7 +2368,7 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
         }
         if($scope.card7 == true){
             var vhper = {
-                "documentId": 7,
+                "documentType": {'id':7},
                 "docName": "Vehicle Permit",
                 "description": null,
                 "active": true,
@@ -1753,7 +2389,7 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
         }
         if($scope.card9 == true){
             var tax = {
-                "documentId": 9,
+                "documentType": {'id':9},
                 "docName": "Road Tax",
                 "description": null,
                 "active": true,
@@ -1770,7 +2406,7 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
         }
      if($scope.card10 == true){
          var fc = {
-            "documentId": 10,
+            "documentType": {'id':10},
             "docName": "Fittness Certificate",
             "description": null,
             "active": true,
@@ -1785,19 +2421,20 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
          }
      }
         var postdata =  {
+
                     "address": "George Street",
                     "area": "M G Road",
                     "branchId": 0,
                     "city": "Bangalore",
-                    "countryCode": "USA",
+                    "countryCode": "IN",
                     "createdBy": "04da390e-7f95-4b73-a541-4d3c7dd0c891",
                     "customerId": "",
                     "dateOfBirth": "2020-03-13T07:30:45.076Z",
                     "emailId": $scope.driver_email,
                     "extension": "string",
-                    "firstName": "vdsdsd",
+                    "firstName": $scope.driver_fname,
                     "gender": "Male",
-                    "lastName":"ddsdasds",
+                    "lastName":$scope.driver_lname,
                     "mobileNumber": $scope.driver_mobNum,
                     "password": "Abc@12def",
                       "userType": "Driver", 
@@ -1851,7 +2488,7 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
                     type: "success",
                     mode: "dark",
                 })
-                $location.path('/')
+                $location.path('/approveMember')
             } 
 
         },
@@ -3051,35 +3688,460 @@ $scope.generateInvoice = function(){
         })
    
    
-     $('#exampleModal').modal('show')
-     kendo.drawing.drawDOM($("#exampleModal")).then(function(group) {
-        //kendo.drawing.pdf.saveAs(group, "Prescription_Health5c.pdf");
-
-        kendo.drawing.pdf.toDataURL(group, function(dataURL){ 
-            console.log("pdf_file :: ",dataURL);
-            $scope.uploadFiles = dataURL;
-            var pdfData = dataURL.replace("data:application/pdf;base64,", "");
+     $('#exampleModal').modal('show');
+     setTimeout(function(){
+        kendo.drawing.drawDOM($("#pdfData")).then(function(group) {
+            //kendo.drawing.pdf.saveAs(group, "Prescription_Health5c.pdf");
+    
+            kendo.drawing.pdf.toDataURL(group, function(dataURL){ 
+                console.log("pdf_file :: ",dataURL);
+                $scope.uploadFiles = dataURL;
+               // console.log($scope.uploadFiles)
+                var pdfData = dataURL.replace("data:application/pdf;base64,", "");
+                console.log(pdfData)
+    
+                setTimeout(function(){
+                    $scope.downloadPDF(pdfData,"invoice")
+                },3000)
+                
+          //console.log(pdfData)
             
-
-            setTimeout(function(){
-                $scope.downloadPDF(pdfData)
-            },3000)
+             });
             
-      //console.log(pdfData)
+        });
+     },5000)
+  
+}
+$scope.downloadPDF = function(pdfUrl,name){
+    let pdfWindow = window.open("");
+  pdfWindow.document.write("<html<head><title>"+name+"</title><style>body{margin: 0px;}iframe{border-width: 0px;}</style></head>");
+  pdfWindow.document.write("<body><embed width='100%' height='100%' src='data:application/pdf;base64, " + encodeURI(pdfUrl)+"#toolbar=0&navpanes=0&scrollbar=0'></embed></body></html>");
+
+    //window.open("data:application/octet-stream;charset=utf-16le;base64,"+pdfUrl)
+
+
+}
+}
+function travelBillingCtrl1($scope, $http, DotsCons,$rootScope, authService, $localStorage,$location, $q,toaster){
+    var token = authService.getCookie('globals');
+    $http({
+        method: 'GET',
+        url: DotsCons.COMPANY_DETAILS+"/0/10",
+        data: "",
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': token.currentUser.tokenDto.token
+        }
+    }).then(function (response) {
+        $scope.contacts = response.data;
+    },
+        function (errResponse) {
+            console.error('Error !!');
+            return $q.reject(errResponse);
+        })
+        $http({
+            method: 'GET',
+            url: DotsCons.SUB_TYPE+"0/10",
+            data: "",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': token.currentUser.tokenDto.token
+            }
+        }).then(function (response) {
+            $scope.categery = response.data;
+        },
+            function (errResponse) {
+                console.error('Error !!');
+                return $q.reject(errResponse);
+            })
+            $http({
+                method: 'GET',
+                url: DotsCons.SEARCH_MODEL+'/1',
+                data: "",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': token.currentUser.tokenDto.token
+                }
+            }).then(function (response) {
+                $scope.carModals = response.data;
+            },
+                function (errResponse) {
+                    console.error('Error !!');
+                    return $q.reject(errResponse);
+                })
+                $http({
+                    method: 'GET',
+                    url: DotsCons.FOR_USE+"0/10",
+                    data: "",
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': token.currentUser.tokenDto.token
+                    }
+                }).then(function (response) {
+                    $scope.forUse = response.data;
+                },
+                    function (errResponse) {
+                        console.error('Error !!');
+                        return $q.reject(errResponse);
+                    })
+                    $http({
+                        method: 'GET',
+                        url: DotsCons.GET_COST_CENTER+"0/10",
+                        data: "",
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': token.currentUser.tokenDto.token
+                        }
+                    }).then(function (response) {
+                        $scope.costCenters = response.data;
+                    },
+                        function (errResponse) {
+                            console.error('Error !!');
+                            return $q.reject(errResponse);
+                        })
+                        $http({
+                            method: 'GET',
+                            url: DotsCons.GET_EMPLOYEE_ID+"/0/10",
+                            data: "",
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': token.currentUser.tokenDto.token
+                            }
+                        }).then(function (response) {
+                            $scope.empIds = response.data;
+                        },
+                            function (errResponse) {
+                                console.error('Error !!');
+                                return $q.reject(errResponse);
+                            })
+                            $http({
+                                method: 'GET',
+                                url: DotsCons.GET_TRAVEL_ID+"/0/10",
+                                data: "",
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'Authorization': token.currentUser.tokenDto.token
+                                }
+                            }).then(function (response) {
+                                $scope.travelIds = response.data;
+                            },
+                                function (errResponse) {
+                                    console.error('Error !!');
+                                    return $q.reject(errResponse);
+                                })
+  
+    // $scope.contacts = [{name: 'Blinky', email: 'red@pacman.com'},
+    // {name: 'Pinky', email: 'pink@pacman.com'},
+    // {name: 'Inky', email: 'cyan@pacman.com'},
+    // {name: 'Clyde', email: 'yellow@pacman.com'}];
+    $scope.no_morerecord = false;
+$scope.filtersApply = function(){
+    $scope.typeDuty = []
+    $scope.companyData = []
+    $scope.slectGST = []
+    $scope.SelctSeg = []
+    $scope.selectMOdal = []
+
+    if($scope.selectedCompany !=null){
+    $scope.selectedC = $scope.selectedCompany;
+   
+    for (let value of Object.values($scope.selectedC)) {
+        $scope.companyData.push(value.companyName); // John, then 30
+}  
+    }else{
+        $scope.companyData = null
+    }
+    
+//console.log($scope.companyData)
+if($scope.selectedGst !=null){
+$scope.gst = $scope.selectedGst;
+for (let value of Object.values($scope.gst)) {
+    $scope.slectGST.push(value.gstnumber); // John, then 30
+}  
+}else{
+    $scope.slectGST = []
+}
+//console.log($scope.slectGST)
+if($scope.selectedsDuty !=null){
+$scope.selectedDuty = $scope.selectedsDuty;
+for (let value of Object.values($scope.selectedDuty )) {
+    $scope.typeDuty.push(value.name); // John, then 30
+} 
+}else{
+    $scope.typeDuty = []
+}
+//console.log($scope.typeDuty)
+if($scope.selectedsSeg !=null){
+$scope.selectedseg = $scope.selectedsSeg;
+for (let value of Object.values($scope.selectedseg )) {
+    $scope.SelctSeg.push(value.name); // John, then 30
+} 
+}else{
+    $scope.SelctSeg = []
+}
+//console.log($scope.SelctSeg)
+if($scope.selectedsModel !=null){
+$scope.selectedModel = $scope.selectedsModel;
+for (let value of Object.values($scope.selectedModel )) {
+    $scope.selectMOdal.push(value.name); // John, then 30
+} 
+}else{
+    $scope.selectMOdal = []
+}
+//console.log($scope.selectMOdal)
+var fromDate = '';
+if($scope.fromDate !=null){
+var d = new Date($scope.fromDate),
+month = '' + (d.getMonth() + 1),
+day = '' + d.getDate(),
+year = d.getFullYear();
+
+if (month.length < 2) 
+month = '0' + month;
+if (day.length < 2) 
+day = '0' + day;
+
+fromDate = [year, month, day].join('-');
+}else{
+    fromDate = ""
+}
+var toDate = '';
+if($scope.endDate !=null){
+var d = new Date($scope.endDate),
+month = '' + (d.getMonth() + 1),
+day = '' + d.getDate(),
+year = d.getFullYear();
+
+if (month.length < 2) 
+month = '0' + month;
+if (day.length < 2) 
+day = '0' + day;
+
+toDate = [year, month, day].join('-');
+}else {
+    $scope.endDate = ""
+}
+//console.log(fromDate)
+$rootScope.data = {
+    
+    "startDate": fromDate,
+
+    "endDate": toDate,
+    "dutyTypes": $scope.typeDuty,
+    "companyNames": $scope.companyData,
+    "vechicleType":  $scope.selectMOdal,
+    "gstNum":  $scope.slectGST,
+    "costCenter": [],
+    "employeeIds": [],
+    "travelIds": [],
+    "vechicleSeg": $scope.SelctSeg
+}
+    // var data = {
         
-         });
+    //         "startDate": $scope.fromDate,
+    //         "endDate": $scope.endDate,
+    //         "dutyTypes": [
+    //          $scope.forUse.name
+    //         ],
+    //         "companyNames": [
+    //             $scope.selectedCompany.name
+    //         ],
+    //         "vechicleType": [$scope.carModals],
+    //         "gstNum": [$scope.selectedGst.gstnumber],
+    //         "costCenter": [$scope.constCenter],
+    //         "employeeIds": [$scope.empId],
+    //         "travelIds": [$scope.travelId],
+    //         "vechicleSeg": [$scope.categery.name],
         
-    });
+    // }
+   // console.log(data)
+    $http({
+        method: 'post',
+        url: DotsCons.GET_FILTERD_DATA+"/0/10/",
+        data: $rootScope.data,
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': token.currentUser.tokenDto.token
+        }
+    }).then(function (response) {
+        if(response.data != null){
+        $rootScope.filtedData = response.data;
+        $scope.no_morerecord =true
+        console.log( $scope.filtedData)
+        $location.path('/travelBilling')
+        }
+        
+    },
+        function (errResponse) {
+            console.error('Error !!');
+            return $q.reject(errResponse);
+        })
+}
+// if(GET_CURRENT_DATA != null){
+//     $rootScope.filtedData = GET_CURRENT_DATA
+// }
+$scope.index = 0;
+$scope.numbers = 10;
+	$scope.showMorefilterData = function(){
+        $scope.index++;
+        $scope.numbers +10;
+        //console.log("count",$scope.count);
+        $http({
+            method: 'post',
+            url: DotsCons.GET_FILTERD_DATA+"/"+$scope.index+"/"+$scope.numbers,
+            data: $rootScope.data,
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': token.currentUser.tokenDto.token
+            }
+        }).then(function (response) {
+            if(response.data != null){
+            //$rootScope.filtedData = response.data;
+            for(i=0;i<response.data.length;i++)
+            $rootScope.filtedData.push(response.data[i]);
+            }
+          //  console.log($rootScope.filtedData)
+            
+        },
+            function (errResponse) {
+                console.error('Error !!');
+                return $q.reject(errResponse);
+            })
+		
+	}
+
+$scope.download = function(){
+    //$scope.dateReport = new Date($scope.ReportDate);
+
+    $http({
+        method: 'post',
+        url: DotsCons.GET_ALL_DATA,
+        data: $rootScope.data,
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': token.currentUser.tokenDto.token
+        }
+    }).then(function (response) {
+        if(response.data != null){
+        $rootScope.filtedData = response.data;
+        //console.log( $scope.filtedData)
+       // debugger
+        //$location.path('/travelBilling')
+        }
+        
+    },
+        function (errResponse) {
+            console.error('Error !!');
+            return $q.reject(errResponse);
+        })
+
+    setTimeout(function(){
+
+        console.log("Harish")
+
+        $("#tableDta").table2excel({
+            filename: "example"
+        });
+    // kendo.drawing.drawDOM($("#listDataTable8")).then(function(group) {
+        
+
+    //  kendo.drawing.pdf.toDataURL(group, function(dataURL){ 
+            
+    //      $scope.uploadFilesD = dataURL;
+
+    //      console.log("$scope.uploadFilesD",$scope.uploadFilesD)
+        
+            
+    //      console.log("pdf_file :: ",$scope.uploadFilesD);
+    //      var pdfData = dataURL.replace("data:application/pdf;base64,", "");
+    //  })
+    // })
+    },3000)
+
+    
+    
+}
+var reqIds = []
+$scope.generateInvoice = function(){
+    for (var i = 0; i < $rootScope.filtedData.length; i++) {
+        if ($rootScope.filtedData[i].Selected) {
+            var fruitId = $rootScope.filtedData[i].id;
+           // var fruitName = $scope.Fruits[i].Name;
+          // var  message = "Value: " + fruitId + " Text: " + fruitName + "\n";
+        }
+    }
+   reqIds.push(fruitId)
+    var reqData = {
+        reqIds
+    }
+        
+    
+    $http({
+        method: 'post',
+        url: DotsCons.GENERATE_INVOICE,
+        data:reqData.reqIds,
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': token.currentUser.tokenDto.token
+        }
+    }).then(function (response) {
+        if(response.data != null){
+        $rootScope.invoiceData = response.data;
+        //console.log( $scope.filtedData)
+       // debugger
+        //$location.path('/travelBilling')
+        }
+        
+    },
+        function (errResponse) {
+            console.error('Error !!');
+            return $q.reject(errResponse);
+        })
+   
+   
+     $('#exampleModal').modal('show');
+     setTimeout(function(){
+        var doc = new jsPDF();
+        var elementHTML = $('#exampleModal').html();
+        var specialElementHandlers = {
+            '#elementH': function (element, renderer) {
+                return true;
+            }
+        };
+        doc.fromHTML(elementHTML, 15, 15, {
+            'width': 170,
+            'elementHandlers': specialElementHandlers
+        });
+
+        // Save the PDF
+        doc.save('sample-document.pdf');
+       },3000)
+            
+    //  kendo.drawing.drawDOM($("#exampleModal")).then(function(group) {
+    //     //kendo.drawing.pdf.saveAs(group, "Prescription_Health5c.pdf");
+
+    //     kendo.drawing.pdf.toDataURL(group, function(dataURL){ 
+    //         console.log("pdf_file :: ",dataURL);
+    //         $scope.uploadFiles = dataURL;
+    //         var pdfData = dataURL.replace("data:application/pdf;base64,", "");
+    //         console.log(pdfData)
+    //         setTimeout(function(){
+    //           //  $scope.downloadPDF(pdfData)
+    //         },3000)
+            
+    //   //console.log(pdfData)
+        
+    //      });
+        
+    // });
 }
 $scope.downloadPDF = function(pdfUrl){
-    
         const file = new Blob([pdfUrl], {type: 'application/pdf'});
-
         // process to auto download it
         const fileURL = URL.createObjectURL(file);
         const link = document.createElement('a');
         link.href = fileURL;
-        link.download = "FileName"+ ".pdf";
+        link.download = "FileName"+ ".pdf"; 
         link.click();
    
 }
