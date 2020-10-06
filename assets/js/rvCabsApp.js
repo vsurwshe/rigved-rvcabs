@@ -4,7 +4,7 @@ console.log("Local IP::",lip);
  */
 
 //var ip = 'https://dotstaxi.com/dot-services/';
-var ip = 'http://103.224.240.187:9000/'; 
+var ip = 'http://103.224.240.187:9001/'; 
 // var ip = 'https://staging.health5c.com/dot-services/';
 app.constant('DotsCons', {
     'LOGIN_POINT': ip + 'public/signIn/',
@@ -28,7 +28,7 @@ app.constant('DotsCons', {
     'DOCUMENT_SEARCH':ip+'masterdata/documentSearch/',
     'UPLOAD_FILES': ip + 'file/upload',
     'GET_FILES': ip + 'file/getFile',
-    'GET_RIDE_LIST': ip + 'booking/bookingByAccountIdFrAdmin',
+    'GET_RIDE_LIST': ip + 'booking/bookingByAccountIdFrAdmin/0/10',
     'GET_FINISHED_LIST':ip+'booking/finishedTripByDriverFrAdmin',
     'GET_FILTERD_DATA':ip+'bill/retriveData',
     'GET_ALL_DATA': ip+'bill/report',
@@ -86,8 +86,6 @@ app.config(['$compileProvider', function ($compileProvider) {
 }]);
 app.config(['$routeProvider', function ($routeProvider) {
     $routeProvider
-  
-
         .when('/privacyPolicy', {
             templateUrl: 'assets/pages/privacyPolicy.html',
 
@@ -197,7 +195,6 @@ app.config(['$routeProvider', function ($routeProvider) {
                 }
             }
         })
-      
         .when('/travelBilling', {
             templateUrl: 'assets/pages/travelBilling.html',
             controller: travelBillingCtrl,
@@ -226,6 +223,37 @@ app.config(['$routeProvider', function ($routeProvider) {
                         })
                     
                 },
+            
+            }
+        })
+        .when('/maintenanceReport', {
+            templateUrl: 'assets/pages/maintenanceReport.html',
+            controller: maintenanceReportCtrl,
+            resolve: {
+                // GET_CURRENT_DATA: function (authService, DotsCons,$rootScope, $http) {
+                //     var token = authService.getCookie('globals');
+                //     if($rootScope.data != null){
+                //         var data = $rootScope.data
+                //     }else{
+                //         var data = {}
+                //      }
+                //     return $http({
+                //         method: 'post',
+                //         url: DotsCons.GET_FILTERD_DATA+"/0/10/",
+                //         data: data,
+                //         headers: {
+                //             'Content-Type': 'application/json',
+                //             'Authorization': token.currentUser.tokenDto.token
+                //         }
+                //     }).then(function (response) {
+                //         return response.data;
+                //     },
+                //         function (errResponse) {
+                //             console.error('Error !!');
+                //             return $q.reject(errResponse);
+                //         })
+                    
+                // },
             
             }
         })
@@ -525,8 +553,10 @@ app.controller("DashNavBarCtrl", function ($scope, $http, authService, $location
                 break;
             case '/addClient':
                 $scope.Route = "Add Client";
-
-            break;
+                break;
+            case '/maintenanceReport':
+                $scope.Route = "Maintenance Report";
+                break;
             case '/travelBilling':
             $scope.Route = "Travel Billing";
             $scope.travelBilling = true;
@@ -665,6 +695,9 @@ app.controller("sidebarCtrl", function ($scope, $http, authService, $location, D
                 break;
             case '/travelerReg':
                 $scope.travelerReg = "active";
+                break;
+            case '/maintenanceReport':
+                $scope.maintenanceReport = "active";
 
 
         }
