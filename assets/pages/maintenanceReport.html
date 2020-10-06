@@ -341,6 +341,46 @@ top: 5px;
     position: relative;
     bottom: 83px;
 }
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  /* border: 1px solid #ccc; */
+  /* background-color: #f1f1f1; */
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  border-top-right-radius: 15px;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: rgb(91, 9, 243);
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: rgb(91, 9, 243);
+  color: #fff;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  /* border-top: none; */
+}
+
 </style>
 <div id="page-loading" ng-show="loading" class="ng-hide">
     <div class="loader">
@@ -355,8 +395,36 @@ top: 5px;
     <div id="content">
         <ng-include src="'assets/pages/MynavBar.html'"></ng-include>
         <div class="col-md-12 table-responsive header-board">
-            <h2>Maintance Report</h2>
+            <div class="tab">
+                <button id="defaultOpen" class="tablinks" onclick="openTab(event, 'Approved Bills')">Approved Bills</button>
+                <button class="tablinks" onclick="openTab(event, 'Pending Bills')">Pending Bills</button>
+              </div>
+              
+              <div id="Approved Bills" class="tabcontent">
+                <h3>Approved Bills</h3>
+              </div>
+              
+              <div id="Pending Bills" class="tabcontent">
+                <h3>Pending Bills</h3>
+              </div>
         </div>
     </div>
 </div>
 <div class="overlay"></div>
+<script>
+    function openTab(evt, cityName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(cityName).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+    // Get the element with id="defaultOpen" and click on it    
+    document.getElementById("defaultOpen").click();
+</script>

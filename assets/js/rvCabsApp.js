@@ -230,31 +230,30 @@ app.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'assets/pages/maintenanceReport.html',
             controller: maintenanceReportCtrl,
             resolve: {
-                // GET_CURRENT_DATA: function (authService, DotsCons,$rootScope, $http) {
-                //     var token = authService.getCookie('globals');
-                //     if($rootScope.data != null){
-                //         var data = $rootScope.data
-                //     }else{
-                //         var data = {}
-                //      }
-                //     return $http({
-                //         method: 'post',
-                //         url: DotsCons.GET_FILTERD_DATA+"/0/10/",
-                //         data: data,
-                //         headers: {
-                //             'Content-Type': 'application/json',
-                //             'Authorization': token.currentUser.tokenDto.token
-                //         }
-                //     }).then(function (response) {
-                //         return response.data;
-                //     },
-                //         function (errResponse) {
-                //             console.error('Error !!');
-                //             return $q.reject(errResponse);
-                //         })
+                GET_CURRENT_DATA: function (authService, DotsCons,$rootScope, $http) {
+                    var token = authService.getCookie('globals');
+                    if($rootScope.data != null){
+                        var data = $rootScope.data
+                    }else{
+                        var data = {}
+                     }
+                    return $http({
+                        method: 'post',
+                        url: DotsCons.GET_FILTERD_DATA+"/0/10/",
+                        data: data,
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': token.currentUser.tokenDto.token
+                        }
+                    }).then(function (response) {
+                        return response.data;
+                    },
+                        function (errResponse) {
+                            console.error('Error !!');
+                            return $q.reject(errResponse);
+                        })
                     
-                // },
-            
+                },
             }
         })
         .when('/travelBillingFilters', {
@@ -556,14 +555,16 @@ app.controller("DashNavBarCtrl", function ($scope, $http, authService, $location
                 break;
             case '/maintenanceReport':
                 $scope.Route = "Maintenance Report";
+                $scope.maintenanceReport = true;
                 break;
             case '/travelBilling':
-            $scope.Route = "Travel Billing";
-            $scope.travelBilling = true;
-            break;
+                $scope.Route = "Travel Billing";
+                $scope.travelBilling = true;
+                break;
             case '/travelBillingFilters':
                 $scope.Route = "Filters"
                 $scope.travelBillingFilter = true
+                break;
         }
         /* -----------GEtting profile info------------- */
         $scope.UserprofileData = function () {
@@ -698,8 +699,7 @@ app.controller("sidebarCtrl", function ($scope, $http, authService, $location, D
                 break;
             case '/maintenanceReport':
                 $scope.maintenanceReport = "active";
-
-
+                break;
         }
     }
 
