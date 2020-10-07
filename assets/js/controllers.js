@@ -3258,13 +3258,10 @@ function travelBillingCtrl($scope, $http, DotsCons, $rootScope, authService, $lo
             'Content-Type': 'application/json',
             'Authorization': token.currentUser.tokenDto.token
         }
-    }).then(function (response) {
-        $scope.costCenters = response.data;
-    },
-        function (errResponse) {
-            console.error('Error !!');
-            return $q.reject(errResponse);
-        })
+    }).then(
+        function (response) { $scope.costCenters = response.data },
+        function (errResponse) { return $q.reject(errResponse) }
+    )
     $http({
         method: 'GET',
         url: DotsCons.GET_EMPLOYEE_ID + "/0/10",
@@ -3273,13 +3270,10 @@ function travelBillingCtrl($scope, $http, DotsCons, $rootScope, authService, $lo
             'Content-Type': 'application/json',
             'Authorization': token.currentUser.tokenDto.token
         }
-    }).then(function (response) {
-        $scope.empIds = response.data;
-    },
-        function (errResponse) {
-            console.error('Error !!');
-            return $q.reject(errResponse);
-        })
+    }).then(
+        function (response) { $scope.empIds = response.data },
+        function (errResponse) { return $q.reject(errResponse) }
+    )
     $http({
         method: 'GET',
         url: DotsCons.GET_TRAVEL_ID + "/0/10",
@@ -3288,14 +3282,10 @@ function travelBillingCtrl($scope, $http, DotsCons, $rootScope, authService, $lo
             'Content-Type': 'application/json',
             'Authorization': token.currentUser.tokenDto.token
         }
-    }).then(function (response) {
-        $scope.travelIds = response.data;
-    },
-        function (errResponse) {
-            console.error('Error !!');
-            return $q.reject(errResponse);
-        })
-
+    }).then(
+        function (response) { $scope.travelIds = response.data },
+        function (errResponse) { return $q.reject(errResponse) }
+    )
     // $scope.contacts = [{name: 'Blinky', email: 'red@pacman.com'},
     // {name: 'Pinky', email: 'pink@pacman.com'},
     // {name: 'Inky', email: 'cyan@pacman.com'},
@@ -3307,18 +3297,14 @@ function travelBillingCtrl($scope, $http, DotsCons, $rootScope, authService, $lo
         $scope.slectGST = []
         $scope.SelctSeg = []
         $scope.selectMOdal = []
-
         if ($scope.selectedCompany != null) {
             $scope.selectedC = $scope.selectedCompany;
-
             for (let value of Object.values($scope.selectedC)) {
                 $scope.companyData.push(value.companyName); // John, then 30
             }
         } else {
             $scope.companyData = null
         }
-
-        //console.log($scope.companyData)
         if ($scope.selectedGst != null) {
             $scope.gst = $scope.selectedGst;
             for (let value of Object.values($scope.gst)) {
@@ -3327,7 +3313,6 @@ function travelBillingCtrl($scope, $http, DotsCons, $rootScope, authService, $lo
         } else {
             $scope.slectGST = []
         }
-        //console.log($scope.slectGST)
         if ($scope.selectedsDuty != null) {
             $scope.selectedDuty = $scope.selectedsDuty;
             for (let value of Object.values($scope.selectedDuty)) {
@@ -3336,7 +3321,6 @@ function travelBillingCtrl($scope, $http, DotsCons, $rootScope, authService, $lo
         } else {
             $scope.typeDuty = []
         }
-        //console.log($scope.typeDuty)
         if ($scope.selectedsSeg != null) {
             $scope.selectedseg = $scope.selectedsSeg;
             for (let value of Object.values($scope.selectedseg)) {
@@ -3345,7 +3329,6 @@ function travelBillingCtrl($scope, $http, DotsCons, $rootScope, authService, $lo
         } else {
             $scope.SelctSeg = []
         }
-        //console.log($scope.SelctSeg)
         if ($scope.selectedsModel != null) {
             $scope.selectedModel = $scope.selectedsModel;
             for (let value of Object.values($scope.selectedModel)) {
@@ -3354,19 +3337,16 @@ function travelBillingCtrl($scope, $http, DotsCons, $rootScope, authService, $lo
         } else {
             $scope.selectMOdal = []
         }
-        //console.log($scope.selectMOdal)
         var fromDate = '';
         if ($scope.fromDate != null) {
             var d = new Date($scope.fromDate),
                 month = '' + (d.getMonth() + 1),
                 day = '' + d.getDate(),
                 year = d.getFullYear();
-
             if (month.length < 2)
                 month = '0' + month;
             if (day.length < 2)
                 day = '0' + day;
-
             fromDate = [year, month, day].join('-');
         } else {
             fromDate = ""
@@ -3377,21 +3357,17 @@ function travelBillingCtrl($scope, $http, DotsCons, $rootScope, authService, $lo
                 month = '' + (d.getMonth() + 1),
                 day = '' + d.getDate(),
                 year = d.getFullYear();
-
             if (month.length < 2)
                 month = '0' + month;
             if (day.length < 2)
                 day = '0' + day;
-
             toDate = [year, month, day].join('-');
         } else {
             $scope.endDate = ""
         }
         //console.log(fromDate)
         $rootScope.data = {
-
             "startDate": fromDate,
-
             "endDate": toDate,
             "dutyTypes": $scope.typeDuty,
             "companyNames": $scope.companyData,
@@ -3436,23 +3412,14 @@ function travelBillingCtrl($scope, $http, DotsCons, $rootScope, authService, $lo
                 console.log($scope.filtedData)
                 $location.path('/travelBilling')
             }
-
-        },
-            function (errResponse) {
-                console.error('Error !!');
-                return $q.reject(errResponse);
-            })
+        },function (errResponse) { return $q.reject(errResponse)})
     }
-    if (GET_CURRENT_DATA != null) {
-        $rootScope.filtedData = GET_CURRENT_DATA
-        console.log("Data Filterd ",$rootScope.filtedData)
-    }
+    if (GET_CURRENT_DATA != null) { $rootScope.filtedData = GET_CURRENT_DATA }
     $scope.index = 0;
     $scope.numbers = 10;
     $scope.showMorefilterData = function () {
         $scope.index++;
         $scope.numbers + 10;
-        //console.log("count",$scope.count);
         $http({
             method: 'post',
             url: DotsCons.GET_FILTERD_DATA + "/" + $scope.index + "/" + $scope.numbers,
@@ -3463,23 +3430,12 @@ function travelBillingCtrl($scope, $http, DotsCons, $rootScope, authService, $lo
             }
         }).then(function (response) {
             if (response.data != null) {
-                //$rootScope.filtedData = response.data;
                 for (i = 0; i < response.data.length; i++)
                     $rootScope.filtedData.push(response.data[i]);
             }
-            //  console.log($rootScope.filtedData)
-
-        },
-            function (errResponse) {
-                console.error('Error !!');
-                return $q.reject(errResponse);
-            })
-
+        }, function (errResponse) { return $q.reject(errResponse)})
     }
-
     $scope.download = function () {
-        //$scope.dateReport = new Date($scope.ReportDate);
-
         $http({
             method: 'post',
             url: DotsCons.GET_ALL_DATA,
@@ -3491,42 +3447,11 @@ function travelBillingCtrl($scope, $http, DotsCons, $rootScope, authService, $lo
         }).then(function (response) {
             if (response.data != null) {
                 $rootScope.filtedData = response.data;
-                //console.log( $scope.filtedData)
-                // debugger
-                //$location.path('/travelBilling')
             }
-
-        },
-            function (errResponse) {
-                console.error('Error !!');
-                return $q.reject(errResponse);
-            })
-
+        }, function (errResponse) { return $q.reject(errResponse)})
         setTimeout(function () {
-
-            console.log("Harish")
-
-            $("#tableDta").table2excel({
-                filename: "example"
-            });
-            // kendo.drawing.drawDOM($("#listDataTable8")).then(function(group) {
-
-
-            //  kendo.drawing.pdf.toDataURL(group, function(dataURL){ 
-
-            //      $scope.uploadFilesD = dataURL;
-
-            //      console.log("$scope.uploadFilesD",$scope.uploadFilesD)
-
-
-            //      console.log("pdf_file :: ",$scope.uploadFilesD);
-            //      var pdfData = dataURL.replace("data:application/pdf;base64,", "");
-            //  })
-            // })
+            $("#tableDta").table2excel({ filename: "example" });
         }, 3000)
-
-
-
     }
     var reqIds = []
     $scope.generateInvoice = function () {
@@ -3538,11 +3463,7 @@ function travelBillingCtrl($scope, $http, DotsCons, $rootScope, authService, $lo
             }
         }
         reqIds.push(fruitId)
-        var reqData = {
-            reqIds
-        }
-
-
+        var reqData = { reqIds }
         $http({
             method: 'post',
             url: DotsCons.GENERATE_INVOICE,
@@ -3554,50 +3475,30 @@ function travelBillingCtrl($scope, $http, DotsCons, $rootScope, authService, $lo
         }).then(function (response) {
             if (response.data != null) {
                 $rootScope.invoiceData = response.data;
-                //console.log( $scope.filtedData)
-                // debugger
-                //$location.path('/travelBilling')
             }
-
-        },
-            function (errResponse) {
-                console.error('Error !!');
-                return $q.reject(errResponse);
-            })
-
-
+        }, function (errResponse) { return $q.reject(errResponse) })
         $('#exampleModal').modal('show');
         setTimeout(function () {
             kendo.drawing.drawDOM($("#pdfData")).then(function (group) {
                 //kendo.drawing.pdf.saveAs(group, "Prescription_Health5c.pdf");
-
                 kendo.drawing.pdf.toDataURL(group, function (dataURL) {
                     console.log("pdf_file :: ", dataURL);
                     $scope.uploadFiles = dataURL;
                     // console.log($scope.uploadFiles)
                     var pdfData = dataURL.replace("data:application/pdf;base64,", "");
                     console.log(pdfData)
-
                     setTimeout(function () {
                         $scope.downloadPDF(pdfData, "invoice")
                     }, 3000)
-
-                    //console.log(pdfData)
-
                 });
-
             });
         }, 5000)
-
     }
     $scope.downloadPDF = function (pdfUrl, name) {
         let pdfWindow = window.open("");
         pdfWindow.document.write("<html<head><title>" + name + "</title><style>body{margin: 0px;}iframe{border-width: 0px;}</style></head>");
         pdfWindow.document.write("<body><embed width='100%' height='100%' src='data:application/pdf;base64, " + encodeURI(pdfUrl) + "#toolbar=0&navpanes=0&scrollbar=0'></embed></body></html>");
-
         //window.open("data:application/octet-stream;charset=utf-16le;base64,"+pdfUrl)
-
-
     }
 }
 
@@ -4122,5 +4023,17 @@ function maintenanceDetailsCtrl($scope, $http, DotsCons, $rootScope, authService
     ]
     $scope.maintenanceReport= function(){
         $location.path('/maintenanceReport')
+    }
+    $scope.download = function () {
+        setTimeout(function () {
+            $("#maintenanceTableDta").table2excel({ filename: "report" });
+        }, 1000)
+    }
+
+    $scope.downloadPDF = function (pdfUrl, name) {
+        let pdfWindow = window.open("");
+        pdfWindow.document.write("<html<head><title>" + name + "</title><style>body{margin: 0px;}iframe{border-width: 0px;}</style></head>");
+        pdfWindow.document.write("<body><embed width='100%' height='100%' src='data:application/pdf;base64, " + encodeURI(pdfUrl) + "#toolbar=0&navpanes=0&scrollbar=0'></embed></body></html>");
+        //window.open("data:application/octet-stream;charset=utf-16le;base64,"+pdfUrl)
     }
 }

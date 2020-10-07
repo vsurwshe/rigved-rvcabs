@@ -286,10 +286,7 @@
                         <th scope="col">Toll-park</th>
                         <th scope="col">D.A+Night allowences</th>
                         <th scope="col">Grand Total</th>
-                        
                         <th scope="col"> Actions</th>
-                        
-                        
                         <!-- <th scope="col">Action</th> -->
                     </tr>
 
@@ -297,7 +294,6 @@
                 <tbody>
                     <tr  ng-repeat = "data in filtedData">
                      <td><input id="chkCustomer_{{fruit.FruitId}}" type="checkbox" ng-model="data.Selected" />
-                        
                      <td>{{data.nameOfCompany}}</td>
                      <td>{{data.gstNo}}</td>
                      <td>{{data.costCentre}}</td>
@@ -529,27 +525,19 @@
     var dataType = 'application/vnd.ms-excel';
     var tableSelect = document.getElementById(tableID);
     var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
-    
     // Specify file name
     filename = filename?filename+'.xls':'excel_data.xls';
-    
     // Create download link element
     downloadLink = document.createElement("a");
-    
     document.body.appendChild(downloadLink);
-    
     if(navigator.msSaveOrOpenBlob){
-        var blob = new Blob(['\ufeff', tableHTML], {
-            type: dataType
-        });
+        var blob = new Blob(['\ufeff', tableHTML], {type: dataType});
         navigator.msSaveOrOpenBlob( blob, filename);
     }else{
         // Create a link to the file
         downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
-    
         // Setting the file name
         downloadLink.download = filename;
-        
         //triggering the function
         downloadLink.click();
     }
@@ -562,7 +550,6 @@ function checkAll(bx) {
     }
   }
 }
-
 </script>
 <script>
     function demoFromHTML() {
@@ -571,7 +558,6 @@ function checkAll(bx) {
     // source can be HTML-formatted string, or a reference
     // to an actual DOM element from which the text will be scraped.
     source = $('#pdfData');
-
     // we support special element handlers. Register them with jQuery-style 
     // ID selector for either ID or node name. ("#iAmID", "div", "span" etc.)
     // There is no support for any other type of selectors 
@@ -601,7 +587,7 @@ function checkAll(bx) {
 
     function (dispose) {
         // dispose: object with X, Y of the last line add to the PDF 
-        //          this allow the insertion of new lines after html
+        // this allow the insertion of new lines after html
         pdf.save('Test.pdf');
     }, margins);
 }

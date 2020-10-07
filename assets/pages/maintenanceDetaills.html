@@ -364,7 +364,7 @@ top: 5px;
                     </div>
                  </div>
             </div>
-            <table class="responsive table" id="tableDta">
+            <table class="responsive table" id="maintenanceTableDta">
                 <thead>
                     <tr>
                         <th scope="col">Selection <input type="checkbox" onclick="checkAll(this)"></th>
@@ -394,7 +394,13 @@ top: 5px;
                     </tr>
                 </tbody>
             </table>
+            <div class="row">
+                <div class="col-md-9"></div>
+                <div class="col-md-3">
+                    <button class="btn btn-success" ng-click="download()">Report</button>
+                    <button class="btn btn-primary" ng-click = "generateInvoice()">Invoice</button>
+                </div>
+            </div>
         </div>
     </div>
-   
 </div>
