@@ -277,9 +277,9 @@
         border: 1px solid;
         border-radius: 22px;
     }
-    .btn-round{
-        border-radius: 20px;    
-    }
+.btn-round{
+    border-radius: 20px;
+}
     .panel-body {
         border: 1px solid #dad6d6;
         border-top: 0pc;
@@ -341,47 +341,8 @@ top: 5px;
     position: relative;
     bottom: 83px;
 }
-
-/* Style the tab */
-.tab {
-  overflow: hidden;
-  /* border: 1px solid #ccc; */
-  /* background-color: #f1f1f1; */
-}
-
-/* Style the buttons inside the tab */
-.tab button {
-  background-color: inherit;
-  border-top-right-radius: 15px;
-  float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  transition: 0.3s;
-  font-size: 14px;
-}
-
-/* Change background color of buttons on hover */
-.tab button:hover {
-  background-color: rgb(91, 9, 243);
-}
-
-/* Create an active/current tablink class */
-.tab button.active {
-  background-color: rgb(91, 9, 243);
-  color: #fff;
-}
-
-/* Style the tab content */
-.tabcontent {
-  display: none;
-  padding: 6px 12px;
-  border: 1px solid #ccc;
-  /* border-top: none; */
-}
-
 </style>
+
 <div id="page-loading" ng-show="loading" class="ng-hide">
     <div class="loader">
         <img src="assets/img/giphy.gif" width="100" height="100" style="padding: 0">
@@ -395,98 +356,45 @@ top: 5px;
     <div id="content">
         <ng-include src="'assets/pages/MynavBar.html'"></ng-include>
         <div class="col-md-12 table-responsive header-board">
-            <div class="tab">
-                <button id="defaultOpen" class="tablinks" onclick="openTab(event, 'Approved Bills')">Approved Bills</button>
-                <button class="tablinks" onclick="openTab(event, 'Pending Bills')">Pending Bills</button>
-              </div>
-              
-              <div id="Approved Bills" class="tabcontent">
-                <table class="responsive table" id="tableDta">
-                    <thead>
-                        <tr>
-                            <th scope="col">Selection <input type="checkbox" onclick="checkAll(this)"></th>
-                            <th scope="col">Driver Name</th>
-                            <th scope="col">Vehicle No</th>
-                            <th scope="col">Total Kms</th>
-                            <th scope="col">Total Fuel (Lts)</th>
-                            <th scope="col">Average</th>
-                            <th scope="col">Service/Expenses</th>
-                            <th scope="col">Grand Total Amount</th>
-                            <th scope="col"> Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat = "data in approvedBillsData">
-                            <td><input id="chkCustomer_{{fruit.FruitId}}" type="checkbox" ng-model="data.Selected" />
-                            <td>{{data.driverName}}</td>
-                            <td>{{data.vehicleNo}}</td>
-                            <td>{{data.totalKms}}&nbsp;km</td>
-                            <td>{{data.totalFuel}}</td>
-                            <td>{{data.average}}&nbsp;km/L</td>
-                            <td>₹&nbsp;{{data.serviceExpenses}}</td>
-                            <td>₹&nbsp;{{data.grandTotalAmount}}</td>
-                            <td>
-                                <center>
-                                    <button class="btn ripple-infinite btn-round btn-primary materialButtons" ng-hide="no_morerecord" ng-click="showApprovedBills(data)"> view </button>
-                                </center>
-                                
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-              </div>
-              <div id="Pending Bills" class="tabcontent">
-                <table class="responsive table" id="tableDta">
-                    <thead>
-                        <tr>
-                            <th scope="col">Selection <input type="checkbox" onclick="checkAll(this)"></th>
-                            <th scope="col">Date</th>
-                            <th scope="col">Driver Name</th>
-                            <th scope="col">Vehicle Number</th>
-                            <th scope="col">Expenses Item</th>
-                            <th scope="col">Expense Type</th>
-                            <th scope="col">Meter Reading</th>
-                            <th scope="col"> Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat = "data in pendingBillsData">
-                            <td><input id="chkCustomer_{{fruit.FruitId}}" type="checkbox" ng-model="data.Selected" />
-                            <td>{{data.date}}</td>
-                            <td>{{data.driverName}}</td>
-                            <td>{{data.vehicleNo}}</td>
-                            <td>{{data.expensesItem}}</td>
-                            <td>₹&nbsp;{{data.expenseType}}</td>
-                            <td>{{data.meterReading}}</td>
-                            <td>
-                                <center>
-                                    <button class="btn ripple-infinite btn-round btn-secondary materialButtons" ng-hide="no_morerecord" ng-click="showPendingBills(data)">View</button>
-                                    <div style="color: red;"> <span>Pending</span> </div>
-                                    <button class="btn ripple-infinite btn-round btn-primary materialButtons" ng-hide="no_morerecord" ng-click="editPendingBills(data)">Edit</button>
-                                </center>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-              </div>
+            <div class="row">
+                <div class="col-md-9"></div>
+                <div class="col-md-3">
+                    <div class="col-md-10  col-sm-12 mb-2" style="text-align: right">
+                        <button type="button" class="button-small" style="cursor: pointer" ng-click="maintenanceReport()"><span class="myfont">Maintenance Report</span></button>         
+                    </div>
+                 </div>
+            </div>
+            <table class="responsive table" id="tableDta">
+                <thead>
+                    <tr>
+                        <th scope="col">Selection <input type="checkbox" onclick="checkAll(this)"></th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Expenses Item</th>
+                        <th scope="col">Expense Type</th>
+                        <th scope="col">Meter Reading</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col"> Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat = "data in approvedBillsData">
+                        <td><input id="chkCustomer_{{fruit.FruitId}}" type="checkbox" ng-model="data.Selected" />
+                        <td>{{data.date}}</td>
+                        <td>{{data.expensesItem}}</td>
+                        <td>₹&nbsp;{{data.expenseType}}</td>
+                        <td>{{data.meterReading}}</td>
+                        <td>₹&nbsp;{{data.amount}}</td>
+                        <td>
+                            <center>
+                                <!-- <button class="btn ripple-infinite btn-round btn-secondary materialButtons" ng-hide="no_morerecord" ng-click="showPendingBills(data)">View</button> -->
+                                <div > <span>View</span>&nbsp;|&nbsp;<span>Status</span>&nbsp;|&nbsp;<span>Edit</span></div>
+                                <!-- <button class="btn ripple-infinite btn-round btn-primary materialButtons" ng-hide="no_morerecord" ng-click="editPendingBills(data)">Edit</button> -->
+                            </center>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
+   
 </div>
-<div class="overlay"></div>
-<script>
-    function openTab(evt, cityName) {
-      var i, tabcontent, tablinks;
-      tabcontent = document.getElementsByClassName("tabcontent");
-      for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-      }
-      tablinks = document.getElementsByClassName("tablinks");
-      for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-      }
-      document.getElementById(cityName).style.display = "block";
-      evt.currentTarget.className += " active";
-    }
-    // Get the element with id="defaultOpen" and click on it    
-    document.getElementById("defaultOpen").click();
-</script>

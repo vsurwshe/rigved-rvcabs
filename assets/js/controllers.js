@@ -1,5 +1,6 @@
 
-/* --------------------------------------------------------------------------------- */
+
+// this is login controller
 function LoginCtrl($scope, $http, DotsCons, authService, $location, toaster, $localStorage) {
     var config1 = {
         headers: {
@@ -65,7 +66,7 @@ function LoginCtrl($scope, $http, DotsCons, authService, $location, toaster, $lo
                     type: "error",
                     mode: "dark",
                 });
-                $scope.loading = false;
+                loading = false;
             }
 
         }, function (reason) {
@@ -82,7 +83,7 @@ function LoginCtrl($scope, $http, DotsCons, authService, $location, toaster, $lo
 
 }
 
-/* --------------------------------------------------------------------------------- */
+// this is logout controller
 function LogoutCtrl($http, DotsCons, $location, authService, $scope, $localStorage) {
     var token = authService.getCookie('globals');
     $localStorage.online_status = 3;
@@ -118,11 +119,7 @@ function LogoutCtrl($http, DotsCons, $location, authService, $scope, $localStora
 
 }
 
-
-
-/* --------------------------------------------------------------------------------- */
-/* --------------------------------Customer List------------------------------------ */
-/* --------------------------------------------------------------------------------- */
+// this is customer list controller
 function customerListCtrl(authService, $location, $scope, $http, DotsCons, GET_CUSTMER_DATA) {
 
     if (GET_CUSTMER_DATA != null) {
@@ -171,6 +168,8 @@ function customerListCtrl(authService, $location, $scope, $http, DotsCons, GET_C
             })
     }
 }
+
+// this is add client controller
 function addClientController(authService, $location, $scope, $http, DotsCons) {
     var token = authService.getCookie('globals');
 
@@ -224,26 +223,22 @@ function addClientController(authService, $location, $scope, $http, DotsCons) {
             })
     }
 }
+
+// this is manage client cotroller
 function manageClientCtrl(authService, $location, $scope, $http, DotsCons, GET_CLIENT_DATA) {
     if (GET_CLIENT_DATA != null) {
         $scope.client_list = GET_CLIENT_DATA;
     }
 }
 
-
-
-
-
-
-
-/* --------------------------------------------------------------------------------- */
-/* --------------------------------Car Ctrl-------toke---------------------------------- */
+// this is aprove member controller
 function approveMemberCtrl($scope, $http, DotsCons, authService, $localStorage, $q, $log, Upload, $timeout, $location, GET_Drivet_LIST) {
     if (GET_Drivet_LIST != null) {
         $scope.driverList = GET_Drivet_LIST
     }
 }
-/* --------------------------------------------------------------------------------- */
+
+// this is add trip controller
 function addTripController($scope, $http, DotsCons, authService, $localStorage, $q, $log, Upload, $timeout, $location,) {
     // $scope.rideList = GET_RIDE_LIST;
 
@@ -2506,8 +2501,10 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
     }
 
 }
+
+// this is manage trip controller
 function manageTripController($scope, $http, DotsCons, authService, $localStorage, $q, $log, $location, GET_RIDE_LIST) {
-    var ridelist
+    var ridelist;
     if (GET_RIDE_LIST != null) {
         ridelist = GET_RIDE_LIST;
     }
@@ -2523,18 +2520,17 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
                 'Content-Type': 'application/json',
                 'Authorization': token.currentUser.tokenDto.token
             }
-        }).then(function (response) {
-            $scope.finishList = response.data;
-            $scope.loading = false;
-        },
+        }).then(
+            function (response) {
+                $scope.finishList = response.data;
+                $scope.loading = false;
+            },
             function (errResponse) {
                 console.error('Error !!');
                 $q.reject(errResponse);
-            })
-
+            }
+        )
     }
-
-    console.log(ridelist)
 
     var bigCities = [];
     var pastRides = []
@@ -2547,19 +2543,18 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
     }
     $scope.upcomingList = bigCities;
     $scope.pastRides = pastRides;
+    // this is redirecting adding trip
     $scope.addTrip = function () {
         $location.path('/addtrip')
     }
     $scope.getDetails = function (data, boolean) {
         $scope.loading = true;
-        console.log("1", boolean)
         if (boolean == 1) {
             $scope.view = true;
             $scope.accept = false;
         } else if (boolean == 2) {
             $scope.accept = true;
             $scope.view = false;
-
         }
         $http({
             method: 'GET',
@@ -2569,59 +2564,43 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
                 'Content-Type': 'application/json',
                 'Authorization': token.currentUser.tokenDto.token
             }
-        }).then(function (response) {
-            //console.log(response)
-            $scope.complteDetails = response.data;
-
-            //   console.log($scope.companyDetails);
-            if ($scope.complteDetails.tripStatus == 0) {
-                $scope.status = "Driver Not Available";
-                console.log($scope.status)
-            } else if ($scope.complteDetails.tripStatus == 1) {
-                $scope.status = "Ride Expired";
-            } else if ($scope.complteDetails.tripStatus == 2) {
-                $scope.status = "Ride Assigned";
-            }
-            else if ($scope.complteDetails.tripStatus == 3) {
-                $scope.status = "Ride Accepted";
-            }
-            else if ($scope.complteDetails.tripStatus == 4) {
-                $scope.status = "Ride Started";
-            }
-            else if ($scope.complteDetails.tripStatus == 5) {
-                $scope.status = "Ride Compelted";
-            }
-            else if ($scope.complteDetails.tripStatus == 6) {
-                $scope.status = "Expired";
-            }
-            else if ($scope.complteDetails.tripStatus == 7) {
-                $scope.status = "Declined";
-            }
-            $scope.loading = false;
-        },
-            function (errResponse) {
+        }).then(
+            function (response) {
+                $scope.complteDetails = response.data;
+                if ($scope.complteDetails.tripStatus == 0) {
+                    $scope.status = "Driver Not Available";
+                    console.log($scope.status)
+                } else if ($scope.complteDetails.tripStatus == 1) {
+                    $scope.status = "Ride Expired";
+                } else if ($scope.complteDetails.tripStatus == 2) {
+                    $scope.status = "Ride Assigned";
+                }
+                else if ($scope.complteDetails.tripStatus == 3) {
+                    $scope.status = "Ride Accepted";
+                }
+                else if ($scope.complteDetails.tripStatus == 4) {
+                    $scope.status = "Ride Started";
+                }
+                else if ($scope.complteDetails.tripStatus == 5) {
+                    $scope.status = "Ride Compelted";
+                }
+                else if ($scope.complteDetails.tripStatus == 6) {
+                    $scope.status = "Expired";
+                }
+                else if ($scope.complteDetails.tripStatus == 7) {
+                    $scope.status = "Declined";
+                }
+                $scope.loading = false;
+            },function (errResponse) {
                 console.error('Error !!');
                 return $q.reject(errResponse);
-            })
-
-
-        // $scope.companyName = data.companyName;
-        // $scope.pickUpCity = data.pickUpCity;
-        // $scope.pickUpDate = data.pickUpDate;
-        // $scope.pickUpTime = data.pickUpTime;
-        // $scope.pickUpLocation = data.pickUpLocation;
-        // $scope.releaseAddress = data.releaseAddress;
-        // $scope.releaseLocation = data.releaseLocation;
-        // $scope.name = data.travellerName;
-        // $scope.teId = data.id;
-        // $scope.mobile = data.travellerMobile;
-        // $scope.empId = data.empId;
-
+            }
+        )
     }
+
+    // this function get driver list
     $scope.getDriverList = function (val) {
-        if (val == "" || val == undefined || val == null) {
-            val = ""
-        }
+        if (val == "" || val == undefined || val == null) { val = "" }
         return $http({
             method: 'GET',
             url: DotsCons.DRIVER_SEARCH + 0 + "/10/" + val,
@@ -2630,27 +2609,24 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
                 'Content-Type': 'application/json',
                 'Authorization': token.currentUser.tokenDto.token
             }
-        }).then(function (response) {
-            return response.data;
-        },
-            function (errResponse) {
-                console.error('Error !!');
-                return $q.reject(errResponse);
-            })
-
+        }).then(
+            function (response) { return response.data },
+            function (errResponse) { return $q.reject(errResponse) }
+        )
     }
 
     var token = authService.getCookie('globals');
     var myheader = $localStorage.myHeader[0];
     var requestHeader = $localStorage.requestHeader[0]
     /* ------------------------------------------------ */
-    var config1 = {
-        headers: {
-            'Content-Type': 'application/json',
-            "Authorization": token.currentUser.tokenDto.token
+    // var config1 = {
+    //     headers: {
+    //         'Content-Type': 'application/json',
+    //         "Authorization": token.currentUser.tokenDto.token
+    //     }
+    // }
 
-        }
-    }
+    // this will call the serach banch api
     $http({
         method: 'GET',
         url: DotsCons.SEARCH_BRAND,
@@ -2659,13 +2635,11 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
             'Content-Type': 'application/json',
             'Authorization': token.currentUser.tokenDto.token
         }
-    }).then(function (response) {
-        console.log(response);
-    },
-        function (errResponse) {
-            console.error('Error !!');
-            return $q.reject(errResponse);
-        })
+    }).then(
+        function (response) { console.log(response) },
+        function (errResponse) { return $q.reject(errResponse) }
+    )
+    // this will call the serach brand api
     $http({
         method: 'GET',
         url: DotsCons.SEARCH_BRAND,
@@ -2674,15 +2648,11 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
             'Content-Type': 'application/json',
             'Authorization': token.currentUser.tokenDto.token
         }
-    }).then(function (response) {
-        $scope.allBrands = response.data;
-        console.log($scope.allBrands)
-    },
-        function (errResponse) {
-            console.error('Error !!');
-            return $q.reject(errResponse);
-        })
-
+    }).then(
+        function (response) { $scope.allBrands = response.data}, 
+        function (errResponse) { return $q.reject(errResponse) }
+    )
+    // this will call the serach model api
     $http({
         method: 'GET',
         url: DotsCons.SEARCH_MODEL,
@@ -2691,13 +2661,10 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
             'Content-Type': 'application/json',
             'Authorization': token.currentUser.tokenDto.token
         }
-    }).then(function (response) {
-        console.log(response);
-    },
-        function (errResponse) {
-            console.error('Error !!');
-            return $q.reject(errResponse);
-        })
+    }).then(function (response) { console.log(response)},
+        function (errResponse) { return $q.reject(errResponse) }
+    )
+    // this will call the serach car color api
     $http({
         method: 'GET',
         url: DotsCons.SEARCH_CAR_COLOR,
@@ -2706,13 +2673,10 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
             'Content-Type': 'application/json',
             'Authorization': token.currentUser.tokenDto.token
         }
-    }).then(function (response) {
-        console.log(response);
-    },
-        function (errResponse) {
-            console.error('Error !!');
-            return $q.reject(errResponse);
-        })
+    }).then(function (response) { console.log(response) },
+        function (errResponse) { return $q.reject(errResponse) }
+    )
+    // this will call the company details api
     $http({
         method: 'GET',
         url: DotsCons.COMPANY_DETAILS,
@@ -2721,15 +2685,11 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
             'Content-Type': 'application/json',
             'Authorization': token.currentUser.tokenDto.token
         }
-    }).then(function (response) {
-        $scope.companyDetails = response.data;
-    },
-        function (errResponse) {
-            console.error('Error !!');
-            return $q.reject(errResponse);
-        })
-
-
+    }).then(
+        function (response) { $scope.companyDetails = response.data },
+        function (errResponse) { return $q.reject(errResponse) }
+    )
+    // this fucntion will used for the accept ride
     $scope.acceptRide = function (data) {
         $scope.loading = true;
         $http({
@@ -2741,7 +2701,6 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
                 'Authorization': token.currentUser.tokenDto.token
             }
         }).then(function (response) {
-            console.log(response.data);
             if (response.data.status == 'true') {
                 $scope.loading = false;
                 $.iaoAlert({
@@ -2751,15 +2710,10 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
                 })
                 $("#exampleModal").modal("hide")
             }
-        },
-            function (errResponse) {
-                console.error('Error !!');
-                return $q.reject(errResponse);
-            })
-
+        }, function (errResponse) { return $q.reject(errResponse) })
     }
+    // this function will used for the re assignd rides
     $scope.reAssignRide = function (data) {
-
         if ($scope.driver != null || $scope.driver != undefined) {
             $scope.loading = true;
             $http({
@@ -2771,7 +2725,6 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
                     'Authorization': token.currentUser.tokenDto.token
                 }
             }).then(function (response) {
-                console.log(response.data);
                 if (response.data != null) {
                     $scope.loading = false;
                     $.iaoAlert({
@@ -2790,20 +2743,16 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
                         mode: "dark",
                     })
                     $("#exampleModal1").modal("hide")
-                    console.error('Error !!');
                     return $q.reject(errResponse);
                 })
         } else {
             alert("please select a Driver")
         }
     }
-
-
+    // this function will used for the get company details
     $scope.getCompany = function (val) {
         $scope.loading = true
-        if (val == null || val == undefined || val == '') {
-            val = null
-        }
+        if (val == null || val == undefined || val == '') { val = null }
         return $http({
             method: 'GET',
             url: DotsCons.COMPANY_DETAILS + '/' + val,
@@ -2812,21 +2761,16 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
                 'Content-Type': 'application/json',
                 'Authorization': token.currentUser.tokenDto.token
             }
-        }).then(function (response) {
-            return response.data;
-
-        },
-            function (errResponse) {
-                console.error('Error !!');
-                return $q.reject(errResponse);
-            })
+        }).then(
+            function (response) { return response.data },
+            function (errResponse) { return $q.reject(errResponse) }
+        )
         $scope.loading = false
     }
+    // this function will used for the get car brand details
     $scope.getCarBarand = function (val) {
         $scope.loading = true
-        if (val == '' || val == undefined || val == null) {
-            val = null
-        }
+        if (val == '' || val == undefined || val == null) { val = null }
         return $http({
             method: 'GET',
             url: DotsCons.SEARCH_BRAND + "/" + val,
@@ -2835,16 +2779,12 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
                 'Content-Type': 'application/json',
                 'Authorization': token.currentUser.tokenDto.token
             }
-        }).then(function (response) {
-            return response.data;
-            $scope
-        },
-            function (errResponse) {
-                console.error('Error !!');
-                return $q.reject(errResponse);
-            })
-
+        }).then(
+            function (response) { return response.data; },
+            function (errResponse) { return $q.reject(errResponse); }
+        )
     }
+    // this function will used for the get sub type
     $scope.getSubType = function (val) {
         return $http({
             method: 'GET',
@@ -2854,30 +2794,15 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
                 'Content-Type': 'application/json',
                 'Authorization': token.currentUser.tokenDto.token
             }
-        }).then(function (response) {
-            return response.data;
-
-        },
-            function (errResponse) {
-                console.error('Error !!');
-                return $q.reject(errResponse);
-            })
-
+        }).then(function(response){return response.data},
+            function (errResponse) { return $q.reject(errResponse)}
+        )
     }
-    // $scope.carSegNameId =$scope.carBrandSubType.id
     var that = this;
 
-    $scope.today = function () {
-        $scope.dt = new Date();
-    };
+    $scope.today = function () { $scope.dt = new Date(); };
     $scope.today();
-
-    $scope.clear = function () {
-        $scope.dt = null;
-    };
-
-
-
+    $scope.clear = function () { $scope.dt = null };
     $scope.dateOptions = {
         // dateDisabled: disabled,
         formatYear: 'yy',
@@ -2906,9 +2831,6 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
             mode = data.mode;
         return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
     }
-
-
-
     $scope.open1 = function () {
         $scope.popup1.opened = true;
         // alert($scope.dt)
@@ -2921,44 +2843,27 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
         $scope.popup3.opened = true;
         // alert($scope.dt)
     };
-
     $scope.setDate = function (year, month, day) {
         $scope.dt = new Date(year, month, day);
     };
-
     $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
     $scope.format = $scope.formats[0];
     $scope.altInputFormats = ['M!/d!/yyyy'];
 
-    $scope.popup1 = {
-        opened: false
-    };
-    $scope.popup2 = {
-        opened: false
-    };
-    $scope.popup3 = {
-        opened: false
-    };
+    $scope.popup1 = { opened: false };
+    $scope.popup2 = { opened: false };
+    $scope.popup3 = { opened: false };
     $scope.mytime = new Date();
-
     $scope.hstep = 1;
     $scope.mstep = 15;
-
     $scope.options = {
         hstep: [1, 2, 3],
         mstep: [1, 5, 10, 15, 25, 30]
     };
-    $scope.changed = function () {
-        $log.log('Time changed to: ' + $scope.mytime);
-    };
-
-    $scope.clear = function () {
-        $scope.mytime = null;
-    };
+    $scope.changed = function () { $log.log('Time changed to: ' + $scope.mytime); };
+    $scope.clear = function () { $scope.mytime = null; };
     $scope.ismeridian = true;
-    $scope.toggleMode = function () {
-        $scope.ismeridian = !$scope.ismeridian;
-    };
+    $scope.toggleMode = function () { $scope.ismeridian = !$scope.ismeridian; };
     $scope.tripBooking = function () {
         //  $scope.loading = true;
         console.log("to", $scope.toDate)
@@ -3005,7 +2910,7 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
             "tripStatus": 0
         }
         // alert($scope.picktime)
-        console.log(data)
+        // this will call the trip booking api
         $http({
             method: 'post',
             url: DotsCons.TRIP_BOOKING,
@@ -3025,16 +2930,9 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
                 })
             }
             $location.path('/managetrip')
-        },
-            function (errResponse) {
-                console.error('Error !!');
-                return $q.reject(errResponse);
-            })
-
+        }, function (errResponse) { return $q.reject(errResponse) })
     }
-
-
-
+    // this function will call the car interrior api
     $scope.getCarInterrior = function (val) {
         return $http({
             method: 'GET',
@@ -3044,14 +2942,12 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
                 'Content-Type': 'application/json',
                 'Authorization': token.currentUser.tokenDto.token
             }
-        }).then(function (response) {
-            return response.data;
-        },
-            function (errResponse) {
-                console.error('Error !!');
-                return $q.reject(errResponse);
-            })
+        }).then(
+            function (response) { return response.data; },
+            function (errResponse) { return $q.reject(errResponse) }
+        )
     }
+    // this function will call the get car color api
     $scope.getCarColor = function (val) {
         return $http({
             method: 'GET',
@@ -3061,14 +2957,12 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
                 'Content-Type': 'application/json',
                 'Authorization': token.currentUser.tokenDto.token
             }
-        }).then(function (response) {
-            return response.data;
-        },
-            function (errResponse) {
-                console.error('Error !!');
-                return $q.reject(errResponse);
-            })
+        }).then(
+            function (response) { return response.data },
+            function (errResponse) { return $q.reject(errResponse) }
+        )
     };
+    // this funtion will call the to get car model api 
     $scope.getCarModal = function (val) {
         return $http({
             method: 'GET',
@@ -3078,15 +2972,12 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
                 'Content-Type': 'application/json',
                 'Authorization': token.currentUser.tokenDto.token
             }
-        }).then(function (response) {
-            return response.data;
-        },
-            function (errResponse) {
-                console.error('Error !!');
-                return $q.reject(errResponse);
-            })
-
+        }).then(
+            function (response) { return response.data },
+            function (errResponse) { return $q.reject(errResponse) }
+        )
     }
+    // this function will call the to get car barnd api
     $scope.getCarBrand = function (val) {
         return $http({
             method: 'GET',
@@ -3096,17 +2987,12 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
                 'Content-Type': 'application/json',
                 'Authorization': token.currentUser.tokenDto.token
             }
-        }).then(function (response) {
-            return response.data;
-        },
-            function (errResponse) {
-                console.error('Error !!');
-                return $q.reject(errResponse);
-            })
+        }).then(
+            function (response) { return response.data },
+            function (errResponse) { return $q.reject(errResponse) }
+        )
     }
-    $scope.uploadFile = function () {
-        $scope.showFile = true;
-    }
+    $scope.uploadFile = function () { $scope.showFile = true; }
     $scope.Uploading = function () {
         $scope.sizeIsmore = false;
         if ($scope.files.length != 0) {
@@ -3114,17 +3000,15 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
             var docData;
             for (var i = 0; i < $scope.files.length; i++) {
                 var fname = $scope.files[i].filename;
-
                 var bArray = $scope.files[i].base64;
                 docData = {
                     fileName: fname,
                     content: bArray,
-
                 }
                 uploadedFiles.push(docData);
-                console.log(uploadedFiles)
             }
-            var getFile
+            var getFile;
+            // this function will used fro the posting file
             $http({
                 method: 'POST',
                 url: DotsCons.UPLOAD_FILES,
@@ -3133,15 +3017,11 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
                     'Content-Type': 'application/json',
                     'Authorization': token.currentUser.tokenDto.token
                 }
-            }).then(function (response) {
-                console.log(response.data);
-                getFile = response.data[0]
-                console.log($scope.fileResonse);
-            },
-                function (errResponse) {
-                    console.error('Error !!');
-                    return $q.reject(errResponse);
-                })
+            }).then(
+                function (response) { getFile = response.data[0] },
+                function (errResponse) { return $q.reject(errResponse) }
+            )
+            // this will used for the get files 
             $http({
                 method: 'GET',
                 url: DotsCons.GET_FILES + "?path=" + getFile,
@@ -3150,15 +3030,9 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
                     'Content-Type': 'application/json',
                     'Authorization': token.currentUser.tokenDto.token
                 }
-            }).then(function (response) {
-                console.log(response.data);
-            },
-                function (errResponse) {
-                    console.error('Error !!');
-                    return $q.reject(errResponse);
-                })
-
-
+            }).then(function (response) { console.log(response.data) },
+                function (errResponse) { return $q.reject(errResponse) }
+            )
         }
     }
 
@@ -3252,6 +3126,8 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
     // }
 
 }
+
+// this is advance controller
 function addvendorCtrl($scope, $http, DotsCons, authService, $localStorage, $q, $location, toaster) {
     var token = authService.getCookie('globals');
     $scope.addVendor = function () {
@@ -3724,6 +3600,8 @@ function travelBillingCtrl($scope, $http, DotsCons, $rootScope, authService, $lo
 
     }
 }
+
+// this is travelling backup bill controller 
 function travelBillingCtrl1($scope, $http, DotsCons, $rootScope, authService, $localStorage, $location, $q, toaster) {
     var token = authService.getCookie('globals');
     $http({
@@ -4194,6 +4072,8 @@ function profileCtrl($scope, $http, DotsCons, authService, $localStorage, $q, to
     }
 
 }
+
+// this is manage vendor controller
 function managevendortrl(GET_VENDOR_DATA, $scope, $http, DotsCons, authService, $localStorage, $q, toaster) {
     if (GET_VENDOR_DATA != null) {
         $scope.vendorList = GET_VENDOR_DATA
@@ -4205,5 +4085,42 @@ function maintenanceReportCtrl($scope, $http, DotsCons, $rootScope, authService,
     if (GET_CURRENT_DATA != null) {
         $rootScope.filtedData = GET_CURRENT_DATA
         console.log("Data Filterd ",$rootScope.filtedData)
+    }
+    $rootScope.approvedBillsData=[
+        {"driverName": "Nitin Gaikwad", "vehicleNo": "MH-43-BP-1891", "totalKms":"7853", "totalFuel":"643.56", "average":"12.20", "serviceExpenses":"3,782","grandTotalAmount":"52,370.78"},
+        {"driverName": "Balkrishna", "vehicleNo": "MH-43-BP-1892", "totalKms":"8754", "totalFuel":"696.97", "average":"12.56", "serviceExpenses":"4,329","grandTotalAmount":"56,950.24"},
+        {"driverName": "Suresh", "vehicleNo": "MH-43-BP-1893", "totalKms":"7853", "totalFuel":"629.23", "average":"11.87", "serviceExpenses":"3,696","grandTotalAmount":"51,202.87"},
+    ]
+
+    $rootScope.pendingBillsData=[
+        {"date":"12/06/2019","driverName": "Nitin Gaikwad", "vehicleNo": "MH-43-BP-1891", "expensesItem":"Car Wash", "expenseType":"600.56", "meterReading":"68273"},
+        {"date":"12/05/2019","driverName": "Balkrishna", "vehicleNo": "MH-43-BP-1892", "expensesItem":"Puncture", "expenseType":"300", "meterReading":"29984"},
+        {"date":"12/04/2019","driverName": "Suresh", "vehicleNo": "MH-43-BP-1893", "expensesItem":"Servicing", "expenseType":"500", "meterReading":"57833"},
+    ]
+    
+    console.log("Data Filterd ",$rootScope.filtedData)
+
+    $scope.showApprovedBills = function (billsData) {
+        $location.path('/maintenanceDetaills')
+    }
+
+    $scope.showPendingBills = function (billsData) {
+        console.log("Show Pending Bills Data", billsData)
+    }
+
+    $scope.editPendingBills = function (billsData) {
+        console.log("Pending edit Bills Data", billsData)
+    }
+}
+
+// maintance details controller
+function maintenanceDetailsCtrl($scope, $http, DotsCons, $rootScope, authService, $localStorage, $location, $q, toaster) {
+    $rootScope.approvedBillsData=[
+        {"date":"12/06/2019","expensesItem":"Car Wash", "expenseType":"600.56", "meterReading":"68273", "amount":"2345"},
+        {"date":"12/05/2019","expensesItem":"Puncture", "expenseType":"300", "meterReading":"29984","amount":"5441"},
+        {"date":"12/04/2019","expensesItem":"Servicing", "expenseType":"500", "meterReading":"57833","amount":"3456"},
+    ]
+    $scope.maintenanceReport= function(){
+        $location.path('/maintenanceReport')
     }
 }
