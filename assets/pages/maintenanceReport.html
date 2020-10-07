@@ -359,7 +359,7 @@ top: 5px;
   cursor: pointer;
   padding: 14px 16px;
   transition: 0.3s;
-  font-size: 17px;
+  font-size: 14px;
 }
 
 /* Change background color of buttons on hover */
@@ -401,11 +401,86 @@ top: 5px;
               </div>
               
               <div id="Approved Bills" class="tabcontent">
-                <h3>Approved Bills</h3>
+                <table class="responsive table" id="tableDta">
+                    <thead>
+                        <tr>
+                            <th scope="col">Selection <input type="checkbox" onclick="checkAll(this)"></th>
+                            <th scope="col">Driver Name</th>
+                            <th scope="col">Vehicle No</th>
+                            <th scope="col">Total Kms</th>
+                            <th scope="col">Total Fuel (Lts)</th>
+                            <th scope="col">Average</th>
+                            <th scope="col">Service/Expenses</th>
+                            <th scope="col">Grand Total Amount</th>
+                            <th scope="col"> Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat = "data in filtedData">
+                            <td><input id="chkCustomer_{{fruit.FruitId}}" type="checkbox" ng-model="data.Selected" />
+                            <td>{{data.nameOfCompany}}</td>
+                            <td>{{data.gstNo}}</td>
+                            <td>{{data.costCentre}}</td>
+                            <td>{{data.empNo}}</td>
+                            <td>{{data.empName}}</td>
+                            <td>{{data.travelId}}</td>
+                            <td>{{data.fromDate}}</td>
+                            <td>{{data.toDate}}</td>
+                            <tr>
+                                <td colspan="23">
+                                    <center>
+                                        <button class="btn ripple-infinite btn-round btn-primary materialButtons" ng-hide="no_morerecord" ng-click="showMorefilterData()">
+                                            <div> <span>Show More</span> </div>
+                                        </button>
+                                    </center>
+                                    <center>
+                                        <div class="popoverAlert ng-hide" ng-show="no_morerecord">No More Records Found</div>
+                                    </center>
+                                </td>
+                            </tr>
+                        </tr>
+                    </tbody>
+                </table>
               </div>
-              
               <div id="Pending Bills" class="tabcontent">
-                <h3>Pending Bills</h3>
+                <table class="responsive table" id="tableDta">
+                    <thead>
+                        <tr>
+                            <th scope="col">Selection <input type="checkbox" onclick="checkAll(this)"></th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Driver Name</th>
+                            <th scope="col">Vehicle Number</th>
+                            <th scope="col">Expenses Item</th>
+                            <th scope="col">Expense Type</th>
+                            <th scope="col">Meter Reading</th>
+                            <th scope="col"> Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat = "data in filtedData">
+                            <td><input id="chkCustomer_{{fruit.FruitId}}" type="checkbox" ng-model="data.Selected" />
+                            <td>{{data.nameOfCompany}}</td>
+                            <td>{{data.gstNo}}</td>
+                            <td>{{data.costCentre}}</td>
+                            <td>{{data.empNo}}</td>
+                            <td>{{data.empName}}</td>
+                            <td>{{data.travelId}}</td>
+                            <td>{{data.fromDate}}</td>
+                            <tr>
+                                <td colspan="23">
+                                    <center>
+                                        <button class="btn ripple-infinite btn-round btn-primary materialButtons" ng-hide="no_morerecord" ng-click="showMorefilterData()">
+                                            <div> <span>Show More</span> </div>
+                                        </button>
+                                    </center>
+                                    <center>
+                                        <div class="popoverAlert ng-hide" ng-show="no_morerecord">No More Records Found</div>
+                                    </center>
+                                </td>
+                            </tr>
+                        </tr>
+                    </tbody>
+                </table>
               </div>
         </div>
     </div>

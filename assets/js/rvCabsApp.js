@@ -28,7 +28,7 @@ app.constant('DotsCons', {
     'DOCUMENT_SEARCH':ip+'masterdata/documentSearch/',
     'UPLOAD_FILES': ip + 'file/upload',
     'GET_FILES': ip + 'file/getFile',
-    'GET_RIDE_LIST': ip + 'booking/bookingByAccountIdFrAdmin/0/10',
+    'GET_RIDE_LIST': ip + 'booking/bookingByAccountIdFrAdmin',
     'GET_FINISHED_LIST':ip+'booking/finishedTripByDriverFrAdmin',
     'GET_FILTERD_DATA':ip+'bill/retriveData',
     'GET_ALL_DATA': ip+'bill/report',
@@ -110,7 +110,7 @@ app.config(['$routeProvider', function ($routeProvider) {
                     var token = authService.getCookie('globals');
                     return $http({
                         method: 'GET',
-                        url: DotsCons.GET_RIDE_LIST,
+                        url: DotsCons.GET_RIDE_LIST+"/0/10",
                         data: "",
                         headers: {
                             'Content-Type': 'application/json',
@@ -519,7 +519,6 @@ app.controller("DashNavBarCtrl", function ($scope, $http, authService, $location
             case '/help':
                 $scope.Route = "Help And Support";
                 break;
-
             case '/terms':
                 $scope.Route = " Terms And Conditions";
                 break;

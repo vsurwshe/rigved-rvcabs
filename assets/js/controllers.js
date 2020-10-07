@@ -3569,6 +3569,7 @@ function travelBillingCtrl($scope, $http, DotsCons, $rootScope, authService, $lo
     }
     if (GET_CURRENT_DATA != null) {
         $rootScope.filtedData = GET_CURRENT_DATA
+        console.log("Data Filterd ",$rootScope.filtedData)
     }
     $scope.index = 0;
     $scope.numbers = 10;
@@ -4201,5 +4202,8 @@ function managevendortrl(GET_VENDOR_DATA, $scope, $http, DotsCons, authService, 
 
 // this is for the maintenace report control
 function maintenanceReportCtrl($scope, $http, DotsCons, $rootScope, authService, $localStorage, $location, $q, toaster, GET_CURRENT_DATA) {
-
+    if (GET_CURRENT_DATA != null) {
+        $rootScope.filtedData = GET_CURRENT_DATA
+        console.log("Data Filterd ",$rootScope.filtedData)
+    }
 }
