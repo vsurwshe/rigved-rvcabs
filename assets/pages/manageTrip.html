@@ -15,7 +15,7 @@
         position: absolute;
         top: 0;
         right: 0;
-        background-image: url('assets/img/background.jpg')!important;
+        background-image: url('assets/img/background.jpg') !important;
     }
 
     #content.active {
@@ -51,7 +51,7 @@
         background: #eee;
     }
 
- 
+
 
     td,
     th {
@@ -122,9 +122,11 @@
             -ms-overflow-style: -ms-autohiding-scrollbar;
             border: 1px solid #ddd;
         }
+
         .table-responsive.bootstrap>.table {
             margin-bottom: 0;
         }
+
         .table-responsive.bootstrap>.table>thead>tr>th,
         .table-responsive.bootstrap>.table>tbody>tr>th,
         .table-responsive.bootstrap>.table>tfoot>tr>th,
@@ -133,9 +135,11 @@
         .table-responsive.bootstrap>.table>tfoot>tr>td {
             white-space: nowrap;
         }
+
         .table-responsive.bootstrap>.table-bordered {
             border: 0;
         }
+
         .table-responsive.bootstrap>.table-bordered>thead>tr>th:first-child,
         .table-responsive.bootstrap>.table-bordered>tbody>tr>th:first-child,
         .table-responsive.bootstrap>.table-bordered>tfoot>tr>th:first-child,
@@ -144,6 +148,7 @@
         .table-responsive.bootstrap>.table-bordered>tfoot>tr>td:first-child {
             border-left: 0;
         }
+
         .table-responsive.bootstrap>.table-bordered>thead>tr>th:last-child,
         .table-responsive.bootstrap>.table-bordered>tbody>tr>th:last-child,
         .table-responsive.bootstrap>.table-bordered>tfoot>tr>th:last-child,
@@ -152,6 +157,7 @@
         .table-responsive.bootstrap>.table-bordered>tfoot>tr>td:last-child {
             border-right: 0;
         }
+
         .table-responsive.bootstrap>.table-bordered>tbody>tr:last-child>th,
         .table-responsive.bootstrap>.table-bordered>tfoot>tr:last-child>th,
         .table-responsive.bootstrap>.table-bordered>tbody>tr:last-child>td,
@@ -277,9 +283,11 @@
         border: 1px solid;
         border-radius: 22px;
     }
-.btn-round{
-    border-radius: 20px;
-}
+
+    .btn-round {
+        border-radius: 20px;
+    }
+
     .panel-body {
         border: 1px solid #dad6d6;
         border-top: 0pc;
@@ -296,51 +304,62 @@
         border: none !important;
         margin-top: 0 !important;
     }
-    #Psrides {
-    display: none;
-}
-th {
-    background-color: #203b70;
-    color: white;
-} 
-.st{
-    background-color: #203b70;
-    color: white;
-}
-.modal-header{
-    background-color: #203b70;
-    color: #fff;
-}
-.modal-lg{
-    width: 850px !important;
-}
-h5{
-    color: #fff;
-}
-.close{
-    color: #fff;
-}
-.element{
-    
-    position: absolute;
-    left: 112px;
-    top: 14px;
 
-}
-.img{
-    width: 100px;
-    position: relative;
-    right: 15px;
-}
-.element2{
-    position: absolute;
-right: -21px;
-top: 5px;
-}
-.select{
-    position: relative;
-    bottom: 83px;
-}
+    #Psrides {
+        display: none;
+    }
+
+    th {
+        background-color: #203b70;
+        color: white;
+    }
+
+    .st {
+        background-color: #203b70;
+        color: white;
+    }
+
+    .modal-header {
+        background-color: #203b70;
+        color: #fff;
+    }
+
+    .modal-lg {
+        width: 850px !important;
+    }
+
+    h5 {
+        color: #fff;
+    }
+
+    .close {
+        color: #fff;
+    }
+
+    .element {
+
+        position: absolute;
+        left: 112px;
+        top: 14px;
+
+    }
+
+    .img {
+        width: 100px;
+        position: relative;
+        right: 15px;
+    }
+
+    .element2 {
+        position: absolute;
+        right: -21px;
+        top: 5px;
+    }
+
+    .select {
+        position: relative;
+        bottom: 83px;
+    }
 </style>
 
 <div id="page-loading" ng-show="loading" class="ng-hide">
@@ -356,22 +375,25 @@ top: 5px;
     <div id="content">
         <ng-include src="'assets/pages/MynavBar.html'"></ng-include>
         <!-- ---------------------------------------------------------------------- -->
-         <div class="col-md-12 header-board" >
-             <div class="row">
-                 <div class="col-md-9">
+        <div class="col-md-12 header-board">
+            <div class="row">
+                <div class="col-md-9">
                     <div class="col-md-10  col-sm-12 mb-2" style="text-align: left;position: relative;right: 14px;">
-                        <button type="button" class="button-small st" style="cursor: pointer" id="upcomingList"><span class="myfont">Upcoming Rides</span></button>
-                        <button type="button" class="button-small st" ng-click = "getFinishList()" style="cursor: pointer" id = "pastList"  ><span class="myfont">Past Rides</span></button>
+                        <button type="button" class="button-small st" style="cursor: pointer" id="upcomingList"><span
+                                class="myfont">Upcoming Rides</span></button>
+                        <button type="button" class="button-small st" ng-click="getFinishList()" style="cursor: pointer"
+                            id="pastList"><span class="myfont">Past Rides</span></button>
                     </div>
-                 </div>
-                 <div class="col-md-3">
+                </div>
+                <div class="col-md-3">
                     <div class="col-md-10  col-sm-12 mb-2" style="text-align: right">
-                        <button type="button" class="button-small" style="cursor: pointer" ng-click="addTrip()"><span class="myfont">Add Trip</span></button>         
+                        <button type="button" class="button-small" style="cursor: pointer" ng-click="addTrip()"><span
+                                class="myfont">Add Trip</span></button>
                     </div>
-                 </div>
-             </div>
-           
-            <table class="responsive" id = upCrides>
+                </div>
+            </div>
+
+            <table class="responsive" id=upCrides>
                 <thead>
                     <tr>
                         <!-- <th scope="col">Driver</th> -->
@@ -384,26 +406,30 @@ top: 5px;
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat = "item in upcomingList" >
+                    <tr ng-repeat="item in upcomingList">
                         <!-- <td></td> -->
                         <td>{{item.travellerName}}</td>
                         <td>{{item.travellerMobile}}</td>
                         <td>{{item.pickUpDate}},{{item.pickUpTime}}</td>
                         <td>{{item.pickUpLocation}}</td>
-                        <td ng-if = "item.status == 0">Driver Not Available</td>
-                        <td ng-if = "item.status == 1">Ride Expired</td>
-                        <td ng-if = "item.status == 2">Ride Assigned</td>
-                        <td ng-if = "item.status == 3">Ride Accepted</td>
-                        <td ng-if = "item.status == 4">Ride Started</td>
-                        <td ng-if = "item.status == 5">Ride Completed</td>
-                        <td ng-if = "item.status == 6">Declined</td>
-                        <td ng-if = "item.status == 7">Expired</td>
-
+                        <td ng-if="item.status == 0">Driver Not Available</td>
+                        <td ng-if="item.status == 1">Ride Expired</td>
+                        <td ng-if="item.status == 2">Ride Assigned</td>
+                        <td ng-if="item.status == 3">Ride Accepted</td>
+                        <td ng-if="item.status == 4">Ride Started</td>
+                        <td ng-if="item.status == 5">Ride Completed</td>
+                        <td ng-if="item.status == 6">Declined</td>
+                        <td ng-if="item.status == 7">Expired</td>
                         <!-- <td data-table-header="Car Brand/Model">{{record.carDetailDtos[0].type.name}}/{{record.carDetailDtos[0].subType.name}}</td> -->
                         <td data-table-header="Action">
-                            <button class=" btn btn-default btn-round" ng-click= "getDetails(item,1)" data-toggle="modal" data-target="#exampleModal">View</button>
-                            <button class=" btn btn-success btn-round"  ng-click= "getDetails(item,2)" data-toggle="modal" data-target="#exampleModal">Accept</button>
-                            <button class=" btn btn-primary btn-round" ng-disabled = "item.status !='0' && item.status !='1' && item.status !='3' " ng-click= "getDetails(item,2)" data-toggle="modal" data-target="#exampleModal1">Reassign</button>
+                            <button class=" btn btn-default btn-round" ng-click="getDetails(item,2)" data-toggle="modal"
+                                data-target="#exampleModal">View</button>
+                            <button class=" btn btn-success btn-round" ng-click="getDetails(item,2)" data-toggle="modal"
+                                data-target="#exampleModal">Accept</button>
+                            <button class=" btn btn-primary btn-round"
+                                ng-disabled="item.status !='0' && item.status !='1' && item.status !='3' "
+                                ng-click="getDetails(item,2)" data-toggle="modal"
+                                data-target="#exampleModal1">Reassign</button>
                         </td>
                     </tr>
                     <tr ng-show="NoDriverList">
@@ -415,8 +441,8 @@ top: 5px;
                     </tr>
                 </tbody>
             </table>
-           
-            <table class="responsive" id = Psrides>
+
+            <table class="responsive" id=Psrides>
                 <thead>
                     <tr>
                         <!-- <th scope="col">Driver</th> -->
@@ -429,25 +455,23 @@ top: 5px;
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat = "item in finishList" >
+                    <tr ng-repeat="item in finishList">
                         <!-- <td>{{}}</td> -->
                         <td>{{item.travellerName}}</td>
                         <td>{{item.travellerMobile}}</td>
                         <td>{{item.pickUpDate}},{{item.pickUpTime}}</td>
                         <td>{{item.pickUpLocation}}</td>
-                        <td ng-if = "item.status == 0">Driver Not Available</td>
-                        <td ng-if = "item.status == 1">Ride Expired</td>
-                        <td ng-if = "item.status == 2">Ride Declined</td>
-                        <td ng-if = "item.status == 3">Ride Accepted</td>
-                        <td ng-if = "item.status == 4">Ride Started</td>
-                        <td ng-if = "item.status == 5">Ride Completed</td>
-                        <td ng-if = "item.status == 6">Declined</td>
-                        <td ng-if = "item.status == 7">Expired</td>
-
+                        <td ng-if="item.status == 0">Driver Not Available</td>
+                        <td ng-if="item.status == 1">Ride Expired</td>
+                        <td ng-if="item.status == 2">Ride Declined</td>
+                        <td ng-if="item.status == 3">Ride Accepted</td>
+                        <td ng-if="item.status == 4">Ride Started</td>
+                        <td ng-if="item.status == 5">Ride Completed</td>
+                        <td ng-if="item.status == 6">Declined</td>
+                        <td ng-if="item.status == 7">Expired</td>
                         <!-- <td data-table-header="Car Brand/Model">{{record.carDetailDtos[0].type.name}}/{{record.carDetailDtos[0].subType.name}}</td> -->
                         <td data-table-header="Action">
-                            <button class=" btn btn-default btn-round"   ng-click= "getDetails(item,1)" data-toggle="modal" data-target="#exampleModal">View</button>
-                       
+                            <button class=" btn btn-default btn-round" ng-click="getDetails(item,1)" data-toggle="modal" data-target="#exampleModal">View</button>
                         </td>
                     </tr>
                     <tr ng-show="NoDriverList">
@@ -459,208 +483,282 @@ top: 5px;
                     </tr>
                 </tbody>
             </table>
-        </div> 
+        </div>
         <!-- ---------------------------info------------------------------------------------------ -->
         <div class="modal" tabindex="-1" role="dialog" id="exampleModal">
-        <div class="modal-dialog modal-lg" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Ride Details -View</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-               <div class="row">
-                    <div class="col-md-3">
-                        <label><h6>Company</h6></label>
-                        <label>{{complteDetails.companyDetailDto.companyName}}</label>
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Ride Details -View</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                    <div class="col-md-3">
-                        <label><h6>Travel Id:</h6></label>
-                        <label>{{complteDetails.travelId}}</label>
-                    </div>
-                    <div class="col-md-3">
-                        <label><h6>Date:</h6></label>
-                        <label>{{complteDetails.bookingDate}}</label>
-                    </div>
-                    <div class="col-md-3">
-                        <label><h6>Time:</h6></label>
-                        <label>{{complteDetails.bookingTime}}</label>
-                    </div>
-               </div>
-               <hr>
-               <div class="row">
-                <div class="col-md-6">
-                    <h6>Traveller Details</h6>
-                    <div class="col-md-3">
-                        <img class="img" src="assets/img/dummy.png" alt="img">
-                    </div>
-                    <div class="col-md-9 element" >
-                        <label><h6>Name :</h6> </label> <label>&nbsp;&nbsp;{{complteDetails.travelerDetailDto.firstName}}{{complteDetails.travelerDetailDto.lastName}}</label><br>
-                        <label><h6>Mobile Number :</h6></label><label>&nbsp;&nbsp;{{complteDetails.travelerDetailDto.mobileNumber}}</label><br>
-                        <label><h6>Employee Id :</h6></label><label>{{complteDetails.travelerDetailDto.employeeId}}</label><br>
-                    </div>
-                    <hr>
-                    <label><h6>Vehicle segment/type :</h6></label><label>&nbsp;&nbsp;{{complteDetails.sysCarCategoryDto.name}}</label><br>
-                    <label><h6>Travel Date :</h6></label><label>&nbsp;&nbsp;{{complteDetails.pickUpDate}}</label><br>
-                    <label><h6>Pick-up city :</h6></label><label>&nbsp;&nbsp;{{complteDetails.pickUpCity}}</label><br>
-                    <label><h6>Pick-up location :</h6></label><label>&nbsp;&nbsp;{{complteDetails.pickUpLocation}}</label><br>
-                    <label><h6>pick-up address :</h6></label><label>&nbsp;&nbsp;{{complteDetails.pickUpAddress}}</label><br>
-                </div>
-                <div class="col-md-6">
-                    <h6>Driver Details</h6>
-                    <div class="col-md-3">
-                        <img class="img" src="assets/img/dummy.png" alt="img">
-                    </div>
-                    <div class="col-md-9 element2">
-                        <label><h6>Driver Name :</h6> </label> <label>&nbsp;&nbsp;{{firstName}}{{}}</label><br>
-                        <label><h6> Driver Mobile Number :</h6></label><label>&nbsp;&nbsp;{{}}</label><br>
-                        <label><h6>Brand/modal :</h6></label><label>&nbsp;&nbsp;{{complteDetails.sysCarCategoryDto.name}}</label><br>
-                    </div>
-                   <hr>
-                    <label><h6>Type of request :</h6></label><label> &nbsp;&nbsp;{{complteDetails.sysBookingRequestTypeDto.name}}</label><br>
-                    <label><h6>Pick-up Time :</h6></label><label>&nbsp;&nbsp;{{complteDetails.pickUpTime}}</label><br>
-                    <label><h6>Release Time :</h6></label><label>&nbsp;&nbsp;{{complteDetails.dropTime}}</label><br>
-                    <label><h6>Release location :</h6></label><label>&nbsp;&nbsp;{{complteDetails.releaseLocation}}</label><br>
-                    <label><h6>Release address :</h6></label><label>&nbsp;&nbsp;{{complteDetails.releaseAddress}}</label><br>
-                </div>
-               </div>
-               <hr>
-               <div class="text-center" ng-show = "view">
-                    <label>Current Ride Status</label><br>
-                    <button class="btn btn-defualt" ><h2>{{status}}</h2></button>
-               </div>
-               <div class="text-center" ng-show = "accept">
-                <label>Current Ride Status</label><br>
-                <button class="btn btn-success" ng-click = "acceptRide(complteDetails)" ><h2 style="color: #fff;">Accept</h2></button>
-           </div>
-            </div>
-            <!-- <div class="modal-footer">
-             
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div> -->
-          </div>
-        </div>
-        </div>
-        <div class="modal" tabindex="-1" role="dialog" id="exampleModal1">
-        <div class="modal-dialog modal-lg" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Reassign Trip</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h6>Traveller Details</h6>
-                        <div class="col-md-3">
-                            <img class="img" src="assets/img/dummy.png" alt="img">
-                        </div>
-                        <div class="col-md-9 element" >
-                            <label><h6>Name :</h6> </label> <label>&nbsp;&nbsp;{{complteDetails.travelerDetailDto.firstName}}{{complteDetails.travelerDetailDto.lastName}}</label><br>
-                            <label><h6>Mobile Number :</h6></label><label>&nbsp;&nbsp;{{complteDetails.travelerDetailDto.mobileNumber}}</label><br>
-                            <label><h6>Employee Id :</h6></label><label>{{complteDetails.travelerDetailDto.employeeId}}</label><br>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label><h6>Company</h6></label>
+                                <label>{{complteDetails.companyDetailDto.companyName}}</label>
+                            </div>
+                            <div class="col-md-3">
+                                <label><h6>Travel Id:</h6></label>
+                                <label>{{complteDetails.travelId}}</label>
+                            </div>
+                            <div class="col-md-3">
+                                <label> <h6>Date:</h6></label>
+                                <label>{{complteDetails.bookingDate}}</label>
+                            </div>
+                            <div class="col-md-3">
+                                <label><h6>Time:</h6></label>
+                                <label>{{complteDetails.bookingTime}}</label>
+                            </div>
                         </div>
                         <hr>
-                        <label><h6>Vehicle segment/type :</h6></label><label>&nbsp;&nbsp;{{complteDetails.sysCarCategoryDto.name}}</label><br>
-                        <label><h6>Travel Date :</h6></label><label>&nbsp;&nbsp;{{complteDetails.pickUpDate}}</label><br>
-                        <label><h6>Pick-up city :</h6></label><label>&nbsp;&nbsp;{{complteDetails.pickUpCity}}</label><br>
-                        <label><h6>Pick-up location :</h6></label><label>&nbsp;&nbsp;{{complteDetails.pickUpLocation}}</label><br>
-                        <label><h6>pick-up address :</h6></label><label>&nbsp;&nbsp;{{complteDetails.pickUpAddress}}</label><br>
-                    </div>
-                    <div class="col-md-6">
-                        <h6>Driver Details</h6>
-                        <div class="col-md-3">
-                            <img class="img" src="assets/img/dummy.png" alt="img">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6>Traveller Details</h6>
+                                <div class="col-md-3">
+                                    <img class="img" src="assets/img/dummy.png" alt="img">
+                                </div>
+                                <div class="col-md-9 element">
+                                    <label><h6>Name :</h6></label>
+                                    <label>&nbsp;&nbsp;{{complteDetails.travelerDetailDto.firstName}}{{complteDetails.travelerDetailDto.lastName}}</label><br>
+                                    <label><h6>Mobile Number :</h6></label>
+                                    <label>&nbsp;&nbsp;{{complteDetails.travelerDetailDto.mobileNumber}}</label><br>
+                                    <label><h6>Employee Id :</h6></label>
+                                    <label>{{complteDetails.travelerDetailDto.employeeId}}</label><br>
+                                </div>
+                                <hr>
+                                <label><h6>Vehicle segment/type :</h6></label>
+                                <label>&nbsp;&nbsp;{{complteDetails.sysCarCategoryDto.name}}</label><br>
+                                <label><h6>Travel Date :</h6></label>
+                                <label>&nbsp;&nbsp;{{complteDetails.pickUpDate}}</label><br>
+                                <label><h6>Pick-up city :</h6></label>
+                                <label>&nbsp;&nbsp;{{complteDetails.pickUpCity}}</label><br>
+                                <label><h6>Pick-up location :</h6></label>
+                                <label>&nbsp;&nbsp;{{complteDetails.pickUpLocation}}</label><br>
+                                <label><h6>pick-up address :</h6></label>
+                                <label>&nbsp;&nbsp;{{complteDetails.pickUpAddress}}</label><br>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>Driver Details</h6>
+                                <div class="col-md-3">
+                                    <img class="img" src="assets/img/dummy.png" alt="img">
+                                </div>
+                                <div class="col-md-9 element2">
+                                    <label><h6>Driver Name :</h6></label> 
+                                    <label>&nbsp;&nbsp;{{firstName}}{{}}</label><br>
+                                    <label><h6> Driver Mobile Number :</h6></label>
+                                    <label>&nbsp;&nbsp;{{}}</label><br>
+                                    <label><h6>Brand/modal :</h6></label>
+                                    <label>&nbsp;&nbsp;{{complteDetails.sysCarCategoryDto.name}}</label><br>
+                                </div>
+                                <hr>
+                                <label><h6>Type of request :</h6></label>
+                                <label> &nbsp;&nbsp;{{complteDetails.sysBookingRequestTypeDto.name}}</label><br>
+                                <label><h6>Pick-up Time :</h6></label>
+                                <label>&nbsp;&nbsp;{{complteDetails.pickUpTime}}</label><br>
+                                <label><h6>Release Time :</h6></label>
+                                <label>&nbsp;&nbsp;{{complteDetails.dropTime}}</label><br>
+                                <label><h6>Release location :</h6></label>
+                                <label>&nbsp;&nbsp;{{complteDetails.releaseLocation}}</label><br>
+                                <label><h6>Release address :</h6></label>
+                                <label>&nbsp;&nbsp;{{complteDetails.releaseAddress}}</label><br>
+                            </div>
                         </div>
-                        <div class="col-md-9 element2">
-                            <label><h6>Driver Name :</h6> </label> <label>&nbsp;&nbsp;{{firstName}}{{}}</label><br>
-                            <label><h6> Driver Mobile Number :</h6></label><label>&nbsp;&nbsp;{{}}</label><br>
-                            <label><h6>Brand/modal :</h6></label><label>&nbsp;&nbsp;{{complteDetails.sysCarCategoryDto.name}}</label><br>
+                        <hr>
+                        <div class="text-center" ng-show="view">
+                            <label>Current Ride Status</label><br>
+                            <button class="btn btn-defualt">
+                                <h2>{{status}}</h2>
+                            </button>
                         </div>
-                       <hr>
-                        <label><h6>Type of request :</h6></label><label> &nbsp;&nbsp;{{complteDetails.sysBookingRequestTypeDto.name}}</label><br>
-                        <label><h6>Pick-up Time :</h6></label><label>&nbsp;&nbsp;{{complteDetails.pickUpTime}}</label><br>
-                        <label><h6>Release Time :</h6></label><label>&nbsp;&nbsp;{{complteDetails.dropTime}}</label><br>
-                        <label><h6>Release location :</h6></label><label>&nbsp;&nbsp;{{complteDetails.releaseLocation}}</label><br>
-                        <label><h6>Release address :</h6></label><label>&nbsp;&nbsp;{{complteDetails.releaseAddress}}</label><br>
+                        <div class="text-center" style="padding-top: 10px;" ng-show="feedback">
+                            <button class="btn btn-defualt"  ng-click="viewTripDetails(complteDetails)" data-toggle="modal" data-target="#tripDetailsModel" >View Trip Details</button>
+                            <button class="btn btn-defualt"  ng-click="viewFeedback(complteDetails)" data-toggle="modal" data-target="#feedbackModel" >View Feedback</button> 
+                        </div>
+                        <div class="text-center" ng-show="accept">
+                            <label>Current Ride Status</label><br>
+                            <button class="btn btn-success" ng-click="acceptRide(complteDetails)">
+                                <h2 style="color: #fff;">Accept</h2>
+                            </button>
+                        </div>
                     </div>
-                   </div>
-                   <hr>
-                <div class="col-md-12 text-right">
-                    <h4 class="mt-2 mb-2">Assign Ride</h4>
-                    <ul style="right: 50%;display:inline-flex;">
-                        <li>
-                            <label class="switch">
-                                <input type="checkbox" checked ng-model="online"
-                                    ng-click="ToggleOnline(online)">
-                                <span class="slider round"></span>
-                            </label>
-                        </li>
-                        <li class="online-status myfont" ng-show="online">
-                            <span> Auto</span>
-                        </li>
-                        <li class="offline-status myfont" ng-show="!online">
-                            <span> Manual</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="from-group select col-sm-6" ng-show="!online">
-                <lable for="">Select a Driver</lable>
-                  <input class="form-control txt-field " placeholder="Enter For Use"
-                ng-model="driver"
-                uib-typeahead="company as company.name for company in getDriverList($viewValue)"
-                typeahead-loading="loadingLocations"typeahead-show-hint="false" typeahead-min-length="0" typeahead-no-results="noResults"
-                class="form-control" ng-focus = getDriverList()> 
-            <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
-            <div ng-show="noResults">
-                <i class="glyphicon glyphicon-remove"></i> No Results Found
-            </div>
-            </div>
-            <div class="col-sm-12" style="margin-top: 10px;position: relative;bottom: 15px;">
-                <center>
-                    <button type="button" class="button btn-block" ng-click="reAssignRide(complteDetails)">Assign
-                        Ride</button>
-                </center>
-            </div>
-            <!-- <div class="modal-footer">
+                    <!-- <div class="modal-footer">
              
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div> -->
-          </div>
+                </div>
+            </div>
         </div>
+        <div class="modal" tabindex="-1" role="dialog" id="exampleModal1">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Reassign Trip</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6>Traveller Details</h6>
+                                <div class="col-md-3">
+                                    <img class="img" src="assets/img/dummy.png" alt="img">
+                                </div>
+                                <div class="col-md-9 element">
+                                    <label><h6>Name :</h6></label>
+                                    <label>&nbsp;&nbsp;{{complteDetails.travelerDetailDto.firstName}}{{complteDetails.travelerDetailDto.lastName}}</label><br>
+                                    <label><h6>Mobile Number :</h6></label>
+                                    <label>&nbsp;&nbsp;{{complteDetails.travelerDetailDto.mobileNumber}}</label><br>
+                                    <label><h6>Employee Id :</h6></label>
+                                    <label>{{complteDetails.travelerDetailDto.employeeId}}</label><br>
+                                </div>
+                                <hr>
+                                <label><h6>Vehicle segment/type :</h6></label>
+                                <label>&nbsp;&nbsp;{{complteDetails.sysCarCategoryDto.name}}</label><br>
+                                <label><h6>Travel Date :</h6></label>
+                                <label>&nbsp;&nbsp;{{complteDetails.pickUpDate}}</label><br>
+                                <label><h6>Pick-up city :</h6></label>
+                                <label>&nbsp;&nbsp;{{complteDetails.pickUpCity}}</label><br>
+                                <label><h6>Pick-up location :</h6></label>
+                                <label>&nbsp;&nbsp;{{complteDetails.pickUpLocation}}</label><br>
+                                <label><h6>pick-up address :</h6></label>
+                                <label>&nbsp;&nbsp;{{complteDetails.pickUpAddress}}</label><br>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>Driver Details</h6>
+                                <div class="col-md-3">
+                                    <img class="img" src="assets/img/dummy.png" alt="img">
+                                </div>
+                                <div class="col-md-9 element2">
+                                    <label> <h6>Driver Name :</h6> </label> 
+                                    <label>&nbsp;&nbsp;{{firstName}}{{}}</label><br>
+                                    <label><h6> Driver Mobile Number :</h6></label>
+                                    <label>&nbsp;&nbsp;{{}}</label><br>
+                                    <label><h6>Brand/modal :</h6></label>
+                                    <label>&nbsp;&nbsp;{{complteDetails.sysCarCategoryDto.name}}</label><br>
+                                </div>
+                                <hr>
+                                <label><h6>Type of request :</h6> </label>
+                                <label> &nbsp;&nbsp;{{complteDetails.sysBookingRequestTypeDto.name}}</label><br>
+                                <label> <h6>Pick-up Time :</h6> </label>
+                                <label>&nbsp;&nbsp;{{complteDetails.pickUpTime}}</label><br>
+                                <label><h6>Release Time :</h6></label>
+                                <label>&nbsp;&nbsp;{{complteDetails.dropTime}}</label><br>
+                                <label> <h6>Release location :</h6></label>
+                                <label>&nbsp;&nbsp;{{complteDetails.releaseLocation}}</label><br>
+                                <label><h6>Release address :</h6></label>
+                                <label>&nbsp;&nbsp;{{complteDetails.releaseAddress}}</label><br>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="col-md-12 text-right">
+                            <h4 class="mt-2 mb-2">Assign Ride</h4>
+                            <ul style="right: 50%;display:inline-flex;">
+                                <li>
+                                    <label class="switch">
+                                        <input type="checkbox" checked ng-model="online"
+                                            ng-click="ToggleOnline(online)">
+                                        <span class="slider round"></span>
+                                    </label>
+                                </li>
+                                <li class="online-status myfont" ng-show="online">
+                                    <span> Auto</span>
+                                </li>
+                                <li class="offline-status myfont" ng-show="!online">
+                                    <span> Manual</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="from-group select col-sm-6" ng-show="!online">
+                        <lable for="">Select a Driver</lable>
+                        <input class="form-control txt-field " placeholder="Enter For Use" ng-model="driver"
+                            uib-typeahead="company as company.name for company in getDriverList($viewValue)"
+                            typeahead-loading="loadingLocations" typeahead-show-hint="false" typeahead-min-length="0"
+                            typeahead-no-results="noResults" class="form-control" ng-focus=getDriverList()>
+                        <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+                        <div ng-show="noResults">
+                            <i class="glyphicon glyphicon-remove"></i> No Results Found
+                        </div>
+                    </div>
+                    <div class="col-sm-12" style="margin-top: 10px;position: relative;bottom: 15px;">
+                        <center>
+                            <button type="button" class="button btn-block"
+                                ng-click="reAssignRide(complteDetails)">Assign Ride</button>
+                        </center>
+                    </div>
+                    <!-- <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                         </div> -->
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" ng-show="feedbackModel" tabindex="-1" role="dialog" id="feedbackModel">
+            <div class="modal-dialog modal-md" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Customer Feedback</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>This is testing feedback</p>
+                    </div> 
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" ng-show="tripModel" tabindex="-1" role="dialog" id="tripDetailsModel">
+            <div class="modal-dialog modal-md" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Trip Details</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Trip Details</p>
+                    </div> 
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 <div class="overlay"></div>
 <script>
     /* ---------------Accordian arrow button rotate-------- */
-    $('.d-accordion').on('show.bs.collapse', function(n) {
+    $('.d-accordion').on('show.bs.collapse', function (n) {
         $(n.target).siblings('.panel-heading').find('.panel-title i').toggleClass('fa-chevron-up fa-chevron-down ');
     });
-
-    $('.d-accordion').on('hide.bs.collapse', function(n) {
+    $('.d-accordion').on('hide.bs.collapse', function (n) {
         $(n.target).siblings('.panel-heading').find('.panel-title i').toggleClass('fa-chevron-down fa-chevron-up ');
     });
-
 </script>
 <script>
     var tableA = document.getElementById("upCrides");
     var tableB = document.getElementById("Psrides");
 
-var btnTabA = document.getElementById("upcomingList");
-var btnTabB = document.getElementById("pastList");
+    var btnTabA = document.getElementById("upcomingList");
+    var btnTabB = document.getElementById("pastList");
 
-btnTabA.onclick = function () {
-    tableA.style.display = "table";
-    tableB.style.display = "none";
-}
-btnTabB.onclick = function () {
-    tableA.style.display = "none";
-    tableB.style.display = "table";
-}
+    btnTabA.onclick = function () {
+        tableA.style.display = "table";
+        tableB.style.display = "none";
+    }
+    btnTabB.onclick = function () {
+        tableA.style.display = "none";
+        tableB.style.display = "table";
+    }
 </script>

@@ -2514,7 +2514,7 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
         var token = authService.getCookie('globals');
         $http({
             method: 'GET',
-            url: DotsCons.GET_FINISHED_LIST,
+            url: DotsCons.GET_FINISHED_LIST+'/0/10',
             data: "",
             headers: {
                 'Content-Type': 'application/json',
@@ -2548,13 +2548,16 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
         $location.path('/addtrip')
     }
     $scope.getDetails = function (data, boolean) {
+        console.log("Boole",boolean)
         $scope.loading = true;
         if (boolean == 1) {
             $scope.view = true;
+            $scope.feedback = true;
             $scope.accept = false;
         } else if (boolean == 2) {
             $scope.accept = true;
             $scope.view = false;
+            $scope.feedback = false;
         }
         $http({
             method: 'GET',
@@ -3034,6 +3037,16 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
                 function (errResponse) { return $q.reject(errResponse) }
             )
         }
+    }
+    // this will used for viewing feedback details
+    $scope.viewFeedback=function (itemData) {
+        console.log("Item Data", itemData);
+        $scope.feedbackModel=true;
+    }
+    // this will used for viewing trip details
+    $scope.viewTripDetails=function (itemData) {
+        console.log("Item Data", itemData);
+        $scope.tripModel=true;
     }
 
     // $scope.driverRegistration = function () {
