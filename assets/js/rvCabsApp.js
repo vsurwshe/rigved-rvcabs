@@ -238,6 +238,11 @@ app.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'assets/pages/maintenanceDetaills.html',
             controller: maintenanceDetailsCtrl
         })
+        // this declare the maintenanceDetaills route with controller
+        .when('/maintenanceReportFilter', {
+            templateUrl: 'assets/pages/maintenanceReportFillters.html',
+            controller: maintenanceRerportFilterCtrl
+        })
         .when('/travelBillingFilters', {
             templateUrl: 'assets/pages/travelBillingFilters.html',
             controller: travelBillingCtrl1
@@ -430,6 +435,7 @@ app.controller("DashNavBarCtrl", function ($scope, $http, authService, $location
         /* ---------------------------------------------- */
         $scope.gotoRideList = function () { $location.path('/rideList'); }
         $scope.filters = function (){ $location.path('/travelBillingFilters') }
+        $scope.maintenanceReportFilters = function (){ $location.path('/maintenanceReportFilter') }
         /* ---------------------------------------------- */
         $scope.routeRefresh = function () { $route.refresh(); }
         /* ---------------------------------------------- */
@@ -504,6 +510,10 @@ app.controller("DashNavBarCtrl", function ($scope, $http, authService, $location
                 break;
             case '/maintenanceDetaills':
                 $scope.Route = "Driver Maintenance & Expenses Detaills";
+                break;
+            case '/maintenanceReportFilter':
+                $scope.Route = "Maintenance Report Filter";
+                $scope.maintanceReportFilter=true;
                 break;
             case '/travelBilling':
                 $scope.Route = "Travel Billing";

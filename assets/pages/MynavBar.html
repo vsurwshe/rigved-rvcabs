@@ -20,74 +20,81 @@
         border-bottom: 1px dashed #ddd;
         margin: 40px 0;
     }
+
     /* ---------------online button css---------------- */
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 56px;
-  height: 30px;
-}
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 56px;
+        height: 30px;
+    }
 
-.switch input {display:none;}
+    .switch input {
+        display: none;
+    }
 
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
 
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 24px;
-  width: 24px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .3s;
-}
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 24px;
+        width: 24px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .3s;
+    }
 
-input:checked + .slider {
-  background-color: #2196F3;
-}
+    input:checked+.slider {
+        background-color: #2196F3;
+    }
 
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
-}
+    input:focus+.slider {
+        box-shadow: 0 0 1px #2196F3;
+    }
 
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
+    input:checked+.slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+    }
 
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
+    /* Rounded sliders */
+    .slider.round {
+        border-radius: 34px;
+    }
 
-.slider.round:before {
-  border-radius: 50%;
-}
-label{
-    margin-bottom: 0px;
-}
-    .online-status{
+    .slider.round:before {
+        border-radius: 50%;
+    }
+
+    label {
+        margin-bottom: 0px;
+    }
+
+    .online-status {
         text-align: center;
         color: #2196f3;
     }
-    .offline-status{
+
+    .offline-status {
         text-align: center;
         color: #f11717;
     }
-    .green-dot{
+
+    .green-dot {
         width: 10px;
         height: 10px;
         background-color: #3eb73e;
@@ -95,31 +102,34 @@ label{
         display: inline-block;
         margin-right: 5%;
     }
-    .red-dot{
+
+    .red-dot {
         width: 10px;
         height: 10px;
         background-color: #f11717;
         border-radius: 50%;
         display: inline-block;
-        margin-right: 5%;  
+        margin-right: 5%;
     }
-    
-
 </style>
 <nav class="navbar navbar-expand-lg bg-white" ng-controller="DashNavBarCtrl">
     <div class="container-fluid">
         <button type="button" id="sidebarCollapse1" class="btn btn-info" style="display: none;">
-            <!--<i class="fas fa-align-justify"></i>--><img src="assets/img/menu.png">
+            <img src="assets/img/menu.png">
         </button>
         <h3 class="text-md-right myFont">{{Route}}</h3>
-        <button ng-show = "travelBilling" class="btn btn-default" style="position: fixed;right: 100px;" ng-click = "filters()">Filters</button>
+        <button ng-show="travelBilling" class="btn btn-default" style="position: fixed;right: 100px;" ng-click="filters()">Filters</button>
+        <button ng-show="maintenanceReport" class="btn btn-default" style="position: fixed;right: 100px;" ng-click="maintenanceReportFilters()">Filters</button>
         <div style="position: relative; left: 715px;">
-        <button ng-show = "travelBillingFilter" class="btn btn-default" style="margin-left: 32px;" ng-click = "filtersApply()">Apply Filters</button>
-        <button ng-show = "travelBillingFilter" class="btn btn-default" style="margin-left: 32px;" ng-click = "filters()">Clear Filters</button>
-        <!-- <button ng-show = "travellerList" class="btn btn-default" style="margin-left: 32px;" ><a href="#travelerReg"> Traveller Registration</a></button>-->
-</div> 
-
-        <button class="btn btn-dark d-inline-block d-lg-none ml-auto" id="hideButton" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button ng-show="travelBillingFilter" class="btn btn-default" style="margin-left: 32px;" ng-click="filtersApply()">Apply Filters</button>
+            <button ng-show="travelBillingFilter" class="btn btn-default" style="margin-left: 32px;" ng-click="filters()">Clear Filters</button>
+            <button ng-show="maintanceReportFilter" class="btn btn-default" style="margin-left: 15px;" ng-click="reportFiltersApply()">Apply Report Filters</button>
+            <button ng-show="maintanceReportFilter" class="btn btn-default" style="margin-left: 15px;" ng-click="filters()">Clear Filters</button>
+            <!--  <button ng-show = "travellerList" class="btn btn-default" style="margin-left: 32px;" ><a href="#travelerReg"> Traveller Registration</a></button>-->
+        </div>
+        <button class="btn btn-dark d-inline-block d-lg-none ml-auto" id="hideButton" type="button"
+            data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-align-justify"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -167,7 +177,8 @@ label{
                 </div>
                 <h1>Success!</h1>
                 <p>{{ConfOkMsg}}</p>
-                <button type="button" class="btn btn-outline-success okbtn" data-dismiss="modal" ng-click="routeRefresh()">Ok</button>
+                <button type="button" class="btn btn-outline-success okbtn" data-dismiss="modal"
+                    ng-click="routeRefresh()">Ok</button>
             </div>
         </div>
     </div>
@@ -188,25 +199,21 @@ label{
     </div>
 </div>
 <script type="text/javascript">
-    $(document).ready(function() {
-        $("#sidebar1").mCustomScrollbar({ theme: "minimal" });
-        $('.overlay').removeClass('active');
-        $('#sidebarCollapse1, #sidebarCollapse2, .overlay').on('click', function() {
-            $('#sidebar1, #content').toggleClass('active');
-            $('.overlay').toggleClass('active');
-            $('.collapse.in').toggleClass('in');
-            $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-        });
-
-        // To apply active class on link
-        /*$('.nav li a').click(function(e) {
-
-            $('.nav li.active').removeClass('active');
-
-            var $parent = $(this).parent();
-            $parent.addClass('active');
-            e.preventDefault();
-        });*/
+$(document).ready(function () {
+    $("#sidebar1").mCustomScrollbar({ theme: "minimal" });
+    $('.overlay').removeClass('active');
+    $('#sidebarCollapse1, #sidebarCollapse2, .overlay').on('click', function () {
+        $('#sidebar1, #content').toggleClass('active');
+        $('.overlay').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
     });
-
+    // To apply active class on link
+    /*$('.nav li a').click(function(e) {
+        $('.nav li.active').removeClass('active');
+        var $parent = $(this).parent();
+        $parent.addClass('active');
+        e.preventDefault();
+    });*/
+});
 </script>

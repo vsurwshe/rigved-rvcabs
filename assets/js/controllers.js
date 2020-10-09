@@ -3635,17 +3635,14 @@ function travelBillingCtrl1($scope, $http, DotsCons, $rootScope, authService, $l
         $scope.slectGST = []
         $scope.SelctSeg = []
         $scope.selectMOdal = []
-
         if ($scope.selectedCompany != null) {
             $scope.selectedC = $scope.selectedCompany;
-
             for (let value of Object.values($scope.selectedC)) {
                 $scope.companyData.push(value.companyName); // John, then 30
             }
         } else {
             $scope.companyData = null
         }
-
         //console.log($scope.companyData)
         if ($scope.selectedGst != null) {
             $scope.gst = $scope.selectedGst;
@@ -3689,12 +3686,10 @@ function travelBillingCtrl1($scope, $http, DotsCons, $rootScope, authService, $l
                 month = '' + (d.getMonth() + 1),
                 day = '' + d.getDate(),
                 year = d.getFullYear();
-
             if (month.length < 2)
                 month = '0' + month;
             if (day.length < 2)
                 day = '0' + day;
-
             fromDate = [year, month, day].join('-');
         } else {
             fromDate = ""
@@ -3717,9 +3712,7 @@ function travelBillingCtrl1($scope, $http, DotsCons, $rootScope, authService, $l
         }
         //console.log(fromDate)
         $rootScope.data = {
-
             "startDate": fromDate,
-
             "endDate": toDate,
             "dutyTypes": $scope.typeDuty,
             "companyNames": $scope.companyData,
@@ -3731,7 +3724,6 @@ function travelBillingCtrl1($scope, $http, DotsCons, $rootScope, authService, $l
             "vechicleSeg": $scope.SelctSeg
         }
         // var data = {
-
         //         "startDate": $scope.fromDate,
         //         "endDate": $scope.endDate,
         //         "dutyTypes": [
@@ -3746,7 +3738,6 @@ function travelBillingCtrl1($scope, $http, DotsCons, $rootScope, authService, $l
         //         "employeeIds": [$scope.empId],
         //         "travelIds": [$scope.travelId],
         //         "vechicleSeg": [$scope.categery.name],
-
         // }
         // console.log(data)
         $http({
@@ -3764,12 +3755,7 @@ function travelBillingCtrl1($scope, $http, DotsCons, $rootScope, authService, $l
                 console.log($scope.filtedData)
                 $location.path('/travelBilling')
             }
-
-        },
-            function (errResponse) {
-                console.error('Error !!');
-                return $q.reject(errResponse);
-            })
+        }, function (errResponse) { return $q.reject(errResponse) })
     }
     // if(GET_CURRENT_DATA != null){
     //     $rootScope.filtedData = GET_CURRENT_DATA
@@ -3779,7 +3765,6 @@ function travelBillingCtrl1($scope, $http, DotsCons, $rootScope, authService, $l
     $scope.showMorefilterData = function () {
         $scope.index++;
         $scope.numbers + 10;
-        //console.log("count",$scope.count);
         $http({
             method: 'post',
             url: DotsCons.GET_FILTERD_DATA + "/" + $scope.index + "/" + $scope.numbers,
@@ -3794,19 +3779,9 @@ function travelBillingCtrl1($scope, $http, DotsCons, $rootScope, authService, $l
                 for (i = 0; i < response.data.length; i++)
                     $rootScope.filtedData.push(response.data[i]);
             }
-            //  console.log($rootScope.filtedData)
-
-        },
-            function (errResponse) {
-                console.error('Error !!');
-                return $q.reject(errResponse);
-            })
-
+        }, function (errResponse) { return $q.reject(errResponse)})
     }
-
     $scope.download = function () {
-        //$scope.dateReport = new Date($scope.ReportDate);
-
         $http({
             method: 'post',
             url: DotsCons.GET_ALL_DATA,
@@ -3818,42 +3793,19 @@ function travelBillingCtrl1($scope, $http, DotsCons, $rootScope, authService, $l
         }).then(function (response) {
             if (response.data != null) {
                 $rootScope.filtedData = response.data;
-                //console.log( $scope.filtedData)
-                // debugger
-                //$location.path('/travelBilling')
             }
-
-        },
-            function (errResponse) {
-                console.error('Error !!');
-                return $q.reject(errResponse);
-            })
-
+        },function (errResponse) { return $q.reject(errResponse) })
         setTimeout(function () {
-
-            console.log("Harish")
-
-            $("#tableDta").table2excel({
-                filename: "example"
-            });
+            $("#tableDta").table2excel({ filename: "example" });
             // kendo.drawing.drawDOM($("#listDataTable8")).then(function(group) {
-
-
-            //  kendo.drawing.pdf.toDataURL(group, function(dataURL){ 
-
+            // kendo.drawing.pdf.toDataURL(group, function(dataURL){ 
             //      $scope.uploadFilesD = dataURL;
-
             //      console.log("$scope.uploadFilesD",$scope.uploadFilesD)
-
-
             //      console.log("pdf_file :: ",$scope.uploadFilesD);
             //      var pdfData = dataURL.replace("data:application/pdf;base64,", "");
             //  })
             // })
         }, 3000)
-
-
-
     }
     var reqIds = []
     $scope.generateInvoice = function () {
@@ -3865,11 +3817,7 @@ function travelBillingCtrl1($scope, $http, DotsCons, $rootScope, authService, $l
             }
         }
         reqIds.push(fruitId)
-        var reqData = {
-            reqIds
-        }
-
-
+        var reqData = { reqIds }
         $http({
             method: 'post',
             url: DotsCons.GENERATE_INVOICE,
@@ -3885,48 +3833,33 @@ function travelBillingCtrl1($scope, $http, DotsCons, $rootScope, authService, $l
                 // debugger
                 //$location.path('/travelBilling')
             }
-
-        },
-            function (errResponse) {
-                console.error('Error !!');
-                return $q.reject(errResponse);
-            })
-
-
+        },function (errResponse) {return $q.reject(errResponse);})
         $('#exampleModal').modal('show');
         setTimeout(function () {
             var doc = new jsPDF();
             var elementHTML = $('#exampleModal').html();
             var specialElementHandlers = {
-                '#elementH': function (element, renderer) {
-                    return true;
-                }
+                '#elementH': function (element, renderer) { return true; }
             };
             doc.fromHTML(elementHTML, 15, 15, {
                 'width': 170,
                 'elementHandlers': specialElementHandlers
             });
-
             // Save the PDF
             doc.save('sample-document.pdf');
         }, 3000)
-
         //  kendo.drawing.drawDOM($("#exampleModal")).then(function(group) {
-        //     //kendo.drawing.pdf.saveAs(group, "Prescription_Health5c.pdf");
-
-        //     kendo.drawing.pdf.toDataURL(group, function(dataURL){ 
-        //         console.log("pdf_file :: ",dataURL);
-        //         $scope.uploadFiles = dataURL;
-        //         var pdfData = dataURL.replace("data:application/pdf;base64,", "");
-        //         console.log(pdfData)
-        //         setTimeout(function(){
-        //           //  $scope.downloadPDF(pdfData)
-        //         },3000)
-
+        //  kendo.drawing.pdf.saveAs(group, "Prescription_Health5c.pdf");
+        //  kendo.drawing.pdf.toDataURL(group, function(dataURL){ 
+        //      console.log("pdf_file :: ",dataURL);
+        //      $scope.uploadFiles = dataURL;
+        //      var pdfData = dataURL.replace("data:application/pdf;base64,", "");
+        //      console.log(pdfData)
+        //      setTimeout(function(){
+        //        //  $scope.downloadPDF(pdfData)
+        //      },3000)
         //   //console.log(pdfData)
-
-        //      });
-
+        //  });
         // });
     }
     $scope.downloadPDF = function (pdfUrl) {
@@ -3937,9 +3870,7 @@ function travelBillingCtrl1($scope, $http, DotsCons, $rootScope, authService, $l
         link.href = fileURL;
         link.download = "FileName" + ".pdf";
         link.click();
-
     }
-
 }
 
 // this is profile controller
@@ -4020,6 +3951,7 @@ function maintenanceReportCtrl($scope, $http, DotsCons, $rootScope, authService,
 
     $scope.showPendingBills = function (billsData) {
         console.log("Show Pending Bills Data", billsData)
+        $location.path('/maintenanceDetaills')
     }
 
     $scope.editPendingBills = function (billsData) {
@@ -4049,4 +3981,10 @@ function maintenanceDetailsCtrl($scope, $http, DotsCons, $rootScope, authService
         pdfWindow.document.write("<body><embed width='100%' height='100%' src='data:application/pdf;base64, " + encodeURI(pdfUrl) + "#toolbar=0&navpanes=0&scrollbar=0'></embed></body></html>");
         //window.open("data:application/octet-stream;charset=utf-16le;base64,"+pdfUrl)
     }
+}
+// this is the maintance report filter controller
+function maintenanceRerportFilterCtrl($scope, $http, DotsCons, $rootScope, authService, $localStorage, $location, $q, toaster) {
+    $scope.reportFiltersApply = function (data) {
+        console.log("Filtering ",data);
+    }   
 }
