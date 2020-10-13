@@ -323,22 +323,13 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
             'Content-Type': 'application/json',
             'Authorization': token.currentUser.tokenDto.token
         }
-    }).then(function (response) {
-        $scope.companyDetails = response.data;
-    },
-        function (errResponse) {
-            console.error('Error !!');
-            return $q.reject(errResponse);
-        })
-
-
-
-
+    }).then(
+        function (response) { $scope.companyDetails = response.data },
+        function (errResponse) {return $q.reject(errResponse);}
+    )
 
     $scope.getCostCenter = function (val) {
-        if (val == "" || val == undefined || val == null) {
-            val = ""
-        }
+        if (val == "" || val == undefined || val == null) { val = "" }
         return $http({
             method: 'GET',
             url: DotsCons.GET_COST_CENTER + 0 + "/10/" + val,
@@ -347,21 +338,16 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                 'Content-Type': 'application/json',
                 'Authorization': token.currentUser.tokenDto.token
             }
-        }).then(function (response) {
-            return response.data;
-        },
-            function (errResponse) {
-                console.error('Error !!');
-                return $q.reject(errResponse);
-            })
+        }).then(
+            function (response) { return response.data; },
+            function (errResponse) { return $q.reject(errResponse); }
+        )
         // return $http.get(DotsCons.GET_COST_CENTER+0+"/10/"+val,config).then(function(response){
         //     return response.data
         // })
     }
     $scope.getTravelId = function (val) {
-        if (val == "" || val == undefined || val == null) {
-            val = ""
-        }
+        if (val == "" || val == undefined || val == null) { val = "" }
         return $http({
             method: 'GET',
             url: DotsCons.GET_TRAVEL_ID + "/" + 0 + "/10/" + val,
@@ -370,19 +356,13 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                 'Content-Type': 'application/json',
                 'Authorization': token.currentUser.tokenDto.token
             }
-        }).then(function (response) {
-            return response.data;
-        },
-            function (errResponse) {
-                console.error('Error !!');
-                return $q.reject(errResponse);
-            })
-
+        }).then(
+            function (response) { return response.data; },
+            function (errResponse) { return $q.reject(errResponse); }
+        )
     }
     $scope.getCompany = function (val) {
-        if (val == "" || val == undefined || val == null) {
-            val = ""
-        }
+        if (val == "" || val == undefined || val == null) { val = "" }
         return $http({
             method: 'GET',
             url: DotsCons.COMPANY_DETAILS + "/" + 0 + "/10/" + val,
@@ -391,18 +371,13 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                 'Content-Type': 'application/json',
                 'Authorization': token.currentUser.tokenDto.token
             }
-        }).then(function (response) {
-            return response.data;
-        },
-            function (errResponse) {
-                console.error('Error !!');
-                return $q.reject(errResponse);
-            })
+        }).then(
+            function (response) { return response.data; },
+            function (errResponse) { return $q.reject(errResponse); }
+        )
     }
     $scope.getCarBarand = function (val) {
-        if (val == "" || val == undefined || val == null) {
-            val = ""
-        }
+        if (val == "" || val == undefined || val == null) { val = "" }
         return $http({
             method: 'GET',
             url: DotsCons.SEARCH_BRAND + '0/10/' + val,
@@ -411,19 +386,14 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                 'Content-Type': 'application/json',
                 'Authorization': token.currentUser.tokenDto.token
             }
-        }).then(function (response) {
-            return response.data;
-        },
-            function (errResponse) {
-                console.error('Error !!');
-                return $q.reject(errResponse);
-            })
+        }).then(
+            function (response) { return response.data; },
+            function (errResponse) { return $q.reject(errResponse); }
+        )
 
     }
     $scope.getSubType = function (val) {
-        if (val == "" || val == undefined || val == null) {
-            val = ""
-        }
+        if (val == "" || val == undefined || val == null) { val = "" }
         return $http({
             method: 'GET',
             url: DotsCons.SUB_TYPE + 0 + "/10/" + val,
@@ -432,20 +402,13 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                 'Content-Type': 'application/json',
                 'Authorization': token.currentUser.tokenDto.token
             }
-        }).then(function (response) {
-            return response.data;
-        },
-            function (errResponse) {
-                console.error('Error !!');
-                return $q.reject(errResponse);
-            })
-
+        }).then(function (response) { return response.data; },
+            function (errResponse) { return $q.reject(errResponse); }
+        )
     }
 
     $scope.getDriverList = function (val) {
-        if (val == "" || val == undefined || val == null) {
-            val = ""
-        }
+        if (val == "" || val == undefined || val == null) { val = "" }
         return $http({
             method: 'GET',
             url: DotsCons.DRIVER_SEARCH + 0 + "/10/" + val,
@@ -454,19 +417,12 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                 'Content-Type': 'application/json',
                 'Authorization': token.currentUser.tokenDto.token
             }
-        }).then(function (response) {
-            return response.data;
-        },
-            function (errResponse) {
-                console.error('Error !!');
-                return $q.reject(errResponse);
-            })
-
+        }).then(function (response) { return response.data; },
+            function (errResponse) { return $q.reject(errResponse); }
+        )
     }
     $scope.getForUse = function (val) {
-        if (val == "" || val == undefined || val == null) {
-            val = ""
-        }
+        if (val == "" || val == undefined || val == null) { val = "" }
         return $http({
             method: 'GET',
             url: DotsCons.FOR_USE + 0 + "/10/" + val,
@@ -475,35 +431,20 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                 'Content-Type': 'application/json',
                 'Authorization': token.currentUser.tokenDto.token
             }
-        }).then(function (response) {
-            return response.data;
-        },
-            function (errResponse) {
-                console.error('Error !!');
-                return $q.reject(errResponse);
-            })
-
+        }).then(
+            function (response) { return response.data; },
+            function (errResponse) { return $q.reject(errResponse); }
+        )
     }
-
     var that = this;
-
-    $scope.today = function () {
-        $scope.dt = new Date();
-    };
+    $scope.today = function () { $scope.dt = new Date(); };
     $scope.today();
-
-    $scope.clear = function () {
-        $scope.dt = null;
-    };
-
-
-
+    $scope.clear = function () { $scope.dt = null; };
     $scope.dateOptions = {
         // dateDisabled: disabled,
         formatYear: 'yy',
         maxDate: new Date(2030, 5, 22),
         minDate: new Date(),
-
     };
     $scope.dateOptions1 = {
         //   dateDisabled: disabled,
@@ -512,44 +453,23 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
         minDate: new Date(),
         startingDay: 1
     };
-
     // Disable weekend selection
     function disabled(data) {
         var date = data.date,
             mode = data.mode;
         return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
     }
-
-
-
-    $scope.open1 = function () {
-        $scope.popup1.opened = true;
-        // alert($scope.dt)
-    };
-    $scope.open2 = function () {
-        $scope.popup2.opened = true;
-        // alert($scope.dt)
-    };
-
-    $scope.setDate = function (year, month, day) {
-        $scope.dt = new Date(year, month, day);
-    };
-
+    $scope.open1 = function () { $scope.popup1.opened = true; };
+    $scope.open2 = function () { $scope.popup2.opened = true; };
+    $scope.setDate = function (year, month, day) { $scope.dt = new Date(year, month, day); };
     $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
     $scope.format = $scope.formats[0];
     $scope.altInputFormats = ['M!/d!/yyyy'];
-
-    $scope.popup1 = {
-        opened: false
-    };
-    $scope.popup2 = {
-        opened: false
-    };
+    $scope.popup1 = { opened: false };
+    $scope.popup2 = { opened: false };
     $scope.mytime = new Date();
-
     $scope.hstep = 1;
     $scope.mstep = 15;
-
     $scope.options = {
         hstep: [1, 2, 3],
         mstep: [1, 5, 10, 15, 25, 30]
@@ -557,24 +477,15 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
     $scope.changed = function () {
         $log.log('Time changed to: ' + $scope.mytime);
     };
-
     $scope.clear = function () {
         $scope.mytime = null;
     };
     $scope.ismeridian = true;
-    $scope.toggleMode = function () {
-        $scope.ismeridian = !$scope.ismeridian;
-    };
-
+    $scope.toggleMode = function () { $scope.ismeridian = !$scope.ismeridian; };
     $scope.onCompanySelected = function (item, model, label) {
         $scope.gstNum = item.gstnumber;
         $scope.costCen = item.costCenter;
-
-
     };
-
-
-
     $scope.tripBooking = function () {
         $scope.loading = true;
         console.log($scope.releasetime)
@@ -583,11 +494,8 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
         var pickTime = "Wed Mar 25 2015 " + $scope.picktime + ":00 GMT+0530 (India Standard Time)";
         console.log(pickTime)
         console.log(Date.parse(pickTime))
-
         console.log($scope.repAdd, $scope.pickUpLocation, $scope.fromCity)
-
         var data = {
-
             "carHire": $scope.carHire,
             // "carUse": $scope.forUse,
             "companyDetailDto": {
@@ -611,7 +519,6 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
             },
             "sysCarCategoryDto": {
                 "id": $scope.carSegName.id,
-
             },
             "sysCarMasterDto": {
                 "id": $scope.carBrand.id,
@@ -620,17 +527,13 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
             "traveldeskEmailId": $scope.Book_email,
             "traveldeskname": $scope.Book_req,
             "travelerDetailDto": {
-
                 "employeeId": $scope.empId,
                 "firstName": $scope.fname,
                 "lastName": $scope.lname,
                 "mobileNumber": $scope.travelerMobNum
-
-
             },
             "tripStatus": ""
         }
-
         // Old payload code fixes
         // var data = {
         //     "carHire": $scope.carHire,
@@ -671,8 +574,6 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
         //     },
         //     "tripStatus": 0
         // }
-
-
         // alert($scope.picktime)
         console.log(data)
         // $http({
@@ -702,10 +603,7 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
         //             mode: "dark",
         //         })
         //     })
-
     }
-
-
     // function addvendorCtrl($scope, $http, DotsCons, authService, $localStorage, $q, toaster) {
     //     var token = authService.getCookie('globals');
     //     $scope.addVendor = function () {
@@ -737,9 +635,7 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
     //     }
     // }
     $scope.getCarInterrior = function (val) {
-        if (val == "" || val == undefined || val == null) {
-            val = ""
-        }
+        if (val == "" || val == undefined || val == null) { val = "" }
         return $http({
             method: 'GET',
             url: DotsCons.SEARCH_INTERRIOR + 0 + '/10/' + val,
@@ -748,18 +644,13 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                 'Content-Type': 'application/json',
                 'Authorization': token.currentUser.tokenDto.token
             }
-        }).then(function (response) {
-            return response.data;
-        },
-            function (errResponse) {
-                console.error('Error !!');
-                return $q.reject(errResponse);
-            })
+        }).then(
+            function (response) { return response.data; },
+            function (errResponse) { return $q.reject(errResponse); }
+        )
     }
     $scope.getCarColor = function (val) {
-        if (val == "" || val == undefined || val == null) {
-            val = ""
-        }
+        if (val == "" || val == undefined || val == null) { val = "" }
         return $http({
             method: 'GET',
             url: DotsCons.SEARCH_CAR_COLOR + 0 + '/10/' + val,
@@ -768,18 +659,12 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                 'Content-Type': 'application/json',
                 'Authorization': token.currentUser.tokenDto.token
             }
-        }).then(function (response) {
-            return response.data;
-        },
-            function (errResponse) {
-                console.error('Error !!');
-                return $q.reject(errResponse);
-            })
+        }).then(function (response) { return response.data; },
+            function (errResponse) { return $q.reject(errResponse); }
+        )
     };
     $scope.getCarModal = function (val) {
-        if (val == "" || val == undefined || val == null) {
-            val = ""
-        }
+        if (val == "" || val == undefined || val == null) { val = "" }
         return $http({
             method: 'GET',
             url: DotsCons.SEARCH_MODEL + 0 + "/" + $scope.carBrandSubType.id,
@@ -788,19 +673,12 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                 'Content-Type': 'application/json',
                 'Authorization': token.currentUser.tokenDto.token
             }
-        }).then(function (response) {
-            return response.data;
-        },
-            function (errResponse) {
-                console.error('Error !!');
-                return $q.reject(errResponse);
-            })
-
+        }).then(function (response) { return response.data; s},
+            function (errResponse) { return $q.reject(errResponse); }
+        )
     }
     $scope.getCarBrand = function (val) {
-        if (val == "" || val == undefined || val == null) {
-            val = ""
-        }
+        if (val == "" || val == undefined || val == null) { val = "" }
         return $http({
             method: 'GET',
             url: DotsCons.SEARCH_BRAND + 0 + '/10/' + val,
@@ -809,41 +687,24 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                 'Content-Type': 'application/json',
                 'Authorization': token.currentUser.tokenDto.token
             }
-        }).then(function (response) {
-            return response.data;
-        },
-            function (errResponse) {
-                console.error('Error !!');
-                return $q.reject(errResponse);
-            })
+        }).then(function (response) { return response.data; },
+            function (errResponse) { return $q.reject(errResponse); }
+        )
     }
-
-    $scope.acc1 = function () {
-        $scope.card = true;
-    }
-    $scope.acc2 = function () {
-        $scope.card1 = true;
-    }
-    $scope.uploadFile = function () {
-        $scope.showFile = true;
-    }
-    $scope.uploadFiles = function (file, errFiles) {
-        $scope.f = file;
-        console.log($scope.f)
-
+    $scope.acc1 = function () { $scope.card = true; }
+    $scope.acc2 = function () { $scope.card1 = true; }
+    $scope.uploadFile = function () { $scope.showFile = true; }
+    $scope.uploadFiles = function (file, errFiles) { $scope.f = file;
         var reader = new FileReader()
         reader.onloadend = function () {
             $localStorage.blob = reader.result.split(',')[1];
-
         }
-
         var rdata = [{
             fileName: $scope.f.name,
             content: $localStorage.blob,
             "description": "9986063632",
             "contentType": $scope.f.type
         }]
-        console.log(rdata)
         reader.readAsDataURL(file);
         $scope.errFile = errFiles && errFiles[0];
         if (file) {
@@ -856,16 +717,10 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                         'Content-Type': 'application/json',
                         'Authorization': token.currentUser.tokenDto.token
                     }
-                }).then(function (response) {
-                    console.log("res", response.data);
-                    $localStorage.getUrl = response.data
-                    //    $localStorage.getFile = response.data[0]
-                    //     console.log("path",getFile);
-                },
-                    function (errResponse) {
-                        console.error('Error !!');
-                        return $q.reject(errResponse);
-                    })
+                }).then(
+                    function (response) { $localStorage.getUrl = response.data },
+                    function (errResponse) { return $q.reject(errResponse); }
+                )
             }, 2000)
             setTimeout(function () {
                 $http({
@@ -876,32 +731,25 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                         'Content-Type': 'application/json',
                         'Authorization': token.currentUser.tokenDto.token
                     }
-                }).then(function (response) {
-                    console.log(response.data);
-                },
-                    function (errResponse) {
-                        console.error('Error !!');
-                        return $q.reject(errResponse);
-                    })
+                }).then(
+                    function (response) { console.log(response.data); },
+                    function (errResponse) {return $q.reject(errResponse);}
+                )
             }, 4000)
         }
     }
     $scope.Uploading = function () {
         $scope.loading = true;
-
         $scope.sizeIsmore = false;
         if ($scope.dffiles.length != 0) {
             var uploadedFiles = [];
             var docData;
             for (var i = 0; i < $scope.dffiles.length; i++) {
                 var fname = $scope.dffiles[i].filename.split(".");
-                console.log(fname)
                 var bArray = $scope.dffiles[i].base64;
                 var fname = $scope.dffiles[i].filename;
                 var ftype = $scope.dffiles[i].filetype.split("/");
-                console.log(ftype)
                 var bArray = $scope.dffiles[i].base64;
-
                 docData = {
                     fileName: fname[0],
                     content: bArray,
@@ -909,10 +757,8 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                     "description": "DriverDocument"
                 }
                 uploadedFiles.push(docData);
-                console.log(uploadedFiles)
             }
             $scope.driver_frontd = uploadedFiles[0].fileName + "." + uploadedFiles[0].contentType;
-
             $http({
                 method: 'POST',
                 url: DotsCons.UPLOAD_FILES,
@@ -922,7 +768,6 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                     'Authorization': token.currentUser.tokenDto.token
                 }
             }).then(function (response) {
-                console.log("res", response.data);
                 if (response.data != null) {
                     $scope.driver_front = response.data
                     $http({
@@ -941,25 +786,12 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                             type: "success",
                             mode: "dark",
                         })
-                        console.log(response.data);
-                    },
-                        function (errResponse) {
-                            console.error('Error !!');
-                            return $q.reject(errResponse);
-                        })
-
+                    }, function (errResponse) { return $q.reject(errResponse); })
                 }
-            },
-                function (errResponse) {
-                    console.error('Error !!');
-                    return $q.reject(errResponse);
-                })
-
+            }, function (errResponse) { return $q.reject(errResponse);})
         }
-
     }
     $scope.UploadingBack = function () {
-
         $scope.loading = true;
         $scope.sizeIsmore = false;
         if ($scope.dbfiles.length != 0) {
@@ -967,13 +799,10 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
             var docData;
             for (var i = 0; i < $scope.dbfiles.length; i++) {
                 var fname = $scope.dbfiles[i].filename.split(".");
-                console.log(fname[0])
                 var bArray = $scope.dbfiles[i].base64;
                 var fname = $scope.dbfiles[i].filename;
                 var ftype = $scope.dbfiles[i].filetype.split("/");
-                console.log(ftype)
                 var bArray = $scope.dbfiles[i].base64;
-
                 docData = {
                     fileName: fname[0],
                     content: bArray,
@@ -981,10 +810,8 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                     "description": "DriverDocument"
                 }
                 uploadedFiles.push(docData);
-                console.log(uploadedFiles)
             }
             $scope.driverd_back = uploadedFiles[0].fileName + "." + uploadedFiles[0].contentType;
-
             $http({
                 method: 'POST',
                 url: DotsCons.UPLOAD_FILES,
@@ -994,7 +821,6 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                     'Authorization': token.currentUser.tokenDto.token
                 }
             }).then(function (response) {
-                console.log("res", response.data);
                 if (response.data != null) {
                     $scope.driver_back = response.data
                     $http({
@@ -1007,31 +833,18 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                             'Authorization': token.currentUser.tokenDto.token
                         }
                     }).then(function (response) {
-                        console.log(response.data);
                         $scope.loading = false;
                         $.iaoAlert({
                             msg: "File Uploaded Successfully ..!",
                             type: "success",
                             mode: "dark",
                         })
-                    },
-                        function (errResponse) {
-                            console.error('Error !!');
-                            return $q.reject(errResponse);
-                        })
-
+                    }, function (errResponse) { return $q.reject(errResponse); })
                 }
-            },
-                function (errResponse) {
-                    console.error('Error !!');
-                    return $q.reject(errResponse);
-                })
-
+            },function (errResponse) { return $q.reject(errResponse); })
         }
-
     }
     $scope.UploadingPan = function () {
-
         $scope.loading = true;
         $scope.sizeIsmore = false;
         if ($scope.panfiles.length != 0) {
@@ -1039,13 +852,10 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
             var docData;
             for (var i = 0; i < $scope.panfiles.length; i++) {
                 var fname = $scope.panfiles[i].filename.split(".");
-                console.log(fname)
                 var bArray = $scope.panfiles[i].base64;
                 var fname = $scope.panfiles[i].filename;
                 var ftype = $scope.panfiles[i].filetype.split("/");
-                console.log(ftype)
                 var bArray = $scope.panfiles[i].base64;
-
                 docData = {
                     fileName: fname[0],
                     content: bArray,
@@ -1053,10 +863,8 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                     "description": "DriverDocument"
                 }
                 uploadedFiles.push(docData);
-                console.log(uploadedFiles)
             }
             $scope.pan_front = uploadedFiles[0].fileName + "." + uploadedFiles[0].contentType;
-
             $http({
                 method: 'POST',
                 url: DotsCons.UPLOAD_FILES,
@@ -1066,9 +874,7 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                     'Authorization': token.currentUser.tokenDto.token
                 }
             }).then(function (response) {
-                console.log("res", response.data);
                 if (response.data != null) {
-
                     $http({
                         method: 'GET',
                         url: DotsCons.GET_FILES,
@@ -1079,31 +885,18 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                             'Authorization': token.currentUser.tokenDto.token
                         }
                     }).then(function (response) {
-                        console.log(response.data);
                         $scope.loading = false;
                         $.iaoAlert({
                             msg: "File Uploaded Successfully ..!",
                             type: "success",
                             mode: "dark",
                         })
-                    },
-                        function (errResponse) {
-                            console.error('Error !!');
-                            return $q.reject(errResponse);
-                        })
-
+                    },function (errResponse) {return $q.reject(errResponse);})
                 }
-            },
-                function (errResponse) {
-                    console.error('Error !!');
-                    return $q.reject(errResponse);
-                })
-
+            },function (errResponse) {return $q.reject(errResponse);})
         }
-
     }
     $scope.UploadingPan1 = function () {
-
         $scope.loading = true;
         $scope.sizeIsmore = false;
         if ($scope.pan1files.length != 0) {
@@ -1111,13 +904,10 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
             var docData;
             for (var i = 0; i < $scope.pan1files.length; i++) {
                 var fname = $scope.pan1files[i].filename.split(".");
-                console.log(fname)
                 var bArray = $scope.pan1files[i].base64;
                 var fname = $scope.pan1files[i].filename;
                 var ftype = $scope.pan1files[i].filetype.split("/");
-                console.log(ftype)
                 var bArray = $scope.pan1files[i].base64;
-
                 docData = {
                     fileName: fname[0],
                     content: bArray,
@@ -1125,10 +915,8 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                     "description": "DriverDocument"
                 }
                 uploadedFiles.push(docData);
-                console.log(uploadedFiles)
             }
             $scope.pan_back = uploadedFiles[0].fileName + "." + uploadedFiles[0].contentType;
-
             $http({
                 method: 'POST',
                 url: DotsCons.UPLOAD_FILES,
@@ -1138,9 +926,7 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                     'Authorization': token.currentUser.tokenDto.token
                 }
             }).then(function (response) {
-                console.log("res", response.data);
                 if (response.data != null) {
-
                     $http({
                         method: 'GET',
                         url: DotsCons.GET_FILES,
@@ -1151,31 +937,18 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                             'Authorization': token.currentUser.tokenDto.token
                         }
                     }).then(function (response) {
-                        console.log(response.data);
                         $scope.loading = false;
                         $.iaoAlert({
                             msg: "File Uploaded Successfully ..!",
                             type: "success",
                             mode: "dark",
                         })
-                    },
-                        function (errResponse) {
-                            console.error('Error !!');
-                            return $q.reject(errResponse);
-                        })
-
+                    }, function (errResponse) {return $q.reject(errResponse);})
                 }
-            },
-                function (errResponse) {
-                    console.error('Error !!');
-                    return $q.reject(errResponse);
-                })
-
+            },function (errResponse) {return $q.reject(errResponse);})
         }
-
     }
     $scope.UploadingAdhar = function () {
-
         $scope.loading = true
         $scope.sizeIsmore = false;
         if ($scope.adharfiles.length != 0) {
@@ -1183,13 +956,10 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
             var docData;
             for (var i = 0; i < $scope.adharfiles.length; i++) {
                 var fname = $scope.adharfiles[i].filename.split(".");
-                console.log(fname)
                 var bArray = $scope.adharfiles[i].base64;
                 var fname = $scope.adharfiles[i].filename;
                 var ftype = $scope.adharfiles[i].filetype.split("/");
-                console.log(ftype)
                 var bArray = $scope.adharfiles[i].base64;
-
                 docData = {
                     fileName: fname[0],
                     content: bArray,
@@ -1197,10 +967,8 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                     "description": "DriverDocument"
                 }
                 uploadedFiles.push(docData);
-                console.log(uploadedFiles)
             }
             $scope.adhar_front = uploadedFiles[0].fileName + "." + uploadedFiles[0].contentType;
-
             $http({
                 method: 'POST',
                 url: DotsCons.UPLOAD_FILES,
@@ -1210,10 +978,7 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                     'Authorization': token.currentUser.tokenDto.token
                 }
             }).then(function (response) {
-                console.log("res", response.data);
-
                 if (response.data != null) {
-
                     $http({
                         method: 'GET',
                         url: DotsCons.GET_FILES,
@@ -1224,7 +989,6 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                             'Authorization': token.currentUser.tokenDto.token
                         }
                     }).then(function (response) {
-                        console.log(response.data);
                         $scope.loading = false;
                         $.iaoAlert({
                             msg: "File Uploaded Successfully ..!",
@@ -1232,23 +996,12 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                             mode: "dark",
                         })
                     },
-                        function (errResponse) {
-                            console.error('Error !!');
-                            return $q.reject(errResponse);
-                        })
-
+                        function (errResponse) {return $q.reject(errResponse);})
                 }
-            },
-                function (errResponse) {
-                    console.error('Error !!');
-                    return $q.reject(errResponse);
-                })
-
+            },function (errResponse) {return $q.reject(errResponse);})
         }
-
     }
     $scope.UploadingAdhar1 = function () {
-
         $scope.loading = true
         $scope.sizeIsmore = false;
         if ($scope.adhar1files.length != 0) {
@@ -1256,13 +1009,10 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
             var docData;
             for (var i = 0; i < $scope.adhar1files.length; i++) {
                 var fname = $scope.adhar1files[i].filename.split(".");
-                console.log(fname)
                 var bArray = $scope.adhar1files[i].base64;
                 var fname = $scope.adhar1files[i].filename;
                 var ftype = $scope.adhar1files[i].filetype.split("/");
-                console.log(ftype)
                 var bArray = $scope.adhar1files[i].base64;
-
                 docData = {
                     fileName: fname[0],
                     content: bArray,
@@ -1270,10 +1020,8 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                     "description": "DriverDocument"
                 }
                 uploadedFiles.push(docData);
-                console.log(uploadedFiles)
             }
             $scope.adhar_back = uploadedFiles[0].fileName + "." + uploadedFiles[0].contentType;
-
             $http({
                 method: 'POST',
                 url: DotsCons.UPLOAD_FILES,
@@ -1283,9 +1031,7 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                     'Authorization': token.currentUser.tokenDto.token
                 }
             }).then(function (response) {
-                console.log("res", response.data);
                 if (response.data != null) {
-
                     $http({
                         method: 'GET',
                         url: DotsCons.GET_FILES,
@@ -1296,57 +1042,33 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                             'Authorization': token.currentUser.tokenDto.token
                         }
                     }).then(function (response) {
-                        console.log(response.data);
                         $scope.loading = false;
                         $.iaoAlert({
                             msg: "File Uploaded Successfully ..!",
                             type: "success",
                             mode: "dark",
                         })
-                    },
-                        function (errResponse) {
-                            console.error('Error !!');
-                            return $q.reject(errResponse);
-                        })
-
+                    },function (errResponse) {return $q.reject(errResponse);})
                 }
-            },
-                function (errResponse) {
-                    console.error('Error !!');
-                    return $q.reject(errResponse);
-                })
-
+            },function (errResponse) {return $q.reject(errResponse);})
         }
-
     }
-    $scope.acc4 = function () {
-        $scope.card3 = true
-    }
-    $scope.acc3 = function () {
-        $scope.card2 = true
-    }
-    $scope.acc6 = function () {
-        $scope.card5 = true
-    }
-    $scope.acc7 = function () {
-        $scope.card6 = true
-    }
+    $scope.acc4 = function () { $scope.card3 = true }
+    $scope.acc3 = function () { $scope.card2 = true }
+    $scope.acc6 = function () { $scope.card5 = true }
+    $scope.acc7 = function () { $scope.card6 = true }
     $scope.UploadingPV = function () {
         $scope.loading = true
-
         $scope.sizeIsmore = false;
         if ($scope.pvfiles.length != 0) {
             var uploadedFiles = [];
             var docData;
             for (var i = 0; i < $scope.pvfiles.length; i++) {
                 var fname = $scope.pvfiles[i].filename.split(".");
-                console.log(fname)
                 var bArray = $scope.pvfiles[i].base64;
                 var fname = $scope.pvfiles[i].filename;
                 var ftype = $scope.pvfiles[i].filetype.split("/");
-                console.log(ftype)
                 var bArray = $scope.pvfiles[i].base64;
-
                 docData = {
                     fileName: fname[0],
                     content: bArray,
@@ -1354,10 +1076,8 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                     "description": "DriverDocument"
                 }
                 uploadedFiles.push(docData);
-                console.log(uploadedFiles)
             }
             $scope.pvFront = uploadedFiles[0].fileName + "." + uploadedFiles[0].contentType;
-
             $http({
                 method: 'POST',
                 url: DotsCons.UPLOAD_FILES,
@@ -1367,9 +1087,7 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                     'Authorization': token.currentUser.tokenDto.token
                 }
             }).then(function (response) {
-                console.log("res", response.data);
                 if (response.data != null) {
-
                     $http({
                         method: 'GET',
                         url: DotsCons.GET_FILES,
@@ -1380,7 +1098,6 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                             'Authorization': token.currentUser.tokenDto.token
                         }
                     }).then(function (response) {
-                        console.log(response.data);
                         $scope.loading = false;
                         $.iaoAlert({
                             msg: "File Uploaded Successfully ..!",
@@ -1388,23 +1105,12 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                             mode: "dark",
                         })
                     },
-                        function (errResponse) {
-                            console.error('Error !!');
-                            return $q.reject(errResponse);
-                        })
-
+                        function (errResponse) { return $q.reject(errResponse); })
                 }
-            },
-                function (errResponse) {
-                    console.error('Error !!');
-                    return $q.reject(errResponse);
-                })
-
+            },function (errResponse) { return $q.reject(errResponse); })
         }
-
     }
     $scope.UploadingPV1 = function () {
-
         $scope.loading = true
         $scope.sizeIsmore = false;
         if ($scope.pv1file.length != 0) {
@@ -1412,13 +1118,10 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
             var docData;
             for (var i = 0; i < $scope.pv1file.length; i++) {
                 var fname = $scope.pv1file[i].filename.split(".");
-                console.log(fname)
                 var bArray = $scope.pv1file[i].base64;
                 var fname = $scope.pv1file[i].filename;
                 var ftype = $scope.pv1file[i].filetype.split("/");
-                console.log(ftype)
                 var bArray = $scope.pv1file[i].base64;
-
                 docData = {
                     fileName: fname[0],
                     content: bArray,
@@ -1426,10 +1129,8 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                     "description": "DriverDocument"
                 }
                 uploadedFiles.push(docData);
-                console.log(uploadedFiles)
             }
             $scope.pvBack = uploadedFiles[0].fileName + "." + uploadedFiles[0].contentType;
-
             $http({
                 method: 'POST',
                 url: DotsCons.UPLOAD_FILES,
@@ -1439,9 +1140,7 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                     'Authorization': token.currentUser.tokenDto.token
                 }
             }).then(function (response) {
-                console.log("res", response.data);
                 if (response.data != null) {
-
                     $http({
                         method: 'GET',
                         url: DotsCons.GET_FILES,
@@ -1452,34 +1151,19 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                             'Authorization': token.currentUser.tokenDto.token
                         }
                     }).then(function (response) {
-                        console.log(response.data);
                         $scope.loading = false;
                         $.iaoAlert({
                             msg: "File Uploaded Successfully ..!",
                             type: "success",
                             mode: "dark",
                         })
-                    },
-                        function (errResponse) {
-                            console.error('Error !!');
-                            return $q.reject(errResponse);
-                        })
-
+                    },function (errResponse) {return $q.reject(errResponse);})
                 }
-            },
-                function (errResponse) {
-                    console.error('Error !!');
-                    return $q.reject(errResponse);
-                })
-
+            },function (errResponse) {return $q.reject(errResponse);})
         }
-
     }
-    $scope.acc5 = function () {
-        $scope.card4 = true
-    }
+    $scope.acc5 = function () { $scope.card4 = true }
     $scope.UploadingVR = function () {
-
         $scope.loading = true
         $scope.sizeIsmore = false;
         if ($scope.vrFiles.length != 0) {
@@ -1487,13 +1171,10 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
             var docData;
             for (var i = 0; i < $scope.vrFiles.length; i++) {
                 var fname = $scope.vrFiles[i].filename.split(".");
-                console.log(fname)
                 var bArray = $scope.vrFiles[i].base64;
                 var fname = $scope.vrFiles[i].filename;
                 var ftype = $scope.vrFiles[i].filetype.split("/");
-                console.log(ftype)
                 var bArray = $scope.vrFiles[i].base64;
-
                 docData = {
                     fileName: fname[0],
                     content: bArray,
@@ -1501,10 +1182,8 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                     "description": "DriverDocument"
                 }
                 uploadedFiles.push(docData);
-                console.log(uploadedFiles)
             }
             $scope.pvFront = uploadedFiles[0].fileName + "." + uploadedFiles[0].contentType;
-
             $http({
                 method: 'POST',
                 url: DotsCons.UPLOAD_FILES,
@@ -1514,9 +1193,7 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                     'Authorization': token.currentUser.tokenDto.token
                 }
             }).then(function (response) {
-                console.log("res", response.data);
                 if (response.data != null) {
-
                     $http({
                         method: 'GET',
                         url: DotsCons.GET_FILES,
@@ -1527,31 +1204,18 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                             'Authorization': token.currentUser.tokenDto.token
                         }
                     }).then(function (response) {
-                        console.log(response.data);
                         $scope.loading = false;
                         $.iaoAlert({
                             msg: "File Uploaded Successfully ..!",
                             type: "success",
                             mode: "dark",
                         })
-                    },
-                        function (errResponse) {
-                            console.error('Error !!');
-                            return $q.reject(errResponse);
-                        })
-
+                    },function (errResponse) {return $q.reject(errResponse);})
                 }
-            },
-                function (errResponse) {
-                    console.error('Error !!');
-                    return $q.reject(errResponse);
-                })
-
+            },function (errResponse) {return $q.reject(errResponse);})
         }
-
     }
     $scope.UploadingVR1 = function () {
-
         $scope.loading = true
         $scope.sizeIsmore = false;
         if ($scope.vr1Files.length != 0) {
@@ -1559,13 +1223,10 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
             var docData;
             for (var i = 0; i < $scope.vr1Files.length; i++) {
                 var fname = $scope.vr1Files[i].filename.split(".");
-                console.log(fname)
                 var bArray = $scope.vr1Files[i].base64;
                 var fname = $scope.vr1Files[i].filename;
                 var ftype = $scope.vr1Files[i].filetype.split("/");
-                console.log(ftype)
                 var bArray = $scope.vr1Files[i].base64;
-
                 docData = {
                     fileName: fname[0],
                     content: bArray,
@@ -1573,10 +1234,8 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                     "description": "DriverDocument"
                 }
                 uploadedFiles.push(docData);
-                console.log(uploadedFiles)
             }
             $scope.rvBack = uploadedFiles[0].fileName + "." + uploadedFiles[0].contentType;
-
             $http({
                 method: 'POST',
                 url: DotsCons.UPLOAD_FILES,
@@ -1586,9 +1245,7 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                     'Authorization': token.currentUser.tokenDto.token
                 }
             }).then(function (response) {
-                console.log("res", response.data);
                 if (response.data != null) {
-
                     $http({
                         method: 'GET',
                         url: DotsCons.GET_FILES,
@@ -1599,31 +1256,18 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                             'Authorization': token.currentUser.tokenDto.token
                         }
                     }).then(function (response) {
-                        console.log(response.data);
                         $scope.loading = false;
                         $.iaoAlert({
                             msg: "File Uploaded Successfully ..!",
                             type: "success",
                             mode: "dark",
                         })
-                    },
-                        function (errResponse) {
-                            console.error('Error !!');
-                            return $q.reject(errResponse);
-                        })
-
+                    },function (errResponse) {return $q.reject(errResponse);})
                 }
-            },
-                function (errResponse) {
-                    console.error('Error !!');
-                    return $q.reject(errResponse);
-                })
-
+            },function (errResponse) {return $q.reject(errResponse);})
         }
-
     }
     $scope.Uploadingin = function () {
-
         $scope.loading = true
         $scope.sizeIsmore = false;
         if ($scope.infiles.length != 0) {
@@ -1631,13 +1275,10 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
             var docData;
             for (var i = 0; i < $scope.infiles.length; i++) {
                 var fname = $scope.infiles[i].filename.split(".");
-                console.log(fname)
                 var bArray = $scope.infiles[i].base64;
                 var fname = $scope.infiles[i].filename;
                 var ftype = $scope.infiles[i].filetype.split("/");
-                console.log(ftype)
                 var bArray = $scope.infiles[i].base64;
-
                 docData = {
                     fileName: fname[0],
                     content: bArray,
@@ -1645,10 +1286,8 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                     "description": "DriverDocument"
                 }
                 uploadedFiles.push(docData);
-                console.log(uploadedFiles)
             }
             $scope.insurance_front = uploadedFiles[0].fileName + "." + uploadedFiles[0].contentType;
-
             $http({
                 method: 'POST',
                 url: DotsCons.UPLOAD_FILES,
@@ -1658,9 +1297,7 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                     'Authorization': token.currentUser.tokenDto.token
                 }
             }).then(function (response) {
-                console.log("res", response.data);
                 if (response.data != null) {
-
                     $http({
                         method: 'GET',
                         url: DotsCons.GET_FILES,
@@ -1671,31 +1308,18 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                             'Authorization': token.currentUser.tokenDto.token
                         }
                     }).then(function (response) {
-                        console.log(response.data);
                         $scope.loading = false;
                         $.iaoAlert({
                             msg: "File Uploaded Successfully ..!",
                             type: "success",
                             mode: "dark",
                         })
-                    },
-                        function (errResponse) {
-                            console.error('Error !!');
-                            return $q.reject(errResponse);
-                        })
-
+                    },function (errResponse) {return $q.reject(errResponse);})
                 }
-            },
-                function (errResponse) {
-                    console.error('Error !!');
-                    return $q.reject(errResponse);
-                })
-
+            },function (errResponse) {return $q.reject(errResponse);})
         }
-
     }
     $scope.Uploadingin1 = function () {
-
         $scope.loading = true
         $scope.sizeIsmore = false;
         if ($scope.in1file.length != 0) {
@@ -1703,13 +1327,10 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
             var docData;
             for (var i = 0; i < $scope.in1file.length; i++) {
                 var fname = $scope.in1file[i].filename.split(".");
-                console.log(fname)
                 var bArray = $scope.in1file[i].base64;
                 var fname = $scope.in1file[i].filename;
                 var ftype = $scope.in1file[i].filetype.split("/");
-                console.log(ftype)
                 var bArray = $scope.in1file[i].base64;
-
                 docData = {
                     fileName: fname[0],
                     content: bArray,
@@ -1717,10 +1338,8 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                     "description": "DriverDocument"
                 }
                 uploadedFiles.push(docData);
-                console.log(uploadedFiles)
             }
             $scope.insurance_back = uploadedFiles[0].fileName + "." + uploadedFiles[0].contentType;
-
             $http({
                 method: 'POST',
                 url: DotsCons.UPLOAD_FILES,
@@ -1730,9 +1349,7 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                     'Authorization': token.currentUser.tokenDto.token
                 }
             }).then(function (response) {
-                console.log("res", response.data);
                 if (response.data != null) {
-
                     $http({
                         method: 'GET',
                         url: DotsCons.GET_FILES,
@@ -1743,31 +1360,18 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                             'Authorization': token.currentUser.tokenDto.token
                         }
                     }).then(function (response) {
-                        console.log(response.data);
                         $scope.loading = false;
                         $.iaoAlert({
                             msg: "File Uploaded Successfully ..!",
                             type: "success",
                             mode: "dark",
                         })
-                    },
-                        function (errResponse) {
-                            console.error('Error !!');
-                            return $q.reject(errResponse);
-                        })
-
+                    },function (errResponse) {return $q.reject(errResponse);})
                 }
-            },
-                function (errResponse) {
-                    console.error('Error !!');
-                    return $q.reject(errResponse);
-                })
-
+            },function (errResponse) {return $q.reject(errResponse);})
         }
-
     }
     $scope.Uploadingvep = function () {
-
         $scope.loading = true
         $scope.sizeIsmore = false;
         if ($scope.in1file.length != 0) {
@@ -1775,13 +1379,10 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
             var docData;
             for (var i = 0; i < $scope.vepfiles.length; i++) {
                 var fname = $scope.vepfiles[i].filename.split(".");
-                console.log(fname)
                 var bArray = $scope.vepfiles[i].base64;
                 var fname = $scope.vepfiles[i].filename;
                 var ftype = $scope.vepfiles[i].filetype.split("/");
-                console.log(ftype)
                 var bArray = $scope.vepfiles[i].base64;
-
                 docData = {
                     fileName: fname[0],
                     content: bArray,
@@ -1789,10 +1390,8 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                     "description": "DriverDocument"
                 }
                 uploadedFiles.push(docData);
-                console.log(uploadedFiles)
             }
             $scope.vep_front = uploadedFiles[0].fileName + "." + uploadedFiles[0].contentType;
-
             $http({
                 method: 'POST',
                 url: DotsCons.UPLOAD_FILES,
@@ -1802,9 +1401,7 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                     'Authorization': token.currentUser.tokenDto.token
                 }
             }).then(function (response) {
-                console.log("res", response.data);
                 if (response.data != null) {
-
                     $http({
                         method: 'GET',
                         url: DotsCons.GET_FILES,
@@ -1815,31 +1412,18 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                             'Authorization': token.currentUser.tokenDto.token
                         }
                     }).then(function (response) {
-                        console.log(response.data);
                         $scope.loading = false;
                         $.iaoAlert({
                             msg: "File Uploaded Successfully ..!",
                             type: "success",
                             mode: "dark",
                         })
-                    },
-                        function (errResponse) {
-                            console.error('Error !!');
-                            return $q.reject(errResponse);
-                        })
-
+                    },function (errResponse) {return $q.reject(errResponse);})
                 }
-            },
-                function (errResponse) {
-                    console.error('Error !!');
-                    return $q.reject(errResponse);
-                })
-
+            },function (errResponse) {return $q.reject(errResponse);})
         }
-
     }
     $scope.Uploadingvep1 = function () {
-
         $scope.loading = true
         $scope.sizeIsmore = false;
         if ($scope.in1file.length != 0) {
@@ -1847,13 +1431,10 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
             var docData;
             for (var i = 0; i < $scope.vep1file.length; i++) {
                 var fname = $scope.vep1file[i].filename.split(".");
-                console.log(fname)
                 var bArray = $scope.vep1file[i].base64;
                 var fname = $scope.vep1file[i].filename;
                 var ftype = $scope.vep1file[i].filetype.split("/");
-                console.log(ftype)
                 var bArray = $scope.vep1file[i].base64;
-
                 docData = {
                     fileName: fname[0],
                     content: bArray,
@@ -1861,10 +1442,8 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                     "description": "DriverDocument"
                 }
                 uploadedFiles.push(docData);
-                console.log(uploadedFiles)
             }
             $scope.vep_back = uploadedFiles[0].fileName + "." + uploadedFiles[0].contentType;
-
             $http({
                 method: 'POST',
                 url: DotsCons.UPLOAD_FILES,
@@ -1874,9 +1453,7 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                     'Authorization': token.currentUser.tokenDto.token
                 }
             }).then(function (response) {
-                console.log("res", response.data);
                 if (response.data != null) {
-
                     $http({
                         method: 'GET',
                         url: DotsCons.GET_FILES,
@@ -1887,31 +1464,18 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                             'Authorization': token.currentUser.tokenDto.token
                         }
                     }).then(function (response) {
-                        console.log(response.data);
                         $scope.loading = false;
                         $.iaoAlert({
                             msg: "File Uploaded Successfully ..!",
                             type: "success",
                             mode: "dark",
                         })
-                    },
-                        function (errResponse) {
-                            console.error('Error !!');
-                            return $q.reject(errResponse);
-                        })
-
+                    },function (errResponse) {return $q.reject(errResponse);})
                 }
-            },
-                function (errResponse) {
-                    console.error('Error !!');
-                    return $q.reject(errResponse);
-                })
-
+            },function (errResponse) {return $q.reject(errResponse);})
         }
-
     }
     $scope.UploadingRD = function () {
-
         $scope.loading = true
         $scope.sizeIsmore = false;
         if ($scope.rdfiles.length != 0) {
@@ -1919,13 +1483,10 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
             var docData;
             for (var i = 0; i < $scope.rdfiles.length; i++) {
                 var fname = $scope.rdfiles[i].filename.split(".");
-                console.log(fname)
                 var bArray = $scope.rdfiles[i].base64;
                 var fname = $scope.rdfiles[i].filename;
                 var ftype = $scope.rdfiles[i].filetype.split("/");
-                console.log(ftype)
                 var bArray = $scope.rdfiles[i].base64;
-
                 docData = {
                     fileName: fname[0],
                     content: bArray,
@@ -1933,10 +1494,8 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                     "description": "DriverDocument"
                 }
                 uploadedFiles.push(docData);
-                console.log(uploadedFiles)
             }
             $scope.rd_front = uploadedFiles[0].fileName + "." + uploadedFiles[0].contentType;
-
             $http({
                 method: 'POST',
                 url: DotsCons.UPLOAD_FILES,
@@ -1946,9 +1505,7 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                     'Authorization': token.currentUser.tokenDto.token
                 }
             }).then(function (response) {
-                console.log("res", response.data);
                 if (response.data != null) {
-
                     $http({
                         method: 'GET',
                         url: DotsCons.GET_FILES,
@@ -1959,31 +1516,18 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                             'Authorization': token.currentUser.tokenDto.token
                         }
                     }).then(function (response) {
-                        console.log(response.data);
                         $scope.loading = false;
                         $.iaoAlert({
                             msg: "File Uploaded Successfully ..!",
                             type: "success",
                             mode: "dark",
                         })
-                    },
-                        function (errResponse) {
-                            console.error('Error !!');
-                            return $q.reject(errResponse);
-                        })
-
+                    },function (errResponse) {return $q.reject(errResponse);})
                 }
-            },
-                function (errResponse) {
-                    console.error('Error !!');
-                    return $q.reject(errResponse);
-                })
-
+            },function (errResponse) {return $q.reject(errResponse);})
         }
-
     }
     $scope.UploadingRD1 = function () {
-
         $scope.loading = true
         $scope.sizeIsmore = false;
         if ($scope.rd1file.length != 0) {
@@ -1991,13 +1535,10 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
             var docData;
             for (var i = 0; i < $scope.rd1file.length; i++) {
                 var fname = $scope.rd1file[i].filename.split(".");
-                console.log(fname)
                 var bArray = $scope.rd1file[i].base64;
                 var fname = $scope.rd1file[i].filename;
                 var ftype = $scope.rd1file[i].filetype.split("/");
-                console.log(ftype)
                 var bArray = $scope.rd1file[i].base64;
-
                 docData = {
                     fileName: fname[0],
                     content: bArray,
@@ -2005,10 +1546,8 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                     "description": "DriverDocument"
                 }
                 uploadedFiles.push(docData);
-                console.log(uploadedFiles)
             }
             $scope.rd_back = uploadedFiles[0].fileName + "." + uploadedFiles[0].contentType;
-
             $http({
                 method: 'POST',
                 url: DotsCons.UPLOAD_FILES,
@@ -2018,9 +1557,7 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                     'Authorization': token.currentUser.tokenDto.token
                 }
             }).then(function (response) {
-                console.log("res", response.data);
                 if (response.data != null) {
-
                     $http({
                         method: 'GET',
                         url: DotsCons.GET_FILES,
@@ -2031,28 +1568,16 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                             'Authorization': token.currentUser.tokenDto.token
                         }
                     }).then(function (response) {
-                        console.log(response.data);
                         $scope.loading = false;
                         $.iaoAlert({
                             msg: "File Uploaded Successfully ..!",
                             type: "success",
                             mode: "dark",
                         })
-                    },
-                        function (errResponse) {
-                            console.error('Error !!');
-                            return $q.reject(errResponse);
-                        })
-
+                    },function (errResponse) {return $q.reject(errResponse);})
                 }
-            },
-                function (errResponse) {
-                    console.error('Error !!');
-                    return $q.reject(errResponse);
-                })
-
+            },function (errResponse) {return $q.reject(errResponse);})
         }
-
     }
     // $scope.documentType = function(){
     //     $http({
@@ -2068,15 +1593,12 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
     //         $scope.filesDropDown = response.data
     //     },
     //         function (errResponse) {
-
     //             console.error('Error !!');
     //             return $q.reject(errResponse);
     //         })
-
     // }
     // $scope.documentType()
     $scope.UploadingFT = function () {
-
         $scope.loading = true
         $scope.sizeIsmore = false;
         if ($scope.ftfiles.length != 0) {
@@ -2084,13 +1606,10 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
             var docData;
             for (var i = 0; i < $scope.ftfiles.length; i++) {
                 var fname = $scope.ftfiles[i].filename.split(".");
-                console.log(fname)
                 var bArray = $scope.ftfiles[i].base64;
                 var fname = $scope.ftfiles[i].filename;
                 var ftype = $scope.ftfiles[i].filetype.split("/");
-                console.log(ftype)
                 var bArray = $scope.ftfiles[i].base64;
-
                 docData = {
                     fileName: fname[0],
                     content: bArray,
@@ -2098,10 +1617,8 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                     "description": "DriverDocument"
                 }
                 uploadedFiles.push(docData);
-                console.log(uploadedFiles)
             }
             $scope.ft_front = uploadedFiles[0].fileName + "." + uploadedFiles[0].contentType;
-
             $http({
                 method: 'POST',
                 url: DotsCons.UPLOAD_FILES,
@@ -2111,9 +1628,7 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                     'Authorization': token.currentUser.tokenDto.token
                 }
             }).then(function (response) {
-                console.log("res", response.data);
                 if (response.data != null) {
-
                     $http({
                         method: 'GET',
                         url: DotsCons.GET_FILES,
@@ -2124,31 +1639,18 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                             'Authorization': token.currentUser.tokenDto.token
                         }
                     }).then(function (response) {
-                        console.log(response.data);
                         $scope.loading = false;
                         $.iaoAlert({
                             msg: "File Uploaded Successfully ..!",
                             type: "success",
                             mode: "dark",
                         })
-                    },
-                        function (errResponse) {
-                            console.error('Error !!');
-                            return $q.reject(errResponse);
-                        })
-
+                    },function (errResponse) {return $q.reject(errResponse);})
                 }
-            },
-                function (errResponse) {
-                    console.error('Error !!');
-                    return $q.reject(errResponse);
-                })
-
+            },function (errResponse) {return $q.reject(errResponse);})
         }
-
     }
     $scope.UploadingFT1 = function () {
-
         $scope.loading = true
         $scope.sizeIsmore = false;
         if ($scope.ft1file.length != 0) {
@@ -2156,13 +1658,10 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
             var docData;
             for (var i = 0; i < $scope.ft1file.length; i++) {
                 var fname = $scope.ft1file[i].filename.split(".");
-                console.log(fname)
                 var bArray = $scope.ft1file[i].base64;
                 var fname = $scope.ft1file[i].filename;
                 var ftype = $scope.ft1file[i].filetype.split("/");
-                console.log(ftype)
                 var bArray = $scope.ft1file[i].base64;
-
                 docData = {
                     fileName: fname[0],
                     content: bArray,
@@ -2170,10 +1669,8 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                     "description": "DriverDocument"
                 }
                 uploadedFiles.push(docData);
-                console.log(uploadedFiles)
             }
             $scope.ft_back = uploadedFiles[0].fileName + "." + uploadedFiles[0].contentType;
-
             $http({
                 method: 'POST',
                 url: DotsCons.UPLOAD_FILES,
@@ -2183,9 +1680,7 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                     'Authorization': token.currentUser.tokenDto.token
                 }
             }).then(function (response) {
-                console.log("res", response.data);
                 if (response.data != null) {
-
                     $http({
                         method: 'GET',
                         url: DotsCons.GET_FILES,
@@ -2196,34 +1691,21 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                             'Authorization': token.currentUser.tokenDto.token
                         }
                     }).then(function (response) {
-                        console.log(response.data);
                         $scope.loading = false;
                         $.iaoAlert({
                             msg: "File Uploaded Successfully ..!",
                             type: "success",
                             mode: "dark",
                         })
-                    },
-                        function (errResponse) {
-                            console.error('Error !!');
-                            return $q.reject(errResponse);
-                        })
-
+                    },function (errResponse) {return $q.reject(errResponse);})
                 }
-            },
-                function (errResponse) {
-                    console.error('Error !!');
-                    return $q.reject(errResponse);
-                })
-
+            },function (errResponse) {return $q.reject(errResponse);})
         }
-
     }
     $scope.driverRegistration = function () {
         $scope.loading = true;
         $scope.docData = [];
         if ($scope.card == true) {
-
             var dldoc = {
                 "documentType": { "id": 1 },
                 "docName": "Driving Licence",
@@ -2245,13 +1727,9 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                     "Last Name": $scope.driver_lname
                 }
             }
-
-
             $scope.docData.push(dldoc)
-
         }
         if ($scope.card2 == true) {
-
             var adharData = {
                 "documentType": { 'id': 2 },
                 "docName": "Adhar Card",
@@ -2268,13 +1746,11 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                     "Aadhar Last Name": $scope.adhar_lname,
                     "Aadhar Number": $scope.adharno,
                 }
-
             }
             $scope.docData.push(adharData)
         }
         if ($scope.card1 == true) {
             var pandata = {
-
                 "documentType": { 'id': 3 },
                 "docName": "Pan Card",
                 "description": null,
@@ -2294,7 +1770,6 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
         }
         if ($scope.card3 == true) {
             var pvdata = {
-
                 "documentType": { 'id': 4 },
                 "docName": "Police Verification",
                 "description": null,
@@ -2342,7 +1817,6 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
         }
         if ($scope.card5 == true) {
             var vidata = {
-
                 "documentType": { 'id': 6 },
                 "docName": "Vehicle Insurance",
                 "description": null,
@@ -2378,7 +1852,6 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                     "Vehicle Number": $scope.vehcle_num,
                     "Permit Type": $scope.PermitType
                 }
-
             }
             $scope.docData.push(vhper)
         }
@@ -2416,7 +1889,6 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
             }
         }
         var postdata = {
-
             "address": "George Street",
             "area": "M G Road",
             "branchId": 0,
@@ -2434,38 +1906,26 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
             "password": "Abc@12def",
             "userType": "Driver",
             "pincode": 12345,
-
             "carDetailDto": {
                 "type": {
                     "id": $scope.carBrand.id
-
                 },
                 "subType": {
                     "id": $scope.carSegName.id
-
                 },
                 "carColor": {
                     "id": $scope.carColor.id
-
                 },
                 "carInterrior": {
                     "id": $scope.Interrior.id
-
                 },
                 "carCategory": {
                     "id": $scope.carBrandSubType.id
-
                 }
             },
             "documentDetailDtos": $scope.docData,
-
-
             "state": "Bangalore"
-
         }
-
-
-        console.log(postdata)
         $http({
             method: 'post',
             url: DotsCons.DRIVER_REGISTRATION,
@@ -2475,7 +1935,6 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                 'Authorization': token.currentUser.tokenDto.token
             }
         }).then(function (response) {
-            console.log(response)
             if (response.status == '200') {
                 $scope.loading = false;
                 $.iaoAlert({
@@ -2485,10 +1944,7 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                 })
                 $location.path('/approveMember')
             }
-
-        },
-            function (errResponse) {
-                console.error('Error !!');
+        },function (errResponse) {
                 $scope.loading = false;
                 $.iaoAlert({
                     msg: "Somthing went wrong...Try agian!",
@@ -2497,9 +1953,7 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
                 })
                 return $q.reject(errResponse);
             })
-
     }
-
 }
 
 // this is manage trip controller
@@ -3518,6 +2972,7 @@ function travelBillingCtrl($scope, $http, DotsCons, $rootScope, authService, $lo
 // this is travelling backup bill controller 
 function travelBillingCtrl1($scope, $http, DotsCons, $rootScope, authService, $localStorage, $location, $q, toaster) {
     var token = authService.getCookie('globals');
+    // this api call the company details
     $http({
         method: 'GET',
         url: DotsCons.COMPANY_DETAILS + "/0/10",
@@ -3526,13 +2981,11 @@ function travelBillingCtrl1($scope, $http, DotsCons, $rootScope, authService, $l
             'Content-Type': 'application/json',
             'Authorization': token.currentUser.tokenDto.token
         }
-    }).then(function (response) {
-        $scope.contacts = response.data;
-    },
-        function (errResponse) {
-            console.error('Error !!');
-            return $q.reject(errResponse);
-        })
+    }).then(
+        function (response) { $scope.contacts = response.data },
+        function (errResponse) { return $q.reject(errResponse) }
+    )
+    // this api call filter by sub type
     $http({
         method: 'GET',
         url: DotsCons.SUB_TYPE + "0/10",
@@ -3541,13 +2994,11 @@ function travelBillingCtrl1($scope, $http, DotsCons, $rootScope, authService, $l
             'Content-Type': 'application/json',
             'Authorization': token.currentUser.tokenDto.token
         }
-    }).then(function (response) {
-        $scope.categery = response.data;
-    },
-        function (errResponse) {
-            console.error('Error !!');
-            return $q.reject(errResponse);
-        })
+    }).then(
+        function (response) { $scope.categery = response.data },
+        function (errResponse) { return $q.reject(errResponse)}
+    )
+    //  this api call filter by model 
     $http({
         method: 'GET',
         url: DotsCons.SEARCH_MODEL + '/1',
@@ -3556,13 +3007,11 @@ function travelBillingCtrl1($scope, $http, DotsCons, $rootScope, authService, $l
             'Content-Type': 'application/json',
             'Authorization': token.currentUser.tokenDto.token
         }
-    }).then(function (response) {
-        $scope.carModals = response.data;
-    },
-        function (errResponse) {
-            console.error('Error !!');
-            return $q.reject(errResponse);
-        })
+    }).then(
+        function (response) { $scope.carModals = response.data },
+        function (errResponse) { return $q.reject(errResponse) }
+    )
+    // this api call filter by for use
     $http({
         method: 'GET',
         url: DotsCons.FOR_USE + "0/10",
@@ -3571,13 +3020,11 @@ function travelBillingCtrl1($scope, $http, DotsCons, $rootScope, authService, $l
             'Content-Type': 'application/json',
             'Authorization': token.currentUser.tokenDto.token
         }
-    }).then(function (response) {
-        $scope.forUse = response.data;
-    },
-        function (errResponse) {
-            console.error('Error !!');
-            return $q.reject(errResponse);
-        })
+    }).then(
+        function (response) { $scope.forUse = response.data },
+        function (errResponse) { return $q.reject(errResponse) }
+    )
+    // this api call filter by cost center
     $http({
         method: 'GET',
         url: DotsCons.GET_COST_CENTER + "0/10",
@@ -3586,13 +3033,11 @@ function travelBillingCtrl1($scope, $http, DotsCons, $rootScope, authService, $l
             'Content-Type': 'application/json',
             'Authorization': token.currentUser.tokenDto.token
         }
-    }).then(function (response) {
-        $scope.costCenters = response.data;
-    },
-        function (errResponse) {
-            console.error('Error !!');
-            return $q.reject(errResponse);
-        })
+    }).then(
+        function (response) { $scope.costCenters = response.data },
+        function (errResponse) { return $q.reject(errResponse) }
+    )
+    // this api call filter by employee id
     $http({
         method: 'GET',
         url: DotsCons.GET_EMPLOYEE_ID + "/0/10",
@@ -3601,13 +3046,11 @@ function travelBillingCtrl1($scope, $http, DotsCons, $rootScope, authService, $l
             'Content-Type': 'application/json',
             'Authorization': token.currentUser.tokenDto.token
         }
-    }).then(function (response) {
-        $scope.empIds = response.data;
-    },
-        function (errResponse) {
-            console.error('Error !!');
-            return $q.reject(errResponse);
-        })
+    }).then(
+        function (response) { $scope.empIds = response.data },
+        function (errResponse) { return $q.reject(errResponse) }
+    )
+    // this api call filtering by travel id
     $http({
         method: 'GET',
         url: DotsCons.GET_TRAVEL_ID + "/0/10",
@@ -3616,19 +3059,12 @@ function travelBillingCtrl1($scope, $http, DotsCons, $rootScope, authService, $l
             'Content-Type': 'application/json',
             'Authorization': token.currentUser.tokenDto.token
         }
-    }).then(function (response) {
-        $scope.travelIds = response.data;
-    },
-        function (errResponse) {
-            console.error('Error !!');
-            return $q.reject(errResponse);
-        })
-
-    // $scope.contacts = [{name: 'Blinky', email: 'red@pacman.com'},
-    // {name: 'Pinky', email: 'pink@pacman.com'},
-    // {name: 'Inky', email: 'cyan@pacman.com'},
-    // {name: 'Clyde', email: 'yellow@pacman.com'}];
+    }).then(
+        function (response) { $scope.travelIds = response.data },
+        function (errResponse) { return $q.reject(errResponse) }
+    )
     $scope.no_morerecord = false;
+    // this function will used for the applying filter
     $scope.filtersApply = function () {
         $scope.typeDuty = []
         $scope.companyData = []
@@ -3640,45 +3076,35 @@ function travelBillingCtrl1($scope, $http, DotsCons, $rootScope, authService, $l
             for (let value of Object.values($scope.selectedC)) {
                 $scope.companyData.push(value.companyName); // John, then 30
             }
-        } else {
-            $scope.companyData = null
-        }
+        } else { $scope.companyData = null }
         //console.log($scope.companyData)
         if ($scope.selectedGst != null) {
             $scope.gst = $scope.selectedGst;
             for (let value of Object.values($scope.gst)) {
                 $scope.slectGST.push(value.gstnumber); // John, then 30
             }
-        } else {
-            $scope.slectGST = []
-        }
+        } else { $scope.slectGST = [] }
         //console.log($scope.slectGST)
         if ($scope.selectedsDuty != null) {
             $scope.selectedDuty = $scope.selectedsDuty;
             for (let value of Object.values($scope.selectedDuty)) {
                 $scope.typeDuty.push(value.name); // John, then 30
             }
-        } else {
-            $scope.typeDuty = []
-        }
+        } else { $scope.typeDuty = [] }
         //console.log($scope.typeDuty)
         if ($scope.selectedsSeg != null) {
             $scope.selectedseg = $scope.selectedsSeg;
             for (let value of Object.values($scope.selectedseg)) {
                 $scope.SelctSeg.push(value.name); // John, then 30
             }
-        } else {
-            $scope.SelctSeg = []
-        }
+        } else { $scope.SelctSeg = [] }
         //console.log($scope.SelctSeg)
         if ($scope.selectedsModel != null) {
             $scope.selectedModel = $scope.selectedsModel;
             for (let value of Object.values($scope.selectedModel)) {
                 $scope.selectMOdal.push(value.name); // John, then 30
             }
-        } else {
-            $scope.selectMOdal = []
-        }
+        } else { $scope.selectMOdal = [] }
         //console.log($scope.selectMOdal)
         var fromDate = '';
         if ($scope.fromDate != null) {
@@ -3691,25 +3117,17 @@ function travelBillingCtrl1($scope, $http, DotsCons, $rootScope, authService, $l
             if (day.length < 2)
                 day = '0' + day;
             fromDate = [year, month, day].join('-');
-        } else {
-            fromDate = ""
-        }
+        } else { fromDate = "" }
         var toDate = '';
         if ($scope.endDate != null) {
             var d = new Date($scope.endDate),
                 month = '' + (d.getMonth() + 1),
                 day = '' + d.getDate(),
                 year = d.getFullYear();
-
-            if (month.length < 2)
-                month = '0' + month;
-            if (day.length < 2)
-                day = '0' + day;
-
+            if (month.length < 2) month = '0' + month;
+            if (day.length < 2) day = '0' + day;
             toDate = [year, month, day].join('-');
-        } else {
-            $scope.endDate = ""
-        }
+        } else { $scope.endDate = "" }
         //console.log(fromDate)
         $rootScope.data = {
             "startDate": fromDate,
@@ -3739,7 +3157,6 @@ function travelBillingCtrl1($scope, $http, DotsCons, $rootScope, authService, $l
         //         "travelIds": [$scope.travelId],
         //         "vechicleSeg": [$scope.categery.name],
         // }
-        // console.log(data)
         $http({
             method: 'post',
             url: DotsCons.GET_FILTERD_DATA + "/0/10/",
@@ -3781,6 +3198,7 @@ function travelBillingCtrl1($scope, $http, DotsCons, $rootScope, authService, $l
             }
         }, function (errResponse) { return $q.reject(errResponse)})
     }
+    // this function will used for the download the as excel sheet
     $scope.download = function () {
         $http({
             method: 'post',
@@ -3808,6 +3226,7 @@ function travelBillingCtrl1($scope, $http, DotsCons, $rootScope, authService, $l
         }, 3000)
     }
     var reqIds = []
+    // this function will used for the genrate invoice
     $scope.generateInvoice = function () {
         for (var i = 0; i < $rootScope.filtedData.length; i++) {
             if ($rootScope.filtedData[i].Selected) {
@@ -3862,6 +3281,7 @@ function travelBillingCtrl1($scope, $http, DotsCons, $rootScope, authService, $l
         //  });
         // });
     }
+    // this function will used for the downloading as pdf
     $scope.downloadPDF = function (pdfUrl) {
         const file = new Blob([pdfUrl], { type: 'application/pdf' });
         // process to auto download it
@@ -3943,14 +3363,11 @@ function maintenanceReportCtrl($scope, $http, DotsCons, $rootScope, authService,
         {"date":"12/04/2019","driverName": "Suresh", "vehicleNo": "MH-43-BP-1893", "expensesItem":"Servicing", "expenseType":"500", "meterReading":"57833"},
     ]
     
-    console.log("Data Filterd ",$rootScope.filtedData)
-
     $scope.showApprovedBills = function (billsData) {
         $location.path('/maintenanceDetaills')
     }
 
     $scope.showPendingBills = function (billsData) {
-        console.log("Show Pending Bills Data", billsData)
         $location.path('/maintenanceDetaills')
     }
 
@@ -3969,6 +3386,9 @@ function maintenanceDetailsCtrl($scope, $http, DotsCons, $rootScope, authService
     $scope.maintenanceReport= function(){
         $location.path('/maintenanceReport')
     }
+    $scope.addExpense=function(){
+        $location.path('/addExpense')
+    }
     $scope.download = function () {
         setTimeout(function () {
             $("#maintenanceTableDta").table2excel({ filename: "report" });
@@ -3981,10 +3401,46 @@ function maintenanceDetailsCtrl($scope, $http, DotsCons, $rootScope, authService
         pdfWindow.document.write("<body><embed width='100%' height='100%' src='data:application/pdf;base64, " + encodeURI(pdfUrl) + "#toolbar=0&navpanes=0&scrollbar=0'></embed></body></html>");
         //window.open("data:application/octet-stream;charset=utf-16le;base64,"+pdfUrl)
     }
+
 }
 // this is the maintance report filter controller
 function maintenanceRerportFilterCtrl($scope, $http, DotsCons, $rootScope, authService, $localStorage, $location, $q, toaster) {
     $scope.reportFiltersApply = function (data) {
         console.log("Filtering ",data);
     }   
+}
+// this is expense controller
+function expenseCtrl($scope, $http, DotsCons, $rootScope, authService, $localStorage, $location, $q, toaster) {
+    $scope.today = function () { $scope.dt = new Date(); };
+    $scope.today();
+    $scope.clear = function () { $scope.dt = null; };
+    $scope.dateOptions = {
+        // dateDisabled: disabled,
+        formatYear: 'yy',
+        maxDate: new Date(2030, 5, 22),
+        minDate: new Date(),
+    };
+    $scope.popup1 = { opened: false };
+    $scope.open1 = function () { $scope.popup1.opened = true; };
+    $scope.setDate = function (year, month, day) { $scope.dt = new Date(year, month, day); };
+    $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+    $scope.format = $scope.formats[0];
+    $scope.altInputFormats = ['M!/d!/yyyy'];
+    
+    $scope.maintenanceReport= function(){
+        $location.path('/maintenanceReport')
+    }
+    $scope.fule=false;
+    $scope.others=false;
+
+    // this function will used for the check exepense type check
+    $scope.expenseTypeChnaged=function(){
+        if($scope.expenseType==="Fule"){
+            $scope.fule=true;
+            $scope.others=false;
+        }else if($scope.expenseType==="Others"){
+            $scope.others=true;
+            $scope.fule=false;
+        }
+    }
 }

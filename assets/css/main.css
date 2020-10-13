@@ -3786,7 +3786,7 @@ body,
 
 .wrapper {
     position: relative;
-    background: url(assets/img/unsplash.jpg) no-repeat center center/cover;
+    /* background: url(assets/img/unsplash.jpg) no-repeat center center/cover; */
 }
 
 .wrapper:before {

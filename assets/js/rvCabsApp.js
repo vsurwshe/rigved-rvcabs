@@ -243,6 +243,10 @@ app.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'assets/pages/maintenanceReportFillters.html',
             controller: maintenanceRerportFilterCtrl
         })
+        .when('/addExpense',{
+            templateUrl: 'assets/pages/addExpense.html',
+            controller: expenseCtrl
+        })
         .when('/travelBillingFilters', {
             templateUrl: 'assets/pages/travelBillingFilters.html',
             controller: travelBillingCtrl1
@@ -514,6 +518,9 @@ app.controller("DashNavBarCtrl", function ($scope, $http, authService, $location
             case '/maintenanceReportFilter':
                 $scope.Route = "Maintenance Report Filter";
                 $scope.maintanceReportFilter=true;
+                break;
+            case '/addExpense':
+                $scope.Route = "Add Expense";
                 break;
             case '/travelBilling':
                 $scope.Route = "Travel Billing";

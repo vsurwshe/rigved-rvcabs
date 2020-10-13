@@ -357,14 +357,28 @@ top: 5px;
         <ng-include src="'assets/pages/MynavBar.html'"></ng-include>
         <div class="col-md-12 table-responsive header-board">
             <div class="row">
-                <div class="col-md-9"></div>
-                <div class="col-md-3">
+                <div class="col-md-6">
+                    <div class="col-md-3">
+                        <img class="img" src="assets/img/dummy.png" alt="img">
+                    </div>
+                    <div class="col-md-10 element2">
+                        <h4>Driver Details</h4>
+                        <label><h6>Driver Name :</h6></label> 
+                        <label>&nbsp;{{billsData.firstName}}{{}}</label><br>
+                        <label><h6> Driver Mobile Number :</h6></label>
+                        <label>&nbsp;{{}}</label><br>
+                        <label><h6>Brand/modal :</h6></label>
+                        <label>&nbsp;{{complteDetails.sysCarCategoryDto.name}}</label><br>
+                    </div>
+                </div>
+                <div class="col-md-6">
                     <div class="col-md-10  col-sm-12 mb-2" style="text-align: right">
+                        <button type="button" class="button-small" style="cursor: pointer" ng-click="addExpense()"><span class="myfont">Add Bill</span></button>
                         <button type="button" class="button-small" style="cursor: pointer" ng-click="maintenanceReport()"><span class="myfont">Back</span></button>         
                     </div>
                  </div>
             </div>
-            <table class="responsive table" id="maintenanceTableDta">
+            <table class="responsive table" id="maintenanceTableDta" style="margin-top: 20px;">
                 <thead>
                     <tr>
                         <th scope="col"><input type="checkbox" onclick="checkAll(this)"></th>
