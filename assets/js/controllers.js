@@ -3438,4 +3438,27 @@ function expenseCtrl($scope, $http, DotsCons, $rootScope, authService, $localSto
             $scope.fule=false;
         }
     }
+
+    // this function will used for the adding expense
+    $scope.addExpense= function(){
+        let data={
+            "fromDate":$scope.fromDate,
+            "time":$scope.time,
+            "odoMeterReading":$scope.odoMeterReading,
+            "expenseType":$scope.expenseType,
+            "fulePrice":$scope.fulePrice,
+            "fuleQty":$scope.fuleQty,
+            "fuleTotalAmount":$scope.fuleTotalAmount,
+            "fuleNotes":$scope.fuleNotes,
+            "otherDescription":$scope.otherDescription,
+            "otherTotalAmount":$scope.otherTotalAmount,
+            "otherServiceLocation":$scope.otherServiceLocation
+
+        }
+
+        console.log("Data ",data)
+    }
+
+
+
 }

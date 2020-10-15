@@ -13,7 +13,7 @@ app.constant('DotsCons', {
     'GET_COST_CENTER': ip+'masterdata/costCenterSearch/',
     'GET_TRAVEL_ID': ip +'masterdata/travelIdSearch',
     'GET_EMPLOYEE_ID': ip +'masterdata/costEmployIdSearch',
-    'SEARCH_MODEL': ip + 'masterdata/carBrandSubTypeSearch/',
+    'SEARCH_MODEL': ip + 'masterdata/carBrandSubTypeSearch',
     'SEARCH_BRAND': ip + 'masterdata/carBrandSearch/',
     'SUB_TYPE': ip + 'masterdata/carCategorySearch/',
     'SEARCH_INTERRIOR': ip + 'masterdata/carIntColorSearch/',
@@ -438,7 +438,7 @@ app.controller("DashNavBarCtrl", function ($scope, $http, authService, $location
         $scope.gotoProfile = function () { $location.path('/profile'); }
         /* ---------------------------------------------- */
         $scope.gotoRideList = function () { $location.path('/rideList'); }
-        $scope.filters = function (){ $location.path('/travelBillingFilters') }
+        $scope.travelFilters = function (){ $location.path('/travelBillingFilters') }
         $scope.maintenanceReportFilters = function (){ $location.path('/maintenanceReportFilter') }
         /* ---------------------------------------------- */
         $scope.routeRefresh = function () { $route.refresh(); }
@@ -510,14 +510,17 @@ app.controller("DashNavBarCtrl", function ($scope, $http, authService, $location
                 break;
             case '/maintenanceReport':
                 $scope.Route = "Maintenance Report";
+                $scope.maintanceReportFilter=false;
                 $scope.maintenanceReport = true;
                 break;
             case '/maintenanceDetaills':
                 $scope.Route = "Driver Maintenance & Expenses Detaills";
+                $scope.maintanceReportFilter=false;
                 break;
             case '/maintenanceReportFilter':
                 $scope.Route = "Maintenance Report Filter";
                 $scope.maintanceReportFilter=true;
+                $scope.travelBillingFilter = false;
                 break;
             case '/addExpense':
                 $scope.Route = "Add Expense";
@@ -528,7 +531,8 @@ app.controller("DashNavBarCtrl", function ($scope, $http, authService, $location
                 break;
             case '/travelBillingFilters':
                 $scope.Route = "Filters"
-                $scope.travelBillingFilter = true
+                $scope.travelBillingFilter = true;
+                $scope.maintanceReportFilter=false;
                 break;
         }
         /* -----------GEtting profile info------------- */

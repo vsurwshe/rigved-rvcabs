@@ -249,11 +249,11 @@
     </div>
 </div>
 <div class="wrapper">
-    <!-- Sidebar  -->
-    <ng-include src="'assets/pages/MysideBar.html'"></ng-include>
+<!-- Sidebar  -->
+<ng-include src="'assets/pages/MysideBar.html'"></ng-include>
     <!-- Page Content  -->
-    <div id="content">
-        <nav class="navbar navbar-expand-lg bg-white" ng-controller="DashNavBarCtrl">
+<div id="content">
+    <nav class="navbar navbar-expand-lg bg-white" ng-controller="DashNavBarCtrl">
             <div class="container-fluid">
                 <button type="button" id="sidebarCollapse1" class="btn btn-info" style="display: none;">
                     <!--<i class="fas fa-align-justify"></i>--><img src="assets/img/menu.png">
@@ -277,16 +277,14 @@
 
                 </div>
             </div>
-        </nav>
-        <div id="map" style="width: 100%; height: 100vh; display: none"></div>
-
-        <div class="col-sm-12 header-board">
-
-            <div class="row">
-                <div class="col-md-12 col-sm-12">
-                    <div class="col-md-12 col-sm-12 row header-right nopadding">
-                        <div id="accordion" class="col-md-12">
-                            <div class="card">
+    </nav>
+    <div id="map" style="width: 100%; height: 100vh; display: none"></div>
+    <div class="col-sm-12 header-board">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="col-md-12 col-sm-12 row header-right nopadding">
+                    <div id="accordion" class="col-md-12">
+                        <div class="card">
                                 <div class="card-header" id="headingOne">
                                     <h5 class="mb-0">
                                         <button class="btn btn-link font-weight-bold" data-toggle="collapse"
@@ -295,43 +293,28 @@
                                         </button>
                                     </h5>
                                 </div>
-
-                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
-                                    data-parent="#accordion">
+                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                                     <div class="card-body row">
-
                                         <div class="from-group  col-sm-6">
                                             <lable for="">First Name<span class="mendatory">*</span></lable>
-                                            <input class="form-control txt-field" ng-model="driver_fname" type="text"
-                                                name="traveler_fname" placeholder="First Name">
+                                            <input class="form-control txt-field" ng-model="driver_fname" type="text" name="traveler_fname" placeholder="First Name">
                                         </div>
                                         <div class="from-group  col-sm-6">
                                             <lable for="">Last Name</lable>
-                                            <input class="form-control txt-field" ng-model="driver_lname" type="text"
-                                                placeholder="Last Name">
+                                            <input class="form-control txt-field" ng-model="driver_lname" type="text" placeholder="Last Name">
                                         </div>
                                         <div class="from-group  col-sm-6">
                                             <lable for="">Mobile Number<span class="mendatory"></span></lable>
-                                            <input class="form-control txt-field" maxlength="10"
-                                                ng-model="driver_mobNum" type="text" name="traveler_mobNum"
-                                                placeholder="Mobile Number">
-
+                                            <input class="form-control txt-field" maxlength="10" ng-model="driver_mobNum" type="text" name="traveler_mobNum" placeholder="Mobile Number">
                                         </div>
                                         <div class="from-group  col-sm-6">
                                             <lable for="">Secondary Mobile Number<span class="mendatory"></span></lable>
-                                            <input class="form-control txt-field" ng-model="driver_secMobNum"
-                                                type="text" maxlength="10" name="traveler_secMobNum"
-                                                placeholder="Secondary Mobile Number">
+                                            <input class="form-control txt-field" ng-model="driver_secMobNum" type="text" maxlength="10" name="traveler_secMobNum" placeholder="Secondary Mobile Number">
                                         </div>
                                         <div class="from-group  col-sm-6">
                                             <lable for="">Email-Id<span class="mendatory"></span></lable>
-                                            <input class="form-control txt-field" ng-model="driver_email" type="email"
-                                                name="traveler_email" placeholder="Email Id">
+                                            <input class="form-control txt-field" ng-model="driver_email" type="email" name="traveler_email" placeholder="Email Id">
                                         </div>
-                                        <!-- <div class="from-group  col-sm-4">
-                                        <lable for="">
-                                        <input class="form-control txt-field" ng-model="costCen" type="checkbox">Force Change Password Yes/No</lable>
-                                    </div> -->
                                         <div class="form-group col-sm-6">
                                             <label for="exampleFormControlSelect1">Driver Category</label>
                                             <select class="form-control txt-field" id="exampleFormControlSelect1">
@@ -341,27 +324,19 @@
                                             </select>
                                         </div>
                                         <div class="form-check col-sm-6 mt-3">
-                                            <input class="form-check-input" type="checkbox" ng-model="yes" value=""
-                                                id="defaultCheck1">
-                                            <label class="form-check-label" for="defaultCheck1">
-                                                Force Change Password Yes/No
-                                            </label>
+                                            <input class="form-check-input" type="checkbox" ng-model="yes" value="" id="defaultCheck1">
+                                            <label class="form-check-label" for="defaultCheck1"> Force Change Password Yes/No </label>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="card">
+                        </div>
+                        <div class="card">
                                 <div class="card-header" id="headingTwo">
                                     <h5 class="mb-0">
-                                        <button class="btn btn-link font-weight-bold collapsed" data-toggle="collapse"
-                                            data-target="#collapseTwo" aria-expanded="false"
-                                            aria-controls="collapseTwo">
-                                            Vehicle Description
-                                        </button>
+                                        <button class="btn btn-link font-weight-bold collapsed" data-toggle="collapse"  data-target="#collapseTwo" aria-expanded="false"  aria-controls="collapseTwo">  Vehicle Description  </button>
                                     </h5>
                                 </div>
-                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
-                                    data-parent="#accordion">
+                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                                     <div class="card-body row">
                                         <div class="form-group col-md-6">
                                             <div class="profile-card" style="box-shadow: none;background-image: none;">
@@ -369,17 +344,11 @@
                                                     <div class="inner-middle-div">
                                                         <div class="card-body">
                                                             <div class="user-info">
-                                                                <div class="user-pic"
-                                                                    style="background-image: url({{carImage || 'assets/img/sedan.png'}});border:3px solid #d9d9d9">
-                                                                    <span class="edit" data-toggle="modal"
-                                                                        data-target="#ProfilePicture"
-                                                                        ng-click="toggleButton()"><i
-                                                                            class="fas fa-camera"></i></span>
+                                                                <div class="user-pic" style="background-image: url({{carImage || 'assets/img/sedan.png'}});border:3px solid #d9d9d9">
+                                                                    <span class="edit" data-toggle="modal" data-target="#ProfilePicture" ng-click="toggleButton()"><i class="fas fa-camera"></i></span>
                                                                 </div>
-
                                                             </div>
                                                         </div>
-
                                                     </div>
                                                 </div>
                                             </div>
@@ -473,67 +442,39 @@
 
                                     </div>
                                 </div>
-                            </div>
-                            <div class="card">
+                        </div>
+                        <div class="card">
                                 <div class="card-header" id="headingThree">
                                     <h5 class="mb-0">
-                                        <button class="btn btn-link font-weight-bold collapsed" data-toggle="collapse"
-                                            data-target="#collapseThree" aria-expanded="false"
-                                            aria-controls="collapseThree">
-                                            Documents
-                                        </button>
+                                        <button class="btn btn-link font-weight-bold collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"> Documents </button>
                                     </h5>
                                 </div>
-                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
-                                    data-parent="#accordion">
+                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                                     <div class="card-body row">
-                                        <!-- <div class="form-group col-sm-6">
-                                        <label for="exampleFormControlSelect1">Document Types</label>
-                                        <select class="form-control txt-field " ng-model = "fileName" ng-options="product as product.docName for product in filesDropDown" id="exampleFormControlSelect1" ng-change = "addAccordian()">
-                                      
-                                        
-                                        </select>
-                                    </div> -->
                                         <div id="card" class="col-md-12">
                                             <div class="card ">
                                                 <div class="card-header" id="dlcard">
                                                     <h5 class="mb-0">
-                                                        <button class="btn btn-link font-weight-bold collapsed"
-                                                            data-toggle="collapse" data-target="#dlaccordian"
-                                                            aria-expanded="false" aria-controls="dlaccordian"
-                                                            ng-click=acc1()>
-                                                            Driver Licence
-                                                        </button>
+                                                        <button class="btn btn-link font-weight-bold collapsed" data-toggle="collapse" data-target="#dlaccordian" aria-expanded="false" aria-controls="dlaccordian" ng-click=acc1()> Driver Licence </button>
                                                     </h5>
                                                 </div>
-                                                <div id="dlaccordian" class="collapse" aria-labelledby="dlcard"
-                                                    data-parent="#card">
+                                                <div id="dlaccordian" class="collapse" aria-labelledby="dlcard" data-parent="#card">
                                                     <div class="card-body row">
                                                         <div class="from-group  col-sm-6">
                                                             <lable for="">DL No<span class="mendatory">*</span></lable>
-                                                            <input class="form-control txt-field" ng-model="dlno"
-                                                                type="text" name="traveler_fname"
-                                                                placeholder="Driving Licence Number">
+                                                            <input class="form-control txt-field" ng-model="dlno" type="text" name="traveler_fname" placeholder="Driving Licence Number">
                                                         </div>
                                                         <div class="from-group  col-sm-6">
                                                             <lable for="">First Name</lable>
-                                                            <input class="form-control txt-field"
-                                                                ng-model="driver_fname" type="text"
-                                                                placeholder="First Name">
+                                                            <input class="form-control txt-field" ng-model="driver_fname" type="text" placeholder="First Name">
                                                         </div>
                                                         <div class="from-group  col-sm-6">
-                                                            <lable for="">Last Number<span class="mendatory"></span>
-                                                            </lable>
-                                                            <input class="form-control txt-field"
-                                                                ng-model="driver_lname" type="text"
-                                                                name="traveler_mobNum" placeholder="Last Name"
-                                                                maxlength="20">
-
+                                                            <lable for="">Last Number<span class="mendatory"></span> </lable>
+                                                            <input class="form-control txt-field" ng-model="driver_lname" type="text" name="traveler_mobNum" placeholder="Last Name" maxlength="20">
                                                         </div>
                                                         <div class="from-group  col-sm-6">
                                                             <label for="exampleFormControlSelect1">Blood Group</label>
-                                                            <select class="form-control txt-field " ng-model="blGroup"
-                                                                id="exampleFormControlSelect1">
+                                                            <select class="form-control txt-field " ng-model="blGroup" id="exampleFormControlSelect1">
                                                                 <option>A+</option>
                                                                 <option>B+</option>
                                                                 <option>A-</option>
@@ -541,76 +482,34 @@
                                                                 <option>O-</option>
                                                                 <option>AB+</option>
                                                                 <option>AB-</option>
-
-
                                                             </select>
                                                         </div>
                                                         <div class="from-group  col-sm-6">
-                                                            <lable for="">RTO Name<span class="mendatory"></span>
-                                                            </lable>
-                                                            <input class="form-control txt-field" ng-model="rtoName"
-                                                                type="text" name="" placeholder="RTO Name">
+                                                            <lable for="">RTO Name<span class="mendatory"></span> </lable>
+                                                            <input class="form-control txt-field" ng-model="rtoName" type="text" name="" placeholder="RTO Name">
                                                         </div>
                                                         <div class="from-group  col-sm-6">
                                                             <lable for="">Issued Date</lable>
-                                                            <my-datepicker ng-model="issueDate" myid="someid">
-                                                            </my-datepicker>
-                                                            <!-- <p class="input-group">      
-                                                        <input type="text" class="form-control"
-                                                            uib-datepicker-popup="{{format}}" ng-click="open1()"
-                                                            ng-model="issueDate" is-open="popup1.opened"
-                                                            datepicker-options="dateOptions" ng-required="true"
-                                                            close-text="Close" alt-input-formats="altInputFormats" />
-        
-                                                    </p> -->
+                                                            <my-datepicker ng-model="issueDate" myid="someid"> </my-datepicker>
                                                         </div>
                                                         <div class="from-group  col-sm-6">
                                                             <lable for="">Expiry Date</lable>
-                                                            <my-datepicker ng-model="expiryDate" myid="someid">
-                                                            </my-datepicker>
-
+                                                            <my-datepicker ng-model="expiryDate" myid="someid"> </my-datepicker>
                                                         </div>
                                                         <div class="from-group  col-sm-6">
-                                                            <lable for="">Type of Vehicle<span class="mendatory"></span>
-                                                            </lable>
-                                                            <input class="form-control txt-field" ng-model="typevehi"
-                                                                type="text" name="traveler_mobNum"
-                                                                placeholder="Type of Vehicle" maxlength="20">
-
+                                                            <lable for="">Type of Vehicle<span class="mendatory"></span> </lable>
+                                                            <input class="form-control txt-field" ng-model="typevehi" type="text" name="traveler_mobNum" placeholder="Type of Vehicle" maxlength="20">
                                                         </div>
                                                         <div class="from-group  col-sm-6">
                                                             <label for="">Front Image</label>
-                                                            <input type="file" ng-model="dffiles" name="files"
-                                                                base-sixty-four-input multiple
-                                                                accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf"
-                                                                maxsize="5000000" ng-change="Uploading()">
+                                                            <input type="file" ng-model="dffiles" name="files" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" ng-change="Uploading()">
                                                             <label>{{driver_frontd}}</label>
                                                         </div>
                                                         <div class="from-group  col-sm-6">
                                                             <label for="">Back Image</label>
-                                                            <input type="file" ng-model="dbfiles" name="files"
-                                                                base-sixty-four-input multiple
-                                                                accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf"
-                                                                maxsize="5000000" ng-change="UploadingBack()">
+                                                            <input type="file" ng-model="dbfiles" name="files" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" ng-change="UploadingBack()">
                                                             <label>{{driverd_back}}</label>
                                                         </div>
-                                                        <!-- <div class=" col-sm-12">
-                                            <table class="table table-bordered table-striped" ng-show="files.length != 0">
-                                                <tr>
-                                                    <th>filename</th>
-                                                    <th ng-if="!Nodatafile">Action</th>
-                                                </tr>
-                                                <tr ng-repeat="file in files">
-                                                    <td>{{file.fileName}}</td>
-                                                    <td ng-show="!Nodatafile">
-                                                        <button class="btn btn-xs" ng-click="DeleteItemHealth($index)" style="margin-left:10px" ><span class="fa fa-trash-o"></span></button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="4" ng-show="files.length == 0"> <small><i>No file selected.</i></small> </td>
-                                                </tr>
-                                            </table> 
-                                       </div> -->
                                                     </div>
                                                 </div>
                                             </div>
@@ -619,12 +518,7 @@
                                             <div class="card ">
                                                 <div class="card-header" id="pancard">
                                                     <h5 class="mb-0">
-                                                        <button class="btn btn-link font-weight-bold collapsed"
-                                                            data-toggle="collapse" data-target="#panaccordian"
-                                                            aria-expanded="false" aria-controls="dlaccordian"
-                                                            ng-click=acc2()>
-                                                            PanCard
-                                                        </button>
+                                                        <button class="btn btn-link font-weight-bold collapsed" data-toggle="collapse" data-target="#panaccordian" aria-expanded="false" aria-controls="dlaccordian" ng-click=acc2()>PanCard</button>
                                                     </h5>
                                                 </div>
                                                 <div id="panaccordian" class="collapse" aria-labelledby="pancard"
@@ -632,66 +526,42 @@
                                                     <div class="card-body row">
                                                         <div class="from-group  col-sm-6">
                                                             <lable for="">PAN No<span class="mendatory">*</span></lable>
-                                                            <input class="form-control txt-field" ng-model="panno"
-                                                                type="text" name="traveler_fname"
-                                                                placeholder="PAN Number">
+                                                            <input class="form-control txt-field" ng-model="panno" type="text" name="traveler_fname" placeholder="PAN Number">
                                                         </div>
                                                         <div class="from-group  col-sm-6">
                                                             <lable for="">First Name</lable>
-                                                            <input class="form-control txt-field" ng-model="pan_fname"
-                                                                type="text" placeholder="First Name">
+                                                            <input class="form-control txt-field" ng-model="pan_fname" type="text" placeholder="First Name">
                                                         </div>
                                                         <div class="from-group  col-sm-6">
                                                             <lable for="">Last Name<span class="mendatory"></span>
                                                             </lable>
-                                                            <input class="form-control txt-field" ng-model="pan_lname"
-                                                                type="text" name="traveler_mobNum"
-                                                                placeholder="Last Name" maxlength="20">
-
+                                                            <input class="form-control txt-field" ng-model="pan_lname" type="text" name="traveler_mobNum" placeholder="Last Name" maxlength="20">
                                                         </div>
                                                         <div class="from-group  col-sm-6">
-                                                            <lable for="">Father Name<span class="mendatory"></span>
-                                                            </lable>
-                                                            <input class="form-control txt-field" ng-model="fatherName"
-                                                                type="text" name="traveler_mobNum"
-                                                                placeholder="Father Name" maxlength="20">
+                                                            <lable for="">Father Name<span class="mendatory"></span> </lable>
+                                                            <input class="form-control txt-field" ng-model="fatherName" type="text" name="traveler_mobNum" placeholder="Father Name" maxlength="20">
                                                         </div>
-
                                                         <div class="from-group  col-sm-6">
-
                                                             <lable for="">Date of Birth</lable>
-                                                            <my-datepicker ng-model="panDob" myid="someid">
-                                                            </my-datepicker>
+                                                            <my-datepicker ng-model="panDob" myid="someid"> </my-datepicker>
                                                             <!-- <p class="input-group">      
-                                                        <input type="text" class="form-control"
-                                                            uib-datepicker-popup="{{format}}" ng-click="open3()"
-                                                            ng-model="panDob" is-open="popup3.opened"
-                                                            datepicker-options="dateOption3" ng-required="true"
-                                                            close-text="Close" alt-input-formats="altInputFormats" />
-        
-                                                    </p>  -->
-                                                        </div>
-
-                                                        <div class="from-group  col-sm-6">
-
-
+                                                                <input type="text" class="form-control"
+                                                                    uib-datepicker-popup="{{format}}" ng-click="open3()"
+                                                                    ng-model="panDob" is-open="popup3.opened"
+                                                                    datepicker-options="dateOption3" ng-required="true"
+                                                                    close-text="Close" alt-input-formats="altInputFormats" />
+                                                                </p>  -->
                                                         </div>
                                                         <div class="from-group  col-sm-6">
-                                                            <lable for="">Pan front Image<span class="mendatory"></span>
-                                                            </lable>
-                                                            <input type="file" ng-model="panfiles" name="panfiles"
-                                                                base-sixty-four-input multiple
-                                                                accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf"
-                                                                maxsize="5000000" ng-change="UploadingPan()">
+                                                        </div>
+                                                        <div class="from-group  col-sm-6">
+                                                            <lable for="">Pan front Image<span class="mendatory"></span> </lable>
+                                                            <input type="file" ng-model="panfiles" name="panfiles" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" ng-change="UploadingPan()">
                                                             <label for="">{{pan_front}}</label>
                                                         </div>
                                                         <div class="from-group  col-sm-6">
-                                                            <lable for="">Pan Back Image<span class="mendatory"></span>
-                                                            </lable>
-                                                            <input type="file" ng-model="pan1files" name="pan1files"
-                                                                base-sixty-four-input multiple
-                                                                accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf"
-                                                                maxsize="5000000" ng-change="UploadingPan1()">
+                                                            <lable for="">Pan Back Image<span class="mendatory"></span> </lable>
+                                                            <input type="file" ng-model="pan1files" name="pan1files" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" ng-change="UploadingPan1()">
                                                             <label for="">{{pan_back}}</label>
                                                         </div>
                                                     </div>
@@ -702,78 +572,49 @@
                                             <div class="card ">
                                                 <div class="card-header" id="adhar">
                                                     <h5 class="mb-0">
-                                                        <button class="btn btn-link font-weight-bold collapsed"
-                                                            data-toggle="collapse" data-target="#adharaccordian"
-                                                            aria-expanded="false" aria-controls="dlaccordian"
-                                                            ng-click=acc3()>
-                                                            Adhar Card
-                                                        </button>
+                                                        <button class="btn btn-link font-weight-bold collapsed" data-toggle="collapse" data-target="#adharaccordian" aria-expanded="false" aria-controls="dlaccordian" ng-click=acc3()> Adhar Card </button>
                                                     </h5>
                                                 </div>
                                                 <div id="adharaccordian" class="collapse" aria-labelledby="adhar"
                                                     data-parent="#card2">
                                                     <div class="card-body row">
                                                         <div class="from-group  col-sm-6">
-                                                            <lable for="">Adhar No<span class="mendatory">*</span>
-                                                            </lable>
-                                                            <input class="form-control txt-field" ng-model="adharno"
-                                                                type="text" name="traveler_fname"
-                                                                placeholder="Adhaar Number">
+                                                            <lable for="">Adhar No<span class="mendatory">*</span> </lable>
+                                                            <input class="form-control txt-field" ng-model="adharno" type="text" name="traveler_fname" placeholder="Adhaar Number">
                                                         </div>
                                                         <div class="from-group  col-sm-6">
                                                             <lable for="">First Name</lable>
-                                                            <input class="form-control txt-field" ng-model="adhar_fname"
-                                                                type="text" placeholder="First Name">
+                                                            <input class="form-control txt-field" ng-model="adhar_fname" type="text" placeholder="First Name">
                                                         </div>
                                                         <div class="from-group  col-sm-6">
-                                                            <lable for="">Last Name<span class="mendatory"></span>
-                                                            </lable>
-                                                            <input class="form-control txt-field" ng-model="adhar_lname"
-                                                                type="text" name="traveler_mobNum"
-                                                                placeholder="Last Name" maxlength="20">
-
+                                                            <lable for="">Last Name<span class="mendatory"></span></lable>
+                                                            <input class="form-control txt-field" ng-model="adhar_lname"type="text" name="traveler_mobNum"placeholder="Last Name" maxlength="20">
                                                         </div>
                                                         <div class="from-group  col-sm-6">
                                                             <lable for="">Date of Birth</lable>
                                                             <my-datepicker ng-model="dob" myid="someid"></my-datepicker>
                                                             <!-- <p class="input-group">      
-                                                        <input type="text" class="form-control"
-                                                            uib-datepicker-popup="{{format}}" ng-click="open1()"
-                                                            ng-model="dob" is-open="popup1.opened"
-                                                            datepicker-options="dateOptions" ng-required="true"
-                                                            close-text="Close" alt-input-formats="altInputFormats" />
-        
-                                                    </p> -->
+                                                                    <input type="text" class="form-control"
+                                                                    uib-datepicker-popup="{{format}}" ng-click="open1()"
+                                                                    ng-model="dob" is-open="popup1.opened"
+                                                                    datepicker-options="dateOptions" ng-required="true"
+                                                                    close-text="Close" alt-input-formats="altInputFormats" />
+                                                                </p> -->
                                                         </div>
                                                         <div class="from-group  col-sm-6">
-                                                            <lable for="">Father Name<span class="mendatory"></span>
-                                                            </lable>
-                                                            <input class="form-control txt-field" ng-model="father_name"
-                                                                type="text" name="traveler_mobNum"
-                                                                placeholder="Fahter Name" maxlength="20">
+                                                            <lable for="">Father Name<span class="mendatory"></span> </lable>
+                                                            <input class="form-control txt-field" ng-model="father_name" type="text" name="traveler_mobNum" placeholder="Fahter Name" maxlength="20">
                                                         </div>
-
                                                         <div class="from-group  col-sm-6">
-                                                            <lable for="">Adhaar front Image<span
-                                                                    class="mendatory"></span></lable>
-                                                            <input type="file" ng-model="adharfiles" name="adharfiles"
-                                                                base-sixty-four-input multiple
-                                                                accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf"
-                                                                maxsize="5000000" ng-change="UploadingAdhar()">
+                                                            <lable for="">Adhaar front Image<span class="mendatory"></span></lable>
+                                                            <input type="file" ng-model="adharfiles" name="adharfiles" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" ng-change="UploadingAdhar()">
                                                             <label for="">{{adhar_front}}</label>
                                                         </div>
                                                         <div class="from-group  col-sm-6">
-                                                            <lable for="">Adhaar Back Image<span
-                                                                    class="mendatory"></span></lable>
-                                                            <input type="file" ng-model="adhar1files" name="adhar1files"
-                                                                base-sixty-four-input multiple
-                                                                accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf"
-                                                                maxsize="5000000" ng-change="UploadingAdhar1()">
+                                                            <lable for="">Adhaar Back Image<span class="mendatory"></span></lable>
+                                                            <input type="file" ng-model="adhar1files" name="adhar1files" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" ng-change="UploadingAdhar1()">
                                                             <label for="">{{adhar_back}}</label>
                                                         </div>
-
-
-
                                                     </div>
                                                 </div>
                                             </div>
@@ -782,57 +623,32 @@
                                             <div class="card">
                                                 <div class="card-header" id="pv">
                                                     <h5 class="mb-0">
-                                                        <button class="btn btn-link font-weight-bold collapsed"
-                                                            data-toggle="collapse" data-target="#pvaccordian"
-                                                            aria-expanded="false" aria-controls="dlaccordian">
-                                                            Police Verification
-                                                        </button>
+                                                        <button class="btn btn-link font-weight-bold collapsed" data-toggle="collapse" data-target="#pvaccordian" aria-expanded="false" aria-controls="dlaccordian"> Police Verification </button>
                                                     </h5>
                                                 </div>
-                                                <div id="pvaccordian" class="collapse" aria-labelledby="pv"
-                                                    data-parent="#card3">
+                                                <div id="pvaccordian" class="collapse" aria-labelledby="pv" data-parent="#card3">
                                                     <div class="card-body row">
                                                         <div class="from-group  col-sm-6">
-                                                            <lable for="">Police Station Name<span
-                                                                    class="mendatory">*</span></lable>
-                                                            <input class="form-control txt-field" ng-model="psn"
-                                                                type="text" name="traveler_fname" placeholder="PS name">
+                                                            <lable for="">Police Station Name<span class="mendatory">*</span></lable>
+                                                            <input class="form-control txt-field" ng-model="psn" type="text" name="traveler_fname" placeholder="PS name">
                                                         </div>
                                                         <div class="from-group  col-sm-6">
                                                             <lable for="">Athority Name</lable>
-                                                            <input class="form-control txt-field" ng-model="author_name"
-                                                                type="text" placeholder="First Name">
+                                                            <input class="form-control txt-field" ng-model="author_name" type="text" placeholder="First Name">
                                                         </div>
                                                         <div class="from-group  col-sm-6">
-                                                            <lable for="">Document Number<span class="mendatory"></span>
-                                                            </lable>
-                                                            <input class="form-control txt-field" ng-model="dcn"
-                                                                type="text" name="traveler_mobNum"
-                                                                placeholder="Document number" maxlength="20">
-
+                                                            <lable for="">Document Number<span class="mendatory"></span> </lable>
+                                                            <input class="form-control txt-field" ng-model="dcn" type="text" name="traveler_mobNum" placeholder="Document number" maxlength="20">
                                                         </div>
-
-
+                                                        <div class="from-group  col-sm-6"> </div>
                                                         <div class="from-group  col-sm-6">
-
-
-                                                        </div>
-                                                        <div class="from-group  col-sm-6">
-                                                            <lable for="">PV front Image<span class="mendatory"></span>
-                                                            </lable>
-                                                            <input type="file" ng-model="pvfiles" name="files"
-                                                                base-sixty-four-input multiple
-                                                                accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf"
-                                                                maxsize="5000000" ng-change="UploadingPV()">
+                                                            <lable for="">PV front Image<span class="mendatory"></span> </lable>
+                                                            <input type="file" ng-model="pvfiles" name="files" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" ng-change="UploadingPV()">
                                                             <label for="">{{pvFront}}</label>
                                                         </div>
                                                         <div class="from-group  col-sm-6">
-                                                            <lable for="">PV Back Image<span class="mendatory"></span>
-                                                            </lable>
-                                                            <input type="file" ng-model="pv1file" name="files"
-                                                                base-sixty-four-input multiple
-                                                                accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf"
-                                                                maxsize="5000000" ng-change="UploadingPV1()">
+                                                            <lable for="">PV Back Image<span class="mendatory"></span> </lable>
+                                                            <input type="file" ng-model="pv1file" name="files" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" ng-change="UploadingPV1()">
                                                             <label for="">{{pvBack}}</label>
                                                         </div>
                                                     </div>
@@ -843,167 +659,102 @@
                                             <div class="card">
                                                 <div class="card-header" id="vr">
                                                     <h5 class="mb-0">
-                                                        <button class="btn btn-link font-weight-bold collapsed"
-                                                            data-toggle="collapse" data-target="#vraccordian"
-                                                            aria-expanded="false" aria-controls="dlaccordian">
-                                                            Vehicle Registration
-                                                        </button>
+                                                        <button class="btn btn-link font-weight-bold collapsed" data-toggle="collapse" data-target="#vraccordian" aria-expanded="false" aria-controls="dlaccordian"> Vehicle Registration </button>
                                                     </h5>
                                                 </div>
-                                                <div id="vraccordian" class="collapse" aria-labelledby="vr"
-                                                    data-parent="#card4">
+                                                <div id="vraccordian" class="collapse" aria-labelledby="vr" data-parent="#card4">
                                                     <div class="card-body row">
                                                         <div class="from-group  col-sm-6">
-                                                            <lable for="">Registration Number<span
-                                                                    class="mendatory">*</span></lable>
-                                                            <input class="form-control txt-field" ng-model="regno"
-                                                                type="text" name="" placeholder="Registration Number">
+                                                            <lable for="">Registration Number<span class="mendatory">*</span></lable>
+                                                            <input class="form-control txt-field" ng-model="regno" type="text" name="" placeholder="Registration Number">
                                                         </div>
                                                         <div class="from-group  col-sm-6">
                                                             <lable for="">Date of Registration</lable>
                                                             <my-datepicker ng-model="regDate" myid="someid">
                                                             </my-datepicker>
                                                             <!-- <p class="input-group">      
-                                                        <input type="text" class="form-control"
-                                                            uib-datepicker-popup="{{format}}" ng-click="open1()"
-                                                            ng-model="regDate" is-open="popup1.opened"
-                                                            datepicker-options="dateOptions" ng-required="true"
-                                                            close-text="Close" alt-input-formats="altInputFormats" />
-        
-                                                    </p> -->
+                                                                    <input type="text" class="form-control"
+                                                                    uib-datepicker-popup="{{format}}" ng-click="open1()"
+                                                                    ng-model="regDate" is-open="popup1.opened"
+                                                                    datepicker-options="dateOptions" ng-required="true"
+                                                                    close-text="Close" alt-input-formats="altInputFormats" />
+                                                                </p> -->
                                                         </div>
                                                         <div class="from-group  col-sm-6">
-                                                            <lable for="">Registration Office<span
-                                                                    class="mendatory"></span></lable>
-                                                            <input class="form-control txt-field" ng-model="rto"
-                                                                type="text" name="traveler_mobNum"
-                                                                placeholder="Registration office" maxlength="20">
-
+                                                            <lable for="">Registration Office<span class="mendatory"></span></lable>
+                                                            <input class="form-control txt-field" ng-model="rto" type="text" name="traveler_mobNum" placeholder="Registration office" maxlength="20">
                                                         </div>
-
-
                                                         <div class="from-group  col-sm-6">
-                                                            <lable for="">Owner Name<span class="mendatory"></span>
-                                                            </lable>
-                                                            <input class="form-control txt-field" ng-model="owName"
-                                                                type="text" name="traveler_mobNum"
-                                                                placeholder="Owner Name" maxlength="20">
-
+                                                            <lable for="">Owner Name<span class="mendatory"></span> </lable>
+                                                            <input class="form-control txt-field" ng-model="owName" type="text" name="traveler_mobNum" placeholder="Owner Name" maxlength="20">
                                                         </div>
                                                         <div class="from-group  col-sm-6">
                                                             <lable for="">Gender<span class="mendatory"></span></lable>
-                                                            <select class="form-control txt-field " ng-model="gender"
-                                                                id="exampleFormControlSelect1"
-                                                                ng-change="addAccordian()">
+                                                            <select class="form-control txt-field " ng-model="gender" id="exampleFormControlSelect1" ng-change="addAccordian()">
                                                                 <option>Female</option>
                                                                 <option>Male</option>
                                                                 <option>Other</option>
                                                             </select>
-
                                                         </div>
                                                         <div class="from-group  col-sm-6">
                                                             <lable for="">Age<span class="mendatory"></span></lable>
-                                                            <input class="form-control txt-field" ng-model="age"
-                                                                type="text" name="traveler_mobNum" placeholder="age"
-                                                                maxlength="20">
-
+                                                            <input class="form-control txt-field" ng-model="age" type="text" name="traveler_mobNum" placeholder="age" maxlength="20">
                                                         </div>
                                                         <div class="from-group  col-sm-6">
-                                                            <lable for="">Manufacturer<span class="mendatory"></span>
-                                                            </lable>
-                                                            <input class="form-control txt-field" ng-model="manfact"
-                                                                type="text" name="traveler_mobNum"
-                                                                placeholder="Manufacturer Name" maxlength="20">
-
+                                                            <lable for="">Manufacturer<span class="mendatory"></span> </lable>
+                                                            <input class="form-control txt-field" ng-model="manfact" type="text" name="traveler_mobNum" placeholder="Manufacturer Name" maxlength="20">
                                                         </div>
                                                         <div class="from-group  col-sm-6">
-                                                            <lable for="">Vehicle Name<span class="mendatory"></span>
-                                                            </lable>
-                                                            <input class="form-control txt-field" ng-model="vhName"
-                                                                type="text" name="traveler_mobNum"
-                                                                placeholder="Vehicle Name" maxlength="20">
-
+                                                            <lable for="">Vehicle Name<span class="mendatory"></span></lable>
+                                                            <input class="form-control txt-field" ng-model="vhName" type="text" name="traveler_mobNum" placeholder="Vehicle Name" maxlength="20">
                                                         </div>
                                                         <div class="from-group  col-sm-6">
-                                                            <lable for="">Vehicle Base<span class="mendatory"></span>
-                                                            </lable>
-                                                            <input class="form-control txt-field" ng-model="vhBase"
-                                                                type="text" name="traveler_mobNum"
-                                                                placeholder="Vehicle Base" maxlength="20">
-
+                                                            <lable for="">Vehicle Base<span class="mendatory"></span></lable>
+                                                            <input class="form-control txt-field" ng-model="vhBase" type="text" name="traveler_mobNum" placeholder="Vehicle Base" maxlength="20">
                                                         </div>
                                                         <div class="from-group  col-sm-6">
                                                             <lable for="">Date of Manufacturer</lable>
-                                                            <my-datepicker ng-model="manufacDate" myid="someid">
-                                                            </my-datepicker>
+                                                            <my-datepicker ng-model="manufacDate" myid="someid"></my-datepicker>
                                                             <!-- <p class="input-group">      
-                                                        <input type="text" class="form-control"
-                                                            uib-datepicker-popup="{{format}}" ng-click="open2()"
-                                                            ng-model="manufacDate" is-open="popup2.opened"
-                                                            datepicker-options="dateOptions" ng-required="true"
-                                                            close-text="Close" alt-input-formats="altInputFormats" />
-        
-                                                    </p> -->
+                                                                 <input type="text" class="form-control"
+                                                                    uib-datepicker-popup="{{format}}" ng-click="open2()"
+                                                                    ng-model="manufacDate" is-open="popup2.opened"
+                                                                    datepicker-options="dateOptions" ng-required="true"
+                                                                    close-text="Close" alt-input-formats="altInputFormats" />
+                                                            </p> -->
                                                         </div>
                                                         <div class="from-group  col-sm-6">
-                                                            <lable for="">Fuel Type<span class="mendatory"></span>
-                                                            </lable>
-                                                            <select class="form-control txt-field " ng-model="fuel"
-                                                                id="exampleFormControlSelect1"
-                                                                ng-change="addAccordian()">
+                                                            <lable for="">Fuel Type<span class="mendatory"></span></lable>
+                                                            <select class="form-control txt-field " ng-model="fuel" id="exampleFormControlSelect1" ng-change="addAccordian()">
                                                                 <option>Diesel</option>
                                                                 <option>Petrol</option>
                                                                 <option>Other</option>
                                                             </select>
-
                                                         </div>
                                                         <div class="from-group  col-sm-6">
-                                                            <lable for="">Reg Upto<span class="mendatory"></span>
-                                                            </lable>
-                                                            <input class="form-control txt-field" ng-model="regUpto"
-                                                                type="text" name="traveler_mobNum"
-                                                                placeholder="Reg Upto" maxlength="20">
-
+                                                            <lable for="">Reg Upto<span class="mendatory"></span></lable>
+                                                            <input class="form-control txt-field" ng-model="regUpto" type="text" name="traveler_mobNum" placeholder="Reg Upto" maxlength="20">
                                                         </div>
                                                         <div class="from-group  col-sm-6">
-                                                            <lable for="">Tax Upto<span class="mendatory"></span>
-                                                            </lable>
-                                                            <input class="form-control txt-field" ng-model="tax"
-                                                                type="text" name="traveler_mobNum" placeholder="Tax"
-                                                                maxlength="20">
-
+                                                            <lable for="">Tax Upto<span class="mendatory"></span></lable>
+                                                            <input class="form-control txt-field" ng-model="tax" type="text" name="traveler_mobNum" placeholder="Tax" maxlength="20">
                                                         </div>
                                                         <div class="from-group  col-sm-6">
                                                             <lable for="">Class<span class="mendatory"></span></lable>
-                                                            <input class="form-control txt-field" ng-model="class"
-                                                                type="text" name="traveler_mobNum" placeholder="Class"
-                                                                maxlength="20">
-
+                                                            <input class="form-control txt-field" ng-model="class" type="text" name="traveler_mobNum" placeholder="Class" maxlength="20">
                                                         </div>
                                                         <div class="from-group  col-sm-6">
-                                                            <lable for="">Vehicle Color<span class="mendatory"></span>
-                                                            </lable>
-                                                            <input class="form-control txt-field" ng-model="vhColor"
-                                                                type="text" name="traveler_mobNum"
-                                                                placeholder="Vehicle Color" maxlength="20">
-
+                                                            <lable for="">Vehicle Color<span class="mendatory"></span></lable>
+                                                            <input class="form-control txt-field" ng-model="vhColor" type="text" name="traveler_mobNum" placeholder="Vehicle Color" maxlength="20">
                                                         </div>
                                                         <div class="from-group  col-sm-6">
-                                                            <lable for="">RC front Image<span class="mendatory"></span>
-                                                            </lable>
-                                                            <input type="file" ng-model="vrFiles" name="vrFiles"
-                                                                base-sixty-four-input multiple
-                                                                accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf"
-                                                                maxsize="5000000" ng-change="UploadingVR()">
+                                                            <lable for="">RC front Image<span class="mendatory"></span></lable>
+                                                            <input type="file" ng-model="vrFiles" name="vrFiles" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" ng-change="UploadingVR()">
                                                             <label for="">{{vr_front}}</label>
                                                         </div>
                                                         <div class="from-group  col-sm-6">
-                                                            <lable for="">RC Back Image<span class="mendatory"></span>
-                                                            </lable>
-                                                            <input type="file" ng-model="vr1Files" name="vrFiles1"
-                                                                base-sixty-four-input multiple
-                                                                accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf"
-                                                                maxsize="5000000" ng-change="UploadingVR1()">
+                                                            <lable for="">RC Back Image<span class="mendatory"></span></lable>
+                                                            <input type="file" ng-model="vr1Files" name="vrFiles1" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" ng-change="UploadingVR1()">
                                                             <label for="">{{vr_back}}</label>
                                                         </div>
                                                     </div>
@@ -1014,22 +765,15 @@
                                             <div class="card">
                                                 <div class="card-header" id="vi">
                                                     <h5 class="mb-0">
-                                                        <button class="btn btn-link font-weight-bold collapsed"
-                                                            data-toggle="collapse" data-target="#viaccordian"
-                                                            aria-expanded="false" aria-controls="dlaccordian">
-                                                            Vehicle Insurance
-                                                        </button>
+                                                        <button class="btn btn-link font-weight-bold collapsed" data-toggle="collapse" data-target="#viaccordian" aria-expanded="false" aria-controls="dlaccordian"> Vehicle Insurance </button>
                                                     </h5>
                                                 </div>
                                                 <div id="viaccordian" class="collapse" aria-labelledby="vi"
                                                     data-parent="#card5">
                                                     <div class="card-body row">
                                                         <div class="from-group  col-sm-6">
-                                                            <lable for="">Policy No<span class="mendatory">*</span>
-                                                            </lable>
-                                                            <input class="form-control txt-field" ng-model="polacyno"
-                                                                type="text" name="traveler_fname"
-                                                                placeholder="Policy Num">
+                                                            <lable for="">Policy No<span class="mendatory">*</span> </lable>
+                                                            <input class="form-control txt-field" ng-model="polacyno" type="text" name="traveler_fname" placeholder="Policy Num">
                                                         </div>
                                                         <div class="from-group  col-sm-6">
                                                             <lable for="">Issued Date</lable>
@@ -1104,86 +848,57 @@
                                             <div class="card">
                                                 <div class="card-header" id="vper">
                                                     <h5 class="mb-0">
-                                                        <button class="btn btn-link font-weight-bold collapsed"
-                                                            data-toggle="collapse" data-target="#vperaccordian"
-                                                            aria-expanded="false" aria-controls="dlaccordian">
-                                                            Vehicle Permit
-                                                        </button>
+                                                        <button class="btn btn-link font-weight-bold collapsed" data-toggle="collapse" data-target="#vperaccordian" aria-expanded="false" aria-controls="dlaccordian"> Vehicle Permit </button>
                                                     </h5>
                                                 </div>
-                                                <div id="vperaccordian" class="collapse" aria-labelledby="vper"
-                                                    data-parent="#card6">
+                                                <div id="vperaccordian" class="collapse" aria-labelledby="vper" data-parent="#card6">
                                                     <div class="card-body row">
                                                         <div class="from-group  col-sm-6">
-                                                            <lable for="">Permit No<span class="mendatory">*</span>
-                                                            </lable>
-                                                            <input class="form-control txt-field" ng-model="perno"
-                                                                type="text" name="traveler_fname"
-                                                                placeholder="Permit Number">
+                                                            <lable for="">Permit No<span class="mendatory">*</span> </lable>
+                                                            <input class="form-control txt-field" ng-model="perno" type="text" name="traveler_fname" placeholder="Permit Number">
                                                         </div>
                                                         <div class="from-group  col-sm-6">
                                                             <lable for="">Issued Date</lable>
-                                                            <my-datepicker ng-model="vpissueDate" myid="someid">
-                                                            </my-datepicker>
+                                                            <my-datepicker ng-model="vpissueDate" myid="someid"></my-datepicker>
                                                             <!-- <p class="input-group">      
-                                                        <input type="text" class="form-control"
+                                                            <input type="text" class="form-control"
                                                             uib-datepicker-popup="{{format}}" ng-click="open1()"
                                                             ng-model="vpissueDate" is-open="popup1.opened"
                                                             datepicker-options="dateOptions" ng-required="true"
                                                             close-text="Close" alt-input-formats="altInputFormats" />
-        
-                                                    </p> -->
+                                                            </p> -->
                                                         </div>
                                                         <div class="from-group  col-sm-6">
                                                             <lable for="">Expiry Date</lable>
-                                                            <my-datepicker ng-model="vpexpiryDate" myid="someid">
-                                                            </my-datepicker>
+                                                            <my-datepicker ng-model="vpexpiryDate" myid="someid"> </my-datepicker>
                                                             <!-- <p class="input-group">
-        
-                                                        <input type="text" class="form-control"
-                                                            uib-datepicker-popup="{{format}}" ng-click="open1()"
-                                                            ng-model="vpexpiryDate" is-open="popup1.opened"
-                                                            datepicker-options="dateOptions" ng-required="true"
-                                                            close-text="Close" alt-input-formats="altInputFormats" />
-        
-                                                    </p> -->
+                                                                <input type="text" class="form-control"
+                                                                    uib-datepicker-popup="{{format}}" ng-click="open1()"
+                                                                    ng-model="vpexpiryDate" is-open="popup1.opened"
+                                                                    datepicker-options="dateOptions" ng-required="true"
+                                                                    close-text="Close" alt-input-formats="altInputFormats" />
+                                                            </p> -->
                                                         </div>
                                                         <div class="from-group  col-sm-6">
                                                             <lable for="">permit State</lable>
-                                                            <input class="form-control txt-field" ng-model="perstate"
-                                                                type="text" placeholder="Insurance Provider">
+                                                            <input class="form-control txt-field" ng-model="perstate" type="text" placeholder="Insurance Provider">
                                                         </div>
                                                         <div class="from-group  col-sm-6">
-                                                            <lable for="">Permit Type<span class="mendatory"></span>
-                                                            </lable>
-                                                            <input class="form-control txt-field" ng-model="PermitType"
-                                                                type="text" name="traveler_mobNum"
-                                                                placeholder="Docment Number" maxlength="20">
-
+                                                            <lable for="">Permit Type<span class="mendatory"></span></lable>
+                                                            <input class="form-control txt-field" ng-model="PermitType" type="text" name="traveler_mobNum" placeholder="Docment Number" maxlength="20">
                                                         </div>
                                                         <div class="from-group  col-sm-6">
-                                                            <lable for="">Vehicle Number<span class="mendatory"></span>
-                                                            </lable>
-                                                            <input class="form-control txt-field" ng-model="vhnum"
-                                                                type="text" name="vehcle_num"
-                                                                placeholder="Insurance Type" maxlength="20">
+                                                            <lable for="">Vehicle Number<span class="mendatory"></span></lable>
+                                                            <input class="form-control txt-field" ng-model="vhnum" type="text" name="vehcle_num" placeholder="Insurance Type" maxlength="20">
                                                         </div>
                                                         <div class="from-group  col-sm-6">
-                                                            <lable for=""> front Image<span class="mendatory"></span>
-                                                            </lable>
-                                                            <input type="file" ng-model="vepfiles" name="files"
-                                                                base-sixty-four-input multiple
-                                                                accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf"
-                                                                maxsize="5000000" ng-change="Uploadingvep()">
+                                                            <lable for=""> front Image<span class="mendatory"></span></lable>
+                                                            <input type="file" ng-model="vepfiles" name="files" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" ng-change="Uploadingvep()">
                                                             <label for="">{{vep_front}}</label>
                                                         </div>
                                                         <div class="from-group  col-sm-6">
-                                                            <lable for=""> Back Image<span class="mendatory"></span>
-                                                            </lable>
-                                                            <input type="file" ng-model="vep1file" name="files"
-                                                                base-sixty-four-input multiple
-                                                                accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf"
-                                                                maxsize="5000000" ng-change="Uploadingvep1()">
+                                                            <lable for=""> Back Image<span class="mendatory"></span></lable>
+                                                            <input type="file" ng-model="vep1file" name="files" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" ng-change="Uploadingvep1()">
                                                             <label for="">{{vep_back}}</label>
                                                         </div>
                                                     </div>
@@ -1194,67 +909,45 @@
                                             <div class="card">
                                                 <div class="card-header" id="tax">
                                                     <h5 class="mb-0">
-                                                        <button class="btn btn-link font-weight-bold collapsed"
-                                                            data-toggle="collapse" data-target="#taxaccordian"
-                                                            aria-expanded="false" aria-controls="dlaccordian">
-                                                            Road Tax
-                                                        </button>
+                                                        <button class="btn btn-link font-weight-bold collapsed" data-toggle="collapse" data-target="#taxaccordian" aria-expanded="false" aria-controls="dlaccordian"> Road Tax </button>
                                                     </h5>
                                                 </div>
-                                                <div id="taxaccordian" class="collapse" aria-labelledby="tax"
-                                                    data-parent="#card7">
+                                                <div id="taxaccordian" class="collapse" aria-labelledby="tax" data-parent="#card7">
                                                     <div class="card-body row">
                                                         <div class="from-group  col-sm-6">
-                                                            <lable for="">Document Number<span
-                                                                    class="mendatory">*</span></lable>
-                                                            <input class="form-control txt-field" ng-model="taxno"
-                                                                type="text" name="traveler_fname"
-                                                                placeholder="Permit Number">
+                                                            <lable for="">Document Number<span class="mendatory">*</span></lable>
+                                                            <input class="form-control txt-field" ng-model="taxno" type="text" name="traveler_fname" placeholder="Permit Number">
                                                         </div>
                                                         <div class="from-group  col-sm-6">
                                                             <lable for="">Issued Date</lable>
-                                                            <my-datepicker ng-model="taxissueDate" myid="someid">
-                                                            </my-datepicker>
+                                                            <my-datepicker ng-model="taxissueDate" myid="someid"> </my-datepicker>
                                                             <!-- <p class="input-group">      
-                                                        <input type="text" class="form-control"
-                                                            uib-datepicker-popup="{{format}}" ng-click="open1()"
-                                                            ng-model="taxissueDate" is-open="popup1.opened"
-                                                            datepicker-options="dateOptions" ng-required="true"
-                                                            close-text="Close" alt-input-formats="altInputFormats" />
-        
-                                                    </p> -->
+                                                                <input type="text" class="form-control"
+                                                                    uib-datepicker-popup="{{format}}" ng-click="open1()"
+                                                                    ng-model="taxissueDate" is-open="popup1.opened"
+                                                                    datepicker-options="dateOptions" ng-required="true"
+                                                                    close-text="Close" alt-input-formats="altInputFormats" />
+                                                            </p> -->
                                                         </div>
                                                         <div class="from-group  col-sm-6">
                                                             <lable for="">Expiry Date</lable>
-                                                            <my-datepicker ng-model="taxexpiryDate" myid="someid">
-                                                            </my-datepicker>
+                                                            <my-datepicker ng-model="taxexpiryDate" myid="someid"> </my-datepicker>
                                                             <!-- <p class="input-group">
-        
-                                                        <input type="text" class="form-control"
-                                                            uib-datepicker-popup="{{format}}" ng-click="open1()"
-                                                            ng-model="taxexpiryDate" is-open="popup1.opened"
-                                                            datepicker-options="dateOptions" ng-required="true"
-                                                            close-text="Close" alt-input-formats="altInputFormats" />
-        
-                                                    </p> -->
+                                                                <input type="text" class="form-control"
+                                                                    uib-datepicker-popup="{{format}}" ng-click="open1()"
+                                                                    ng-model="taxexpiryDate" is-open="popup1.opened"
+                                                                    datepicker-options="dateOptions" ng-required="true"
+                                                                    close-text="Close" alt-input-formats="altInputFormats" />
+                                                            </p> -->
                                                         </div>
-
                                                         <div class="from-group  col-sm-6">
-                                                            <lable for=""> front Image<span class="mendatory"></span>
-                                                            </lable>
-                                                            <input type="file" ng-model="rdfiles" name="files"
-                                                                base-sixty-four-input multiple
-                                                                accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf"
-                                                                maxsize="5000000" ng-change="UploadingRD()">
+                                                            <lable for=""> front Image<span class="mendatory"></span> </lable>
+                                                            <input type="file" ng-model="rdfiles" name="files" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" ng-change="UploadingRD()">
                                                             <label for="">{{rd_front}}</label>
                                                         </div>
                                                         <div class="from-group  col-sm-6">
-                                                            <lable for=""> Back Image<span class="mendatory"></span>
-                                                            </lable>
-                                                            <input type="file" ng-model="rd1file" name="files"
-                                                                base-sixty-four-input multiple
-                                                                accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf"
-                                                                maxsize="5000000" ng-change="UploadingRD()">
+                                                            <lable for=""> Back Image<span class="mendatory"></span></lable>
+                                                            <input type="file" ng-model="rd1file" name="files" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" ng-change="UploadingRD()">
                                                             <label for="">{{rd_back}}</label>
                                                         </div>
                                                     </div>
@@ -1265,27 +958,18 @@
                                             <div class="card">
                                                 <div class="card-header" id="fc">
                                                     <h5 class="mb-0">
-                                                        <button class="btn btn-link font-weight-bold collapsed"
-                                                            data-toggle="collapse" data-target="#fcaccordian"
-                                                            aria-expanded="false" aria-controls="dlaccordian">
-                                                            Fitness Certificate
-                                                        </button>
+                                                        <button class="btn btn-link font-weight-bold collapsed" data-toggle="collapse" data-target="#fcaccordian" aria-expanded="false" aria-controls="dlaccordian"> Fitness Certificate </button>
                                                     </h5>
                                                 </div>
-                                                <div id="fcaccordian" class="collapse" aria-labelledby="fc"
-                                                    data-parent="#card8">
+                                                <div id="fcaccordian" class="collapse" aria-labelledby="fc" data-parent="#card8">
                                                     <div class="card-body row">
                                                         <div class="from-group  col-sm-6">
-                                                            <lable for="">Document Number<span
-                                                                    class="mendatory">*</span></lable>
-                                                            <input class="form-control txt-field" ng-model="docuNo"
-                                                                type="text" name="traveler_fname"
-                                                                placeholder="Document Number">
+                                                            <lable for="">Document Number<span class="mendatory">*</span></lable>
+                                                            <input class="form-control txt-field" ng-model="docuNo" type="text" name="traveler_fname" placeholder="Document Number">
                                                         </div>
                                                         <div class="from-group  col-sm-6">
                                                             <lable for="">Issued Date</lable>
-                                                            <my-datepicker ng-model="fcissueDate" myid="someid">
-                                                            </my-datepicker>
+                                                            <my-datepicker ng-model="fcissueDate" myid="someid"></my-datepicker>
                                                             <!-- <p class="input-group">      
                                                         <input type="text" class="form-control"
                                                             uib-datepicker-popup="{{format}}" ng-click="open1()"
@@ -1297,35 +981,23 @@
                                                         </div>
                                                         <div class="from-group  col-sm-6">
                                                             <lable for="">Expiry Date</lable>
-                                                            <my-datepicker ng-model="fcexpiryDate" myid="someid">
-                                                            </my-datepicker>
+                                                            <my-datepicker ng-model="fcexpiryDate" myid="someid"></my-datepicker>
                                                             <!-- <p class="input-group">
-        
-                                                        <input type="text" class="form-control"
-                                                            uib-datepicker-popup="{{format}}" ng-click="open1()"
-                                                            ng-model="fcexpiryDate" is-open="popup1.opened"
-                                                            datepicker-options="dateOptions" ng-required="true"
-                                                            close-text="Close" alt-input-formats="altInputFormats" />
-        
-                                                    </p> -->
+                                                                    <input type="text" class="form-control"
+                                                                        uib-datepicker-popup="{{format}}" ng-click="open1()"
+                                                                        ng-model="fcexpiryDate" is-open="popup1.opened"
+                                                                        datepicker-options="dateOptions" ng-required="true"
+                                                                        close-text="Close" alt-input-formats="altInputFormats" />
+                                                            </p> -->
                                                         </div>
-
                                                         <div class="from-group  col-sm-6">
-                                                            <lable for=""> front Image<span class="mendatory"></span>
-                                                            </lable>
-                                                            <input type="file" ng-model="ftfiles" name="files"
-                                                                base-sixty-four-input multiple
-                                                                accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf"
-                                                                maxsize="5000000" ng-change="UploadingFT()">
+                                                            <lable for=""> front Image<span class="mendatory"></span></lable>
+                                                            <input type="file" ng-model="ftfiles" name="files" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" ng-change="UploadingFT()">
                                                             <label for="">{{ft_front}}</label>
                                                         </div>
                                                         <div class="from-group  col-sm-6">
-                                                            <lable for=""> Back Image<span class="mendatory"></span>
-                                                            </lable>
-                                                            <input type="file" ng-model="ft1file" name="files"
-                                                                base-sixty-four-input multiple
-                                                                accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf"
-                                                                maxsize="5000000" ng-change="UploadingFT1()">
+                                                            <lable for=""> Back Image<span class="mendatory"></span></lable>
+                                                            <input type="file" ng-model="ft1file" name="files" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" ng-change="UploadingFT1()">
                                                             <label for="">{{ft_back}}</label>
                                                         </div>
                                                     </div>
@@ -1387,26 +1059,18 @@
                                     </div> -->
                                     </div>
                                 </div>
-                            </div>
-
                         </div>
-                        <div class="col-sm-12" style="margin-top: 10px;">
-                            <center>
-                                <button type="button" class="button btn-block" ng-click="driverRegistration()">Register
-                                    Driver</button>
-                            </center>
-                        </div>
+                    </div>
+                    <div class="col-sm-12" style="margin-top: 10px;">
+                        <center>
+                            <button type="button" class="button btn-block" ng-click="driverRegistration()">Register Driver</button>
+                        </center>
                     </div>
                 </div>
-                <!-- <div class="col-md-6 col-sm-12">
-                    <div class="sidebar-header">
-                        <h4>Route</h4>
-                    </div>
-                    <div id="directionsList" class="panel panel-primary"></div>
-                </div> -->
             </div>
         </div>
     </div>
+</div>
 </div>
 <div class="overlay"></div>
 <!-- --------------------Typeahed custom template---------------- -->

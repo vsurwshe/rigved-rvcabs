@@ -10,9 +10,10 @@
 <!-- Page Content  -->
 <div id="content">
     <ng-include src="'assets/pages/MynavBar.html'"></ng-include>
-    <div class="col-sm-12 header-board">
+    <div class="col-sm-12 header-board" style="height: 500px">
         <div class="row">
             <div class="col-md-12 col-sm-12">
+                <div class="col-md-12 col-sm-12 row header-right nopadding">
                     <div class="card">
                         <div class="card-header" id="headingOne"> 
                             <h5 style="color: black;"> Expense Details</h5>
@@ -20,16 +21,7 @@
                         <div class="card-body row">
                             <div class="from-group  col-sm-3">
                                 <lable for="">Date<span class="mendatory">*</span></lable>
-                                    <p class="input-group">
-                                        <input type="text" class="form-control"
-                                            uib-datepicker-popup="{{format}}" ng-click="open1()"
-                                            ng-model="fromDate" is-open="popup1.opened"
-                                            datepicker-options="dateOptions" ng-required="true"
-                                            close-text="Close" alt-input-formats="altInputFormats" 
-                                        />
-                                    </p>
-                                <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
-                            <div ng-show="noResults"> <i class="glyphicon glyphicon-remove"></i> No Results Found </div>
+                                <my-datepicker ng-model="panDob" myid="someid"> </my-datepicker>
                             </div>
                             <div class="from-group  col-sm-3">
                                 <lable for="">Time<span class="mendatory">*</span></lable>
@@ -37,7 +29,7 @@
                             </div>
                             <div class="from-group  col-sm-3" id="remote">
                                 <lable for="">Odometer Reading<span class="mendatory">*</span></lable>
-                                <input class="form-control txt-field" ng-model="gstNum" type="text" placeholder="Current Odometer Reading">
+                                <input class="form-control txt-field" ng-model="odoMeterReading" type="text" placeholder="Current Odometer Reading">
                                 <div ng-show="noResults"> <i class="glyphicon glyphicon-remove"></i> No Results Found</div>
                             </div>
                             <div class="from-group  col-sm-3">
@@ -80,17 +72,15 @@
                                 <input class="form-control txt-field" ng-model="otherServiceLocation" type="text" placeholder="Enter service location">
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-12 col-sm-12 row" style="margin-bottom: 20px;">
-                        <div class="from-group  col-sm-3">
-                            <lable for="">Description<span class="mendatory">*</span></lable>
-                            <input class="form-control txt-field" ng-model="otherDescription" type="text" placeholder="Enter description">
+                        <div class="col-md-12 col-sm-12 row" style="margin-bottom: 20px;">
+                            <lable for="" style="margin-right: 10px;margin-left: 20px;"> Invoice Image<span class="mendatory"></span></lable>
+                            <input type="file" ng-model="vepfiles" name="files" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" ng-change="Uploadingvep()">
+                            <label for="">{{vep_front}}</label>
                         </div>
                     </div>
-                    
                     <div class="col-md-12 col-sm-12 row" style="margin-bottom: 20px;">
                         <div class="col-sm-6" style="margin-top: 10px;">
-                            <button type="button" class="button btn-block" ng-click="tripBooking()">Save Bill</button>
+                            <button type="button" class="button btn-block" ng-click="addExpense()">Save Bill</button>
                         </div>
                         <div class="col-sm-6" style="margin-top: 10px;">
                             <button type="button" class="button btn-block" ng-click="maintenanceReport()">Cancel</button>
@@ -100,6 +90,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 <script>
     $(document).ready(function(){

@@ -120,12 +120,14 @@
         <h3 class="text-md-right myFont">{{Route}}</h3>
         <button ng-show="travelBilling" class="btn btn-default" style="position: fixed;right: 100px;" ng-click="filters()">Filters</button>
         <button ng-show="maintenanceReport" class="btn btn-default" style="position: fixed;right: 100px;" ng-click="maintenanceReportFilters()">Filters</button>
-        <div style="position: relative; left: 715px;">
-            <button ng-show="travelBillingFilter" class="btn btn-default" style="margin-left: 32px;" ng-click="filtersApply()">Apply Filters</button>
-            <button ng-show="travelBillingFilter" class="btn btn-default" style="margin-left: 32px;" ng-click="filters()">Clear Filters</button>
-            <button ng-show="maintanceReportFilter" class="btn btn-default" style="margin-left: 15px;" ng-click="reportFiltersApply()">Apply Report Filters</button>
-            <button ng-show="maintanceReportFilter" class="btn btn-default" style="margin-left: 15px;" ng-click="filters()">Clear Filters</button>
+        <div ng-if="travelBillingFilter" style="position: relative; left: 600px;">
+            <button class="btn btn-default" style="margin-left: 32px;" ng-click="filtersApply()">Apply Filters</button>
+            <button class="btn btn-default" style="margin-left: 32px;" ng-click="travelFilters()">Clear</button>
             <!--  <button ng-show = "travellerList" class="btn btn-default" style="margin-left: 32px;" ><a href="#travelerReg"> Traveller Registration</a></button>-->
+        </div>
+        <div ng-if="maintanceReportFilter" style="position: relative; left: 350px;">
+            <button class="btn btn-default" ng-click="reportFiltersApply()">Apply Report Filters</button>
+            <button class="btn btn-default" ng-click="maintenanceReportFilters()">Clear</button>
         </div>
         <button class="btn btn-dark d-inline-block d-lg-none ml-auto" id="hideButton" type="button"
             data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
