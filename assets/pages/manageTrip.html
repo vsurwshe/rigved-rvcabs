@@ -1,373 +1,10 @@
-<style>
-    /* -------------Content Css-------------- */
-
-    .wrapper {
-        display: flex;
-        width: 100%;
-    }
-
-
-    #content {
-        width: calc(100% - 220px);
-        padding: 10px 40px 20px 40px !important;
-        min-height: 100vh;
-        transition: all 0.3s;
-        position: absolute;
-        top: 0;
-        right: 0;
-        background-image: url('assets/img/background.jpg') !important;
-    }
-
-    #content.active {
-        width: 100%;
-    }
-
-    .overlay {
-        display: none;
-        position: fixed;
-        width: 100vw;
-        height: 100vh;
-        background: rgba(0, 0, 0, 0.7);
-        z-index: 998;
-        opacity: 0;
-        transition: all 0.5s ease-in-out;
-    }
-
-    .overlay.active {
-        display: block;
-        opacity: 1;
-    }
-
-    /* ------------------------------------- */
-
-    table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-
-    /* Zebra striping */
-
-    tr:nth-of-type(odd) {
-        background: #eee;
-    }
-
-
-
-    td,
-    th {
-        padding: 6px;
-        border: 1px solid #ccc;
-        text-align: left;
-    }
-
-    @media only screen and (max-width: 760px),
-    (min-device-width: 768px) and (max-device-width: 1024px) {
-
-        /* Force table to not be like tables anymore */
-        table.responsive,
-        .responsive thead,
-        .responsive tbody,
-        .responsive th,
-        .responsive td,
-        .responsive tr {
-            display: block;
-        }
-
-        /* Hide table headers (but not display: none;, for accessibility) */
-        .responsive thead tr {
-            position: absolute;
-            top: -9999px;
-            left: -9999px;
-        }
-
-        .responsive tr {
-            border: 1px solid #ccc;
-        }
-
-        .responsive td {
-            /* Behave  like a "row" */
-            border: none;
-            border-bottom: 1px solid #eee;
-            position: relative;
-            padding-left: 50%;
-        }
-
-        .responsive td:before {
-            /* Now like a table header */
-            position: absolute;
-            /* Top/left values mimic padding */
-            top: 6px;
-            left: 6px;
-            width: 45%;
-            padding-right: 10px;
-            white-space: nowrap;
-        }
-
-        /*Label the data*/
-        .responsive td:before {
-            content: attr(data-table-header);
-        }
-    }
-
-    .table-responsive .bootstrap {
-        min-height: .01%;
-        overflow-x: auto;
-    }
-
-    @media screen and (max-width: 767px) {
-        .table-responsive.bootstrap {
-            width: 100%;
-            margin-bottom: 15px;
-            overflow-y: hidden;
-            -ms-overflow-style: -ms-autohiding-scrollbar;
-            border: 1px solid #ddd;
-        }
-
-        .table-responsive.bootstrap>.table {
-            margin-bottom: 0;
-        }
-
-        .table-responsive.bootstrap>.table>thead>tr>th,
-        .table-responsive.bootstrap>.table>tbody>tr>th,
-        .table-responsive.bootstrap>.table>tfoot>tr>th,
-        .table-responsive.bootstrap>.table>thead>tr>td,
-        .table-responsive.bootstrap>.table>tbody>tr>td,
-        .table-responsive.bootstrap>.table>tfoot>tr>td {
-            white-space: nowrap;
-        }
-
-        .table-responsive.bootstrap>.table-bordered {
-            border: 0;
-        }
-
-        .table-responsive.bootstrap>.table-bordered>thead>tr>th:first-child,
-        .table-responsive.bootstrap>.table-bordered>tbody>tr>th:first-child,
-        .table-responsive.bootstrap>.table-bordered>tfoot>tr>th:first-child,
-        .table-responsive.bootstrap>.table-bordered>thead>tr>td:first-child,
-        .table-responsive.bootstrap>.table-bordered>tbody>tr>td:first-child,
-        .table-responsive.bootstrap>.table-bordered>tfoot>tr>td:first-child {
-            border-left: 0;
-        }
-
-        .table-responsive.bootstrap>.table-bordered>thead>tr>th:last-child,
-        .table-responsive.bootstrap>.table-bordered>tbody>tr>th:last-child,
-        .table-responsive.bootstrap>.table-bordered>tfoot>tr>th:last-child,
-        .table-responsive.bootstrap>.table-bordered>thead>tr>td:last-child,
-        .table-responsive.bootstrap>.table-bordered>tbody>tr>td:last-child,
-        .table-responsive.bootstrap>.table-bordered>tfoot>tr>td:last-child {
-            border-right: 0;
-        }
-
-        .table-responsive.bootstrap>.table-bordered>tbody>tr:last-child>th,
-        .table-responsive.bootstrap>.table-bordered>tfoot>tr:last-child>th,
-        .table-responsive.bootstrap>.table-bordered>tbody>tr:last-child>td,
-        .table-responsive.bootstrap>.table-bordered>tfoot>tr:last-child>td {
-            border-bottom: 0;
-        }
-    }
-
-    /* ---------------User info Section--------------------- */
-
-    .label {
-        width: 70px;
-
-    }
-
-    .label,
-    .phone,
-    .mobile,
-    .email {
-        display: inline-block;
-    }
-
-    .phone,
-    .mobile,
-    .email {
-        font-weight: 600;
-    }
-
-    .details-td {
-        padding: 10px;
-        border: none;
-        background-color: #ffff;
-    }
-
-    /*=========making add doctor popup at center of screen(Starts)======*/
-
-    .modal {
-        text-align: center;
-        padding: 0 !important;
-    }
-
-    .modal:before {
-        content: '';
-        display: inline-block;
-        height: 100%;
-        vertical-align: middle;
-        margin-right: -4px;
-    }
-
-    .modal-dialog {
-        display: inline-block;
-        text-align: left;
-        vertical-align: middle;
-    }
-
-    /*=========making add doctor popup at center of screen(Ends)======*/
-
-    /* -----------------button------------------------- */
-
-    .button {
-        padding: 5px 20px;
-        border: 2px solid #494a49;
-        border-radius: 5px;
-        font-size: 13px;
-        font-weight: 700;
-        text-transform: uppercase;
-        text-decoration: none;
-        color: #494a49;
-        background-color: #fff;
-
-
-    }
-
-    .button:hover {
-        color: #494a49;
-        background-color: #f1f50b;
-        cursor: pointer;
-
-    }
-
-
-    .button-small {
-        padding: 3px 15px;
-        border: 2px solid #494a49;
-        border-radius: 5px;
-        font-size: 13px;
-        font-weight: 700;
-        text-transform: uppercase;
-        text-decoration: none;
-        color: #494a49;
-        background-color: #fff;
-
-
-    }
-
-    .button-small:hover {
-        color: #494a49;
-        background-color: #f1f50b;
-        cursor: pointer;
-
-    }
-
-    /* -----------Accordian------------------- */
-
-    .i-accordion .panel-heading,
-    .d-accordion .panel-heading,
-    .accordion-2a .panel-heading,
-    .accordion-2b .panel-heading,
-    .accordion-3 .panel-heading {
-        cursor: pointer;
-    }
-
-    .d-accordion .panel-heading.collapsed .fa-chevron-up:before {
-        content: '\f078';
-    }
-
-    .panel-heading {
-        background-color: transparent;
-        min-height: 45px;
-        padding: 10px 20px 10px 20px;
-        background: transparent;
-        margin-top: 15px;
-        border: 1px solid;
-        border-radius: 22px;
-    }
-
-    .btn-round {
-        border-radius: 20px;
-    }
-
-    .panel-body {
-        border: 1px solid #dad6d6;
-        border-top: 0pc;
-        padding: 30px 20px 20px 20px;
-        color: #777777;
-        font-family: sans-serif;
-        font-size: 15px;
-        border-radius: 30px;
-        box-shadow: 2px 2px #e2dddd;
-    }
-
-    .header-right {
-        background-color: transparent !important;
-        border: none !important;
-        margin-top: 0 !important;
-    }
-
-    #Psrides {
-        display: none;
-    }
-
-    th {
-        background-color: #203b70;
-        color: white;
-    }
-
-    .st {
-        background-color: #203b70;
-        color: white;
-    }
-
-    .modal-header {
-        background-color: #203b70;
-        color: #fff;
-    }
-
-    .modal-lg {
-        width: 850px !important;
-    }
-
-    h5 {
-        color: #fff;
-    }
-
-    .close {
-        color: #fff;
-    }
-
-    .element {
-
-        position: absolute;
-        left: 112px;
-        top: 14px;
-
-    }
-
-    .img {
-        width: 100px;
-        position: relative;
-        right: 15px;
-    }
-
-    .element2 {
-        position: absolute;
-        right: -21px;
-        top: 5px;
-    }
-
-    .select {
-        position: relative;
-        bottom: 83px;
-    }
-</style>
-
+<link rel="stylesheet" href="./assets/css/star.css">
+<link rel="stylesheet" href="./assets/css/mainwraper.css">
 <div id="page-loading" ng-show="loading" class="ng-hide">
     <div class="loader">
         <img src="assets/img/giphy.gif" width="100" height="100" style="padding: 0">
     </div>
 </div>
-
 <div class="wrapper">
     <!-- Sidebar  -->
     <ng-include src="'assets/pages/MysideBar.html'"></ng-include>
@@ -392,7 +29,7 @@
                     </div>
                 </div>
             </div>
-
+            <!-- This table showing up comeing rides -->
             <table class="responsive" id=upCrides>
                 <thead>
                     <tr>
@@ -441,7 +78,7 @@
                     </tr>
                 </tbody>
             </table>
-
+            <!-- This table showing completed rides -->
             <table class="responsive" id=Psrides>
                 <thead>
                     <tr>
@@ -469,6 +106,7 @@
                         <td ng-if="item.status == 5">Ride Completed</td>
                         <td ng-if="item.status == 6">Declined</td>
                         <td ng-if="item.status == 7">Expired</td>
+                        <td ng-if="item.status == 8">Finished</td>
                         <!-- <td data-table-header="Car Brand/Model">{{record.carDetailDtos[0].type.name}}/{{record.carDetailDtos[0].subType.name}}</td> -->
                         <td data-table-header="Action">
                             <button class=" btn btn-default btn-round" ng-click="getDetails(item,1)" data-toggle="modal" data-target="#exampleModal">View</button>
@@ -591,6 +229,7 @@
                 </div>
             </div>
         </div>
+
         <div class="modal" tabindex="-1" role="dialog" id="exampleModal1">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -696,7 +335,7 @@
                 </div>
             </div>
         </div>
-
+        <!-- This model showing customer feedback -->
         <div class="modal" ng-show="feedbackModel" tabindex="-1" role="dialog" id="feedbackModel">
             <div class="modal-dialog modal-md" role="document">
                 <div class="modal-content">
@@ -707,7 +346,9 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p>This is testing feedback</p>
+                        <center>
+                            <div class="stars" data-percent="{{ratings}}"></div>
+                        </center>
                     </div> 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -715,7 +356,7 @@
                 </div>
             </div>
         </div>
-
+        <!-- This model showing trip details -->
         <div class="modal" ng-show="tripModel" tabindex="-1" role="dialog" id="tripDetailsModel">
             <div class="modal-dialog modal-md" role="document">
                 <div class="modal-content">

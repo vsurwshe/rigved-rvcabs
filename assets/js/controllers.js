@@ -1974,16 +1974,10 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
                 'Content-Type': 'application/json',
                 'Authorization': token.currentUser.tokenDto.token
             }
-        }).then(
-            function (response) {
+        }).then(function (response) {
                 $scope.finishList = response.data;
                 $scope.loading = false;
-            },
-            function (errResponse) {
-                console.error('Error !!');
-                $q.reject(errResponse);
-            }
-        )
+            },function (errResponse) {$q.reject(errResponse);})
     }
 
     var bigCities = [];
@@ -2495,6 +2489,7 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
     // this will used for viewing feedback details
     $scope.viewFeedback=function (itemData) {
         console.log("Item Data", itemData);
+        $scope.ratings=2.5;
         $scope.feedbackModel=true;
     }
     // this will used for viewing trip details
