@@ -2040,6 +2040,9 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
                 else if ($scope.complteDetails.tripStatus == 7) {
                     $scope.status = "Declined";
                 }
+                else if ($scope.complteDetails.tripStatus == 8) {
+                    $scope.status = "Ride Billed";
+                }
                 $scope.loading = false;
             },function (errResponse) {
                 console.error('Error !!');
