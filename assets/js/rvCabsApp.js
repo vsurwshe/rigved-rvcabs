@@ -3,7 +3,7 @@ var app = angular.module('rvCabsApp', ['ngRoute', 'ngCookies', 'ngStorage', 'toa
 console.log("Local IP::",lip);
  */
 //var ip = 'https://dotstaxi.com/dot-services/';
-var ip = 'http://103.224.240.187:9001/'; 
+var ip = 'http://103.224.240.187:9000/'; 
 // var ip = 'https://staging.health5c.com/dot-services/';
 app.constant('DotsCons', {
     'LOGIN_POINT': ip + 'public/signIn/',
@@ -65,6 +65,7 @@ app.constant('DotsCons', {
     'DELETE_FARE_BY_ID': ip + 'masterCard/deleteById/',
     'SEARCH_CUSTOMER_BY_NAME': ip + 'userSearchByMobile/',
     'ONLINE_OFFLINE': ip + 'userInfo/statusChange/',
+    'GET_FEEDBACK':ip+'trip/getFeedback/'
 });
 
 // this app config provider

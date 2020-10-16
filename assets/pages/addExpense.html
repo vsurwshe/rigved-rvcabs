@@ -8,15 +8,14 @@
 <!-- Sidebar  -->
 <ng-include src="'assets/pages/MysideBar.html'"></ng-include>
 <!-- Page Content  -->
-<div id="content">
-    <ng-include src="'assets/pages/MynavBar.html'"></ng-include>
-    <div class="col-sm-12 header-board" style="height: 500px">
-        <div class="row">
-            <div class="col-md-12 col-sm-12">
-                <div class="col-md-12 col-sm-12 row header-right nopadding">
+    <div id="content">
+        <ng-include src="'assets/pages/MynavBar.html'"></ng-include>
+        <div class="col-sm-12 header-board" style="height: 500px">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
                     <div class="card">
                         <div class="card-header" id="headingOne"> 
-                            <h5 style="color: black;"> Expense Details</h5>
+                            <h5 style="color: black;"> Fill Expense Details</h5>
                         </div>
                         <div class="card-body row">
                             <div class="from-group  col-sm-3">
@@ -73,14 +72,14 @@
                             </div>
                         </div>
                         <div class="col-md-12 col-sm-12 row" style="margin-bottom: 20px;">
-                            <lable for="" style="margin-right: 10px;margin-left: 20px;"> Invoice Image<span class="mendatory"></span></lable>
-                            <input type="file" ng-model="vepfiles" name="files" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" ng-change="Uploadingvep()">
+                            <lable for="" style="margin-right: 10px;margin-left: 20px;"> Upload Invoice Image<span class="mendatory"></span></lable>
+                            <input type="file" ng-model="vepfiles" name="files" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" ng-change="uploadingInvoiceImage()">
                             <label for="">{{vep_front}}</label>
                         </div>
                     </div>
                     <div class="col-md-12 col-sm-12 row" style="margin-bottom: 20px;">
                         <div class="col-sm-6" style="margin-top: 10px;">
-                            <button type="button" class="button btn-block" ng-click="addExpense()">Save Bill</button>
+                            <button type="button" class="button btn-block" ng-click="saveExpense()">Save Bill</button>
                         </div>
                         <div class="col-sm-6" style="margin-top: 10px;">
                             <button type="button" class="button btn-block" ng-click="maintenanceReport()">Cancel</button>
@@ -90,7 +89,6 @@
             </div>
         </div>
     </div>
-</div>
 </div>
 <script>
     $(document).ready(function(){

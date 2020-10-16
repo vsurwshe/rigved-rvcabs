@@ -1962,7 +1962,7 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
     if (GET_RIDE_LIST != null) {
         ridelist = GET_RIDE_LIST;
     }
-
+    // this calling finish ride api
     $scope.getFinishList = function () {
         $scope.loading = true;
         var token = authService.getCookie('globals');
@@ -1996,7 +1996,6 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
         $location.path('/addtrip')
     }
     $scope.getDetails = function (data, boolean) {
-        console.log("Boole",boolean)
         $scope.loading = true;
         if (boolean == 1) {
             $scope.view = true;
@@ -2077,19 +2076,19 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
     //     }
     // }
 
-    // this will call the serach banch api
-    $http({
-        method: 'GET',
-        url: DotsCons.SEARCH_BRAND,
-        data: '',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': token.currentUser.tokenDto.token
-        }
-    }).then(
-        function (response) { console.log(response) },
-        function (errResponse) { return $q.reject(errResponse) }
-    )
+    // // this will call the serach banch api
+    // $http({
+    //     method: 'GET',
+    //     url: DotsCons.SEARCH_BRAND,
+    //     data: '',
+    //     headers: {
+    //         'Content-Type': 'application/json',
+    //         'Authorization': token.currentUser.tokenDto.token
+    //     }
+    // }).then(
+    //     function (response) { console.log(response) },
+    //     function (errResponse) { return $q.reject(errResponse) }
+    // )
     // this will call the serach brand api
     $http({
         method: 'GET',
@@ -2185,8 +2184,7 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
                     })
                     $("#exampleModal1").modal("hide")
                 }
-            },
-                function (errResponse) {
+            },function (errResponse) {
                     $scope.loading = false;
                     $.iaoAlert({
                         msg: "Unable to Re assign Trip...please try again..!",
@@ -2250,7 +2248,6 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
         )
     }
     var that = this;
-
     $scope.today = function () { $scope.dt = new Date(); };
     $scope.today();
     $scope.clear = function () { $scope.dt = null };
@@ -2275,32 +2272,19 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
         minDate: new Date(1900, 2, 23),
         startingDay: 1
     };
-
     // Disable weekend selection
     function disabled(data) {
         var date = data.date,
             mode = data.mode;
         return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
     }
-    $scope.open1 = function () {
-        $scope.popup1.opened = true;
-        // alert($scope.dt)
-    };
-    $scope.open2 = function () {
-        $scope.popup2.opened = true;
-        // alert($scope.dt)
-    };
-    $scope.open3 = function () {
-        $scope.popup3.opened = true;
-        // alert($scope.dt)
-    };
-    $scope.setDate = function (year, month, day) {
-        $scope.dt = new Date(year, month, day);
-    };
+    $scope.open1 = function () { $scope.popup1.opened = true; };
+    $scope.open2 = function () { $scope.popup2.opened = true; };
+    $scope.open3 = function () { $scope.popup3.opened = true; };
+    $scope.setDate = function (year, month, day) { $scope.dt = new Date(year, month, day); };
     $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
     $scope.format = $scope.formats[0];
     $scope.altInputFormats = ['M!/d!/yyyy'];
-
     $scope.popup1 = { opened: false };
     $scope.popup2 = { opened: false };
     $scope.popup3 = { opened: false };
@@ -2360,7 +2344,6 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
             },
             "tripStatus": 0
         }
-        // alert($scope.picktime)
         // this will call the trip booking api
         $http({
             method: 'post',
@@ -2371,7 +2354,6 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
                 'Authorization': token.currentUser.tokenDto.token
             }
         }).then(function (response) {
-            console.log(response)
             if (response.status == '200') {
                 $scope.loading = false;
                 $.iaoAlert({
@@ -2488,9 +2470,31 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
     }
     // this will used for viewing feedback details
     $scope.viewFeedback=function (itemData) {
-        console.log("Item Data", itemData);
-        $scope.ratings=2.5;
-        $scope.feedbackModel=true;
+        const { tripId }=itemData
+        if(tripId){
+            $scope.feedbackModel=true;
+            $scope.loading=true;
+            // this will used for the get files 
+            $http({
+                method: 'GET',
+                url: DotsCons.GET_FEEDBACK + tripId,
+                data: '',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': token.currentUser.tokenDto.token
+                }
+            }).then(
+                function (response) { 
+                    const { feedBack, rating }=(response && response.data) ? response.data :"";
+                    let floatValue=parseFloat(rating);
+                    console.log("COM", floatValue)
+                    $scope.CustomerStarRatings= Number.isNaN(floatValue) ? 0 :floatValue ;
+                    $scope.customerTextFeedback= feedBack;
+            },function (errResponse) { return $q.reject(errResponse) })
+            $scope.loading=false;
+        }else{
+            $scope.ratings=0;
+        }
     }
     // this will used for viewing trip details
     $scope.viewTripDetails=function (itemData) {
@@ -2521,25 +2525,19 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
     //         "carDetailDto": {
     //             "type": {
     //                 "id": $scope.carBrand.id
-
     //             },
     //             "subType": {
     //                 "id": $scope.carSegName.id
-
     //             },
     //             "carColor": {
     //                 "id": $scope.carColor.id
-
     //             },
     //             "carInterrior": {
     //                 "id": $scope.Interrior.id
-
     //             },
     //             "carCategory": {
     //                 "id": $scope.carBrandSubType.id
-
     //             }
-
     //         },
     //         "documentDetailDtos": [
     //             {
@@ -2548,11 +2546,9 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
     //                 "frontImagePath": "assets/img/download.jpg",
     //                 "fieldDetails": "DLnum:'1234',fName:'harish',lName:'deva',dob:'23-11-1995',bloodGroup:'B+',rtoName:'23456',issuedDate:'23-11-2019',dateOfExpiry:23-11-2030,typeOfVehicle:'LWM',remark:'no'"
     //             }
-
     //         ],
     //         "state": "Bangalore"
     //     }
-
     //     console.log(driverData)
     //     $http({
     //         method: 'post',
@@ -2578,15 +2574,12 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
     //                 mode: "dark",
     //             })
     //         }
-
     //     },
     //         function (errResponse) {
     //             console.error('Error !!');
     //             return $q.reject(errResponse);
     //         })
-
     // }
-
 }
 
 // this is advance controller
@@ -3440,7 +3433,7 @@ function expenseCtrl($scope, $http, DotsCons, $rootScope, authService, $localSto
     }
 
     // this function will used for the adding expense
-    $scope.addExpense= function(){
+    $scope.saveExpense= function(){
         let data={
             "fromDate":$scope.fromDate,
             "time":$scope.time,
@@ -3453,12 +3446,11 @@ function expenseCtrl($scope, $http, DotsCons, $rootScope, authService, $localSto
             "otherDescription":$scope.otherDescription,
             "otherTotalAmount":$scope.otherTotalAmount,
             "otherServiceLocation":$scope.otherServiceLocation
-
         }
-
         console.log("Data ",data)
     }
 
+    $scope.uploadingInvoiceImage = function () {
 
-
+    }
 }

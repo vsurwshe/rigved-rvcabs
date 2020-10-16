@@ -106,7 +106,7 @@
                         <td ng-if="item.status == 5">Ride Completed</td>
                         <td ng-if="item.status == 6">Declined</td>
                         <td ng-if="item.status == 7">Expired</td>
-                        <td ng-if="item.status == 8">Finished</td>
+                        <td ng-if="item.status == 8">Ride Billed</td>
                         <!-- <td data-table-header="Car Brand/Model">{{record.carDetailDtos[0].type.name}}/{{record.carDetailDtos[0].subType.name}}</td> -->
                         <td data-table-header="Action">
                             <button class=" btn btn-default btn-round" ng-click="getDetails(item,1)" data-toggle="modal" data-target="#exampleModal">View</button>
@@ -347,7 +347,11 @@
                     </div>
                     <div class="modal-body">
                         <center>
-                            <div class="stars" data-percent="{{ratings}}"></div>
+                            <div class="stars" data-percent="{{CustomerStarRatings}}"></div>
+                            <div class="from-group  col-sm-12">
+                                <lable for="">Message</lable><br/>
+                                <label>{{customerTextFeedback}}</label>
+                            </div>
                         </center>
                     </div> 
                     <div class="modal-footer">
