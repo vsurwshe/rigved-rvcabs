@@ -2475,6 +2475,7 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
     $scope.viewFeedback=function (itemData) {
         const { tripId }=itemData
         if(tripId){
+            console.log("TripID ",tripId)
             $scope.feedbackModel=true;
             $scope.loading=true;
             // this will used for the get files 
@@ -2496,7 +2497,9 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
             },function (errResponse) { return $q.reject(errResponse) })
             $scope.loading=false;
         }else{
-            $scope.ratings=0;
+            $scope.CustomerStarRatings=0;
+            $scope.customerTextFeedback= "There is no feedback for this";
+            $scope.feedbackModel=true;
         }
     }
     // this will used for viewing trip details
@@ -3402,58 +3405,125 @@ function maintenanceRerportFilterCtrl($scope, $http, DotsCons, $rootScope, authS
 }
 // this is expense controller
 function expenseCtrl($scope, $http, DotsCons, $rootScope, authService, $localStorage, $location, $q, toaster) {
-    $scope.today = function () { $scope.dt = new Date(); };
-    $scope.today();
-    $scope.clear = function () { $scope.dt = null; };
-    $scope.dateOptions = {
-        // dateDisabled: disabled,
-        formatYear: 'yy',
-        maxDate: new Date(2030, 5, 22),
-        minDate: new Date(),
-    };
-    $scope.popup1 = { opened: false };
-    $scope.open1 = function () { $scope.popup1.opened = true; };
-    $scope.setDate = function (year, month, day) { $scope.dt = new Date(year, month, day); };
-    $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-    $scope.format = $scope.formats[0];
-    $scope.altInputFormats = ['M!/d!/yyyy'];
+    var token = authService.getCookie('globals');
     
-    $scope.maintenanceReport= function(){
-        $location.path('/maintenanceReport')
-    }
+    // this function will used for go to back maintence report
+    $scope.maintenanceReport= function(){ $location.path('/maintenanceReport') }
+    
+    // this will declare the global variables
     $scope.fule=false;
     $scope.others=false;
+    $scope.fileUrl="";
 
     // this function will used for the check exepense type check
     $scope.expenseTypeChnaged=function(){
-        if($scope.expenseType==="Fule"){
+        if($scope.expenceType==="Fule"){
             $scope.fule=true;
             $scope.others=false;
-        }else if($scope.expenseType==="Others"){
+        }else if($scope.expenceType==="Others"){
             $scope.others=true;
             $scope.fule=false;
         }
     }
-
+    
     // this function will used for the adding expense
     $scope.saveExpense= function(){
-        let data={
-            "fromDate":$scope.fromDate,
+        $scope.loading = true;
+        var postData={
+            "entryDate":$scope.entryDate.getTime(),
             "time":$scope.time,
             "odoMeterReading":$scope.odoMeterReading,
-            "expenseType":$scope.expenseType,
-            "fulePrice":$scope.fulePrice,
-            "fuleQty":$scope.fuleQty,
-            "fuleTotalAmount":$scope.fuleTotalAmount,
-            "fuleNotes":$scope.fuleNotes,
-            "otherDescription":$scope.otherDescription,
-            "otherTotalAmount":$scope.otherTotalAmount,
-            "otherServiceLocation":$scope.otherServiceLocation
+            "expenceType":$scope.expenceType,
+            "source": "Admin",
+            "location":$scope.location,
+            "totalAmount":$scope.totalAmount,
+            "fileUrl":$scope.fileUrl
         }
-        console.log("Data ",data)
+        // this checking which type of expence selected
+        if($scope.expenceType==="Fule"){
+            postData={
+                ...postData,
+                "perLtRate":$scope.perLtRate,
+                "totalLt":$scope.totalLt,
+            }
+        }else if($scope.expenceType==="Others"){
+            postData={
+                ...postData,
+                "description":$scope.description
+            }
+        }
+        $http({
+            method: 'post',
+            url: DotsCons.SAVE_EXPENSE,
+            data: postData,
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': token.currentUser.tokenDto.token
+            }
+        }).then(function (response) {
+            if (response.status == '200') {
+                $scope.loading = false;
+                $.iaoAlert({ msg: "Expence Added Successfully ..!", type: "success", mode: "dark", })
+                $location.path('/maintenanceReport')
+            }
+        },function (errResponse) {
+            $scope.loading = false;
+            $.iaoAlert({ msg: "Somthing went wrong...Try agian!", type: "error", mode: "dark", })
+            return $q.reject(errResponse);
+        })
     }
 
     $scope.uploadingInvoiceImage = function () {
-
+        $scope.loading = true
+        $scope.sizeIsmore = false;
+        if ($scope.invoiceImage.length != 0) {
+            var uploadedFiles = [];
+            var docData;
+            for (var i = 0; i < $scope.invoiceImage.length; i++) {
+                var fname = $scope.invoiceImage[i].filename.split(".");
+                var bArray = $scope.invoiceImage[i].base64;
+                var fname = $scope.invoiceImage[i].filename;
+                var ftype = $scope.invoiceImage[i].filetype.split("/");
+                var bArray = $scope.invoiceImage[i].base64;
+                docData = {
+                    fileName: fname[0],
+                    content: bArray,
+                    contentType: ftype[1],
+                    "description": "ExpensePic"
+                }
+                uploadedFiles.push(docData);
+            }
+            $scope.ft_back = uploadedFiles[0].fileName + "." + uploadedFiles[0].contentType;
+            $http({
+                method: 'POST',
+                url: DotsCons.UPLOAD_FILES,
+                data: uploadedFiles,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': token.currentUser.tokenDto.token
+                }
+            }).then(function (response) {
+                if (response.data != null) {
+                    $scope.fileUrl=response.data[0];
+                    $http({
+                        method: 'GET',
+                        url: DotsCons.GET_FILES,
+                        data: '',
+                        params: { "path": response.data },
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': token.currentUser.tokenDto.token
+                        }
+                    }).then(function (response) {
+                        $scope.loading = false;
+                        $.iaoAlert({
+                            msg: "File Uploaded Successfully ..!",
+                            type: "success",
+                            mode: "dark",
+                        })
+                    },function (errResponse) {return $q.reject(errResponse);})
+                }
+            },function (errResponse) {return $q.reject(errResponse);})
+        }
     }
 }

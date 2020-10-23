@@ -65,7 +65,8 @@ app.constant('DotsCons', {
     'DELETE_FARE_BY_ID': ip + 'masterCard/deleteById/',
     'SEARCH_CUSTOMER_BY_NAME': ip + 'userSearchByMobile/',
     'ONLINE_OFFLINE': ip + 'userInfo/statusChange/',
-    'GET_FEEDBACK':ip+'trip/getFeedback/'
+    'GET_FEEDBACK':ip+'trip/getFeedback/',
+    'SAVE_EXPENSE': ip+'expenditure/create/'
 });
 
 // this app config provider

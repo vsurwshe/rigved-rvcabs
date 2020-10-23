@@ -20,11 +20,11 @@
                         <div class="card-body row">
                             <div class="from-group  col-sm-3">
                                 <lable for="">Date<span class="mendatory">*</span></lable>
-                                <my-datepicker ng-model="panDob" myid="someid"> </my-datepicker>
+                                <my-datepicker ng-model="entryDate" myid="someid"> </my-datepicker>
                             </div>
                             <div class="from-group  col-sm-3">
                                 <lable for="">Time<span class="mendatory">*</span></lable>
-                                <input class="form-control txt-field" type="text" ng-model = "time" id="timepicker"/>
+                                <input class="form-control txt-field" type="text" ng-model="time" id="timepicker"/>
                             </div>
                             <div class="from-group  col-sm-3" id="remote">
                                 <lable for="">Odometer Reading<span class="mendatory">*</span></lable>
@@ -33,48 +33,48 @@
                             </div>
                             <div class="from-group  col-sm-3">
                                 <label for="exampleFormControlSelect1">Expense Type<span class="mendatory">*</span></label>
-                                <select class="form-control txt-field" id="exampleFormControlSelect1" ng-change="expenseTypeChnaged()" ng-model="expenseType">
+                                <select class="form-control txt-field" id="exampleFormControlSelect1" ng-change="expenseTypeChnaged()" ng-model="expenceType">
                                     <option>Fule</option>
                                     <option>Others</option>
                                 </select>
                             </div>
                         </div>
-                        <div ng-if="fule" class="col-md-12 col-sm-12 row" style="margin-bottom: 20px;">
+                        <div ng-show="fule" class="col-md-12 col-sm-12 row" style="margin-bottom: 20px;">
                             <div class="from-group  col-sm-3">
                                 <lable for="">Price / L<span class="mendatory">*</span></lable>
-                                <input class="form-control txt-field" ng-model="fulePrice" type="text" placeholder="Enter price per liter">
+                                <input class="form-control txt-field" ng-model="perLtRate" type="number" placeholder="Enter price per liter">
                             </div>
                             <div class="from-group  col-sm-3">
                                 <lable for="">Fule Quantity(Liters)<span class="mendatory">*</span></lable>
-                                <input class="form-control txt-field" ng-model="fuleQty" type="text" placeholder="Enter fule quantity(Liters)">
+                                <input class="form-control txt-field" ng-model="totalLt" type="number" placeholder="Enter fule quantity(Liters)">
                             </div>
                             <div class="from-group  col-sm-3">
                                 <lable for="">Total Amount<span class="mendatory">*</span></lable>
-                                <input class="form-control txt-field" ng-model="fuleTotalAmount" type="text" placeholder="Enter total amounts">
+                                <input class="form-control txt-field" ng-model="totalAmount" type="number" placeholder="Enter total amounts">
                             </div>
                             <div class="from-group  col-sm-3">
-                                <lable for="">Notes<span class="mendatory">*</span></lable>
-                                <input class="form-control txt-field" ng-model="fuleNotes" type="text" placeholder="Enter notes">
+                                <lable for="">Locatin<span class="mendatory">*</span></lable>
+                                <input class="form-control txt-field" ng-model="location" type="text" placeholder="Enter location">
                             </div>
                         </div>
-                        <div ng-if="others" class="col-md-12 col-sm-12 row" style="margin-bottom: 20px;">
+                        <div ng-show="others" class="col-md-12 col-sm-12 row" style="margin-bottom: 20px;">
                             <div class="from-group  col-sm-3">
                                 <lable for="">Description<span class="mendatory">*</span></lable>
-                                <input class="form-control txt-field" ng-model="otherDescription" type="text" placeholder="Enter description">
+                                <input class="form-control txt-field" ng-model="description" type="text" placeholder="Enter description">
                             </div>
                             <div class="from-group  col-sm-3">
                                 <lable for="">Total Amount<span class="mendatory">*</span></lable>
-                                <input class="form-control txt-field" ng-model="otherTotalAmount" type="text" placeholder="Enter total amounts">
+                                <input class="form-control txt-field" ng-model="totalAmount" type="text" placeholder="Enter total amounts">
                             </div>
                             <div class="from-group  col-sm-3">
                                 <lable for="">Service Location<span class="mendatory">*</span></lable>
-                                <input class="form-control txt-field" ng-model="otherServiceLocation" type="text" placeholder="Enter service location">
+                                <input class="form-control txt-field" ng-model="location" type="text" placeholder="Enter service location">
                             </div>
                         </div>
                         <div class="col-md-12 col-sm-12 row" style="margin-bottom: 20px;">
                             <lable for="" style="margin-right: 10px;margin-left: 20px;"> Upload Invoice Image<span class="mendatory"></span></lable>
-                            <input type="file" ng-model="vepfiles" name="files" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" ng-change="uploadingInvoiceImage()">
-                            <label for="">{{vep_front}}</label>
+                            <input type="file" ng-model="invoiceImage" name="files" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" ng-change="uploadingInvoiceImage()"><br>
+                            <label for="">{{fileUrl}}</label>
                         </div>
                     </div>
                     <div class="col-md-12 col-sm-12 row" style="margin-bottom: 20px;">
