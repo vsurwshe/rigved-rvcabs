@@ -18,34 +18,41 @@
                             <h5 style="color: black;"> Fill Expense Details</h5>
                         </div>
                         <div class="card-body row">
-                            <div class="from-group  col-sm-3">
+                            <div class="from-group  col-sm-4">
                                 <lable for="">Date<span class="mendatory">*</span></lable>
                                 <my-datepicker ng-model="entryDate" myid="someid"> </my-datepicker>
                             </div>
-                            <div class="from-group  col-sm-3">
+                            <div class="from-group  col-sm-4">
                                 <lable for="">Time<span class="mendatory">*</span></lable>
-                                <input class="form-control txt-field" type="text" ng-model="time" id="timepicker"/>
+                                <input class="form-control txt-field" type="text" ng-model="time" />
                             </div>
-                            <div class="from-group  col-sm-3" id="remote">
-                                <lable for="">Odometer Reading<span class="mendatory">*</span></lable>
-                                <input class="form-control txt-field" ng-model="odoMeterReading" type="text" placeholder="Current Odometer Reading">
+                            <div class="from-group  col-sm-4" id="remote">
+                                <lable for="">OdoMeter Reading<span class="mendatory">*</span></lable>
+                                <input class="form-control txt-field" ng-model="odoMeterReading" type="text" placeholder="Reading">
                                 <div ng-show="noResults"> <i class="glyphicon glyphicon-remove"></i> No Results Found</div>
                             </div>
-                            <div class="from-group  col-sm-3">
-                                <label for="exampleFormControlSelect1">Expense Type<span class="mendatory">*</span></label>
+                            <div class="from-group  col-sm-4">
+                                <label for="exampleFormControlSelect1">Dirver<span class="mendatory">*</span></label>
+                                <select class="form-control txt-field" ng-options="driver.firstName for driver in driverList" ng-model="driver">
+                                    <option value="">Select name</option>
+                                </select>
+                            </div>
+                            <div class="from-group  col-sm-4">
+                                <label for="exampleFormControlSelect1">Expense<span class="mendatory">*</span></label>
                                 <select class="form-control txt-field" id="exampleFormControlSelect1" ng-change="expenseTypeChnaged()" ng-model="expenceType">
-                                    <option>Fule</option>
-                                    <option>Others</option>
+                                    <option value="">Select type</option>
+                                    <option value="Fule">Fule</option>
+                                    <option value="Others">Others</option>
                                 </select>
                             </div>
                         </div>
                         <div ng-show="fule" class="col-md-12 col-sm-12 row" style="margin-bottom: 20px;">
                             <div class="from-group  col-sm-3">
-                                <lable for="">Price / L<span class="mendatory">*</span></lable>
+                                <lable for="">Price / L.<span class="mendatory">*</span></lable>
                                 <input class="form-control txt-field" ng-model="perLtRate" type="number" placeholder="Enter price per liter">
                             </div>
                             <div class="from-group  col-sm-3">
-                                <lable for="">Fule Quantity(Liters)<span class="mendatory">*</span></lable>
+                                <lable for="">Fule Quantity(L.)<span class="mendatory">*</span></lable>
                                 <input class="form-control txt-field" ng-model="totalLt" type="number" placeholder="Enter fule quantity(Liters)">
                             </div>
                             <div class="from-group  col-sm-3">
@@ -53,7 +60,7 @@
                                 <input class="form-control txt-field" ng-model="totalAmount" type="number" placeholder="Enter total amounts">
                             </div>
                             <div class="from-group  col-sm-3">
-                                <lable for="">Locatin<span class="mendatory">*</span></lable>
+                                <lable for="">Location<span class="mendatory">*</span></lable>
                                 <input class="form-control txt-field" ng-model="location" type="text" placeholder="Enter location">
                             </div>
                         </div>
@@ -64,7 +71,7 @@
                             </div>
                             <div class="from-group  col-sm-3">
                                 <lable for="">Total Amount<span class="mendatory">*</span></lable>
-                                <input class="form-control txt-field" ng-model="totalAmount" type="text" placeholder="Enter total amounts">
+                                <input class="form-control txt-field" ng-model="totalAmount" type="number" placeholder="Enter total amounts">
                             </div>
                             <div class="from-group  col-sm-3">
                                 <lable for="">Service Location<span class="mendatory">*</span></lable>
@@ -94,4 +101,4 @@
     $(document).ready(function(){
       $('#timepicker').mdtimepicker({format: 'hh:mm'}); //Initializes the time picker and uses the specified format (i.e. 23:30)
     });
-  </script>
+</script>

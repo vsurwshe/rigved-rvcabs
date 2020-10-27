@@ -241,7 +241,6 @@ function approveMemberCtrl($scope, $http, DotsCons, authService, $localStorage, 
 // this is add trip controller
 function addTripController($scope, $http, DotsCons, authService, $localStorage, $q, $log, Upload, $timeout, $location,) {
     // $scope.rideList = GET_RIDE_LIST;
-
     var token = authService.getCookie('globals');
     var myheader = $localStorage.myHeader[0];
     var requestHeader = $localStorage.requestHeader[0]
@@ -261,13 +260,11 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
             'Content-Type': 'application/json',
             'Authorization': token.currentUser.tokenDto.token
         }
-    }).then(function (response) {
-        console.log(response);
-    },
-        function (errResponse) {
-            console.error('Error !!');
-            return $q.reject(errResponse);
-        })
+    }).then(
+        function (response) { console.log(response) },
+        function (errResponse) {return $q.reject(errResponse);}
+    )
+    // this will fecth the car brand details
     $http({
         method: 'GET',
         url: DotsCons.SEARCH_BRAND,
@@ -276,15 +273,11 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
             'Content-Type': 'application/json',
             'Authorization': token.currentUser.tokenDto.token
         }
-    }).then(function (response) {
-        $scope.allBrands = response.data;
-        console.log($scope.allBrands)
-    },
-        function (errResponse) {
-            console.error('Error !!');
-            return $q.reject(errResponse);
-        })
-
+    }).then(
+        function (response) { $scope.allBrands = response.data },
+        function (errResponse) { return $q.reject(errResponse) }
+    )
+    // this will fetch car model
     $http({
         method: 'GET',
         url: DotsCons.SEARCH_MODEL,
@@ -293,13 +286,11 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
             'Content-Type': 'application/json',
             'Authorization': token.currentUser.tokenDto.token
         }
-    }).then(function (response) {
-        console.log(response);
-    },
-        function (errResponse) {
-            console.error('Error !!');
-            return $q.reject(errResponse);
-        })
+    }).then(
+        function (response) { console.log(response)},
+        function (errResponse) { return $q.reject(errResponse); }
+    )
+    // this will fetch car color 
     $http({
         method: 'GET',
         url: DotsCons.SEARCH_CAR_COLOR,
@@ -308,13 +299,11 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
             'Content-Type': 'application/json',
             'Authorization': token.currentUser.tokenDto.token
         }
-    }).then(function (response) {
-        console.log(response);
-    },
-        function (errResponse) {
-            console.error('Error !!');
-            return $q.reject(errResponse);
-        })
+    }).then(
+        function (response) { console.log(response); },
+        function (errResponse) { return $q.reject(errResponse); }
+    )
+    // this will fetch company details
     $http({
         method: 'GET',
         url: DotsCons.COMPANY_DETAILS,
@@ -3406,7 +3395,28 @@ function maintenanceRerportFilterCtrl($scope, $http, DotsCons, $rootScope, authS
 // this is expense controller
 function expenseCtrl($scope, $http, DotsCons, $rootScope, authService, $localStorage, $location, $q, toaster) {
     var token = authService.getCookie('globals');
-    
+    // this function will help to load initial call apis and data
+    (function(){
+        $scope.loading=true;
+        $http({
+            method: 'GET',
+            url: DotsCons.DRIVER_SEARCH + 0 + "/10/",
+            data: "",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': token.currentUser.tokenDto.token
+            }
+        }).then(
+            function (response) { 
+                $scope.driverList = response.data 
+                $scope.loading=false;
+            },
+            function (errResponse) { 
+                $scope.loading=false;
+                return $q.reject(errResponse) 
+            }
+        )
+    })(); 
     // this function will used for go to back maintence report
     $scope.maintenanceReport= function(){ $location.path('/maintenanceReport') }
     
@@ -3437,7 +3447,8 @@ function expenseCtrl($scope, $http, DotsCons, $rootScope, authService, $localSto
             "source": "Admin",
             "location":$scope.location,
             "totalAmount":$scope.totalAmount,
-            "fileUrl":$scope.fileUrl
+            "fileUrl":$scope.fileUrl,
+            "driver":$scope.driver ? $scope.driver.accountId :""
         }
         // this checking which type of expence selected
         if($scope.expenceType==="Fule"){

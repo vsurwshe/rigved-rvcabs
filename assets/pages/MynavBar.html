@@ -118,7 +118,7 @@
             <img src="assets/img/menu.png">
         </button>
         <h3 class="text-md-right myFont">{{Route}}</h3>
-        <button ng-show="travelBilling" class="btn btn-default" style="position: fixed;right: 100px;" ng-click="filters()">Filters</button>
+        <button ng-show="travelBilling" class="btn btn-default" style="position: fixed;right: 100px;" ng-click="travelFilters()">Filters</button>
         <button ng-show="maintenanceReport" class="btn btn-default" style="position: fixed;right: 100px;" ng-click="maintenanceReportFilters()">Filters</button>
         <div ng-if="travelBillingFilter" style="position: relative; left: 600px;">
             <button class="btn btn-default" style="margin-left: 32px;" ng-click="filtersApply()">Apply Filters</button>

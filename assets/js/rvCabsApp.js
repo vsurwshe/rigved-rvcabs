@@ -924,7 +924,6 @@ app.directive('typeahead', function ($filter) {
 
           scope.hover = function(index) { scope.selPos = index; }
           scope.keyPress = function(evt) {
-            console.log(evt.keyCode);
             var keys = {
               38: 'up',
               40: 'down',
