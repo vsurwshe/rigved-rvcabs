@@ -1,4 +1,4 @@
-var app = angular.module('rvCabsApp', ['ngRoute', 'ngCookies', 'ngStorage', 'toaster', 'ngFileUpload','infinite-scroll', 'google-maps', 'ui.bootstrap', 'ui.bootstrap.datetimepicker', 'ngFileUpload', 'naif.base64', 'ngImgCrop']);
+var app = angular.module('rvCabsApp', ['ngRoute', 'ngCookies', 'ngStorage', 'toaster', 'ngFileUpload','infinite-scroll', 'google-maps', 'ui.bootstrap', 'ui.bootstrap.datetimepicker', 'ngFileUpload', 'naif.base64', 'ngImgCrop','datatables']);
 /* var lip=  location.protocol+"//"+location.host;
 console.log("Local IP::",lip);
  */

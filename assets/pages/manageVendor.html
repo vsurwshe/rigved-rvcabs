@@ -300,61 +300,61 @@
     }
 
 </style>
-
+<!--Bootstrap CSS --> 
+<link href="./assets/css/datatable/angular-datatables.css" rel="stylesheet">
+<!--/Bootstrap CSS --> 
+<!--JQuery DataTables--> 
+<script src="./assets/js/bootstrap/bootstrap.min.js"></script>
+<script type="text/javascript" src="./assets/js/dataTables/dataTables.bootstrap.min.js"></script>
+<!--/JQuery DataTables --> 
 <div id="page-loading" ng-show="loading" class="ng-hide">
     <div class="loader">
         <img src="assets/img/giphy.gif" width="100" height="100" style="padding: 0">
     </div>
 </div>
-
 <div class="wrapper">
-    <!-- Sidebar  -->
-    <ng-include src="'assets/pages/MysideBar.html'"></ng-include>
-    <!-- Page Content  -->
-    <div id="content">
-        <ng-include src="'assets/pages/MynavBar.html'"></ng-include>
-        <!-- ---------------------------------------------------------------------- -->
-        <div class="col-md-12 header-board" >
-            <div class="col-md-12  col-sm-12 mb-2" style="text-align: right">
+<!-- Sidebar  -->
+<ng-include src="'assets/pages/MysideBar.html'"></ng-include>
+<!-- Page Content  -->
+<div id="content">
+<ng-include src="'assets/pages/MynavBar.html'"></ng-include>
+<!-- ---------------------------------------------------------------------- -->
+<div class="col-md-12 header-board" >
+    <div class="col-md-12  col-sm-12 mb-2" style="text-align: right">
                 <a href="#addVendor">
                 <button type="button" class="button-small" style="cursor: pointer" ng-click="ListUpcomingRide(); toggle();" ng-show="!upcomingList"><span class="myfont">Add Vendor</span></button>         
             </a>
-            </div>
-            <table class="responsive">
-                <thead>
-                    <tr>
-                        <th scope="col">Vendor Name</th>
-                        <th scope="col"> Contact Person</th>
-                        <th scope="col">Mobile Number</th>
-                        <th scope="col">GST </th>
-                        <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr  ng-repeat = "data in vendorList">
+    </div>
+    <table datatable="ng"  id="examplesVender" class="table table-striped table-bordered" cellspacing="0"  width="100%">
+        <thead>
+            <tr>
+                <th scope="col">Vendor Name</th>
+                <th scope="col"> Contact Person</th>
+                <th scope="col">Mobile Number</th>
+                <th scope="col">GST </th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat = "data in vendorList">
                         <td >{{data.companyName}}</td>
                         <td>{{data.contactPersonDtoList[0].firstName}}</td>
                         <td>{{data.contactPersonDtoList[0].mobileNumber}}</td>
                         <td >{{data.gstnumber}}</td>
                         <!-- <td data-table-header="Email">test@gmail.com</td> -->
                         <!-- <td data-table-header="Car Brand/Model">{{record.carDetailDtos[0].type.name}}/{{record.carDetailDtos[0].subType.name}}</td> -->
-                        <td data-table-header="Action">
-                            
-                        </td>
-                    </tr>
-                    <tr ng-show="NoDriverList">
+                        <td data-table-header="Action"></td>
+            </tr>
+            <tr ng-show="NoDriverList">
                         <td colspan="5">
-                            <center><img class="imgIco" src="assets/img/fuel.png" />
-                                <h3>No Vendor Available</h3>
-                            </center>
+                            <center><img class="imgIco" src="assets/img/fuel.png" /> <h3>No Vendor Available</h3></center>
                         </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <!-- ---------------------------info------------------------------------------------------ -->
-     
-        <div id="myModal" class="modal fade" role="dialog">
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!-- ---------------------------info------------------------------------------------------ -->
+<div id="myModal" class="modal fade" role="dialog">
             <div class="modal-dialog">
                 <!-- Modal content-->
                 <div class="modal-content">
@@ -370,9 +370,9 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <!---------------------------------delete Conf Model-------------------------------- -->
-        <div id="deleteConf" class="modal fade" role="dialog">
+</div>
+<!---------------------------------delete Conf Model-------------------------------- -->
+<div id="deleteConf" class="modal fade" role="dialog">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content custom-modal">
                     <div class="modal-header custom-header">
@@ -395,10 +395,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-        
-        
-    </div>
+</div>
+</div>
 </div>
 <div class="overlay"></div>
 <script>
@@ -410,5 +408,4 @@
     $('.d-accordion').on('hide.bs.collapse', function(n) {
         $(n.target).siblings('.panel-heading').find('.panel-title i').toggleClass('fa-chevron-down fa-chevron-up ');
     });
-
 </script>

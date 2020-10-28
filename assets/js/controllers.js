@@ -3329,16 +3329,90 @@ function managevendortrl(GET_VENDOR_DATA, $scope, $http, DotsCons, authService, 
 }
 
 // this is for the maintenace report control
-function maintenanceReportCtrl($scope, $http, DotsCons, $rootScope, authService, $localStorage, $location, $q, toaster, GET_CURRENT_DATA) {
-    if (GET_CURRENT_DATA != null) {
-        $rootScope.filtedData = GET_CURRENT_DATA
-        console.log("Data Filterd ",$rootScope.filtedData)
+function maintenanceReportCtrl($scope, $http, DotsCons, $rootScope, authService, $localStorage, $location, $q, toaster, GET_CURRENT_DATA, $compile,DTOptionsBuilder, DTColumnBuilder) {
+    var vm=this;
+    $scope.selected = {};
+    $scope.selectAll = false;
+    $scope.toggleAll = toggleAll;
+    $scope.toggleOne = toggleOne;
+    
+   function toggleAll (selectAll, selectedItems) {
+        console.log("Called TogelAll ",selectAll,selectedItems)
+        for (var id in selectedItems) {
+            if (selectedItems.hasOwnProperty(id)) {
+                selectedItems[id] = $scope.selectAll;
+            }
+        }
     }
+    function toggleOne (selectedItems) {
+        console.log("Called TogelOne ",selectedItems)
+        for (var id in selectedItems) {
+            if (selectedItems.hasOwnProperty(id)) {
+                if(!selectedItems[id]) {
+                    $scope.selectAll = false;
+                    return;
+                }
+            }
+        }
+        $scope.selectAll = true;
+    }
+    var titleHtml = '<input type="checkbox" ng-model="selectAll" ng-click="toggleAll(selectAll, selected)">';
     $rootScope.approvedBillsData=[
         {"driverName": "Nitin Gaikwad", "vehicleNo": "MH-43-BP-1891", "totalKms":"7853", "totalFuel":"643.56", "average":"12.20", "serviceExpenses":"3,782","grandTotalAmount":"52,370.78"},
         {"driverName": "Balkrishna", "vehicleNo": "MH-43-BP-1892", "totalKms":"8754", "totalFuel":"696.97", "average":"12.56", "serviceExpenses":"4,329","grandTotalAmount":"56,950.24"},
         {"driverName": "Suresh", "vehicleNo": "MH-43-BP-1893", "totalKms":"7853", "totalFuel":"629.23", "average":"11.87", "serviceExpenses":"3,696","grandTotalAmount":"51,202.87"},
+        {"driverName": "Nitin Gaikwad", "vehicleNo": "MH-43-BP-1891", "totalKms":"7853", "totalFuel":"643.56", "average":"12.20", "serviceExpenses":"3,782","grandTotalAmount":"52,370.78"},
+        {"driverName": "Balkrishna", "vehicleNo": "MH-43-BP-1892", "totalKms":"8754", "totalFuel":"696.97", "average":"12.56", "serviceExpenses":"4,329","grandTotalAmount":"56,950.24"},
+        {"driverName": "Suresh", "vehicleNo": "MH-43-BP-1893", "totalKms":"7853", "totalFuel":"629.23", "average":"11.87", "serviceExpenses":"3,696","grandTotalAmount":"51,202.87"},
+        {"driverName": "Nitin Gaikwad", "vehicleNo": "MH-43-BP-1891", "totalKms":"7853", "totalFuel":"643.56", "average":"12.20", "serviceExpenses":"3,782","grandTotalAmount":"52,370.78"},
+        {"driverName": "Balkrishna", "vehicleNo": "MH-43-BP-1892", "totalKms":"8754", "totalFuel":"696.97", "average":"12.56", "serviceExpenses":"4,329","grandTotalAmount":"56,950.24"},
+        {"driverName": "Suresh", "vehicleNo": "MH-43-BP-1893", "totalKms":"7853", "totalFuel":"629.23", "average":"11.87", "serviceExpenses":"3,696","grandTotalAmount":"51,202.87"},
+        {"driverName": "Nitin Gaikwad", "vehicleNo": "MH-43-BP-1891", "totalKms":"7853", "totalFuel":"643.56", "average":"12.20", "serviceExpenses":"3,782","grandTotalAmount":"52,370.78"},
+        {"driverName": "Balkrishna", "vehicleNo": "MH-43-BP-1892", "totalKms":"8754", "totalFuel":"696.97", "average":"12.56", "serviceExpenses":"4,329","grandTotalAmount":"56,950.24"},
+        {"driverName": "Suresh", "vehicleNo": "MH-43-BP-1893", "totalKms":"7853", "totalFuel":"629.23", "average":"11.87", "serviceExpenses":"3,696","grandTotalAmount":"51,202.87"},
+        {"driverName": "Nitin Gaikwad", "vehicleNo": "MH-43-BP-1891", "totalKms":"7853", "totalFuel":"643.56", "average":"12.20", "serviceExpenses":"3,782","grandTotalAmount":"52,370.78"},
+        {"driverName": "Balkrishna", "vehicleNo": "MH-43-BP-1892", "totalKms":"8754", "totalFuel":"696.97", "average":"12.56", "serviceExpenses":"4,329","grandTotalAmount":"56,950.24"},
+        {"driverName": "Suresh", "vehicleNo": "MH-43-BP-1893", "totalKms":"7853", "totalFuel":"629.23", "average":"11.87", "serviceExpenses":"3,696","grandTotalAmount":"51,202.87"},
+        {"driverName": "Nitin Gaikwad", "vehicleNo": "MH-43-BP-1891", "totalKms":"7853", "totalFuel":"643.56", "average":"12.20", "serviceExpenses":"3,782","grandTotalAmount":"52,370.78"},
+        {"driverName": "Balkrishna", "vehicleNo": "MH-43-BP-1892", "totalKms":"8754", "totalFuel":"696.97", "average":"12.56", "serviceExpenses":"4,329","grandTotalAmount":"56,950.24"},
+        {"driverName": "Suresh", "vehicleNo": "MH-43-BP-1893", "totalKms":"7853", "totalFuel":"629.23", "average":"11.87", "serviceExpenses":"3,696","grandTotalAmount":"51,202.87"},
     ]
+
+    $scope.dtOptions = DTOptionsBuilder
+    .newOptions()
+    .withOption('data', $rootScope.approvedBillsData)
+    .withOption('createdRow', function(row, data, dataIndex) {
+        // Recompiling so we can bind Angular directive to the DT
+        $compile(angular.element(row).contents())($scope);
+    })
+    // .withOption('headerCallback', function(header) {
+    //     if (!vm.headerCompiled) {
+    //         // Use this headerCompiled field to only compile header once
+    //         vm.headerCompiled = true;
+    //         $compile(angular.element(header).contents())($scope);
+    //     }
+    // })
+    .withPaginationType('full_numbers')
+    .withDisplayLength(3);
+
+    var actionsHtml = function (data, type, full, meta) {
+        return '<button class="btn ripple-infinite btn-round btn-primary materialButtons" ng-hide="no_morerecord" ng-click="showApprovedBills(data)"> view </button>';
+    }
+    $scope.dtColumns = [
+        DTColumnBuilder.newColumn(null)
+        .withTitle(titleHtml).notSortable().renderWith(function(data, type, full, meta) {
+                $scope.selected[full.id] = false;
+                return '<input type="checkbox" ng-model="selected[' + data.id + ']" onclick="toggleOne(selected)">';
+        }),
+        DTColumnBuilder.newColumn('driverName').withTitle('Driver Name'),
+        DTColumnBuilder.newColumn('vehicleNo').withTitle('Vehicle No'),
+        DTColumnBuilder.newColumn('totalKms').withTitle('Total KM').renderWith(function(data, type, full, meta) {return data+" KM";}),
+        DTColumnBuilder.newColumn('totalFuel').withTitle('Total Fuel'),
+        DTColumnBuilder.newColumn('average').withTitle('Average').renderWith(function(data, type, full, meta) {return data+" KM/L";}),
+        DTColumnBuilder.newColumn('serviceExpenses').withTitle('Service').renderWith(function(data, type, full, meta) {return "₹&nbsp;"+data;}),
+        DTColumnBuilder.newColumn('grandTotalAmount').withTitle('Grand Total Amount').renderWith(function(data, type, full, meta) {return "₹&nbsp;"+data;}),
+        DTColumnBuilder.newColumn(null).withTitle('Action').notSortable().renderWith(actionsHtml),
+    ];
 
     $rootScope.pendingBillsData=[
         {"date":"12/06/2019","driverName": "Nitin Gaikwad", "vehicleNo": "MH-43-BP-1891", "expensesItem":"Car Wash", "expenseType":"600.56", "meterReading":"68273"},
@@ -3448,7 +3522,8 @@ function expenseCtrl($scope, $http, DotsCons, $rootScope, authService, $localSto
             "location":$scope.location,
             "totalAmount":$scope.totalAmount,
             "fileUrl":$scope.fileUrl,
-            "driver":$scope.driver ? $scope.driver.accountId :""
+            "driverAccountId":$scope.driver ? $scope.driver.accountId :"",
+            "vehicleNumber":$scope.driver ? $scope.driver.accountId :""
         }
         // this checking which type of expence selected
         if($scope.expenceType==="Fule"){
