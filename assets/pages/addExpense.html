@@ -5,100 +5,107 @@
     </div>
 </div>
 <div class="wrapper">
-<!-- Sidebar  -->
-<ng-include src="'assets/pages/MysideBar.html'"></ng-include>
-<!-- Page Content  -->
+    <!-- Sidebar  -->
+    <ng-include src="'assets/pages/MysideBar.html'"></ng-include>
+    <!-- Page Content  -->
     <div id="content">
         <ng-include src="'assets/pages/MynavBar.html'"></ng-include>
         <div class="col-sm-12 header-board" style="height: 500px">
             <div class="row">
                 <div class="col-md-12 col-sm-12">
-                    <div class="card">
-                        <div class="card-header" id="headingOne"> 
-                            <h5 style="color: black;"> Fill Expense Details</h5>
-                        </div>
-                        <div class="card-body row">
-                            <div class="from-group  col-sm-4">
-                                <lable for="">Date<span class="mendatory">*</span></lable>
-                                <my-datepicker ng-model="entryDate" myid="someid"> </my-datepicker>
+                    <form name="form" class="css-form">
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h5 style="color: black;"> Fill Expense Details</h5>
                             </div>
-                            <div class="from-group  col-sm-4">
-                                <lable for="">Time<span class="mendatory">*</span></lable>
-                                <input class="form-control txt-field" type="text" ng-model="time" />
+                            <div class="card-body row">
+                                <div class="from-group  col-sm-4">
+                                    <lable for="">Date<span class="mendatory">*</span></lable>
+                                    <my-datepicker ng-model=" expence.entryDate" myid="someid"> </my-datepicker>
+                                </div>
+                                <div class="from-group  col-sm-4">
+                                    <lable for="">Time<span class="mendatory">*</span></lable>
+                                    <input class="form-control txt-field" id="timePicker" type="text" ng-model="expence.time" required="" />
+                                </div>
+                                <div class="from-group  col-sm-4" id="remote">
+                                    <lable for="">OdoMeter Reading<span class="mendatory">*</span></lable>
+                                    <input class="form-control txt-field" ng-model="expence.odoMeterReading" type="text" placeholder="Reading" required>
+                                </div>
+                                <div class="from-group  col-sm-4" id="remote">
+                                    <lable for="">Vahical Number<span class="mendatory">*</span></lable>
+                                    <input class="form-control txt-field" ng-model="expence.vehicleNumber" type="text" placeholder="Ex. MH-01-H-0001" required="">
+                                </div>
+                                <div class="from-group  col-sm-4">
+                                    <label for="exampleFormControlSelect1">Dirver<span class="mendatory">*</span></label>
+                                    <select class="form-control txt-field" ng-options="driver.firstName for driver in driverList" ng-model="expence.driver" required="">
+                                        <option value="">Select name</option>
+                                    </select>
+                                </div>
+                                <div class="from-group  col-sm-4">
+                                    <label for="exampleFormControlSelect1">Expense<span class="mendatory">*</span></label>
+                                    <select class="form-control txt-field" id="exampleFormControlSelect1" ng-change="expenseTypeChnaged(expence.expenceType)" ng-model="expence.expenceType">
+                                        <option value="">Select type</option>
+                                        <option value="Fule">Fule</option>
+                                        <option value="Others">Others</option>
+                                    </select>
+                                </div>
                             </div>
-                            <div class="from-group  col-sm-4" id="remote">
-                                <lable for="">OdoMeter Reading<span class="mendatory">*</span></lable>
-                                <input class="form-control txt-field" ng-model="odoMeterReading" type="text" placeholder="Reading">
-                                <div ng-show="noResults"> <i class="glyphicon glyphicon-remove"></i> No Results Found</div>
+                            <div ng-if="fule" class="col-md-12 col-sm-12 row" style="margin-bottom: 20px;">
+                                <div class="from-group  col-sm-3">
+                                    <lable for="">Price / L.<span class="mendatory">*</span></lable>
+                                    <input class="form-control txt-field" ng-model="expence.fule.perLtRate" type="number" placeholder="Enter price per liter">
+                                </div>
+                                <div class="from-group  col-sm-3">
+                                    <lable for="">Fule Quantity(L.)<span class="mendatory">*</span></lable>
+                                    <input class="form-control txt-field" ng-model="expence.fule.totalLt" type="number" placeholder="Enter fule quantity(Liters)">
+                                </div>
+                                <div class="from-group  col-sm-3">
+                                    <lable for="">Total Amount<span class="mendatory">*</span></lable>
+                                    <input class="form-control txt-field" ng-model="expence.fule.totalAmount" type="number" placeholder="Enter total amounts">
+                                </div>
+                                <div class="from-group  col-sm-3">
+                                    <lable for="">Location<span class="mendatory">*</span></lable>
+                                    <input class="form-control txt-field" ng-model="expence.fule.location" type="text" placeholder="Enter location">
+                                </div>
                             </div>
-                            <div class="from-group  col-sm-4">
-                                <label for="exampleFormControlSelect1">Dirver<span class="mendatory">*</span></label>
-                                <select class="form-control txt-field" ng-options="driver.firstName for driver in driverList" ng-model="driver">
-                                    <option value="">Select name</option>
-                                </select>
+                            <div ng-if="others" class="col-md-12 col-sm-12 row" style="margin-bottom: 20px;">
+                                <div class="from-group  col-sm-3">
+                                    <lable for="">Description<span class="mendatory">*</span></lable>
+                                    <input class="form-control txt-field" ng-model="expence.others.description" type="text" placeholder="Enter description">
+                                </div>
+                                <div class="from-group  col-sm-3">
+                                    <lable for="">Total Amount<span class="mendatory">*</span></lable>
+                                    <input class="form-control txt-field" ng-model="expence.others.totalAmount" type="number" placeholder="Enter total amounts">
+                                </div>
+                                <div class="from-group  col-sm-3">
+                                    <lable for="">Service Location<span class="mendatory">*</span></lable>
+                                    <input class="form-control txt-field" ng-model="expence.others.location" type="text" placeholder="Enter service location">
+                                </div>
                             </div>
-                            <div class="from-group  col-sm-4">
-                                <label for="exampleFormControlSelect1">Expense<span class="mendatory">*</span></label>
-                                <select class="form-control txt-field" id="exampleFormControlSelect1" ng-change="expenseTypeChnaged()" ng-model="expenceType">
-                                    <option value="">Select type</option>
-                                    <option value="Fule">Fule</option>
-                                    <option value="Others">Others</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div ng-show="fule" class="col-md-12 col-sm-12 row" style="margin-bottom: 20px;">
-                            <div class="from-group  col-sm-3">
-                                <lable for="">Price / L.<span class="mendatory">*</span></lable>
-                                <input class="form-control txt-field" ng-model="perLtRate" type="number" placeholder="Enter price per liter">
-                            </div>
-                            <div class="from-group  col-sm-3">
-                                <lable for="">Fule Quantity(L.)<span class="mendatory">*</span></lable>
-                                <input class="form-control txt-field" ng-model="totalLt" type="number" placeholder="Enter fule quantity(Liters)">
-                            </div>
-                            <div class="from-group  col-sm-3">
-                                <lable for="">Total Amount<span class="mendatory">*</span></lable>
-                                <input class="form-control txt-field" ng-model="totalAmount" type="number" placeholder="Enter total amounts">
-                            </div>
-                            <div class="from-group  col-sm-3">
-                                <lable for="">Location<span class="mendatory">*</span></lable>
-                                <input class="form-control txt-field" ng-model="location" type="text" placeholder="Enter location">
-                            </div>
-                        </div>
-                        <div ng-show="others" class="col-md-12 col-sm-12 row" style="margin-bottom: 20px;">
-                            <div class="from-group  col-sm-3">
-                                <lable for="">Description<span class="mendatory">*</span></lable>
-                                <input class="form-control txt-field" ng-model="description" type="text" placeholder="Enter description">
-                            </div>
-                            <div class="from-group  col-sm-3">
-                                <lable for="">Total Amount<span class="mendatory">*</span></lable>
-                                <input class="form-control txt-field" ng-model="totalAmount" type="number" placeholder="Enter total amounts">
-                            </div>
-                            <div class="from-group  col-sm-3">
-                                <lable for="">Service Location<span class="mendatory">*</span></lable>
-                                <input class="form-control txt-field" ng-model="location" type="text" placeholder="Enter service location">
+                            <div class="col-md-12 col-sm-12 row" style="margin-bottom: 20px;">
+                                <lable for="" style="margin-right: 10px;margin-left: 20px;"> Upload Invoice Image<span class="mendatory"></span></lable>
+                                <input type="file" ng-model="invoiceImage" name="files" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" ng-change="uploadingInvoiceImage()"><br>
+                                <label for="">{{fileUrl}}</label>
                             </div>
                         </div>
                         <div class="col-md-12 col-sm-12 row" style="margin-bottom: 20px;">
-                            <lable for="" style="margin-right: 10px;margin-left: 20px;"> Upload Invoice Image<span class="mendatory"></span></lable>
-                            <input type="file" ng-model="invoiceImage" name="files" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000" ng-change="uploadingInvoiceImage()"><br>
-                            <label for="">{{fileUrl}}</label>
+                            <div class="col-sm-6" style="margin-top: 10px;">
+                                <button type="submit" class="button btn-block" ng-click="saveExpense(expence)">Save Bill</button>
+                            </div>
+                            <div class="col-sm-6" style="margin-top: 10px;">
+                                <button type="button" class="button btn-block" ng-click="maintenanceReport()">Cancel</button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-12 col-sm-12 row" style="margin-bottom: 20px;">
-                        <div class="col-sm-6" style="margin-top: 10px;">
-                            <button type="button" class="button btn-block" ng-click="saveExpense()">Save Bill</button>
-                        </div>
-                        <div class="col-sm-6" style="margin-top: 10px;">
-                            <button type="button" class="button btn-block" ng-click="maintenanceReport()">Cancel</button>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <script>
-    $(document).ready(function(){
-      $('#timepicker').mdtimepicker({format: 'hh:mm'}); //Initializes the time picker and uses the specified format (i.e. 23:30)
+    $(document).ready(function() {
+        $('#timePicker').mdtimepicker({
+            format: 'hh:mm'
+        }); //Initializes the time picker and uses the specified format (i.e. 23:30)
     });
 </script>
