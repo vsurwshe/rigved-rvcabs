@@ -357,24 +357,20 @@
                 </td>
             </tr>
             <tr>
-              
-                <td colspan="10" style="position: relative; left: 500px;">Invoice No : <b>{{invoiceData.invoiceNo}}</b></td>
-              
+                <td colspan="10" style="float: right;" >Invoice No : <b>{{invoiceData.invoiceNo}}</b></td>
             </tr>
             <tr>             
-                <td colspan="10" style="position: relative; left: 500px;">Invoice Date : <b>{{invoiceData.invoiceDate}}</b></td>           
+                <td colspan="10" style="float: right;">Invoice Date : <b>{{invoiceData.invoiceDate}}</b></td>           
             </tr>
             <tr>          
                 <table>
                     <tr>
                         <td><h6>To</h6></td>
                         <td>Vendor Name : <b>{{invoiceData.fromCompanyName}}</b></td>
-                        
                     </tr>
                     <tr>
                         <td><b>{{invoiceData.toCompanyAddress}}</b></td>
-                       <td>GST Number :<b>{{invoiceData.fromGstNo}}</b></td>
-                       
+                        <td>GST Number :<b>{{invoiceData.fromGstNo}}</b></td>
                     </tr>
                     <tr>
                         <td></td>
@@ -384,8 +380,6 @@
                         <td></td>
                         <td>SAC CODE :<b>{{invoiceData.fromSACCode}}</b></td>
                     </tr>
-               
-             
                     <tr>
                         <td>GST NO <b>{{invoiceData.toGstNo}}</b></td>
                         <td>STATE CODE :<b>{{invoiceData.fromStateCode}}</b></td>
@@ -419,81 +413,59 @@
                         <td class="text-center">Service Description : Rental Services Of Road Vehicles Including Buses, Coaches, Cars, Trucks And Other Motor Vehicles, With Or Without Operator</td>
                     </tr>
                 </table>
-               
             </tr>
             <tr>
                 <table>
                     <tr>
                         <td>Suplied cars  </td>
                         <td>As per the BDC attached</td>
-                        <td rowspan = "2" colspan="2"><h6>Total Amount</h6></td>
+                        <td rowspan = "2"><h6>Total Amount</h6></td>
                     </tr>
                     <tr>
                         <td>Hire Charges</td>
                         <td>As Per Annexure</td>
-                      
                     </tr>
                     <tr>
                         <td></td>
                         <td > GST Description Under RCM  </td>
-                        <td ></td>
-                        <td colspan="2">{{invoiceData.billWitoutGST}}</td>
-                        
-                        
+                        <td>{{invoiceData.billWitoutGST}}</td>
                     </tr>
                     <tr>
                         <td></td>
                         <td >SGST/UTGS :<b>{{invoiceData.sgstutgs}}</b></td>
-                        <td ></td>
-                        <td></td>
-                        
-                        
+                        <td>{{invoiceData.sgstutgsamt}}</td>
                     </tr>
                     <tr>
                         <td></td>
                         <td >CGST : <b>{{invoiceData.cgst}}</b></td>
-                        <td ></td>
-                        <td></td>
-                        
-                        
+                        <td>{{invoiceData.cgstamt}}</td>
                     </tr>
                     <tr>
                         <td></td>
                         <td >IGST : <b>{{invoiceData.igst}}</b></td>
-                        <td ></td>
-                        <td></td>
-                        
-                        
+                        <td>{{invoiceData.igst ? invoiceData.cgstamt :""}}</td>
                     </tr>
                     <tr>
-                        <td colspan="3">Net Total</td>
+                        <td colspan="2">Net Total</td>
                         <td><b>{{invoiceData.billWitGST}}</b></td>
                     </tr>
                     <tr>
                         <td>Value Rupees in words</td>
                         <td colspan="3"></td>
                     </tr>
-                  
-                  
                 </table>
             </tr>
             <tr>
-               
             </tr>
-         
            </table>
            <table>
-
             <tr>
                 <td colspan="0" class="text1" ><h6>For RIGVED Technologies Private Ltd</h6></td>
             </tr>
-            
-       
             <tr>
                 <td colspan="0" class="text1" ><h6>Authorised Signatory</h6></td>
             </tr>
            </table>
-
            <div class="text-center">
                 <!-- <button class="btn btn-success">Save</button>
                 <button class="btn btn-success">Print</button> -->
@@ -501,10 +473,8 @@
            </div> 
            </div>
        </div>
-       
         </div>
         <!-- <div class="modal-footer">
-         
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div> -->
       </div>
@@ -543,7 +513,6 @@ function checkAll(bx) {
 </script>
 <script>
     function demoFromHTML() {
-        alert("harishj")
     var pdf = new jsPDF('p', 'pt', 'letter');
     // source can be HTML-formatted string, or a reference
     // to an actual DOM element from which the text will be scraped.
@@ -580,6 +549,7 @@ function checkAll(bx) {
         // this allow the insertion of new lines after html
         pdf.save('Test.pdf');
     }, margins);
+    $('#exampleModal').modal('hide');
 }
    
 </script>
