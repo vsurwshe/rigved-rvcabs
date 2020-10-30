@@ -20,8 +20,8 @@
     <meta name="keywords" content="book rv Cabs">
     <meta name="keywords" content="city rvCabs">
     <meta http-equiv="cache-control" content="no-cache" />
-	<meta http-equiv="Pragma" content="no-cache" />
-	<meta http-equiv="Expires" content="-1" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
     <!-- meta character set -->
     <meta charset="UTF-8">
     <!-- Site Title -->
@@ -31,8 +31,8 @@
     <!--=========================CSS==================== -->
     <link rel="stylesheet" href="assets/css/linearicons.css">
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-    <script  src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"></script>
-    <script  src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"></script>
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <link rel="stylesheet" href="assets/css/magnific-popup.css">
     <link rel="stylesheet" href="assets/css/nice-select.css">
@@ -52,7 +52,7 @@
     <script src="assets/js/angular.min.js"></script>
     <script src="assets/js/angular-cookies.js"></script>
     <script src="assets/js/angular-route.min.js"></script>
-  
+
     <!-- Storage -->
     <script src="assets/js/ngStorage.min.js"></script>
     <!-- --infinite scroll-- -->
@@ -116,17 +116,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.22-rc.0/angular-material.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.22-rc.0/angular-material.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.22-rc.0/angular-material.min.css">
-    <script src="https://rawgit.com/unconditional/jquery-table2excel/master/src/jquery.table2excel.js"></script>
+    <!-- <script src="https://rawgit.com/unconditional/jquery-table2excel/master/src/jquery.table2excel.js"></script> -->
+    <script src="./assets/js/table2excel.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.4/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/dmuy/MDTimePicker/mdtimepicker.js"></script>
     <link href="https://cdn.jsdelivr.net/gh/dmuy/MDTimePicker/mdtimepicker.css" rel="stylesheet">
-    <!--Datatable Angualrjs --> 
+    <!--Datatable Angualrjs -->
+    <!-- <link href="./assets/js/dataTables/" rel="stylesheet"> -->
     <script type="text/javascript" src="./assets/js/dataTables/jquery.dataTables.min.js"></script>
     <!-- <script type="text/javascript" src="./assets/js/angularjs/angular-datatables.min.js"></script> -->
     <script type="text/javascript" src="./assets/js/angularjs/angular-datatables.js"></script>
-    <!--/Angualrjs --> 
+    <script src="./assets/js/dataTables/buttons/dataTables.buttons.min.js"></script>
+    <script src="./assets/js/dataTables/buttons/jszip.min.js"></script>
+    <script src="./assets/js/dataTables/buttons/pdfmake.min.js"></script>
+    <script src="./assets/js/dataTables/buttons/buttons.colVis.min.js"></script>
+    <script src="./assets/js/dataTables/buttons/buttons.flash.min.js"></script>
+    <script src="./assets/js/dataTables/buttons/buttons.html5.min.js"></script>
+    <script src="./assets/js/dataTables/buttons/buttons.print.min.js"></script>
+    <script type="text/javascript" src="./assets/js/dataTables/buttons/angular-datatables.buttons.js"></script>
+    <script type="text/javascript" src="./assets/js/dataTables/bootstrap/angular-datatables.bootstrap.js"></script>
+    <!--/Angualrjs -->
 </head>
 
 <body>
@@ -141,105 +152,106 @@
             @color-primary-dark: #8ec0e4;
             @Distance: 1000px;
             body {
-            overflow: hidden;
+                overflow: hidden;
             }
-
+            
             html,
             body {
-            position: relative;
-            background: #d4dfe6;
-            min-height: 100%;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #274c5e;
+                position: relative;
+                background: #d4dfe6;
+                min-height: 100%;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #274c5e;
             }
+            
             .Container {
-              text-align: center;
-              position: relative;
+                text-align: center;
+                position: relative;
             }
-
+            
             .MainTitle {
-              display: block;
-              font-size: 2rem;
-              font-weight: lighter;
-              text-align: center;
+                display: block;
+                font-size: 2rem;
+                font-weight: lighter;
+                text-align: center;
             }
-
+            
             .MainDescription {
-              max-width: 50%;
-              font-size: 1.2rem;
-              font-weight: lighter;
+                max-width: 50%;
+                font-size: 1.2rem;
+                font-weight: lighter;
             }
-
+            
             .MainGraphic {
-              position: relative;
+                position: relative;
             }
-
+            
             .Cog {
-              width: 10rem;
-              height: 10rem;
-              fill: @color-primary-light;
-              transition: easeInOutQuint();
-              animation: CogAnimation 5s infinite;
+                width: 10rem;
+                height: 10rem;
+                fill: @color-primary-light;
+                transition: easeInOutQuint();
+                animation: CogAnimation 5s infinite;
             }
-
+            
             .Spanner {
-              position: absolute;
-              transform: rotate(20deg);
-              top: 10%;
-              left: 20%;
-              width: 10rem;
-              height: 10rem;
-              fill: @color-primary-dark;
-              animation: SpannerAnimation 4s infinite;
+                position: absolute;
+                transform: rotate(20deg);
+                top: 10%;
+                left: 20%;
+                width: 10rem;
+                height: 10rem;
+                fill: @color-primary-dark;
+                animation: SpannerAnimation 4s infinite;
             }
-
+            
             .Hummingbird {
-              position: absolute;
-              width: 3rem;
-              height: 3rem;
-              fill: @color-primary;
-              left: 50%;
-              top: 50%;
-              transform: translate(-50%, -50%);
+                position: absolute;
+                width: 3rem;
+                height: 3rem;
+                fill: @color-primary;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
             }
-
+            
             @keyframes CogAnimation {
-              0% {
-                transform: rotate(0deg);
-              }
-              100% {
-                transform: rotate(360deg);
-              }
+                0% {
+                    transform: rotate(0deg);
+                }
+                100% {
+                    transform: rotate(360deg);
+                }
             }
-
+            
             @keyframes SpannerAnimation {
-              0% {
-                transform: translate3d(20px, 20px, 1px) rotate(0deg);
-              }
-              10% {
-                transform: translate3d(-@Distance, @Distance, 1px) rotate(180deg);
-              }
-              15% {
-                transform: translate3d(-@Distance, @Distance, 1px) rotate(360deg);
-              }
-              20% {
-                transform: translate3d(@Distance, -@Distance, 1px) rotate(180deg);
-              }
-              30% {
-                transform: translate3d(-@Distance, @Distance, 1px) rotate(360deg);
-              }
-              40% {
-                transform: translate3d(@Distance, -@Distance, 1px) rotate(360deg);
-              }
-              50% {
-                transform: translate3d(-@Distance, @Distance, 1px) rotate(180deg);
-              }
-              100% {
-                transform: translate3d(0, 0px, 0px) rotate(360deg);
-              }
+                0% {
+                    transform: translate3d(20px, 20px, 1px) rotate(0deg);
+                }
+                10% {
+                    transform: translate3d(-@Distance, @Distance, 1px) rotate(180deg);
+                }
+                15% {
+                    transform: translate3d(-@Distance, @Distance, 1px) rotate(360deg);
+                }
+                20% {
+                    transform: translate3d(@Distance, -@Distance, 1px) rotate(180deg);
+                }
+                30% {
+                    transform: translate3d(-@Distance, @Distance, 1px) rotate(360deg);
+                }
+                40% {
+                    transform: translate3d(@Distance, -@Distance, 1px) rotate(360deg);
+                }
+                50% {
+                    transform: translate3d(-@Distance, @Distance, 1px) rotate(180deg);
+                }
+                100% {
+                    transform: translate3d(0, 0px, 0px) rotate(360deg);
+                }
             }
         </style>
         <div class="Container">

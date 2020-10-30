@@ -1,48 +1,48 @@
-var app = angular.module('rvCabsApp', ['ngRoute', 'ngCookies', 'ngStorage', 'toaster', 'ngFileUpload','infinite-scroll', 'google-maps', 'ui.bootstrap', 'ui.bootstrap.datetimepicker', 'ngFileUpload', 'naif.base64', 'ngImgCrop','datatables']);
+var app = angular.module('rvCabsApp', ['ngRoute', 'ngCookies', 'ngStorage', 'toaster', 'ngFileUpload', 'infinite-scroll', 'google-maps', 'ui.bootstrap', 'ui.bootstrap.datetimepicker', 'ngFileUpload', 'naif.base64', 'ngImgCrop', 'datatables', 'datatables.buttons', 'datatables.bootstrap']);
 /* var lip=  location.protocol+"//"+location.host;
 console.log("Local IP::",lip);
  */
 //var ip = 'https://dotstaxi.com/dot-services/';
-var ip = 'http://103.224.240.187:9000/'; 
+var ip = 'http://103.224.240.187:9000/';
 // var ip = 'https://staging.health5c.com/dot-services/';
 app.constant('DotsCons', {
     'LOGIN_POINT': ip + 'public/signIn/',
     'LOGOUT_POINT': ip + 'authenticate/logOut',
-    'CHANGE_PASSWORD':ip +'public/changePassword',
+    'CHANGE_PASSWORD': ip + 'public/changePassword',
     'DRIVER_REGISTRATION': ip + 'file/signup',
-    'GET_COST_CENTER': ip+'masterdata/costCenterSearch/',
-    'GET_TRAVEL_ID': ip +'masterdata/travelIdSearch',
-    'GET_EMPLOYEE_ID': ip +'masterdata/costEmployIdSearch',
+    'GET_COST_CENTER': ip + 'masterdata/costCenterSearch/',
+    'GET_TRAVEL_ID': ip + 'masterdata/travelIdSearch',
+    'GET_EMPLOYEE_ID': ip + 'masterdata/costEmployIdSearch',
     'SEARCH_MODEL': ip + 'masterdata/carBrandSubTypeSearch',
     'SEARCH_BRAND': ip + 'masterdata/carBrandSearch/',
     'SUB_TYPE': ip + 'masterdata/carCategorySearch/',
     'SEARCH_INTERRIOR': ip + 'masterdata/carIntColorSearch/',
     'SEARCH_CAR_COLOR': ip + 'masterdata/carColorSearch/',
     'COMPANY_DETAILS': ip + 'masterdata/companyDetailsSearch',
-    'GET_DATA_BY_BOOKINGID':ip +'booking/getBooking',
+    'GET_DATA_BY_BOOKINGID': ip + 'booking/getBooking',
     'DRIVER_SEARCH': ip + 'masterdata/driverSearch/',
     'FOR_USE': ip + 'masterdata/bookingSearch/',
     'TRIP_BOOKING': ip + 'booking/bookTrip',
     'ADD_COMPANY': ip + 'masterdata/addCompany/',
-    'DOCUMENT_SEARCH':ip+'masterdata/documentSearch/',
+    'DOCUMENT_SEARCH': ip + 'masterdata/documentSearch/',
     'UPLOAD_FILES': ip + 'file/upload',
     'GET_FILES': ip + 'file/getFile',
     'GET_RIDE_LIST': ip + 'booking/bookingByAccountIdFrAdmin',
-    'GET_FINISHED_LIST':ip+'booking/finishedTripByDriverFrAdmin',
-    'GET_FILTERD_DATA':ip+'bill/retriveData',
-    'GET_ALL_DATA': ip+'bill/report',
-    'GENERATE_INVOICE': ip+'bill/generateInvoice',
-    'CUSTEMER_LIST':ip+'masterdata/costomerSearch',
-    'VENDOR_LIST' :ip + 'masterdata/companyDetailsSearch',
-    'TRAVELLER_REGISTRATION' : ip+"file/userSignup",
-    'ADD_CLIENT':ip+'masterdata/addCustomer',
-    'GET_CLIENT_LIST':ip+ 'masterdata/costomerSearch',
+    'GET_FINISHED_LIST': ip + 'booking/finishedTripByDriverFrAdmin',
+    'GET_FILTERD_DATA': ip + 'bill/retriveData',
+    'GET_ALL_DATA': ip + 'bill/report',
+    'GENERATE_INVOICE': ip + 'bill/generateInvoice',
+    'CUSTEMER_LIST': ip + 'masterdata/costomerSearch',
+    'VENDOR_LIST': ip + 'masterdata/companyDetailsSearch',
+    'TRAVELLER_REGISTRATION': ip + "file/userSignup",
+    'ADD_CLIENT': ip + 'masterdata/addCustomer',
+    'GET_CLIENT_LIST': ip + 'masterdata/costomerSearch',
     //'APPROVE_MEMBER_LIST': ip + 'userInfo/driverApproveList',
-    'ACCPET_RIDE':ip + 'booking/bookingNotificationResponse',
-    'RE_ASSIGN_RIDE' :ip +"booking/allotingDriver/",
+    'ACCPET_RIDE': ip + 'booking/bookingNotificationResponse',
+    'RE_ASSIGN_RIDE': ip + "booking/allotingDriver/",
     'UPDATE_EACH_DOCUMENT': ip + 'userInfo/updateDoc',
     'APPROVE_MEMBER': ip + 'userInfo/approveDriver/',
-    'MY_MEMBER_LIST': ip + 'userInfo/masterCUGList', 
+    'MY_MEMBER_LIST': ip + 'userInfo/masterCUGList',
     'DRIVER_CUSTOMER_LIST': ip + 'userInfo/driverCUGList',
     'CAB_BOOKING': ip + 'booking/bookingCab',
     'CAB_BOOKING_MASTER': ip + 'booking/bookingCab',
@@ -65,22 +65,22 @@ app.constant('DotsCons', {
     'DELETE_FARE_BY_ID': ip + 'masterCard/deleteById/',
     'SEARCH_CUSTOMER_BY_NAME': ip + 'userSearchByMobile/',
     'ONLINE_OFFLINE': ip + 'userInfo/statusChange/',
-    'GET_FEEDBACK':ip+'trip/getFeedback/',
-    'SAVE_EXPENSE': ip+'expenditure/create/'
+    'GET_FEEDBACK': ip + 'trip/getFeedback/',
+    'SAVE_EXPENSE': ip + 'expenditure/create/'
 });
 
 // this app config provider
-app.config(['$qProvider', function ($qProvider) {
+app.config(['$qProvider', function($qProvider) {
     $qProvider.errorOnUnhandledRejections(false);
 }]);
 
 // this is app config location povider 
-app.config(['$locationProvider', function ($locationProvider) {
+app.config(['$locationProvider', function($locationProvider) {
     $locationProvider.hashPrefix('');
 }]);
 
 // this app config provide compile provider
-app.config(['$compileProvider', function ($compileProvider) {
+app.config(['$compileProvider', function($compileProvider) {
     //$compileProvider.debugInfoEnabled(false);
     //$compileProvider.commentDirectivesEnabled(false);
     //$compileProvider.cssClassDirectivesEnabled(false);
@@ -88,7 +88,7 @@ app.config(['$compileProvider', function ($compileProvider) {
 }]);
 
 // this app config provide route paths
-app.config(['$routeProvider', function ($routeProvider) {
+app.config(['$routeProvider', function($routeProvider) {
     $routeProvider
         .when('/privacyPolicy', {
             templateUrl: 'assets/pages/privacyPolicy.html',
@@ -112,18 +112,18 @@ app.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'assets/pages/manageTrip.html',
             controller: manageTripController,
             resolve: {
-                GET_RIDE_LIST: function (authService, DotsCons, $http) {
+                GET_RIDE_LIST: function(authService, DotsCons, $http) {
                     var token = authService.getCookie('globals');
                     return $http({
                         method: 'GET',
-                        url: DotsCons.GET_RIDE_LIST+"/0/10",
+                        url: DotsCons.GET_RIDE_LIST + "/0/10",
                         data: "",
                         headers: {
                             'Content-Type': 'application/json',
                             'Authorization': token.currentUser.tokenDto.token
                         }
-                    }).then(function (response) { return response.data },
-                        function (errResponse) { return $q.reject(errResponse) }
+                    }).then(function(response) { return response.data },
+                        function(errResponse) { return $q.reject(errResponse) }
                     )
                 },
             }
@@ -132,22 +132,22 @@ app.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'assets/pages/addtrip.html',
             controller: addTripController
         })
-        .when('/approveMember',{
-            templateUrl : 'assets/pages/approveDriver.html',
-            controller :approveMemberCtrl,
+        .when('/approveMember', {
+            templateUrl: 'assets/pages/approveDriver.html',
+            controller: approveMemberCtrl,
             resolve: {
-                GET_Drivet_LIST: function (authService, DotsCons, $http) {
+                GET_Drivet_LIST: function(authService, DotsCons, $http) {
                     var token = authService.getCookie('globals');
                     return $http({
                         method: 'GET',
-                        url: DotsCons.DRIVER_SEARCH+0+"/10/",
+                        url: DotsCons.DRIVER_SEARCH + 0 + "/10/",
                         data: "",
                         headers: {
                             'Content-Type': 'application/json',
                             'Authorization': token.currentUser.tokenDto.token
                         }
-                    }).then(function (response) { return response.data },
-                        function (errResponse) { return $q.reject(errResponse) }
+                    }).then(function(response) { return response.data },
+                        function(errResponse) { return $q.reject(errResponse) }
                     )
                 },
             }
@@ -156,10 +156,10 @@ app.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'assets/pages/login.html',
             controller: LoginCtrl,
             resolve: {
-                CHECK_AUTH: function (authService, $location, DotsCons, $http) {
+                CHECK_AUTH: function(authService, $location, DotsCons, $http) {
                     var token = authService.getCookie('globals');
                     if (token != undefined) {
-                        $http.get(DotsCons.CHECK_IF_LOGIN + token.currentUser.h5cAuthToken).then(function (res) {
+                        $http.get(DotsCons.CHECK_IF_LOGIN + token.currentUser.h5cAuthToken).then(function(res) {
                             if (res.data.singleResult == true) {
                                 switch (token.currentUser.Role) {
                                     case "0":
@@ -176,8 +176,7 @@ app.config(['$routeProvider', function ($routeProvider) {
                                         break;
                                 }
                             }
-                        }, function (reason) { $location.path('/logout') }
-                        )
+                        }, function(reason) { $location.path('/logout') })
                     }
                 }
             }
@@ -186,24 +185,24 @@ app.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'assets/pages/travelBilling.html',
             controller: travelBillingCtrl,
             resolve: {
-                GET_CURRENT_DATA: function (authService, DotsCons,$rootScope, $http) {
+                GET_CURRENT_DATA: function(authService, DotsCons, $rootScope, $http) {
                     var token = authService.getCookie('globals');
-                    if($rootScope.data != null){
+                    if ($rootScope.data != null) {
                         var data = $rootScope.data
-                    }else{
+                    } else {
                         var data = {}
-                     }
+                    }
                     return $http({
                         method: 'post',
-                        url: DotsCons.GET_FILTERD_DATA+"/0/10/",
+                        url: DotsCons.GET_FILTERD_DATA + "/0/10/",
                         data: data,
                         headers: {
                             'Content-Type': 'application/json',
                             'Authorization': token.currentUser.tokenDto.token
                         }
                     }).then(
-                        function (response) { return response.data },
-                        function (errResponse) { return $q.reject(errResponse) }
+                        function(response) { return response.data },
+                        function(errResponse) { return $q.reject(errResponse) }
                     )
                 },
             }
@@ -213,24 +212,24 @@ app.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'assets/pages/maintenanceReport.html',
             controller: maintenanceReportCtrl,
             resolve: {
-                GET_CURRENT_DATA: function (authService, DotsCons,$rootScope, $http) {
+                GET_CURRENT_DATA: function(authService, DotsCons, $rootScope, $http) {
                     var token = authService.getCookie('globals');
-                    if($rootScope.data != null){
+                    if ($rootScope.data != null) {
                         var data = $rootScope.data
-                    }else{
+                    } else {
                         var data = {}
-                     }
+                    }
                     return $http({
                         method: 'post',
-                        url: DotsCons.GET_FILTERD_DATA+"/0/10/",
+                        url: DotsCons.GET_FILTERD_DATA + "/0/10/",
                         data: data,
                         headers: {
                             'Content-Type': 'application/json',
                             'Authorization': token.currentUser.tokenDto.token
                         }
                     }).then(
-                        function (response) { return response.data},
-                        function (errResponse) { return $q.reject(errResponse)}
+                        function(response) { return response.data },
+                        function(errResponse) { return $q.reject(errResponse) }
                     )
                 },
             }
@@ -245,7 +244,7 @@ app.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'assets/pages/maintenanceReportFillters.html',
             controller: maintenanceRerportFilterCtrl
         })
-        .when('/addExpense',{
+        .when('/addExpense', {
             templateUrl: 'assets/pages/addExpense.html',
             controller: expenseCtrl
         })
@@ -257,19 +256,19 @@ app.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'assets/pages/customerList.html',
             controller: customerListCtrl,
             resolve: {
-                GET_CUSTMER_DATA: function (authService, DotsCons, $http) {
+                GET_CUSTMER_DATA: function(authService, DotsCons, $http) {
                     var token = authService.getCookie('globals');
                     return $http({
                         method: 'get',
-                        url: DotsCons.CUSTEMER_LIST+"/0/10/",
+                        url: DotsCons.CUSTEMER_LIST + "/0/10/",
                         data: "",
                         headers: {
                             'Content-Type': 'application/json',
                             'Authorization': token.currentUser.tokenDto.token
                         }
                     }).then(
-                        function (response) { return response.data },
-                        function (errResponse) { return $q.reject(errResponse) }
+                        function(response) { return response.data },
+                        function(errResponse) { return $q.reject(errResponse) }
                     )
                 },
             }
@@ -281,42 +280,42 @@ app.config(['$routeProvider', function ($routeProvider) {
         })
         .when('/travelerReg', {
             templateUrl: 'assets/pages/travelerRegistration.html',
-            controller :customerListCtrl,
+            controller: customerListCtrl,
             resolve: {
-                GET_CUSTMER_DATA: function (authService, DotsCons, $http) {
+                GET_CUSTMER_DATA: function(authService, DotsCons, $http) {
                     var token = authService.getCookie('globals');
                     return $http({
                         method: 'get',
-                        url: DotsCons.CUSTEMER_LIST+"/0/10/",
+                        url: DotsCons.CUSTEMER_LIST + "/0/10/",
                         data: "",
                         headers: {
                             'Content-Type': 'application/json',
                             'Authorization': token.currentUser.tokenDto.token
                         }
                     }).then(
-                        function (response) { return response.data },
-                        function (errResponse) { return $q.reject(errResponse) }
+                        function(response) { return response.data },
+                        function(errResponse) { return $q.reject(errResponse) }
                     )
                 },
             }
         })
         .when('/manageVendor', {
             templateUrl: 'assets/pages/manageVendor.html',
-            controller : managevendortrl,
+            controller: managevendortrl,
             resolve: {
-                GET_VENDOR_DATA: function (authService, DotsCons, $http) {
+                GET_VENDOR_DATA: function(authService, DotsCons, $http) {
                     var token = authService.getCookie('globals');
                     return $http({
                         method: 'get',
-                        url: DotsCons.VENDOR_LIST+"/0/20/",
+                        url: DotsCons.VENDOR_LIST + "/0/20/",
                         data: "",
                         headers: {
                             'Content-Type': 'application/json',
                             'Authorization': token.currentUser.tokenDto.token
                         }
                     }).then(
-                        function (response) { return response.data },
-                        function (errResponse) { return $q.reject(errResponse) }
+                        function(response) { return response.data },
+                        function(errResponse) { return $q.reject(errResponse) }
                     )
                 },
             }
@@ -327,39 +326,39 @@ app.config(['$routeProvider', function ($routeProvider) {
         })
         .when('/manageClient', {
             templateUrl: 'assets/pages/manageClient.html',
-            controller : manageClientCtrl,
+            controller: manageClientCtrl,
             resolve: {
-                GET_CLIENT_DATA: function (authService, DotsCons, $http) {
+                GET_CLIENT_DATA: function(authService, DotsCons, $http) {
                     var token = authService.getCookie('globals');
                     return $http({
                         method: 'get',
-                        url: DotsCons.GET_CLIENT_LIST+"/0/20/",
+                        url: DotsCons.GET_CLIENT_LIST + "/0/20/",
                         data: "",
                         headers: {
                             'Content-Type': 'application/json',
                             'Authorization': token.currentUser.tokenDto.token
                         }
                     }).then(
-                        function (response) { return response.data },
-                        function (errResponse) { return $q.reject(errResponse)}
+                        function(response) { return response.data },
+                        function(errResponse) { return $q.reject(errResponse) }
                     )
                 },
             }
         })
         .when('/addClient', {
             templateUrl: 'assets/pages/addClient.html',
-            controller : addClientController,
+            controller: addClientController,
         })
         .when('/profile', {
             templateUrl: 'assets/pages/profile.html',
-            controller :profileCtrl
+            controller: profileCtrl
         })
-        .when('/help',{
-            templateUrl:'assets/pages/help.html'
+        .when('/help', {
+            templateUrl: 'assets/pages/help.html'
         })
         .when("/logout", {
             templateUrl: "assets/pages/login.html",
-            controller : LogoutCtrl
+            controller: LogoutCtrl
 
         })
         .when("/terms", {
@@ -379,8 +378,8 @@ app.config(['$routeProvider', function ($routeProvider) {
 }]);
 
 // this is main root scope with localstorage
-app.run(function ($rootScope, $localStorage) {
-    $rootScope.$on('$routeChangeSuccess', function (e, current, pre) {
+app.run(function($rootScope, $localStorage) {
+    $rootScope.$on('$routeChangeSuccess', function(e, current, pre) {
         var fullRoute = current.$$route.originalPath,
             routeParams = current.params,
             resolvedRoute;
@@ -399,12 +398,12 @@ app.run(function ($rootScope, $localStorage) {
 /* ------------------------Clean template chache-------------- */
 
 // this is app Nav bar controller 
-app.controller("NavBarCtrl", function ($scope, $route, $localStorage) {
+app.controller("NavBarCtrl", function($scope, $route, $localStorage) {
     /* ---------------------------------------------- */
-    $scope.routeRefresh = function () {
-        $route.refresh();
-    }
-    /* ---------------------------------------------- */
+    $scope.routeRefresh = function() {
+            $route.refresh();
+        }
+        /* ---------------------------------------------- */
     switch ($localStorage.RouteName) {
         case '/':
             $scope.loginActive = "active";
@@ -422,29 +421,29 @@ app.controller("NavBarCtrl", function ($scope, $route, $localStorage) {
 });
 
 // this is app dashboard nav bar controller
-app.controller("DashNavBarCtrl", function ($scope, $http, authService, $location, DotsCons, $localStorage, $route) {
+app.controller("DashNavBarCtrl", function($scope, $http, authService, $location, DotsCons, $localStorage, $route) {
     var token = authService.getCookie('globals');
     /* ------------------------------------------------ */
     if (token != undefined) {
         var config = {
-            headers: {
-                'Content-Type': 'application/json',
-                'h5cAuthToken': token.currentUser.h5cAuthToken
+                headers: {
+                    'Content-Type': 'application/json',
+                    'h5cAuthToken': token.currentUser.h5cAuthToken
+                }
             }
-        }
-        /* ----------Logout function from nav bar----------- */
-        $scope.logout = function () { $location.path('/logout') }
+            /* ----------Logout function from nav bar----------- */
+        $scope.logout = function() { $location.path('/logout') }
         $scope.ShowSidebar = true;
-        $scope.shownav = function () { $scope.ShowSidebar = !$scope.ShowSidebar; }
-        /* ---------------------------------------------- */
-        $scope.gotoProfile = function () { $location.path('/profile'); }
-        /* ---------------------------------------------- */
-        $scope.gotoRideList = function () { $location.path('/rideList'); }
-        $scope.travelFilters = function (){ $location.path('/travelBillingFilters') }
-        $scope.maintenanceReportFilters = function (){ $location.path('/maintenanceReportFilter') }
-        /* ---------------------------------------------- */
-        $scope.routeRefresh = function () { $route.refresh(); }
-        /* ---------------------------------------------- */
+        $scope.shownav = function() { $scope.ShowSidebar = !$scope.ShowSidebar; }
+            /* ---------------------------------------------- */
+        $scope.gotoProfile = function() { $location.path('/profile'); }
+            /* ---------------------------------------------- */
+        $scope.gotoRideList = function() { $location.path('/rideList'); }
+        $scope.travelFilters = function() { $location.path('/travelBillingFilters') }
+        $scope.maintenanceReportFilters = function() { $location.path('/maintenanceReportFilter') }
+            /* ---------------------------------------------- */
+        $scope.routeRefresh = function() { $route.refresh(); }
+            /* ---------------------------------------------- */
         switch ($localStorage.RouteName) {
             case '/rideList':
                 $scope.Route = "Ride History";
@@ -512,16 +511,16 @@ app.controller("DashNavBarCtrl", function ($scope, $http, authService, $location
                 break;
             case '/maintenanceReport':
                 $scope.Route = "Maintenance Report";
-                $scope.maintanceReportFilter=false;
+                $scope.maintanceReportFilter = false;
                 $scope.maintenanceReport = true;
                 break;
             case '/maintenanceDetaills':
                 $scope.Route = "Driver Maintenance & Expenses Detaills";
-                $scope.maintanceReportFilter=false;
+                $scope.maintanceReportFilter = false;
                 break;
             case '/maintenanceReportFilter':
                 $scope.Route = "Maintenance Report Filter";
-                $scope.maintanceReportFilter=true;
+                $scope.maintanceReportFilter = true;
                 $scope.travelBillingFilter = false;
                 break;
             case '/addExpense':
@@ -534,41 +533,41 @@ app.controller("DashNavBarCtrl", function ($scope, $http, authService, $location
             case '/travelBillingFilters':
                 $scope.Route = "Filters"
                 $scope.travelBillingFilter = true;
-                $scope.maintanceReportFilter=false;
+                $scope.maintanceReportFilter = false;
                 break;
         }
         /* -----------GEtting profile info------------- */
-        $scope.UserprofileData = function () {
-            $http.get(DotsCons.USER_PROFILE_DATA, config).then(function (res) {
+        $scope.UserprofileData = function() {
+            $http.get(DotsCons.USER_PROFILE_DATA, config).then(function(res) {
                 if (res.data.status == '$200') {
                     $scope.profileData = res.data.singleResult;
                     $scope.acctdetail = $scope.profileData.accountDto.role
                 }
-            }, function (reason) {
+            }, function(reason) {
                 if (reason.status == 403) { $location.path('/logout') }
             });
         }
         $scope.UserprofileData();
         /* -------------------------------------------- */
-        $scope.$on("call", function () { $scope.UserprofileData(); });
+        $scope.$on("call", function() { $scope.UserprofileData(); });
         $scope.online = $localStorage.online_status;
         /* ------------ONLINE OFFLINE TOGGLE----------- */
-        $scope.ToggleOnline = function (flag) {
-        $http.get(DotsCons.ONLINE_OFFLINE + flag, config).then(function (res) {
-            if (res.data.singleResult != undefined) {
-                $scope.online = res.data.singleResult;
-            } else {
-                $scope.online = false;
+        $scope.ToggleOnline = function(flag) {
+                $http.get(DotsCons.ONLINE_OFFLINE + flag, config).then(function(res) {
+                    if (res.data.singleResult != undefined) {
+                        $scope.online = res.data.singleResult;
+                    } else {
+                        $scope.online = false;
+                    }
+                    /* ----------------------------------- */
+                    if (res.data.singleResult == true) {
+                        $localStorage.online_status = 1;
+                    } else {
+                        $localStorage.online_status = 0;
+                    }
+                }, function(reason) { console.log("reson", reason) })
             }
-            /* ----------------------------------- */
-            if (res.data.singleResult == true) {
-                $localStorage.online_status = 1;
-            } else {
-                $localStorage.online_status = 0;
-            }
-        }, function (reason) { console.log("reson", reason)})
-        }
-        /* ------------------------------------------- */
+            /* ------------------------------------------- */
         if ($localStorage.online_status == 3) {
             $scope.ToggleOnline(true);
         } else if ($localStorage.online_status == 1) {
@@ -580,20 +579,20 @@ app.controller("DashNavBarCtrl", function ($scope, $http, authService, $location
 });
 
 // this is app sidebar controller
-app.controller("sidebarCtrl", function ($scope, $http, authService, $location, DotsCons, $localStorage) {
+app.controller("sidebarCtrl", function($scope, $http, authService, $location, DotsCons, $localStorage) {
     var token = authService.getCookie('globals');
     $scope.LoginRole = token.currentUser.tokenDto.token;
     if (token != undefined) {
         /* ------------------------------------------------ */
         var config = {
-            headers: {
-                'Content-Type': 'application/json',
-                'h5cAuthToken': token.currentUser.h5cAuthToken
+                headers: {
+                    'Content-Type': 'application/json',
+                    'h5cAuthToken': token.currentUser.h5cAuthToken
+                }
             }
-        }
-        /* ----------Logout function from nav bar----------- */
-        $scope.logout = function () { $location.path('/logout') }
-        /* ---------------------------------------------- */
+            /* ----------Logout function from nav bar----------- */
+        $scope.logout = function() { $location.path('/logout') }
+            /* ---------------------------------------------- */
         switch ($localStorage.RouteName) {
             case '/rideList':
                 $scope.rideList = "active";
@@ -660,7 +659,7 @@ app.controller("sidebarCtrl", function ($scope, $http, authService, $location, D
 });
 
 // this is app factory for auth service
-app.factory("authService", ['$cookies', '$q', function ($cookies, $q) {
+app.factory("authService", ['$cookies', '$q', function($cookies, $q) {
     var globals;
     var deferred = $q.defer();
     /*function makeid() {
@@ -690,7 +689,7 @@ app.factory("authService", ['$cookies', '$q', function ($cookies, $q) {
 }]);
 
 /* -------Factory method for Save Document Details---------- */
-app.factory("UPDATE_DOCUMENT", [function () {
+app.factory("UPDATE_DOCUMENT", [function() {
     var data = {
         "id": "",
         "frontImagePath": "",
@@ -708,33 +707,33 @@ app.factory("UPDATE_DOCUMENT", [function () {
         "source": "Self"
     };
     return {
-        Setid: function (a) { data.id = a },
-        SetfrontImagePath: function (b) { data.frontImagePath = b },
-        SetbackImagePath: function (c) { data.backImagePath = c },
-        SetdocumentNumber: function (d) { data.documentNumber = d},
-        SetdocumentType: function (e) { data.documentType = e },
-        SetdriverId: function (f) { data.driverId = f },
-        Setfield1: function (g) { data.field1 = g },
-        Setfield2: function (h) { data.field2 = h },
-        Setfield3: function (i) { data.field3 = i },
-        Setfield4: function (j) { data.field4 = j },
-        Setfield5: function (k) { data.field5 = k },
-        Setfield6: function (l) { data.field6 = l;},
-        Setfield7: function (n) { data.field7 = n;},
-        getData: function () { return data;}
+        Setid: function(a) { data.id = a },
+        SetfrontImagePath: function(b) { data.frontImagePath = b },
+        SetbackImagePath: function(c) { data.backImagePath = c },
+        SetdocumentNumber: function(d) { data.documentNumber = d },
+        SetdocumentType: function(e) { data.documentType = e },
+        SetdriverId: function(f) { data.driverId = f },
+        Setfield1: function(g) { data.field1 = g },
+        Setfield2: function(h) { data.field2 = h },
+        Setfield3: function(i) { data.field3 = i },
+        Setfield4: function(j) { data.field4 = j },
+        Setfield5: function(k) { data.field5 = k },
+        Setfield6: function(l) { data.field6 = l; },
+        Setfield7: function(n) { data.field7 = n; },
+        getData: function() { return data; }
     }
 }]);
 /*---------------------------Change Password ------------------*/
 
-app.factory('CHANGE_PASS', [function () {
+app.factory('CHANGE_PASS', [function() {
     var data = {
         "newPassword": "",
         "accountId": ""
     };
     return {
-        setPass: function (pass) { data.newPassword = pass; },
-        setAcc: function (accId) { data.accountId = accId; },
-        getData: function () { return data; }
+        setPass: function(pass) { data.newPassword = pass; },
+        setAcc: function(accId) { data.accountId = accId; },
+        getData: function() { return data; }
     };
 }]);
 
@@ -746,7 +745,7 @@ app.directive('myDatepicker', function() {
             myid: "@"
         },
         templateUrl: 'assets/pages/datepicker.html',
-          require: 'ngModel',
+        require: 'ngModel',
         link: function(scope, element) {
             scope.popupOpen = false;
             scope.openPopup = function($event) {
@@ -755,15 +754,15 @@ app.directive('myDatepicker', function() {
                 scope.popupOpen = true;
             };
             scope.open = function($event) {
-              $event.preventDefault();
-              $event.stopPropagation();
-              scope.opened = true;
+                $event.preventDefault();
+                $event.stopPropagation();
+                scope.opened = true;
             };
         }
     };
-  });
+});
 /* -------------Factory Method for Add fare card------------ */
-app.factory("ADD_FARE_CHART", [function () {
+app.factory("ADD_FARE_CHART", [function() {
     var data = {
         driverId: "",
         dayId: "",
@@ -773,31 +772,31 @@ app.factory("ADD_FARE_CHART", [function () {
         rate: ""
     };
     return {
-        setdriverId: function (a) { data.driverId = a; },
-        setdayId: function (b) { data.dayId = b; },
-        setmodelId: function (c) { data.modelId = c; },
-        setfromTiming: function (d) { data.fromTiming = d; },
-        settoTiming: function (e) { data.toTiming = e; },
-        setrate: function (f) { data.rate = f; },
-        getData: function () { return data; }
+        setdriverId: function(a) { data.driverId = a; },
+        setdayId: function(b) { data.dayId = b; },
+        setmodelId: function(c) { data.modelId = c; },
+        setfromTiming: function(d) { data.fromTiming = d; },
+        settoTiming: function(e) { data.toTiming = e; },
+        setrate: function(f) { data.rate = f; },
+        getData: function() { return data; }
     }
 }]);
 
 /* -------------------Profile Pic Upload-------------------- */
-app.factory("PROFILE_PIC_UPLOAD", [function () {
+app.factory("PROFILE_PIC_UPLOAD", [function() {
     var data = {
         "fileName": "",
         "contentType": "",
         "content": ""
     };
     return {
-        set_fileName: function (a) { data.fileName = a; },
-        set_contentType: function (b) { data.contentType = b; },
-        set_content: function (c) { data.content = c; },
-        getData: function () { return data }
+        set_fileName: function(a) { data.fileName = a; },
+        set_contentType: function(b) { data.contentType = b; },
+        set_content: function(c) { data.content = c; },
+        getData: function() { return data }
     }
 }]);
-app.factory("tripBooking", [function () {
+app.factory("tripBooking", [function() {
     var data = {
         "carHire": "",
         "carUse": "",
@@ -838,9 +837,8 @@ app.factory("tripBooking", [function () {
         "tripStatus": 0
     }
 }])
-app.factory("DOCUMENT_UPDATE", [function () {
-    var data =
-    {
+app.factory("DOCUMENT_UPDATE", [function() {
+    var data = {
         "source": "",
         "id": "",
         "driverId": "",
@@ -857,112 +855,112 @@ app.factory("DOCUMENT_UPDATE", [function () {
         "field7": ""
     };
     return {
-        set_source: function (source) { data.source = source; },
-        set_id: function (id) { data.id = id; },
-        set_driverId: function (driId) { data.driverId = driId; },
-        set_documentType: function (docType) { data.documentType = docType; },
-        set_frontImagePath: function (frontImgPath) { data.frontImagePath = frontImgPath; },
-        set_backImagePath: function (backImgpath) { data.backImagePath = backImgpath; },
-        set_documentNumber: function (docNum) { data.documentNumber = docNum; },
-        set_field1: function (field1) { data.field1 = field1; },
-        set_field2: function (field2) { data.field2 = field2; },
-        set_field3: function (field3) { data.field3 = field3; },
-        set_field4: function (field4) { data.field4 = field4; },
-        set_field5: function (field5) { data.field5 = field5; },
-        set_field6: function (field6) { data.field6 = field6; },
-        set_field7: function (field7) { data.field7 = field7; },
+        set_source: function(source) { data.source = source; },
+        set_id: function(id) { data.id = id; },
+        set_driverId: function(driId) { data.driverId = driId; },
+        set_documentType: function(docType) { data.documentType = docType; },
+        set_frontImagePath: function(frontImgPath) { data.frontImagePath = frontImgPath; },
+        set_backImagePath: function(backImgpath) { data.backImagePath = backImgpath; },
+        set_documentNumber: function(docNum) { data.documentNumber = docNum; },
+        set_field1: function(field1) { data.field1 = field1; },
+        set_field2: function(field2) { data.field2 = field2; },
+        set_field3: function(field3) { data.field3 = field3; },
+        set_field4: function(field4) { data.field4 = field4; },
+        set_field5: function(field5) { data.field5 = field5; },
+        set_field6: function(field6) { data.field6 = field6; },
+        set_field7: function(field7) { data.field7 = field7; },
 
-        getData: function () { return data }
+        getData: function() { return data }
 
     }
 }]);
-app.directive('typeahead', function ($filter) {
-    return {
-        restict: 'AEC',
-        scope: {
-          items: '='
-        },
-        require: 'ngModel',
-        link: function(scope, elem, attrs, ngModel) {
-          var blur = false;
-          var original = scope.items;
-          scope.focused = false;
-          scope.list = [];
-          ngModel.$modelValue = [];
-          scope.filteredItems = scope.items;
-          scope.selPos = 0;
-          scope.focusIn = function() {
-            if (!scope.focused){
-              scope.focused = true;
-              blur = false;
-              scope.selPos = 0;
-            }
-          };
-          scope.focusOut = function() {
-            if (!blur) {
-              scope.focused = false;
-            } else {
-              console.log("focusing");
-              angular.element(elem).find('input')[0].focus();
-              blur = false;
-            }
-          };
-          scope.getDisplayItem = function(item) { return item[attrs.displayitem]; };
-          scope.getDisplayTag = function(item) { return item[attrs.displaytag];};
-          scope.addItem = function(item) {
-            scope.list.push(item);
-            scope.itemsearch = "";
-            blur = true;
-            if (scope.selPos >= scope.filteredItems.length-1) { scope.selPos--;}
-            ngModel.$setViewValue(scope.list);
-          }
-          
-          scope.removeItem = function(item) {
-            scope.list.splice(scope.list.indexOf(item), 1);
-            ngModel.$setViewValue(scope.list);
-          }
+app.directive('typeahead', function($filter) {
+        return {
+            restict: 'AEC',
+            scope: {
+                items: '='
+            },
+            require: 'ngModel',
+            link: function(scope, elem, attrs, ngModel) {
+                var blur = false;
+                var original = scope.items;
+                scope.focused = false;
+                scope.list = [];
+                ngModel.$modelValue = [];
+                scope.filteredItems = scope.items;
+                scope.selPos = 0;
+                scope.focusIn = function() {
+                    if (!scope.focused) {
+                        scope.focused = true;
+                        blur = false;
+                        scope.selPos = 0;
+                    }
+                };
+                scope.focusOut = function() {
+                    if (!blur) {
+                        scope.focused = false;
+                    } else {
+                        console.log("focusing");
+                        angular.element(elem).find('input')[0].focus();
+                        blur = false;
+                    }
+                };
+                scope.getDisplayItem = function(item) { return item[attrs.displayitem]; };
+                scope.getDisplayTag = function(item) { return item[attrs.displaytag]; };
+                scope.addItem = function(item) {
+                    scope.list.push(item);
+                    scope.itemsearch = "";
+                    blur = true;
+                    if (scope.selPos >= scope.filteredItems.length - 1) { scope.selPos--; }
+                    ngModel.$setViewValue(scope.list);
+                }
 
-          scope.hover = function(index) { scope.selPos = index; }
-          scope.keyPress = function(evt) {
-            var keys = {
-              38: 'up',
-              40: 'down',
-              8 : 'backspace',
-              13: 'enter',
-              9 : 'tab',
-              27: 'esc'
-            };
-            
-            switch (evt.keyCode) {
-              case 13: 
-                if(scope.selPos > -1) {
-                  scope.addItem(scope.filteredItems[scope.selPos]);
+                scope.removeItem = function(item) {
+                    scope.list.splice(scope.list.indexOf(item), 1);
+                    ngModel.$setViewValue(scope.list);
                 }
-                break;
-              case 8: 
-                if (!scope.itemsearch || scope.itemsearch.length == 0) {
-                  if (scope.list.length > 0) {
-                    scope.list.pop();
-                  }
-                }
-                break;
-              case 38: 
-                if (scope.selPos > 0) {
-                  scope.selPos--;
-                } 
-                break;
-              case 40: 
-                if (scope.selPos < scope.filteredItems.length-1) { 
-                  scope.selPos++; 
-                }
-                break;
-              default:
-                scope.selPos = 0; //clear selection
-                scope.focusIn();
-            }
-          };
-        },
-      template: '<div class="typeahead">\
+
+                scope.hover = function(index) { scope.selPos = index; }
+                scope.keyPress = function(evt) {
+                    var keys = {
+                        38: 'up',
+                        40: 'down',
+                        8: 'backspace',
+                        13: 'enter',
+                        9: 'tab',
+                        27: 'esc'
+                    };
+
+                    switch (evt.keyCode) {
+                        case 13:
+                            if (scope.selPos > -1) {
+                                scope.addItem(scope.filteredItems[scope.selPos]);
+                            }
+                            break;
+                        case 8:
+                            if (!scope.itemsearch || scope.itemsearch.length == 0) {
+                                if (scope.list.length > 0) {
+                                    scope.list.pop();
+                                }
+                            }
+                            break;
+                        case 38:
+                            if (scope.selPos > 0) {
+                                scope.selPos--;
+                            }
+                            break;
+                        case 40:
+                            if (scope.selPos < scope.filteredItems.length - 1) {
+                                scope.selPos++;
+                            }
+                            break;
+                        default:
+                            scope.selPos = 0; //clear selection
+                            scope.focusIn();
+                    }
+                };
+            },
+            template: '<div class="typeahead">\
         <ul data-ng-class="{\'focused\': focused}" \
             class="tags" data-ng-click="focusIn()">\
           <li class="tag" data-ng-repeat="s in list track by $index">\
@@ -977,24 +975,24 @@ app.directive('typeahead', function ($filter) {
 {{getDisplayItem(item)}}</li>\
         </ul>\
       </div>'
-    };
-})
-// app.directive('focus', function () {
-//     return {
-//       restrict: 'A',
-//       link: function (scope, element, attrs) {
-//         attrs.$observe('focus', function (newValue) {
-//           if (newValue == 'true') {
-//             element[0].focus();
-//           }
-//         });
-//       }
-//     }
-//   })
-//   app.filter('notin', function() {
-//     return function(listin, listout) {
-//       return listin.filter(function(el) { 
-//         return listout.indexOf(el) == -1 ;
-//       });
-//     };
-//   });
+        };
+    })
+    // app.directive('focus', function () {
+    //     return {
+    //       restrict: 'A',
+    //       link: function (scope, element, attrs) {
+    //         attrs.$observe('focus', function (newValue) {
+    //           if (newValue == 'true') {
+    //             element[0].focus();
+    //           }
+    //         });
+    //       }
+    //     }
+    //   })
+    //   app.filter('notin', function() {
+    //     return function(listin, listout) {
+    //       return listin.filter(function(el) { 
+    //         return listout.indexOf(el) == -1 ;
+    //       });
+    //     };
+    //   });

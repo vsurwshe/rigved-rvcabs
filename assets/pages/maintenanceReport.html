@@ -3,7 +3,6 @@
 <link href="./assets/css/datatable/angular-datatables.min.css" rel="stylesheet">
 <!--/Bootstrap CSS -->
 <!--JQuery DataTables-->
-<script src="./assets/js/bootstrap/bootstrap.min.js"></script>
 <script type="text/javascript" src="./assets/js/dataTables/dataTables.bootstrap.min.js"></script>
 <!--/JQuery DataTables -->
 <div id="page-loading" ng-show="loading" class="ng-hide">
@@ -24,7 +23,7 @@
             </div>
             <div id="Approved Bills" class="tabcontent">
                 <div class="col-sm-12">
-                    <table datatable="ng" dt-options="dtOptions" dt-columns="dtColumns" id="approvedBills" class="row-border hover" style="width: 100%;">
+                    <table datatable="ng" dt-options="approvedBillsDtOptions" dt-columns="approvedBillsDtColumns" id="approvedBills" class="row-border hover" style="width: 100%;">
                         <thead>
                             <!-- <tr>
                                     <th scope="col"><input type="checkbox" onclick="checkAll(this)"></th>
@@ -57,11 +56,11 @@
                         </tbody>
                     </table>
                 </div>
-
             </div>
             <div id="Pending Bills" class="tabcontent">
-                <table datatable="ng" id="pendingBills" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                    <thead>
+                <div class="col-sm-12">
+                    <table datatable="ng" dt-options="pendingBillsDtOptions" dt-columns="pendingBillsDtColumns" id="approvedBills" class="row-border hover" style="width: 100%;">
+                        <!-- <thead>
                         <tr>
                             <th scope="col"><input type="checkbox" onclick="checkAll(this)"></th>
                             <th scope="col">Date</th>
@@ -90,8 +89,9 @@
                                     </center>
                                 </td>
                         </tr>
-                    </tbody>
-                </table>
+                    </tbody> -->
+                    </table>
+                </div>
             </div>
         </div>
     </div>
