@@ -66,7 +66,8 @@ app.constant('DotsCons', {
     'SEARCH_CUSTOMER_BY_NAME': ip + 'userSearchByMobile/',
     'ONLINE_OFFLINE': ip + 'userInfo/statusChange/',
     'GET_FEEDBACK': ip + 'trip/getFeedback/',
-    'SAVE_EXPENSE': ip + 'expenditure/create/'
+    'SAVE_EXPENSE': ip + 'expenditure/create/',
+    'GET_EXPENCE_LIST': ip + 'expenditure/searchByDriver/'
 });
 
 // this app config provider

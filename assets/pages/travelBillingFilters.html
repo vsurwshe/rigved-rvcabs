@@ -830,8 +830,6 @@
         font-height: 10px;
     }
 </style>
-
-
 <div id="page-loading" ng-show="loading" class="ng-hide">
     <div class="loader">
         <img src="assets/img/giphy.gif" width="100" height="100" style="padding: 0">
@@ -846,57 +844,35 @@
     <div class="container-fluid h-100 bg-white p-3" ng-hide="profileData.masterId == '1'">
         <div class="row h-100">
             <aside class="col-12 col-md-2 ml-2 mt-4 p-0 mr-2">
-                <nav
-                    class="navbar navbar-expand navbar-dark bg-dark flex-md-column flex-row align-items-start w-75">
+                <nav class="navbar navbar-light navbar-expand flex-md-column flex-row align-items-start w-75" style="background-color:skyblue; color: red;">
                     <div class="collapse navbar-collapse">
                         <ul class="flex-md-column flex-row navbar-nav w-100 justify-content-start">
                             <li class="nav-item">
-                                <a class="nav-link tablinks " onclick="openProfile(event, 'dateRange')"
-                                    id="defaultOpen"><i class="fa fa-user"></i>Date Range</a>
+                                <a class="nav-link tablinks " onclick="openProfile(event, 'dateRange')" id="defaultOpen"><i class="fa fa-user"></i>Date Range</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link tablinks " onclick="openProfile(event, 'companyData')"><i
-                                        class="fa fa-car"></i> Company Name</a>
+                                <a class="nav-link tablinks " onclick="openProfile(event, 'companyData')"><i class="fa fa-car"></i> Company Name</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link tablinks " onclick="openProfile(event, 'gst')"><i
-                                        class="fa fa-file"></i> GST Number</a>
+                                <a class="nav-link tablinks " onclick="openProfile(event, 'gst')"><i class="fa fa-file"></i> GST Number</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link tablinks" onclick="openProfile(event, 'cost')"><i
-                                        class="fa fa-key"></i> Cost Number</a>
+                                <a class="nav-link tablinks" onclick="openProfile(event, 'cost')"><i class="fa fa-key"></i> Cost Number</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link tablinks" onclick="openProfile(event, 'employee')"><i
-                                        class="fa fa-key"></i> Employee Number</a>
+                                <a class="nav-link tablinks" onclick="openProfile(event, 'employee')"><i class="fa fa-key"></i> Employee Number</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link tablinks" onclick="openProfile(event, 'travel')"><i
-                                        class="fa fa-key"></i> Travel ID</a>
+                                <a class="nav-link tablinks" onclick="openProfile(event, 'travel')"><i class="fa fa-key"></i> Travel ID</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link tablinks" onclick="openProfile(event, 'typeOfduty')"><i
-                                        class="fa fa-key"></i> Type of Duty</a>
+                                <a class="nav-link tablinks" onclick="openProfile(event, 'typeOfduty')"><i class="fa fa-key"></i> Type of Duty</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link tablinks" onclick="openProfile(event, 'vehSegment')"><i
-                                        class="fa fa-key"></i> Vehicle Segment</a>
+                                <a class="nav-link tablinks" onclick="openProfile(event, 'vehSegment')"><i class="fa fa-key"></i> Vehicle Segment</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link tablinks" onclick="openProfile(event, 'vhModel')"><i
-                                        class="fa fa-key"></i> Vehicle Model</a>
-                            </li>
-                            <!-- <li class="nav-item">
-                                <a class="nav-link tablinks" onclick="openProfile(event, 'kmsRate')"><i class="fa fa-key"></i> Per kms. Rate</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link tablinks" onclick="openProfile(event, 'hrsRate')"><i class="fa fa-key"></i> Per Hrs. Rate</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link tablinks" onclick="openProfile(event, 'kiloRange')"><i class="fa fa-key"></i> Kilometer Range </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link tablinks" onclick="openProfile(event, 'timeRange')"><i class="fa fa-key"></i>Time Range</a> -->
+                                <a class="nav-link tablinks" onclick="openProfile(event, 'vhModel')"><i class="fa fa-key"></i> Vehicle Model</a>
                             </li>
                         </ul>
                     </div>
@@ -904,29 +880,26 @@
             </aside>
             <main class="col">
                 <div class="tabcontent" id="dateRange">
-                    <h3 class="mt-3">Select Date Range</h3>
-                    <hr>
-                    <div class="from-group  col-sm-6">
-                        <lable for="">Enter Start From Date</lable>
-                        <my-datepicker ng-model="fromDate" myid="someid"></my-datepicker>
-                    </div>
-                    <div class="from-group  col-sm-6">
-                        <lable for="">Enter End To Date</lable>
-                        <my-datepicker ng-model="endDate" myid="someid"></my-datepicker>
+                    <center><h3 class="mt-3">Select Date Range</h3></center><hr>
+                    <div class="row">
+                        <div class="from-group  col-sm-5">
+                            <lable for="">Select Start From Date</lable>
+                            <my-datepicker ng-model="fromDate" myid="someid"></my-datepicker>
+                        </div>
+                        <div class="from-group  col-sm-5">
+                            <lable for="">Select End To Date</lable>
+                            <my-datepicker ng-model="endDate" myid="someid"></my-datepicker>
+                        </div>
                     </div>
                 </div>
                 <div class="tabcontent" id="companyData">
-                    <h3 class="mt-3">Company Details</h3>
-                    <hr>
+                    <center><h3 class="mt-3">Company Details</h3></center><hr>
                     <div class="from-group  col-sm-6">
-                        <typeahead ng-model="selectedCompany" items="contacts" displaytag="companyName"
-                            displayitem="companyName">
-                        </typeahead>
+                        <typeahead ng-model="selectedCompany" items="contacts" displaytag="companyName" displayitem="companyName"> </typeahead>
                     </div>
                 </div>
                 <div class="tabcontent" id="gst">
-                    <h3 class="mt-3">GST Number</h3>
-                    <hr>
+                    <center><h3 class="mt-3">GST Number</h3></center><hr>
                     <div class="from-group  col-sm-6">
                         <typeahead ng-model="selectedGst" items="contacts" displaytag="gstnumber"
                             displayitem="gstnumber">
@@ -934,154 +907,121 @@
                     </div>
                 </div>
                 <div class="tabcontent" id="cost">
-                    <h3 class="mt-3">Cost Center</h3>
-                    <hr>
+                    <center><h3 class="mt-3">Cost Center</h3></center><hr>
                     <div class="from-group  col-sm-6">
-                        <typeahead ng-model="costCenter" items="costCenters">
-                        </typeahead>
+                        <typeahead ng-model="costCenter" items="costCenters"></typeahead>
                         <!-- <input class="form-control txt-field" ng-model="constCenter" type="text"  placeholder="Enter Cost Center"  maxlength="20"> -->
                     </div>
                 </div>
                 <div class="tabcontent" id="employee">
-                    <h3 class="mt-3">Employee Id</h3>
-                    <hr>
+                    <center><h3 class="mt-3">Employee Id</h3></center><hr>
                     <div class="from-group  col-sm-6">
                         <!-- <input class="form-control txt-field" ng-model="empId" type="text" name="traveler_mobNum" placeholder="Enter Employee ID"  maxlength="20"> -->
-                        <typeahead ng-model="empId" items="empIds" displaytag="name" displayitem="name">
-                        </typeahead>
+                        <typeahead ng-model="empId" items="empIds" displaytag="name" displayitem="name"></typeahead>
                     </div>
                 </div>
                 <div class="tabcontent" id="travel">
-                    <h3 class="mt-3">Travel ID</h3>
-                    <hr>
-                    <typeahead ng-model="travelId" items="travelIds" displaytag="name" displayitem="name">
-                    </typeahead>
+                    <center><h3 class="mt-3">Travel ID</h3></center><hr>
+                    <typeahead ng-model="travelId" items="travelIds" displaytag="name" displayitem="name"></typeahead>
                     <!-- <input class="form-control txt-field" ng-model="travelId" type="text" name="traveler_mobNum" placeholder="Enter Travel ID"  maxlength="20"> -->
                 </div>
                 <div class="tabcontent" id="typeOfduty">
-                    <h3 class="mt-3">Type of duty</h3>
-                    <hr>
+                    <center><h3 class="mt-3">Type of duty</h3></center><hr>
                     <div class="from-group  col-sm-9">
-                        <typeahead ng-model="selectedsDuty" items="forUse" displaytag="name" displayitem="name">
-                        </typeahead>
+                        <typeahead ng-model="selectedsDuty" items="forUse" displaytag="name" displayitem="name"></typeahead>
                     </div>
                 </div>
                 <div class="tabcontent" id="vehSegment">
-                    <h3 class="mt-3">Vehicle Segment</h3>
-                    <hr>
+                    <center><h3 class="mt-3">Vehicle Segment</h3></center><hr>
                     <div class="from-group  col-sm-9">
-                        <typeahead ng-model="selectedsSeg" items="categery" displaytag="name" displayitem="name">
-                        </typeahead>
+                        <typeahead ng-model="selectedsSeg" items="categery" displaytag="name" displayitem="name"></typeahead>
                     </div>
                 </div>
                 <div class="tabcontent" id="vhModel">
-                    <h3 class="mt-3">Vehicle Model</h3>
-                    <hr>
+                    <center><h3 class="mt-3">Vehicle Model</h3></center><hr>
                     <div class="from-group  col-sm-9">
-                        <typeahead ng-model="selectedsModel" items="carModals" displaytag="name" displayitem="name">
-                        </typeahead>
+                        <typeahead ng-model="selectedsModel" items="carModals" displaytag="name" displayitem="name"></typeahead>
                     </div>
                 </div>
                 <div class="tabcontent" id="kmsRate">
-                    <h3 class="mt-3">Per Kms. Rate</h3>
-                    <hr>
+                    <center><h3 class="mt-3">Per Kms. Rate</h3></center><hr>
                     <div class="row">
                         <div class="col-md-6">
-                            <input type="checkbox" name="" id=""> <label style="position: relative; top: 1px;">
-                                &#8377;13 per km</label>
+                            <input type="checkbox" name="" id=""> <label style="position: relative; top: 1px;">&#8377;13 per km</label>
                         </div>
                         <div class="col-md-6">
-                            <input type="checkbox" name="" id=""> <label style="position: relative; top: 1px;">
-                                &#8377;18 per km</label>
+                            <input type="checkbox" name="" id=""> <label style="position: relative; top: 1px;">&#8377;18 per km</label>
                         </div>
                         <div class="col-md-6">
-                            <input type="checkbox" name="" id=""> <label style="position: relative; top: 1px;">
-                                &#8377;15.5 per km</label>
+                            <input type="checkbox" name="" id=""> <label style="position: relative; top: 1px;">&#8377;15.5 per km</label>
                         </div>
                         <div class="col-md-6">
-                            <input type="checkbox" name="" id=""> <label style="position: relative; top: 1px;">
-                                &#8377;20 per km</label>
+                            <input type="checkbox" name="" id=""> <label style="position: relative; top: 1px;">&#8377;20 per km</label>
                         </div>
                     </div>
                 </div>
                 <div class="tabcontent" id="hrsRate">
-                    <h3 class="mt-3">Per Hrs. Rate</h3>
-                    <hr>
+                    <center><h3 class="mt-3">Per Hrs. Rate</h3></center><hr>
                     <div class="row">
                         <div class="col-md-4">
-                            <input type="checkbox" name="" id=""> <label style="position: relative; top: 1px;">
-                                &#8377;140 per hr</label>
+                            <input type="checkbox" name="" id=""> <label style="position: relative; top: 1px;">&#8377;140 per hr</label>
                         </div>
                         <div class="col-md-4">
-                            <input type="checkbox" name="" id=""> <label style="position: relative; top: 1px;">
-                                &#8377;215 per hr</label>
+                            <input type="checkbox" name="" id=""> <label style="position: relative; top: 1px;">&#8377;215 per hr</label>
                         </div>
                         <div class="col-md-4">
-                            <input type="checkbox" name="" id=""> <label style="position: relative; top: 1px;">
-                                &#8377;290 per hr</label>
+                            <input type="checkbox" name="" id=""> <label style="position: relative; top: 1px;">&#8377;290 per hr</label>
                         </div>
                         <div class="col-md-4">
-                            <input type="checkbox" name="" id=""> <label style="position: relative; top: 1px;">
-                                &#8377;160 per hr</label>
+                            <input type="checkbox" name="" id=""> <label style="position: relative; top: 1px;">&#8377;160 per hr</label>
                         </div>
                         <div class="col-md-4">
-                            <input type="checkbox" name="" id=""> <label style="position: relative; top: 1px;">
-                                &#8377;230 per hr</label>
+                            <input type="checkbox" name="" id=""> <label style="position: relative; top: 1px;">&#8377;230 per hr</label>
                         </div>
                         <div class="col-md-4">
-                            <input type="checkbox" name="" id=""> <label style="position: relative; top: 1px;">
-                                &#8377;320 per hr</label>
+                            <input type="checkbox" name="" id=""> <label style="position: relative; top: 1px;">&#8377;320 per hr</label>
                         </div>
                         <div class="col-md-4">
-                            <input type="checkbox" name="" id=""> <label style="position: relative; top: 1px;">
-                                &#8377;180 per hr</label>
+                            <input type="checkbox" name="" id=""> <label style="position: relative; top: 1px;">&#8377;180 per hr</label>
                         </div>
                         <div class="col-md-4">
-                            <input type="checkbox" name="" id=""> <label style="position: relative; top: 1px;">
-                                &#8377;320 per hr</label>
+                            <input type="checkbox" name="" id=""> <label style="position: relative; top: 1px;">&#8377;320 per hr</label>
                         </div>
                         <div class="col-md-4">
-                            <input type="checkbox" name="" id=""> <label style="position: relative; top: 1px;">
-                                &#8377;350 per hr</label>
+                            <input type="checkbox" name="" id=""> <label style="position: relative; top: 1px;">&#8377;350 per hr</label>
                         </div>
                         <div class="col-md-4">
-                            <input type="checkbox" name="" id=""> <label style="position: relative; top: 1px;">
-                                &#8377;210 per hr</label>
+                            <input type="checkbox" name="" id=""> <label style="position: relative; top: 1px;">&#8377;210 per hr</label>
                         </div>
                         <div class="col-md-4">
-                            <input type="checkbox" name="" id=""> <label style="position: relative; top: 1px;">
-                                &#8377;255 per hr</label>
+                            <input type="checkbox" name="" id=""> <label style="position: relative; top: 1px;">&#8377;255 per hr</label>
                         </div>
                     </div>
                 </div>
                 <div class="tabcontent" id="kiloRange">
-                    <h3 class="mt-3">Kilometer Range</h3>
-                    <hr>
+                    <center><h3 class="mt-3">Kilometer Range</h3></center><hr>
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label>Enter Start Kilometer Value</label>
-                            c
+                            <input class="form-control txt-field" ng-model="driver_lname" type="text" name="traveler_mobNum" placeholder="Enter time" maxlength="20">
                         </div>
                         <div class="form-group col-md-6">
                             <label>Enter End Kilometer Value</label>
-                            <input class="form-control txt-field" ng-model="driver_lname" type="text"
-                                name="traveler_mobNum" placeholder="Enter time" maxlength="20">
+                            <input class="form-control txt-field" ng-model="driver_lname" type="text" name="traveler_mobNum" placeholder="Enter time" maxlength="20">
                         </div>
                     </div>
                 </div>
                 <div class="tabcontent" id="timeRange">
-                    <h3 class="mt-3">Time Range</h3>
+                    <center><h3 class="mt-3">Time Range</h3></center>
                     <hr>
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label>Enter Start Hour Value</label>
-                            <input class="form-control txt-field" ng-model="driver_lname" type="text"
-                                name="traveler_mobNum" placeholder="Enter time" maxlength="20">
+                            <input class="form-control txt-field" ng-model="driver_lname" type="text" name="traveler_mobNum" placeholder="Enter time" maxlength="20">
                         </div>
                         <div class="form-group col-md-6">
                             <label>Enter End Hour Value</label>
-                            <input class="form-control txt-field" ng-model="driver_lname" type="text"
-                                name="traveler_mobNum" placeholder="Enter time" maxlength="20">
+                            <input class="form-control txt-field" ng-model="driver_lname" type="text" name="traveler_mobNum" placeholder="Enter time" maxlength="20">
                         </div>
                     </div>
                 </div>

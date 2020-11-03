@@ -2934,6 +2934,20 @@ function travelBillingCtrl($scope, $http, DotsCons, $rootScope, authService, $lo
 // this is travelling backup bill controller 
 function travelBillingCtrl1($scope, $http, DotsCons, $rootScope, authService, $localStorage, $location, $q, toaster) {
     var token = authService.getCookie('globals');
+    (function () {
+        $scope.loading=true;
+        $q.all([
+            $http({ method: 'GET', url: DotsCons.COMPANY_DETAILS + "/0/10", data: "", headers: {'Content-Type': 'application/json','Authorization': token.currentUser.tokenDto.token } }),
+            $http({ method: 'GET', url: DotsCons.GET_EMPLOYEE_ID + "/0/10", data: "", headers: {     'Content-Type': 'application/json', 'Authorization': token.currentUser.tokenDto.token } })
+        ]).then(function(responses) {
+            console.log("Function Called",responses)
+            if(responses.length >0){
+                $scope.empIds = responses[1].data;
+            }
+            $scope.loading=false;
+        })
+    })();
+    
     // this api call the company details
     $http({
         method: 'GET',
@@ -3103,22 +3117,6 @@ function travelBillingCtrl1($scope, $http, DotsCons, $rootScope, authService, $l
             "travelIds": [],
             "vechicleSeg": $scope.SelctSeg
         }
-        // var data = {
-        //         "startDate": $scope.fromDate,
-        //         "endDate": $scope.endDate,
-        //         "dutyTypes": [
-        //          $scope.forUse.name
-        //         ],
-        //         "companyNames": [
-        //             $scope.selectedCompany.name
-        //         ],
-        //         "vechicleType": [$scope.carModals],
-        //         "gstNum": [$scope.selectedGst.gstnumber],
-        //         "costCenter": [$scope.constCenter],
-        //         "employeeIds": [$scope.empId],
-        //         "travelIds": [$scope.travelId],
-        //         "vechicleSeg": [$scope.categery.name],
-        // }
         $http({
             method: 'post',
             url: DotsCons.GET_FILTERD_DATA + "/0/10/",
@@ -3131,7 +3129,7 @@ function travelBillingCtrl1($scope, $http, DotsCons, $rootScope, authService, $l
             if (response.data != null) {
                 $rootScope.filtedData = response.data;
                 $scope.no_morerecord = true
-                console.log($scope.filtedData)
+                console.log("filter data ",$scope.filtedData)
                 $location.path('/travelBilling')
             }
         }, function (errResponse) { return $q.reject(errResponse) })
@@ -3340,9 +3338,9 @@ function maintenanceReportCtrl($scope, $http, DotsCons, $rootScope, authService,
     }
     var titleHtml = '<input type="checkbox" ng-model="selectAll" ng-click="toggleAll(selectAll, selected)">';
     $scope.approvedBillsData = [
-        { "driverName": "Nitin Gaikwad", "vehicleNo": "MH-43-BP-1891", "totalKms": "7853", "totalFuel": "643.56", "average": "12.20", "serviceExpenses": "3,782", "grandTotalAmount": "52,370.78" },
-        { "driverName": "Balkrishna", "vehicleNo": "MH-43-BP-1892", "totalKms": "8754", "totalFuel": "696.97", "average": "12.56", "serviceExpenses": "4,329", "grandTotalAmount": "56,950.24" },
-        { "driverName": "Suresh", "vehicleNo": "MH-43-BP-1893", "totalKms": "7853", "totalFuel": "629.23", "average": "11.87", "serviceExpenses": "3,696", "grandTotalAmount": "51,202.87" }
+        { "driverAccountId":"eee20ce7-262b-4fc7-bf1e-4de79e039ac5","driverName": "Nitin Gaikwad", "vehicleNo": "MH-43-BP-1891", "totalKms": "7853", "totalFuel": "643.56", "average": "12.20", "serviceExpenses": "3,782", "grandTotalAmount": "52,370.78" },
+        { "driverAccountId":"eee20ce7-262b-4fc7-bf1e-4de79e039ac5","driverName": "Balkrishna", "vehicleNo": "MH-43-BP-1892", "totalKms": "8754", "totalFuel": "696.97", "average": "12.56", "serviceExpenses": "4,329", "grandTotalAmount": "56,950.24" },
+        { "driverAccountId":"eee20ce7-262b-4fc7-bf1e-4de79e039ac5","driverName": "Suresh", "vehicleNo": "MH-43-BP-1893", "totalKms": "7853", "totalFuel": "629.23", "average": "11.87", "serviceExpenses": "3,696", "grandTotalAmount": "51,202.87" }
     ]
     $scope.pendingBillsData = [
         { "date": "12/06/2019", "driverName": "Nitin Gaikwad", "vehicleNo": "MH-43-BP-1891", "expensesItem": "Car Wash", "expenseType": "600.56", "meterReading": "68273" },
@@ -3354,12 +3352,12 @@ function maintenanceReportCtrl($scope, $http, DotsCons, $rootScope, authService,
     $scope.pendingBillsDtOptions = dtOptionsBuilder($scope.pendingBillsData);
 
     var approvedBillsActionsHtml = function (data, type, full, meta) {
-        return '<button class="btn ripple-infinite btn-round btn-primary materialButtons" ng-hide="no_morerecord" ng-click="showApprovedBills(data)"> view </button>';
+        return '<button class="btn ripple-infinite btn-round btn-primary materialButtons" ng-click="showApprovedBills(\''+data.driverAccountId+'\')"> view </button>';
     }
 
     var pendingBillsActionsHtml = function (data, type, full, meta) {
-        return '<button class="btn btn-round btn-primary materialButtons" ng-hide="no_morerecord" ng-click="showApprovedBills(data)"> view </button>' +
-            '&nbsp;<span style="color: red;">Pending</span>' + '&nbsp;<button class="btn ripple-infinite btn-round btn-secondary materialButtons" ng-hide="no_morerecord" ng-click="editPendingBills(data)">Edit</button>';
+        return '<button class="btn btn-round btn-primary materialButtons" ng-hide="no_morerecord" ng-click="showApprovedBills('+data.driverAccountId+')"> view </button>' +
+            '&nbsp;<span style="color: red;">Pending</span>' + '&nbsp;<button class="btn ripple-infinite btn-round btn-secondary materialButtons" ng-hide="no_morerecord" ng-click="editPendingBills('+data.driverAccountId+')">Edit</button>';
     }
 
     $scope.approvedBillsDtColumns = [
@@ -3393,8 +3391,11 @@ function maintenanceReportCtrl($scope, $http, DotsCons, $rootScope, authService,
         DTColumnBuilder.newColumn(null).withTitle('Action').notSortable().renderWith(pendingBillsActionsHtml),
     ];
 
-    $scope.showApprovedBills = function (billsData) { $location.path('/maintenanceDetaills') }
-
+    $scope.showApprovedBills = function (driverId) { 
+        console.log("Data ",driverId); 
+        $location.path('/maintenanceDetaills').search({driverId}) 
+    }
+    
     $scope.showPendingBills = function (billsData) { $location.path('/maintenanceDetaills') }
 
     $scope.editPendingBills = function (billsData) { console.log("Pending edit Bills Data", billsData) }
@@ -3434,17 +3435,39 @@ function maintenanceReportCtrl($scope, $http, DotsCons, $rootScope, authService,
 }
 // maintance details controller
 function maintenanceDetailsCtrl($scope, $http, DotsCons, $rootScope, authService, $localStorage, $location, $q, toaster) {
-    $rootScope.approvedBillsData = [
-        { "date": "12/06/2019", "expensesItem": "Car Wash", "expenseType": "600.56", "meterReading": "68273", "amount": "2345" },
-        { "date": "12/05/2019", "expensesItem": "Puncture", "expenseType": "300", "meterReading": "29984", "amount": "5441" },
-        { "date": "12/04/2019", "expensesItem": "Servicing", "expenseType": "500", "meterReading": "57833", "amount": "3456" },
-    ]
+    var token = authService.getCookie('globals');
+    var urlParams = $location.search();
+    (function () {
+        const { driverId }=urlParams
+        $scope.loading = true;
+        $http({
+            method: 'GET',
+            url: DotsCons.GET_EXPENCE_LIST + 0 + "/20/"+ driverId,
+            data: "",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': token.currentUser.tokenDto.token
+            }
+        }).then(
+            function (response) {
+                const {data  }=response
+                $rootScope.approvedBillsData= (data && data.length >0) && data.map((item)=> {return {...item,"entryDate":moment(item.entryDate).format('YYYY-MM-DD')}});
+                $scope.loading = false;
+            },
+            function (errResponse) {
+                $scope.loading = false;
+                return $q.reject(errResponse)
+            }
+        )
+    })();
+
     $scope.maintenanceReport = function () {
         $location.path('/maintenanceReport')
     }
     $scope.addExpense = function () {
         $location.path('/addExpense')
     }
+ 
     $scope.download = function () {
         setTimeout(function () {
             $("#maintenanceTableDta").table2excel({ filename: "report" });
