@@ -45,27 +45,27 @@
                                     <label for="exampleFormControlSelect1">Expense<span class="mendatory">*</span></label>
                                     <select class="form-control txt-field" id="exampleFormControlSelect1" ng-change="expenseTypeChnaged(expence.expenceType)" ng-model="expence.expenceType">
                                         <option value="">Select type</option>
-                                        <option value="Fule">Fule</option>
+                                        <option value="Fuel">Fuel</option>
                                         <option value="Others">Others</option>
                                     </select>
                                 </div>
                             </div>
-                            <div ng-if="fule" class="col-md-12 col-sm-12 row" style="margin-bottom: 20px;">
+                            <div ng-if="Fuel" class="col-md-12 col-sm-12 row" style="margin-bottom: 20px;">
                                 <div class="from-group  col-sm-3">
                                     <lable for="">Price / L.<span class="mendatory">*</span></lable>
-                                    <input class="form-control txt-field" ng-model="expence.fule.perLtRate" type="number" placeholder="Enter price per liter">
+                                    <input class="form-control txt-field" ng-model="expence.Fuel.perLtRate" type="number" placeholder="Enter price per liter">
                                 </div>
                                 <div class="from-group  col-sm-3">
-                                    <lable for="">Fule Quantity(L.)<span class="mendatory">*</span></lable>
-                                    <input class="form-control txt-field" ng-model="expence.fule.totalLt" type="number" placeholder="Enter fule quantity(Liters)">
+                                    <lable for="">Fuel Quantity(L.)<span class="mendatory">*</span></lable>
+                                    <input class="form-control txt-field" ng-model="expence.Fuel.totalLt" type="number" placeholder="Enter Fuel quantity(Liters)">
                                 </div>
                                 <div class="from-group  col-sm-3">
                                     <lable for="">Total Amount<span class="mendatory">*</span></lable>
-                                    <input class="form-control txt-field" ng-model="expence.fule.totalAmount" type="number" placeholder="Enter total amounts">
+                                    <input class="form-control txt-field" ng-model="expence.Fuel.totalAmount" type="number" placeholder="Enter total amounts">
                                 </div>
                                 <div class="from-group  col-sm-3">
                                     <lable for="">Location<span class="mendatory">*</span></lable>
-                                    <input class="form-control txt-field" ng-model="expence.fule.location" type="text" placeholder="Enter location">
+                                    <input class="form-control txt-field" ng-model="expence.Fuel.location" type="text" placeholder="Enter location">
                                 </div>
                             </div>
                             <div ng-if="others" class="col-md-12 col-sm-12 row" style="margin-bottom: 20px;">

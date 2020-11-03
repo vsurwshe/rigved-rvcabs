@@ -3392,7 +3392,6 @@ function maintenanceReportCtrl($scope, $http, DotsCons, $rootScope, authService,
     ];
 
     $scope.showApprovedBills = function (driverId) { 
-        console.log("Data ",driverId); 
         $location.path('/maintenanceDetaills').search({driverId}) 
     }
     
@@ -3434,9 +3433,10 @@ function maintenanceReportCtrl($scope, $http, DotsCons, $rootScope, authService,
     }
 }
 // maintance details controller
-function maintenanceDetailsCtrl($scope, $http, DotsCons, $rootScope, authService, $localStorage, $location, $q, toaster) {
+function maintenanceDetailsCtrl($scope, $http, DotsCons, $rootScope, authService, $localStorage, $location, $q, toaster, $compile, DTOptionsBuilder, DTColumnBuilder) {
     var token = authService.getCookie('globals');
     var urlParams = $location.search();
+
     (function () {
         const { driverId }=urlParams
         $scope.loading = true;
@@ -3460,7 +3460,7 @@ function maintenanceDetailsCtrl($scope, $http, DotsCons, $rootScope, authService
             }
         )
     })();
-
+    
     $scope.maintenanceReport = function () {
         $location.path('/maintenanceReport')
     }
@@ -3517,18 +3517,18 @@ function expenseCtrl($scope, $http, DotsCons, $rootScope, authService, $localSto
     $scope.maintenanceReport = function () { $location.path('/maintenanceReport') }
 
     // this will declare the global variables
-    $scope.fule = false;
+    $scope.Fuel = false;
     $scope.others = false;
     $scope.fileUrl = "";
 
     // this function will used for the check exepense type check
     $scope.expenseTypeChnaged = function (optionValue) {
-        if (optionValue === "Fule") {
-            $scope.fule = true;
+        if (optionValue === "Fuel") {
+            $scope.Fuel = true;
             $scope.others = false;
         } else if (optionValue === "Others") {
             $scope.others = true;
-            $scope.fule = false;
+            $scope.Fuel = false;
         }
     }
 
@@ -3546,8 +3546,8 @@ function expenseCtrl($scope, $http, DotsCons, $rootScope, authService, $localSto
                 "entryDate": expenceData.entryDate.getTime(),
                 "vehicleNumber": expenceData.vehicleNumber
             });
-            if (expenceData.expenceType === "Fule") {
-                $scope.master = angular.copy({ ...mainData, ...expenceData.fule });
+            if (expenceData.expenceType === "Fuel") {
+                $scope.master = angular.copy({ ...mainData, ...expenceData.Fuel });
             } else if (expenceData.expenceType === "Others") {
                 $scope.master = angular.copy({ ...mainData, ...expenceData.others });
             }
