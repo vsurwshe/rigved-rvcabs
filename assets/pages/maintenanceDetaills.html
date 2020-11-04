@@ -43,7 +43,7 @@
                         <th scope="col">Expense Type</th>
                         <th scope="col">Meter Reading</th>
                         <th scope="col">Amount</th>
-                        <th scope="col">Actions</th>
+                        <th scope="col" ng-show="actionShow">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -54,11 +54,10 @@
                         <td>₹&nbsp;{{data.expenceType}}</td>
                         <td>{{data.odoMeterReading}}</td>
                         <td>₹&nbsp;{{data.totalAmount}}</td>
-                        <td>
+                        <td ng-show="actionShow">
                             <center>
-                                <!-- <button class="btn ripple-infinite btn-round btn-secondary materialButtons" ng-hide="no_morerecord" ng-click="showPendingBills(data)">View</button> -->
-                                <div > <span>View</span>&nbsp;|&nbsp;<span>Status</span>&nbsp;|&nbsp;<span>Edit</span></div>
-                                <!-- <button class="btn ripple-infinite btn-round btn-primary materialButtons" ng-hide="no_morerecord" ng-click="editPendingBills(data)">Edit</button> -->
+                                <button class="btn ripple-infinite btn-round btn-secondary materialButtons" ng-hide="no_morerecord" ng-click="updateStatus('Approved',data)">Approved</button>
+                                <button class="btn ripple-infinite btn-round btn-primary materialButtons" ng-hide="no_morerecord" ng-click="updateStatus('Rejected',data)">Rejected</button>
                              </center>
                         </td>
                     </tr>

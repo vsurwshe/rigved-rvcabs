@@ -3343,9 +3343,9 @@ function maintenanceReportCtrl($scope, $http, DotsCons, $rootScope, authService,
         { "driverAccountId":"eee20ce7-262b-4fc7-bf1e-4de79e039ac5","driverName": "Suresh", "vehicleNo": "MH-43-BP-1893", "totalKms": "7853", "totalFuel": "629.23", "average": "11.87", "serviceExpenses": "3,696", "grandTotalAmount": "51,202.87" }
     ]
     $scope.pendingBillsData = [
-        { "date": "12/06/2019", "driverName": "Nitin Gaikwad", "vehicleNo": "MH-43-BP-1891", "expensesItem": "Car Wash", "expenseType": "600.56", "meterReading": "68273" },
-        { "date": "12/05/2019", "driverName": "Balkrishna", "vehicleNo": "MH-43-BP-1892", "expensesItem": "Puncture", "expenseType": "300", "meterReading": "29984" },
-        { "date": "12/04/2019", "driverName": "Suresh", "vehicleNo": "MH-43-BP-1893", "expensesItem": "Servicing", "expenseType": "500", "meterReading": "57833" },
+        { "driverAccountId":"0e9014a1-1253-4f52-ae21-f5e7e57c17fd","date": "12/06/2019", "driverName": "Nitin Gaikwad", "vehicleNo": "MH-43-BP-1891", "expensesItem": "Car Wash", "expenseType": "600.56", "meterReading": "68273" },
+        { "driverAccountId":"eee20ce7-262b-4fc7-bf1e-4de79e039ac5","date": "12/05/2019", "driverName": "Balkrishna", "vehicleNo": "MH-43-BP-1892", "expensesItem": "Puncture", "expenseType": "300", "meterReading": "29984" },
+        { "driverAccountId":"3890d672-09d1-41f7-8862-2080fea904f4","date": "12/04/2019", "driverName": "Suresh", "vehicleNo": "MH-43-BP-1893", "expensesItem": "Servicing", "expenseType": "500", "meterReading": "57833" },
     ]
 
     $scope.approvedBillsDtOptions = dtOptionsBuilder($scope.approvedBillsData);
@@ -3356,8 +3356,8 @@ function maintenanceReportCtrl($scope, $http, DotsCons, $rootScope, authService,
     }
 
     var pendingBillsActionsHtml = function (data, type, full, meta) {
-        return '<button class="btn btn-round btn-primary materialButtons" ng-hide="no_morerecord" ng-click="showApprovedBills('+data.driverAccountId+')"> view </button>' +
-            '&nbsp;<span style="color: red;">Pending</span>' + '&nbsp;<button class="btn ripple-infinite btn-round btn-secondary materialButtons" ng-hide="no_morerecord" ng-click="editPendingBills('+data.driverAccountId+')">Edit</button>';
+        return '<button class="btn btn-round btn-primary materialButtons" ng-hide="no_morerecord" ng-click="showPendingBills(\''+data.driverAccountId+'\')"> View </button>' + 
+        '&nbsp;<button class="btn ripple-infinite btn-round btn-secondary materialButtons" ng-hide="no_morerecord" ng-click="editPendingBills(\''+data.driverAccountId+'\')">Edit</button>';
     }
 
     $scope.approvedBillsDtColumns = [
@@ -3391,11 +3391,9 @@ function maintenanceReportCtrl($scope, $http, DotsCons, $rootScope, authService,
         DTColumnBuilder.newColumn(null).withTitle('Action').notSortable().renderWith(pendingBillsActionsHtml),
     ];
 
-    $scope.showApprovedBills = function (driverId) { 
-        $location.path('/maintenanceDetaills').search({driverId}) 
-    }
+    $scope.showApprovedBills = function (driverId) { $location.path('/maintenanceDetaills').search({driverId,billsType:"Approved"}); }
     
-    $scope.showPendingBills = function (billsData) { $location.path('/maintenanceDetaills') }
+    $scope.showPendingBills = function (driverId) { $location.path('/maintenanceDetaills').search({driverId, billsType:"Pending"}); }
 
     $scope.editPendingBills = function (billsData) { console.log("Pending edit Bills Data", billsData) }
 
@@ -3436,9 +3434,10 @@ function maintenanceReportCtrl($scope, $http, DotsCons, $rootScope, authService,
 function maintenanceDetailsCtrl($scope, $http, DotsCons, $rootScope, authService, $localStorage, $location, $q, toaster, $compile, DTOptionsBuilder, DTColumnBuilder) {
     var token = authService.getCookie('globals');
     var urlParams = $location.search();
-
+    
     (function () {
-        const { driverId }=urlParams
+        const { driverId, billsType }=urlParams
+        $scope.actionShow = billsType === "Pending" ? true: false;
         $scope.loading = true;
         $http({
             method: 'GET',
@@ -3460,14 +3459,16 @@ function maintenanceDetailsCtrl($scope, $http, DotsCons, $rootScope, authService
             }
         )
     })();
-    
-    $scope.maintenanceReport = function () {
-        $location.path('/maintenanceReport')
+
+
+    $scope.maintenanceReport = function () { $location.path('/maintenanceReport') }
+    $scope.addExpense = function () { $location.path('/addExpense') }
+
+    $scope.updateStatus= function(status, billId){
+        let url= DotsCons.UPDATE_EXPENCE_STATUS+billId.id+"/"+status;
+        callGetApi({url});
     }
-    $scope.addExpense = function () {
-        $location.path('/addExpense')
-    }
- 
+
     $scope.download = function () {
         setTimeout(function () {
             $("#maintenanceTableDta").table2excel({ filename: "report" });
@@ -3479,6 +3480,31 @@ function maintenanceDetailsCtrl($scope, $http, DotsCons, $rootScope, authService
         pdfWindow.document.write("<html<head><title>" + name + "</title><style>body{margin: 0px;}iframe{border-width: 0px;}</style></head>");
         pdfWindow.document.write("<body><embed width='100%' height='100%' src='data:application/pdf;base64, " + encodeURI(pdfUrl) + "#toolbar=0&navpanes=0&scrollbar=0'></embed></body></html>");
         //window.open("data:application/octet-stream;charset=utf-16le;base64,"+pdfUrl)
+    }
+
+    function callGetApi(props) {
+        const { url }=props
+        $scope.loading = true;
+        return $http({
+            method: 'GET',
+            url,
+            data: "",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': token.currentUser.tokenDto.token
+            }
+        }).then(
+            function (response) { 
+                $scope.loading = false; 
+                $.iaoAlert({ msg: "Bill Status Updated Successfully ..!", type: "success", mode: "dark", })
+                return response.data; 
+            },
+            function (errResponse) { 
+                $scope.loading = false; 
+                $.iaoAlert({ msg: "Somthing went wrong...Try agian!", type: "error", mode: "dark", })
+                return $q.reject(errResponse) 
+            }
+        )
     }
 
 }
@@ -3541,6 +3567,7 @@ function expenseCtrl($scope, $http, DotsCons, $rootScope, authService, $localSto
                 "odoMeterReading": expenceData.odoMeterReading,
                 "expenceType": expenceData.expenceType,
                 "source": "Admin",
+                "status":"Approved",
                 "fileUrl": $scope.fileUrl,
                 "driverAccountId": expenceData.driver ? expenceData.driver.accountId : "",
                 "entryDate": expenceData.entryDate.getTime(),

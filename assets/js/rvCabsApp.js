@@ -67,7 +67,9 @@ app.constant('DotsCons', {
     'ONLINE_OFFLINE': ip + 'userInfo/statusChange/',
     'GET_FEEDBACK': ip + 'trip/getFeedback/',
     'SAVE_EXPENSE': ip + 'expenditure/create/',
-    'GET_EXPENCE_LIST': ip + 'expenditure/searchByDriver/'
+    'GET_EXPENCE_LIST': ip + 'expenditure/searchByDriver/',
+    'UPDATE_EXPENCE_STATUS': ip +'expenditure/updateStatus/'
+    
 });
 
 // this app config provider
