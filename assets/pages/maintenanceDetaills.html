@@ -6,10 +6,10 @@
 </div>
 
 <div class="wrapper">
-    <!-- Sidebar  -->
-    <ng-include src="'assets/pages/MysideBar.html'"></ng-include>
-    <!-- Page Content  -->
-    <div id="content">
+<!-- Sidebar  -->
+<ng-include src="'assets/pages/MysideBar.html'"></ng-include>
+<!-- Page Content  -->
+<div id="content">
         <ng-include src="'assets/pages/MynavBar.html'"></ng-include>
         <div class="col-md-12 table-responsive header-board">
             <div class="row">
@@ -20,11 +20,11 @@
                     <div class="col-md-10 element2">
                         <h4>Driver Details</h4>
                         <label><h6>Driver Name :</h6></label> 
-                        <label>&nbsp;{{billsData.firstName}}{{}}</label><br>
+                        <label>&nbsp;{{driverDetails.firstName}}</label><br>
                         <label><h6> Driver Mobile Number :</h6></label>
-                        <label>&nbsp;{{}}</label><br>
+                        <label>&nbsp;{{driverDetails.mobileNumber}}</label><br>
                         <label><h6>Brand/modal :</h6></label>
-                        <label>&nbsp;{{complteDetails.sysCarCategoryDto.name}}</label><br>
+                        <label>&nbsp;{{driverDetails.carDetailDto.type.name}}</label><br>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -34,7 +34,7 @@
                     </div>
                  </div>
             </div>
-            <table id="reportTabel" class="row-border hover" style="width: 100%;margin-top: 20px;">
+            <table id="reportTabel" class="row-border hover" style="width: 100%;margin-top: 20px;margin-bottom: 20px;">
                 <thead>
                     <tr>
                         <th scope="col"><input type="checkbox" onclick="checkAll(this)"></th>
@@ -43,7 +43,7 @@
                         <th scope="col">Expense Type</th>
                         <th scope="col">Meter Reading</th>
                         <th scope="col">Amount</th>
-                        <th scope="col" ng-show="actionShow">Actions</th>
+                        <!-- <th scope="col" ng-show="actionShow">Actions</th> -->
                     </tr>
                 </thead>
                 <tbody>
@@ -51,15 +51,15 @@
                         <td><input id="chkCustomer_{{fruit.FruitId}}" type="checkbox" ng-model="data.Selected" />
                         <td>{{data.entryDate}}</td>
                         <td>{{data.description}}</td>
-                        <td>₹&nbsp;{{data.expenceType}}</td>
+                        <td>{{data.expenceType}}</td>
                         <td>{{data.odoMeterReading}}</td>
                         <td>₹&nbsp;{{data.totalAmount}}</td>
-                        <td ng-show="actionShow">
+                        <!-- <td ng-show="actionShow">
                             <center>
                                 <button class="btn ripple-infinite btn-round btn-secondary materialButtons" ng-hide="no_morerecord" ng-click="updateStatus('Approved',data)">Approved</button>
                                 <button class="btn ripple-infinite btn-round btn-primary materialButtons" ng-hide="no_morerecord" ng-click="updateStatus('Rejected',data)">Rejected</button>
                              </center>
-                        </td>
+                        </td> -->
                     </tr>
                 </tbody>
             </table>
@@ -71,5 +71,5 @@
                 </div>
             </div>
         </div>
-    </div>
+</div>
 </div>

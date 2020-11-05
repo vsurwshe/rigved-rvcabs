@@ -3308,13 +3308,18 @@ function managevendortrl(GET_VENDOR_DATA, $scope, $http, DotsCons, authService, 
     }
 }
 // this is for the maintenace report control
-function maintenanceReportCtrl($scope, $http, DotsCons, $rootScope, authService, $localStorage, $location, $q, toaster, GET_CURRENT_DATA, $compile, DTOptionsBuilder, DTColumnBuilder) {
+function maintenanceReportCtrl($scope, $http, DotsCons, $rootScope, $route, authService, $localStorage, $location, $q, toaster, GET_CURRENT_DATA, $compile, DTOptionsBuilder, DTColumnBuilder) {
+    var token = authService.getCookie('globals');
     var vm = this;
     $scope.selected = {};
     $scope.selectAll = false;
     $scope.toggleAll = toggleAll;
     $scope.toggleOne = toggleOne;
-
+    if (GET_CURRENT_DATA != null) {
+        $scope.approvedBillsData= GET_CURRENT_DATA[0].data
+        $scope.pendingBillsData= GET_CURRENT_DATA[1].data
+    }
+    
     function toggleAll(selectAll, selectedItems) {
         console.log("Called TogelAll ", selectAll, selectedItems)
         for (var id in selectedItems) {
@@ -3337,42 +3342,33 @@ function maintenanceReportCtrl($scope, $http, DotsCons, $rootScope, authService,
         $scope.selectAll = true;
     }
     var titleHtml = '<input type="checkbox" ng-model="selectAll" ng-click="toggleAll(selectAll, selected)">';
-    $scope.approvedBillsData = [
-        { "driverAccountId":"eee20ce7-262b-4fc7-bf1e-4de79e039ac5","driverName": "Nitin Gaikwad", "vehicleNo": "MH-43-BP-1891", "totalKms": "7853", "totalFuel": "643.56", "average": "12.20", "serviceExpenses": "3,782", "grandTotalAmount": "52,370.78" },
-        { "driverAccountId":"eee20ce7-262b-4fc7-bf1e-4de79e039ac5","driverName": "Balkrishna", "vehicleNo": "MH-43-BP-1892", "totalKms": "8754", "totalFuel": "696.97", "average": "12.56", "serviceExpenses": "4,329", "grandTotalAmount": "56,950.24" },
-        { "driverAccountId":"eee20ce7-262b-4fc7-bf1e-4de79e039ac5","driverName": "Suresh", "vehicleNo": "MH-43-BP-1893", "totalKms": "7853", "totalFuel": "629.23", "average": "11.87", "serviceExpenses": "3,696", "grandTotalAmount": "51,202.87" }
-    ]
-    $scope.pendingBillsData = [
-        { "driverAccountId":"0e9014a1-1253-4f52-ae21-f5e7e57c17fd","date": "12/06/2019", "driverName": "Nitin Gaikwad", "vehicleNo": "MH-43-BP-1891", "expensesItem": "Car Wash", "expenseType": "600.56", "meterReading": "68273" },
-        { "driverAccountId":"eee20ce7-262b-4fc7-bf1e-4de79e039ac5","date": "12/05/2019", "driverName": "Balkrishna", "vehicleNo": "MH-43-BP-1892", "expensesItem": "Puncture", "expenseType": "300", "meterReading": "29984" },
-        { "driverAccountId":"3890d672-09d1-41f7-8862-2080fea904f4","date": "12/04/2019", "driverName": "Suresh", "vehicleNo": "MH-43-BP-1893", "expensesItem": "Servicing", "expenseType": "500", "meterReading": "57833" },
-    ]
-
     $scope.approvedBillsDtOptions = dtOptionsBuilder($scope.approvedBillsData);
     $scope.pendingBillsDtOptions = dtOptionsBuilder($scope.pendingBillsData);
 
     var approvedBillsActionsHtml = function (data, type, full, meta) {
-        return '<button class="btn ripple-infinite btn-round btn-primary materialButtons" ng-click="showApprovedBills(\''+data.driverAccountId+'\')"> view </button>';
+        return '<button class="btn ripple-infinite btn-round btn-primary materialButtons" ng-click="showApprovedBills(\''+data.driverAccountId+'\',\''+data.driverName+'\')"> view </button>';
     }
 
     var pendingBillsActionsHtml = function (data, type, full, meta) {
-        return '<button class="btn btn-round btn-primary materialButtons" ng-hide="no_morerecord" ng-click="showPendingBills(\''+data.driverAccountId+'\')"> View </button>' + 
-        '&nbsp;<button class="btn ripple-infinite btn-round btn-secondary materialButtons" ng-hide="no_morerecord" ng-click="editPendingBills(\''+data.driverAccountId+'\')">Edit</button>';
+        console.log("Data ",data)
+        return '<button class="btn btn-round btn-primary materialButtons" ng-hide="no_morerecord" ng-click="updateStatus(\'Approved\', \''+data.id+'\')"> Approved </button>' + 
+        '&nbsp;<button class="btn ripple-infinite btn-round btn-secondary materialButtons" ng-hide="no_morerecord" ng-click="updateStatus(\'Rejected\',\''+data.id+'\')">Rejected</button>';
     }
 
     $scope.approvedBillsDtColumns = [
         DTColumnBuilder.newColumn(null)
             .withTitle(titleHtml).notSortable().renderWith(function (data, type, full, meta) {
                 $scope.selected[full.id] = false;
-                return '<input type="checkbox" ng-model="selected[' + data.id + ']" onclick="toggleOne(selected)">';
+                return '<input type="checkbox" ng-model="selected[\'' + data.id + '\']" ng-click="toggleOne(selected)">';
             }),
+        DTColumnBuilder.newColumn('driverAccountId').withTitle().notVisible(),
         DTColumnBuilder.newColumn('driverName').withTitle('Driver Name'),
-        DTColumnBuilder.newColumn('vehicleNo').withTitle('Vehicle No'),
-        DTColumnBuilder.newColumn('totalKms').withTitle('Total KM').renderWith(function (data, type, full, meta) { return data + " KM"; }),
-        DTColumnBuilder.newColumn('totalFuel').withTitle('Total Fuel'),
-        DTColumnBuilder.newColumn('average').withTitle('Average').renderWith(function (data, type, full, meta) { return data + " KM/L"; }),
-        DTColumnBuilder.newColumn('serviceExpenses').withTitle('Service').renderWith(function (data, type, full, meta) { return "₹&nbsp;" + data; }),
-        DTColumnBuilder.newColumn('grandTotalAmount').withTitle('Grand Total Amount').renderWith(function (data, type, full, meta) { return "₹&nbsp;" + data; }),
+        DTColumnBuilder.newColumn('carRegNo').withTitle('Vehicle No'),
+        DTColumnBuilder.newColumn('totalDist').withTitle('Total KM').renderWith(function (data, type, full, meta) { return data + " KM"; }),
+        // DTColumnBuilder.newColumn('totalFuel').withTitle('Total Fuel'),
+        // DTColumnBuilder.newColumn('average').withTitle('Average').renderWith(function (data, type, full, meta) { return data + " KM/L"; }),
+        DTColumnBuilder.newColumn('totalAmt').withTitle('Service').renderWith(function (data, type, full, meta) { return "₹&nbsp;" + data; }),
+        // DTColumnBuilder.newColumn('grandTotalAmount').withTitle('Grand Total Amount').renderWith(function (data, type, full, meta) { return "₹&nbsp;" + data; }),
         DTColumnBuilder.newColumn(null).withTitle('Action').notSortable().renderWith(approvedBillsActionsHtml),
     ];
 
@@ -3380,22 +3376,30 @@ function maintenanceReportCtrl($scope, $http, DotsCons, $rootScope, authService,
         DTColumnBuilder.newColumn(null)
             .withTitle(titleHtml).notSortable().renderWith(function (data, type, full, meta) {
                 $scope.selected[full.id] = false;
-                return '<input type="checkbox" ng-model="selected[' + data.id + ']" onclick="toggleOne(selected)">';
+                return '<input type="checkbox" ng-model="selected[\'' + data.id + '\']" ng-click="toggleOne(selected)">';
             }),
-        DTColumnBuilder.newColumn('date').withTitle('Date'),
-        DTColumnBuilder.newColumn('driverName').withTitle('Driver Name'),
-        DTColumnBuilder.newColumn('vehicleNo').withTitle('Vehicle No'),
-        DTColumnBuilder.newColumn('expensesItem').withTitle('Expenses Item'),
-        DTColumnBuilder.newColumn('expenseType').withTitle('Expense Type').renderWith(function (data, type, full, meta) { return "₹&nbsp;" + data; }),
-        DTColumnBuilder.newColumn('meterReading').withTitle('Meter Reading'),
+        DTColumnBuilder.newColumn('driverAccountId').withTitle().notVisible(),
+        DTColumnBuilder.newColumn('entryDate').withTitle('Date').renderWith(function (data, type, full, meta) { return moment(data).format('YYYY-MM-DD') }),
+        // DTColumnBuilder.newColumn('driverName').withTitle('Driver Name'),
+        DTColumnBuilder.newColumn('vehicleNumber').withTitle('Vehicle No'),
+        DTColumnBuilder.newColumn('description').withTitle('Expenses Item'),
+        DTColumnBuilder.newColumn('expenceType').withTitle('Expense Type'),
+        DTColumnBuilder.newColumn('odoMeterReading').withTitle('Meter Reading'),
         DTColumnBuilder.newColumn(null).withTitle('Action').notSortable().renderWith(pendingBillsActionsHtml),
     ];
 
-    $scope.showApprovedBills = function (driverId) { $location.path('/maintenanceDetaills').search({driverId,billsType:"Approved"}); }
-    
-    $scope.showPendingBills = function (driverId) { $location.path('/maintenanceDetaills').search({driverId, billsType:"Pending"}); }
+    $scope.showApprovedBills = function (driverId, driverName) { 
+        let nameArray=driverName && driverName.split(" ");
+        $location.path('/maintenanceDetaills').search({driverId,driverName: nameArray[0]}); 
+    }
 
-    $scope.editPendingBills = function (billsData) { console.log("Pending edit Bills Data", billsData) }
+    $scope.updateStatus= async function(status, billId){
+        let url= DotsCons.UPDATE_EXPENCE_STATUS+billId+"/"+status;
+        $scope.loading = true;
+        await callGetApi({url});
+        $scope.loading = false;
+        $route.reload();
+    }
 
     function dtOptionsBuilder(data) {
         return DTOptionsBuilder
@@ -3421,65 +3425,13 @@ function maintenanceReportCtrl($scope, $http, DotsCons, $rootScope, authService,
             })
             .withPaginationType('full_numbers')
             .withOption('lengthMenu', [
-                [3, 5, 8, 10, 25, 50, -1],
-                [3, 5, 8, 10, 25, 50, "All"]
+                [5, 8, 10, 25, 50, -1],
+                [5, 8, 10, 25, 50, "All"]
             ])
-            .withDisplayLength(3)
+            .withDisplayLength(5)
             .withButtons(['print', 'excel', 'csvHtml5'])
             // Add Bootstrap compatibility
             .withBootstrap();
-    }
-}
-// maintance details controller
-function maintenanceDetailsCtrl($scope, $http, DotsCons, $rootScope, authService, $localStorage, $location, $q, toaster, $compile, DTOptionsBuilder, DTColumnBuilder) {
-    var token = authService.getCookie('globals');
-    var urlParams = $location.search();
-    
-    (function () {
-        const { driverId, billsType }=urlParams
-        $scope.actionShow = billsType === "Pending" ? true: false;
-        $scope.loading = true;
-        $http({
-            method: 'GET',
-            url: DotsCons.GET_EXPENCE_LIST + 0 + "/20/"+ driverId,
-            data: "",
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': token.currentUser.tokenDto.token
-            }
-        }).then(
-            function (response) {
-                const {data  }=response
-                $rootScope.approvedBillsData= (data && data.length >0) && data.map((item)=> {return {...item,"entryDate":moment(item.entryDate).format('YYYY-MM-DD')}});
-                $scope.loading = false;
-            },
-            function (errResponse) {
-                $scope.loading = false;
-                return $q.reject(errResponse)
-            }
-        )
-    })();
-
-
-    $scope.maintenanceReport = function () { $location.path('/maintenanceReport') }
-    $scope.addExpense = function () { $location.path('/addExpense') }
-
-    $scope.updateStatus= function(status, billId){
-        let url= DotsCons.UPDATE_EXPENCE_STATUS+billId.id+"/"+status;
-        callGetApi({url});
-    }
-
-    $scope.download = function () {
-        setTimeout(function () {
-            $("#maintenanceTableDta").table2excel({ filename: "report" });
-        }, 1000)
-    }
-
-    $scope.downloadPDF = function (pdfUrl, name) {
-        let pdfWindow = window.open("");
-        pdfWindow.document.write("<html<head><title>" + name + "</title><style>body{margin: 0px;}iframe{border-width: 0px;}</style></head>");
-        pdfWindow.document.write("<body><embed width='100%' height='100%' src='data:application/pdf;base64, " + encodeURI(pdfUrl) + "#toolbar=0&navpanes=0&scrollbar=0'></embed></body></html>");
-        //window.open("data:application/octet-stream;charset=utf-16le;base64,"+pdfUrl)
     }
 
     function callGetApi(props) {
@@ -3506,7 +3458,30 @@ function maintenanceDetailsCtrl($scope, $http, DotsCons, $rootScope, authService
             }
         )
     }
+}
+// maintance details controller
+function maintenanceDetailsCtrl($scope, $http, DotsCons, $rootScope, authService, $localStorage, $location, GET_CURRENT_DATA, $q, toaster, $compile, DTOptionsBuilder, DTColumnBuilder) {
+    var token = authService.getCookie('globals');
+    if (GET_CURRENT_DATA != null) {
+        $scope.approvedBillsData= (GET_CURRENT_DATA[0].data && GET_CURRENT_DATA[0].data.length >0) && GET_CURRENT_DATA[0].data.map((item)=> {return {...item,"entryDate":moment(item.entryDate).format('YYYY-MM-DD')}});
+        $scope.driverDetails= GET_CURRENT_DATA[1].data[0]
+    }
 
+    $scope.maintenanceReport = function () { $location.path('/maintenanceReport') }
+    $scope.addExpense = function () { $location.path('/addExpense') }
+
+    $scope.download = function () {
+        setTimeout(function () {
+            $("#maintenanceTableDta").table2excel({ filename: "report" });
+        }, 1000)
+    }
+
+    $scope.downloadPDF = function (pdfUrl, name) {
+        let pdfWindow = window.open("");
+        pdfWindow.document.write("<html<head><title>" + name + "</title><style>body{margin: 0px;}iframe{border-width: 0px;}</style></head>");
+        pdfWindow.document.write("<body><embed width='100%' height='100%' src='data:application/pdf;base64, " + encodeURI(pdfUrl) + "#toolbar=0&navpanes=0&scrollbar=0'></embed></body></html>");
+        //window.open("data:application/octet-stream;charset=utf-16le;base64,"+pdfUrl)
+    }
 }
 // this is the maintance report filter controller
 function maintenanceRerportFilterCtrl($scope, $http, DotsCons, $rootScope, authService, $localStorage, $location, $q, toaster) {
@@ -3560,14 +3535,14 @@ function expenseCtrl($scope, $http, DotsCons, $rootScope, authService, $localSto
 
     $scope.master = {};
     // this function will used for the adding expense
-    $scope.saveExpense = function (expenceData, fuleData, otherData) {
+    $scope.saveExpense = function (expenceData) {
         if (expenceData) {
             let mainData = angular.copy({
                 "time": expenceData.time,
                 "odoMeterReading": expenceData.odoMeterReading,
                 "expenceType": expenceData.expenceType,
                 "source": "Admin",
-                "status":"Approved",
+                "status":"Pending",
                 "fileUrl": $scope.fileUrl,
                 "driverAccountId": expenceData.driver ? expenceData.driver.accountId : "",
                 "entryDate": expenceData.entryDate.getTime(),

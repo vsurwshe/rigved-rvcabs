@@ -59,37 +59,36 @@
             </div>
             <div id="Pending Bills" class="tabcontent">
                 <div class="col-sm-12">
-                    <table datatable="ng" dt-options="pendingBillsDtOptions" dt-columns="pendingBillsDtColumns" id="approvedBills" class="row-border hover" style="width: 100%;">
-                        <!-- <thead>
-                        <tr>
-                            <th scope="col"><input type="checkbox" onclick="checkAll(this)"></th>
-                            <th scope="col">Date</th>
-                            <th scope="col">Driver Name</th>
-                            <th scope="col">Vehicle Number</th>
-                            <th scope="col">Expenses Item</th>
-                            <th scope="col">Expense Type</th>
-                            <th scope="col">Meter Reading</th>
-                            <th scope="col"> Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="data in pendingBillsData">
-                            <td><input id="chkCustomer_{{fruit.FruitId}}" type="checkbox" ng-model="data.Selected" />
-                                <td>{{data.date}}</td>
-                                <td>{{data.driverName}}</td>
-                                <td>{{data.vehicleNo}}</td>
-                                <td>{{data.expensesItem}}</td>
-                                <td>₹&nbsp;{{data.expenseType}}</td>
-                                <td>{{data.meterReading}}</td>
-                                <td>
-                                    <center>
-                                        <button class="btn ripple-infinite btn-round btn-secondary materialButtons" ng-hide="no_morerecord" ng-click="showPendingBills(data)">View</button>
-                                        <div style="color: red;"> <span>Pending</span> </div>
-                                        <button class="btn ripple-infinite btn-round btn-primary materialButtons" ng-hide="no_morerecord" ng-click="editPendingBills(data)">Edit</button>
-                                    </center>
-                                </td>
-                        </tr>
-                    </tbody> -->
+                    <table datatable="ng" dt-options="pendingBillsDtOptions" dt-columns="pendingBillsDtColumns" id="pendingBills" class="row-border hover" style="width: 100%;">
+                         <thead>
+                            <!-- <tr>
+                                 <th scope="col"><input type="checkbox" onclick="checkAll(this)"></th>
+                                 <th scope="col">Date</th>
+                                 <th scope="col">Driver Name</th>
+                                 <th scope="col">Vehicle Number</th>
+                                 <th scope="col">Expenses Item</th>
+                                 <th scope="col">Expense Type</th>
+                                 <th scope="col">Meter Reading</th>
+                                 <th scope="col"> Actions</th>
+                             </tr>  -->
+                        </thead>
+                        <tbody>
+                            <!-- <tr ng-repeat="data in pendingBillsData">
+                                <td><input id="chkCustomer_{{fruit.FruitId}}" type="checkbox" ng-model="data.Selected" />
+                                    <td>{{data.date}}</td>
+                                    <td>{{data.driverName}}</td>
+                                    <td>{{data.vehicleNo}}</td>
+                                    <td>{{data.expensesItem}}</td>
+                                    <td>₹&nbsp;{{data.expenseType}}</td>
+                                    <td>{{data.meterReading}}</td>
+                                    <td>
+                                        <center>
+                                            <button class="btn btn-round btn-primary materialButtons" ng-hide="no_morerecord" ng-click="updateStatus(Approved,data.id)"> Approved </button>&nbsp;
+                                            <button class="btn ripple-infinite btn-round btn-secondary materialButtons" ng-hide="no_morerecord" ng-click="updateStatus(Rejected,data.id)">Rejected</button>
+                                        </center>
+                                    </td>
+                            </tr> -->
+                        </tbody>
                     </table>
                 </div>
             </div>

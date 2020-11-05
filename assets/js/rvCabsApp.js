@@ -68,8 +68,9 @@ app.constant('DotsCons', {
     'GET_FEEDBACK': ip + 'trip/getFeedback/',
     'SAVE_EXPENSE': ip + 'expenditure/create/',
     'GET_EXPENCE_LIST': ip + 'expenditure/searchByDriver/',
-    'UPDATE_EXPENCE_STATUS': ip +'expenditure/updateStatus/'
-    
+    'UPDATE_EXPENCE_STATUS': ip +'expenditure/updateStatus/',
+    'CONSOLIDATE_SERVICE': ip +'expenditure/expList/',
+    'ALL_EXPENCE_LIST': ip +'expenditure/allExpList/',
 });
 
 // this app config provider
@@ -215,32 +216,40 @@ app.config(['$routeProvider', function($routeProvider) {
             templateUrl: 'assets/pages/maintenanceReport.html',
             controller: maintenanceReportCtrl,
             resolve: {
-                GET_CURRENT_DATA: function(authService, DotsCons, $rootScope, $http) {
+                GET_CURRENT_DATA: function(authService, DotsCons, $rootScope, $http,$q) {
                     var token = authService.getCookie('globals');
                     if ($rootScope.data != null) {
                         var data = $rootScope.data
                     } else {
                         var data = {}
                     }
-                    return $http({
-                        method: 'post',
-                        url: DotsCons.GET_FILTERD_DATA + "/0/10/",
-                        data: data,
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Authorization': token.currentUser.tokenDto.token
-                        }
-                    }).then(
-                        function(response) { return response.data },
-                        function(errResponse) { return $q.reject(errResponse) }
-                    )
+                    return $q.all([
+                        $http({ method: 'GET', url: DotsCons.CONSOLIDATE_SERVICE + 0 + "/10/", data, headers: {'Content-Type': 'application/json','Authorization': token.currentUser.tokenDto.token } }),
+                        $http({ method: 'GET', url: DotsCons.ALL_EXPENCE_LIST + 0 + "/10/Pending", data, headers: {'Content-Type': 'application/json','Authorization': token.currentUser.tokenDto.token } })
+                    ]).then( response=>{ return response; })
                 },
             }
         })
         // this declare the maintenanceDetaills route with controller
         .when('/maintenanceDetaills', {
             templateUrl: 'assets/pages/maintenanceDetaills.html',
-            controller: maintenanceDetailsCtrl
+            controller: maintenanceDetailsCtrl,
+            resolve: {
+                GET_CURRENT_DATA: function(authService, DotsCons, $rootScope,$location, $http,$q) {
+                    var token = authService.getCookie('globals');
+                    var urlParams = $location.search();
+                    const { driverId,driverName }=urlParams
+                    if ($rootScope.data != null) {
+                        var data = $rootScope.data
+                    } else {
+                        var data = {}
+                    }
+                    return $q.all([
+                        $http({ method: 'GET', url: DotsCons.GET_EXPENCE_LIST + 0 + "/20/"+ driverId, data, headers: {'Content-Type': 'application/json','Authorization': token.currentUser.tokenDto.token } }),
+                        $http({ method: 'GET', url: DotsCons.DRIVER_SEARCH + 0 + "/10/"+driverName, data, headers: {'Content-Type': 'application/json','Authorization': token.currentUser.tokenDto.token } })
+                    ]).then( response=>{ return response; })
+                },
+            }
         })
         // this declare the maintenanceDetaills route with controller
         .when('/maintenanceReportFilter', {
