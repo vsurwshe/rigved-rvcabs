@@ -3709,7 +3709,7 @@ a.article:hover {
     padding: 20px;
     min-height: 100vh;
     transition: all 0.3s;
-    background-image: url('assets/img/background.jpg');
+    background-image: url('../img/background.jpg');
 }
 
 
