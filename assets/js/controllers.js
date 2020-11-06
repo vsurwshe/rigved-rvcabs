@@ -3250,8 +3250,9 @@ function maintenanceReportCtrl($scope, $http, DotsCons, $rootScope, $route, auth
     }
 
     var pendingBillsActionsHtml = function (data, type, full, meta) {
+        let NewUrl= data.fileUrl.replace(/\\/g, '/');
         return '<button class="btn btn-round btn-primary materialButtons" ng-hide="no_morerecord" ng-click="updateStatus(\'Approved\', \''+data.id+'\')"> Approved </button>' + 
-        '&nbsp;<button class="btn ripple-infinite btn-round btn-secondary materialButtons" ng-hide="no_morerecord" ng-click="showImage(\''+data.fileUrl+'\')" data-toggle="modal" data-target="#invoiceImage">Show</button>'+
+        '&nbsp;<button class="btn ripple-infinite btn-round btn-secondary materialButtons" ng-hide="no_morerecord" ng-click="showImage(\''+NewUrl+'\')" data-toggle="modal" data-target="#invoiceImage">Show</button>'+
         '&nbsp;<button class="btn ripple-infinite btn-round btn-secondary materialButtons" ng-hide="no_morerecord" ng-click="updateStatus(\'Rejected\',\''+data.id+'\')">Rejected</button>';
     }
 
@@ -3267,8 +3268,8 @@ function maintenanceReportCtrl($scope, $http, DotsCons, $rootScope, $route, auth
         DTColumnBuilder.newColumn('totalDist').withTitle('Total KM').renderWith(function (data, type, full, meta) { return Math.floor(data* 100) / 100  + " KM"; }),
         DTColumnBuilder.newColumn('totalLt').withTitle('Total Fuel'),
         DTColumnBuilder.newColumn('avg').withTitle('Average').renderWith(function (data, type, full, meta) { return data + " KM/L"; }),
-        DTColumnBuilder.newColumn('totalAmt').withTitle('Service').renderWith(function (data, type, full, meta) { return "₹&nbsp;" + data; }),
-        DTColumnBuilder.newColumn('otherExpTotal').withTitle('Grand Total Amount').renderWith(function (data, type, full, meta) { return "₹&nbsp;" + data; }),
+        DTColumnBuilder.newColumn('otherExpTotal').withTitle('Service').renderWith(function (data, type, full, meta) { return "₹&nbsp;" + data; }),
+        DTColumnBuilder.newColumn('totalAmt').withTitle('Grand Total Amount').renderWith(function (data, type, full, meta) { return "₹&nbsp;" + data; }),
         DTColumnBuilder.newColumn(null).withTitle('Action').notSortable().renderWith(approvedBillsActionsHtml),
     ];
 
