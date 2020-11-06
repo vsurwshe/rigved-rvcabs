@@ -254,6 +254,15 @@
 
     }
 
+
+.btn-success.disabled, .btn-success:disabled {
+
+    color: #fff;
+    background-color: #51a264 !important;
+    border-color: #28a745;
+
+}
+
     /* -----------Accordian------------------- */
 
     .i-accordion .panel-heading,
@@ -278,7 +287,7 @@
         border-radius: 22px;
     }
 .btn-round{
-    border-radius: 20px;
+    border-radius: 10px;
 }
     .panel-body {
         border: 1px solid #dad6d6;
@@ -326,6 +335,9 @@ h5{
     left: 112px;
     top: 14px;
 
+}
+.bgr{
+    background-color: #cecece;
 }
 .img{
     width: 100px;
@@ -379,7 +391,7 @@ top: 5px;
             <table class="responsive" id = upCrides>
                 <thead>
                     <tr>
-                        <!-- <th scope="col">Driver</th> -->
+                        <th scope="col">Driver</th>
                         <th scope="col">Traveller Name</th>
                         <th scope="col">Mobile Number</th>
                         <th scope="col">Pickup-Time </th>
@@ -390,7 +402,7 @@ top: 5px;
                 </thead>
                 <tbody>
                     <tr ng-repeat = "item in upcomingList" >
-                        <!-- <td></td> -->
+                        <td>{{item.driverName || "--"}}</td>
                         <td>{{item.travellerName}}</td>
                         <td>{{item.travellerMobile}}</td>
                         <td>{{item.pickUpDate}},{{item.pickUpTime}}</td>
@@ -403,11 +415,11 @@ top: 5px;
                         <td ng-if = "item.status == 5">Ride Completed</td>
                         <td ng-if = "item.status == 6">Declined</td>
                         <td ng-if = "item.status == 7">Expired</td>
-
+						<td ng-if = "item.status == 8">Ride Billed</td>
                         <!-- <td data-table-header="Car Brand/Model">{{record.carDetailDtos[0].type.name}}/{{record.carDetailDtos[0].subType.name}}</td> -->
                         <td data-table-header="Action">
-                            <button class=" btn btn-default btn-round" ng-click= "getDetails(item,1)" data-toggle="modal" data-target="#exampleModal">View</button>
-                            <button class=" btn btn-success btn-round"  ng-click= "getDetails(item,2)" data-toggle="modal" data-target="#exampleModal">Accept</button>
+                            <button class=" btn btn-default btn-round bgr" ng-click= "getDetails(item,1)" data-toggle="modal" data-target="#exampleModal">View</button>
+                            <button class=" btn btn-success btn-round"  ng-click= "getDetails(item,2)"  ng-disabled = "item.status !='1'" data-toggle="modal" data-target="#exampleModal">Accept</button>
                             <button class=" btn btn-primary btn-round" ng-disabled = "item.status !='0' && item.status !='1' && item.status !='3' " ng-click= "getDetails(item,2)" data-toggle="modal" data-target="#exampleModal1">Reassign</button>
                         </td>
                     </tr>
@@ -424,7 +436,7 @@ top: 5px;
             <table class="responsive" id = Psrides>
                 <thead>
                     <tr>
-                        <!-- <th scope="col">Driver</th> -->
+                        <th scope="col">Driver</th>
                         <th scope="col">Traveller Name</th>
                         <th scope="col">Mobile Number</th>
                         <th scope="col">Pickup-Time </th>
@@ -435,7 +447,7 @@ top: 5px;
                 </thead>
                 <tbody>
                     <tr ng-repeat = "item in finishList" >
-                        <!-- <td>{{}}</td> -->
+                        <td>{{item.driverName || "--"}}</td>
                         <td>{{item.travellerName}}</td>
                         <td>{{item.travellerMobile}}</td>
                         <td>{{item.pickUpDate}},{{item.pickUpTime}}</td>
@@ -448,10 +460,10 @@ top: 5px;
                         <td ng-if = "item.status == 5">Ride Completed</td>
                         <td ng-if = "item.status == 6">Declined</td>
                         <td ng-if = "item.status == 7">Expired</td>
-
+						<td ng-if = "item.status == 8">Ride Billed</td>		
                         <!-- <td data-table-header="Car Brand/Model">{{record.carDetailDtos[0].type.name}}/{{record.carDetailDtos[0].subType.name}}</td> -->
                         <td data-table-header="Action">
-                            <button class=" btn btn-default btn-round"   ng-click= "getDetails(item,1)" data-toggle="modal" data-target="#exampleModal">View</button>
+                            <button class=" btn btn-default btn-round bgr"   ng-click= "getDetails(item,1)" data-toggle="modal" data-target="#exampleModal">View</button>
                        
                         </td>
                     </tr>
@@ -489,11 +501,11 @@ top: 5px;
                     </div>
                     <div class="col-md-3">
                         <label><h6>Date:</h6></label>
-                        <label>{{complteDetails.bookingDate}}</label>
+                        <label>{{complteDetails.createdDate}}</label>
                     </div>
                     <div class="col-md-3">
                         <label><h6>Time:</h6></label>
-                        <label>{{complteDetails.bookingTime}}</label>
+                        <label>{{complteDetails.createdTime}}</label>
                     </div>
                </div>
                <hr>
@@ -521,8 +533,8 @@ top: 5px;
                         <img class="img" src="assets/img/dummy.png" alt="img">
                     </div>
                     <div class="col-md-9 element2">
-                        <label><h6>Driver Name :</h6> </label> <label>&nbsp;&nbsp;{{firstName}}{{}}</label><br>
-                        <label><h6> Driver Mobile Number :</h6></label><label>&nbsp;&nbsp;{{}}</label><br>
+                        <label><h6>Driver Name :</h6> </label> <label>&nbsp;&nbsp;{{complteDetails.driverDetailDto.firstName}}{{complteDetails.driverDetailDto.lastName}}</label><br>
+                        <label><h6> Driver Mobile Number :</h6></label><label>&nbsp;&nbsp;{{complteDetails.driverDetailDto.mobileNumber}}</label><br>
                         <label><h6>Brand/modal :</h6></label><label>&nbsp;&nbsp;{{complteDetails.sysCarCategoryDto.name}}</label><br>
                     </div>
                    <hr>
@@ -536,6 +548,7 @@ top: 5px;
                <hr>
                <div class="text-center" ng-show = "view">
                     <label>Current Ride Status</label><br>
+                    <label ng-show = "status === 'Ride Compelted'">Total Distance :{{complteDetails.totalDistance}}&nbsp;&nbsp;Total Time :{{complteDetails.totalTime}}</label><br>
                     <button class="btn btn-defualt" ><h2>{{status}}</h2></button>
                </div>
                <div class="text-center" ng-show = "accept">
@@ -561,6 +574,25 @@ top: 5px;
             </div>
             <div class="modal-body">
                 <div class="row">
+                    <div class="col-md-3">
+                        <label><h6>Company</h6></label>
+                        <label>{{complteDetails.companyDetailDto.companyName}}</label>
+                    </div>
+                    <div class="col-md-3">
+                        <label><h6>Travel Id:</h6></label>
+                        <label>{{complteDetails.travelId}}</label>
+                    </div>
+                    <div class="col-md-3">
+                        <label><h6>Date:</h6></label>
+                        <label>{{complteDetails.createdDate}}</label>
+                    </div>
+                    <div class="col-md-3">
+                        <label><h6>Time:</h6></label>
+                        <label>{{complteDetails.createdTime}}</label>
+                    </div>
+               </div>
+               <hr>
+                <div class="row">
                     <div class="col-md-6">
                         <h6>Traveller Details</h6>
                         <div class="col-md-3">
@@ -584,8 +616,8 @@ top: 5px;
                             <img class="img" src="assets/img/dummy.png" alt="img">
                         </div>
                         <div class="col-md-9 element2">
-                            <label><h6>Driver Name :</h6> </label> <label>&nbsp;&nbsp;{{firstName}}{{}}</label><br>
-                            <label><h6> Driver Mobile Number :</h6></label><label>&nbsp;&nbsp;{{}}</label><br>
+                            <label><h6>Driver Name :</h6> </label> <label>&nbsp;&nbsp;{{complteDetails.driverDetailDto.firstName}}{{complteDetails.driverDetailDto.lastName}}</label><br>
+                        <label><h6> Driver Mobile Number :</h6></label><label>&nbsp;&nbsp;{{complteDetails.driverDetailDto.mobileNumber}}</label><br>
                             <label><h6>Brand/modal :</h6></label><label>&nbsp;&nbsp;{{complteDetails.sysCarCategoryDto.name}}</label><br>
                         </div>
                        <hr>
@@ -620,7 +652,7 @@ top: 5px;
                 <lable for="">Select a Driver</lable>
                   <input class="form-control txt-field " placeholder="Enter For Use"
                 ng-model="driver"
-                uib-typeahead="company as company.name for company in getDriverList($viewValue)"
+                uib-typeahead="company as company.firstName for company in getDriverList($viewValue)"
                 typeahead-loading="loadingLocations"typeahead-show-hint="false" typeahead-min-length="0" typeahead-no-results="noResults"
                 class="form-control" ng-focus = getDriverList()> 
             <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>

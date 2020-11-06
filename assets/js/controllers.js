@@ -599,7 +599,7 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
                 "id": $scope.company.id,
                 "costCenter":$scope.costCenter.name
             },
-            "driverAccountId": $scope.driver.id,
+            "driverAccountId": $scope.driver.accountId,
             "dropDate": $scope.toDate.getTime(),
             "dropTime": Date.parse(drpTime),
             "instruction": $scope.specificIns,
@@ -633,8 +633,9 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
 
 
             },
-            "tripStatus": ""
+            "tripStatus": "0"
         }
+        
 
         // Old payload code fixes
         // var data = {
@@ -680,33 +681,33 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
 
        // alert($scope.picktime)
         console.log(data)
-        // $http({
-        //     method: 'post',
-        //     url: DotsCons.TRIP_BOOKING,
-        //     data: data,
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         'Authorization': token.currentUser.tokenDto.token
-        //     }
-        // }).then(function (response) {
-        //     console.log(response)
-        //     if (response.status == '200') {
-        //         $scope.loading = false;
-        //         $.iaoAlert({
-        //             msg: "Trip Booked Successfully ..!",
-        //             type: "success",
-        //             mode: "dark",
-        //         })
-        //     }
-        //     $location.path('/managetrip')
-        // },
-        //     function (errResponse) {
-        //         $.iaoAlert({
-        //             msg: "Trip Booked Successfully ..!",
-        //             type: "success",
-        //             mode: "dark",
-        //         })
-        //     })
+        $http({
+            method: 'post',
+            url: DotsCons.TRIP_BOOKING,
+            data: data,
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': token.currentUser.tokenDto.token
+            }
+        }).then(function (response) {
+            console.log(response)
+            if (response.status == '200') {
+                $scope.loading = false;
+                $.iaoAlert({
+                    msg: "Trip Booked Successfully ..!",
+                    type: "success",
+                    mode: "dark",
+                })
+            }
+            $location.path('/managetrip')
+        },
+            function (errResponse) {
+                $.iaoAlert({
+                    msg: "Trip Booked Successfully ..!",
+                    type: "success",
+                    mode: "dark",
+                })
+            })
 
     }
 
@@ -961,6 +962,7 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
                 })
             
         }
+        $scope.loading = false;
     
     }
     $scope.UploadingBack= function () {
@@ -1033,7 +1035,7 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
                 })
             
         }
-    
+        $scope.loading = false;
     }
     $scope.UploadingPan= function () {
       
@@ -1105,7 +1107,7 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
                 })
             
         }
-    
+        $scope.loading = false;
     }
     $scope.UploadingPan1= function () {
       
@@ -1177,7 +1179,7 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
                 })
             
         }
-    
+        $scope.loading = false;
     }
     $scope.UploadingAdhar= function () {
       
@@ -1250,7 +1252,7 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
                 })
             
         }
-    
+        $scope.loading = false;
     }
     $scope.UploadingAdhar1= function () {
       
@@ -1322,7 +1324,7 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
                 })
             
         }
-    
+        $scope.loading = false;
     }
     $scope.acc4 = function(){
         $scope.card3 = true
@@ -1334,8 +1336,15 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
         $scope.card5= true
     } 
     $scope.acc7= function(){
-        $scope.card6 = true
+        $scope.card7 = true
     } 
+    $scope.acc8= function(){
+        $scope.card9 = true
+    } 
+    $scope.acc9= function(){
+        $scope.card10 = true
+    } 
+
     $scope.UploadingPV= function () {
       $scope.loading = true
        
@@ -1361,7 +1370,7 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
                 uploadedFiles.push(docData);
                 console.log(uploadedFiles)
             }
-            $scope. pvFront= uploadedFiles[0].fileName+"."+uploadedFiles[0].contentType;
+            $scope.pvFront= uploadedFiles[0].fileName+"."+uploadedFiles[0].contentType;
             
             $http({
                 method: 'POST',
@@ -1433,7 +1442,7 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
                 uploadedFiles.push(docData);
                 console.log(uploadedFiles)
             }
-            $scope. pvBack= uploadedFiles[0].fileName+"."+uploadedFiles[0].contentType;
+            $scope.pvBack= uploadedFiles[0].fileName+"."+uploadedFiles[0].contentType;
             
             $http({
                 method: 'POST',
@@ -1478,7 +1487,7 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
                 })
             
         }
-    
+        $scope.loading = false;
     }
     $scope.acc5 = function(){
         $scope.card4 = true
@@ -1508,7 +1517,7 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
                 uploadedFiles.push(docData);
                 console.log(uploadedFiles)
             }
-            $scope. pvFront= uploadedFiles[0].fileName+"."+uploadedFiles[0].contentType;
+            $scope.pvFront= uploadedFiles[0].fileName+"."+uploadedFiles[0].contentType;
             
             $http({
                 method: 'POST',
@@ -1553,7 +1562,7 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
                 })
             
         }
-    
+        $scope.loading = false;
     }
     $scope.UploadingVR1= function () {
       
@@ -1580,7 +1589,7 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
                 uploadedFiles.push(docData);
                 console.log(uploadedFiles)
             }
-            $scope. rvBack= uploadedFiles[0].fileName+"."+uploadedFiles[0].contentType;
+            $scope.rvBack= uploadedFiles[0].fileName+"."+uploadedFiles[0].contentType;
             
             $http({
                 method: 'POST',
@@ -1625,7 +1634,7 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
                 })
             
         }
-    
+        $scope.loading = false;
     }
     $scope.Uploadingin= function () {
       
@@ -1697,7 +1706,7 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
                  })
              
          }
-     
+         $scope.loading = false;
      }
      $scope.Uploadingin1= function () {
       
@@ -1769,7 +1778,7 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
                  })
              
          }
-     
+         $scope.loading = false;
      }
      $scope.Uploadingvep= function () {
       
@@ -1841,7 +1850,7 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
                  })
              
          }
-     
+         $scope.loading = false;
      }
      $scope.Uploadingvep1= function () {
       
@@ -1913,7 +1922,7 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
                  })
              
          }
-     
+         $scope.loading = false;
      }
      $scope.UploadingRD= function () {
       
@@ -1985,7 +1994,7 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
                  })
              
          }
-     
+         $scope.loading = false;
      }
      $scope.UploadingRD1= function () {
       
@@ -2057,7 +2066,7 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
                  })
              
          }
-     
+         $scope.loading = false;
      }
     // $scope.documentType = function(){
     //     $http({
@@ -2150,7 +2159,7 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
                  })
              
          }
-     
+         $scope.loading = false;
      }
      $scope.UploadingFT1= function () {
       
@@ -2222,7 +2231,7 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
                  })
              
          }
-     
+         $scope.loading = false;
      }
     $scope.driverRegistration = function () {
         $scope.loading = true;
@@ -2237,11 +2246,11 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
                 "keyName": "DL Number:,Firt Name:,Last Name:,Date of Birth:,Blood Group:,RTO Name:,Issued Date:,Date of Expiry:,Type of Vehicle:,Remark:,Front Image:,Back Image:,",
                 "documentField": {
                   "Remark": "",
-                  "Back Image": $scope.driver_back[0],
+                  "Back Image": $scope.driverd_back,
                   "Issued Date": $scope.issueDate,
                   "Date of Expiry": $scope.expiryDate,
                   "Date of Birth": '',
-                  "Front Image": $scope.driver_back[0],
+                  "Front Image": $scope.driver_frontd,
                   "DL Number": $scope.dlno,
                   "Blood Group": $scope.blGroup,
                   "Type of Vehicle": $scope.typevehi,
@@ -2265,11 +2274,11 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
                 "keyName": "Aadhar Number:,Aadhar Name:,Aadhar Last Name:,Aaddhar DOB:,Gender:,AadharAddress,Front Image:,Back Image:,",
                 "documentField": {
                   "Gender": "",
-                  "Back Image": "",
+                  "Back Image": $scope.adhar_back,
                   "AadharAddress": "",
                   "Aaddhar DOB": $scope.dob,
                   "Aadhar Name": $scope.adhar_fname,
-                  "Front Image": "",
+                  "Front Image": $scope.adhar_front,
                   "Aadhar Last Name": $scope.adhar_lname,
                   "Aadhar Number": $scope.adharno,
                 }
@@ -2287,11 +2296,11 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
                     "keyName": "Permanent  Account Number:,PAN First Name:,PAN Last Name:,Father's Name:,PAN DOB:,Front Image:,Back Image:,",
                     "documentField": {
                       "Permanent  Account Number": $scope.panno,
-                      "Back Image": "",
+                      "Back Image": $scope.pan_back,
                       "Father's Name": $scope.fatherName,
                       "PAN First Name": $scope.pan_fname,
                       "PAN DOB": $scope.panDob,
-                      "Front Image": "",
+                      "Front Image": $scope.pan_front,
                       "PAN Last Name": $scope.pan_lname
                     }
                   }
@@ -2307,10 +2316,10 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
                 "keyName": "Police Station Name:,Authority Name:,Document Number:,Front Image:,Back Image:,",
                 "documentField": {
                   "Authority Name": $scope.author_name,
-                  "Back Image": "",
+                  "Back Image": $scope.pvBack,
                   "Document Number": $scope.dcn,
                   "Police Station Name": $scope.psn,
-                  "Front Image": ""
+                  "Front Image": $scope.pvFront
                 }
                 }
                   $scope.docData.push(pvdata)
@@ -2330,7 +2339,7 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
                   "Reg Upto": $scope.regUpto,
                   "Manufacturer Date": $scope.manufacDate,
                   "Tax Upto": $scope.tax,
-                  "Front Image": "",
+                  "Front Image": $scope.rvBack,
                   "Age": $scope.age,
                   "regNumber":$scope.regNo,
                   "Manufacturer": $scope.manfact,
@@ -2355,12 +2364,12 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
                 "keyName": "Policy Number:,Issued Date:,Expiry Date:,Insurance Provider:,Document Number:,Insurance Type:,Front Image:,Back Image:,",
                 "documentField": {
                 "Insurance Type": $scope.inType,
-                "Back Image": "",
+                "Back Image": $scope.insurance_back,
                 "Document Number": $scope.docNo,
                 "Issued Date": $scope.inIssueDate,
                 "Insurance Provider": $scope.inProvider,
                 "Expiry Date": $scope.inExpiryDate,
-                "Front Image": "",
+                "Front Image": $scope.insurance_front,
                 "Policy Number": $scope.polacyno
                 }
                 }
@@ -2375,17 +2384,40 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
                 "keyName": "Permit Number:,Issued Date:,Expiry Date:,Permit Sate:,Permit Type:,Vehicle Number:,Front Image:,Back Image:,",
                 "documentField": {
                   "Permit Number": $scope.perno,
-                  "Back Image": "",
+                  "Back Image":  $scope.vep_back,
                   "Issued Date": $scope.vpissueDate,
                   "Permit Sate": $scope.perstate,
                   "Expiry Date": $scope.vpexpiryDate,
-                  "Front Image": "",
+                  "Front Image": $scope.vep_front,
                   "Vehicle Number": $scope.vehcle_num,
                   "Permit Type": $scope.PermitType
                 }
               
             }
             $scope.docData.push(vhper)
+        }
+        if($scope.card8 == true){
+            var pucData =   {
+                "documentId": 8,
+                "docName": "PUC Certificate",
+                "description": null,
+                "active": true,
+                "keyName": "Licence umber:,Center Name:,Center Address:,PUC Number:,Engine Type:,Fuel Type:,Catalyst:,Test Date:,Validity Date:,Front Image:,Back Image:,",
+                "documentField": {
+                  "PUC Number": $scope.pucNumber,
+                  "Back Image": $scope.centerName,
+                  "Fuel Type": $scope.fuel,
+                  "Center Name": $scope.centerName,
+                  "Center Address": $scope.cenAdress,
+                  "Licence Number": $scope.LiNumber,
+                  "Front Image": $scope.pucfile,
+                  "Engine Type": $scope.engineNumber,
+                  "Validity Date": $scope.valDate,
+                  "Test Date": $scope.testDate,
+                  "Catalyst": $scope.Catalyst
+                }
+              }
+              $scope.docData.push(pucData)
         }
         if($scope.card9 == true){
             var tax = {
@@ -2395,11 +2427,11 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
                 "active": true,
                 "keyName": "Document Number:,Issued Date:,Expiry Date:,Front Image:,Back Image:,",
                 "documentField": {
-                  "Back Image": "",
+                  "Back Image": $scope.rd_back,
                   "Document Number": $scope.taxno,
                   "Issued Date": $scope.taxissueDate,
                   "Expiry Date": $scope.taxexpiryDate,
-                  "Front Image": ""
+                  "Front Image": $scope.rd_front
                 }
             }
             $scope.docData.push(tax)
@@ -2419,6 +2451,24 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
               "Front Image": ""
             }
          }
+         $scope.docData.push(fc)
+     }
+     if($scope.card11 == true){
+         var pfTax =    {
+            "documentId": 11,
+            "docName": "Professional Tax",
+            "description": null,
+            "active": true,
+            "keyName": "Document Number:,Issued Date:,Expiry Date:,Front Image:,Back Image:,",
+            "documentField": {
+              "Back Image": $scope.pfImage,
+              "Document Number": $scope.docuNoPf,
+              "Issued Date": $scope.pfissueDate,
+              "Expiry Date": $scope.pfexpiryDate,
+              "Front Image":  $scope.pfImage1
+            }
+          }
+          $scope.docData.push(pfTax) 
      }
         var postdata =  {
 
@@ -2489,7 +2539,14 @@ console.log($scope.repAdd,$scope.pickUpLocation,$scope.fromCity)
                     mode: "dark",
                 })
                 $location.path('/approveMember')
-            } 
+            }else if(response.status == '409'){
+                $scope.loading = false;
+                $.iaoAlert({
+                    msg: "Driver Already Exists.!",
+                    type: "success",
+                    mode: "dark",
+                })
+            }
 
         },
             function (errResponse) {
@@ -2517,7 +2574,7 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
             var token = authService.getCookie('globals');
              $http({
                 method: 'GET',
-                url: DotsCons.GET_FINISHED_LIST,
+                url: DotsCons.GET_FINISHED_LIST+"/"+"0/10",
                 data: "",
                 headers: {
                     'Content-Type': 'application/json',
@@ -2597,9 +2654,20 @@ function manageTripController($scope, $http, DotsCons, authService, $localStorag
             else if($scope.complteDetails.tripStatus == 7 ){
                 $scope.status = "Declined";
             }
+			else if($scope.complteDetails.tripStatus == 8 ){
+                $scope.status = "Ride Billed";
+            }
             $scope.loading = false;
         },
             function (errResponse) {
+                $scope.loading = false;
+                $.iaoAlert({
+                    msg: "Unable to get Trip Details..!",
+                    type: "error",
+                    mode: "dark",
+                })
+                $("#exampleModal1").modal("hide")
+                console.error('Error !!');
                 console.error('Error !!');
                     return $q.reject(errResponse);
                 })
@@ -2764,7 +2832,7 @@ $scope.reAssignRide = function(data){
     $scope.loading = true;
     $http({
         method: 'GET',
-        url: DotsCons.RE_ASSIGN_RIDE+data.id+"/"+$scope.driver.id,
+        url: DotsCons.RE_ASSIGN_RIDE+data.id+"/"+$scope.driver.accountId,
         data: '',
         headers: {
             'Content-Type': 'application/json',
@@ -2779,7 +2847,9 @@ $scope.reAssignRide = function(data){
                 type: "success",
                 mode: "dark",
             })
-            $("#exampleModal1").modal("hide")
+            
+            $("#exampleModal1").modal("hide");
+            $location.path('/managetrip')
         }
     },
         function (errResponse) {
@@ -3650,25 +3720,30 @@ $scope.download = function(){
     
     
 }
-var reqIds = []
+
+$scope.albumNameArray = [];
 $scope.generateInvoice = function(){
-    for (var i = 0; i < $rootScope.filtedData.length; i++) {
-        if ($rootScope.filtedData[i].Selected) {
-            var fruitId = $rootScope.filtedData[i].id;
-           // var fruitName = $scope.Fruits[i].Name;
-          // var  message = "Value: " + fruitId + " Text: " + fruitName + "\n";
-        }
-    }
-   reqIds.push(fruitId)
-    var reqData = {
-        reqIds
-    }
-        
+    // for (var i = 0; i < $rootScope.filtedData.length; i++) {
+    //     if ($rootScope.filtedData[i].Selected) {
+    //         var fruitId = $rootScope.filtedData[i].id;
+    //        // var fruitName = $scope.Fruits[i].Name;
+    //       // var  message = "Value: " + fruitId + " Text: " + fruitName + "\n";
+    //     }
+    // }
     
+    angular.forEach($rootScope.filtedData, function(data){
+      if (data.selected) $scope.albumNameArray.push(data.id);
+    });
+//    reqIds.push(fruitId)
+//     var reqData = {
+//         reqIds
+//     }
+        
+    console.log($scope.albumNameArray)
     $http({
         method: 'post',
         url: DotsCons.GENERATE_INVOICE,
-        data:reqData.reqIds,
+        data:$scope.albumNameArray,
         headers: {
             'Content-Type': 'application/json',
             'Authorization': token.currentUser.tokenDto.token
@@ -4040,7 +4115,7 @@ $scope.download = function(){
         console.log("Harish")
 
         $("#tableDta").table2excel({
-            filename: "example"
+            filename: "example.xls"
         });
     // kendo.drawing.drawDOM($("#listDataTable8")).then(function(group) {
         
@@ -4170,7 +4245,7 @@ function profileCtrl($scope, $http, DotsCons, authService, $localStorage, $q, to
             if (response.status == '200') {
                 $scope.loading = false;
                 $.iaoAlert({
-                    msg: "Driver Registered Successfully ..!",
+                    msg: "Password changed Successfully ..!",
                     type: "success",
                     mode: "dark",
                 })

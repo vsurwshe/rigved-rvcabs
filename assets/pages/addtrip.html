@@ -319,10 +319,7 @@
                                             <input class="form-control txt-field " placeholder="Enter Cost Center"
                                             ng-model="costCenter"
                                            >
-                                        <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
-                                        <div ng-show="noResults">
-                                            <i class="glyphicon glyphicon-remove"></i> No Results Found
-                                        </div>
+                                       
                                         </div>
                                         <div class="from-group  col-sm-4" id="remote">
                                             <lable for="">Company name<span class="mendatory">*</span></lable>
@@ -567,7 +564,7 @@
                                             <lable for="">Select a Driver<span class="mendatory">*</span></lable>
                                             <input class="form-control txt-field " placeholder="Select For Driver"
                                             ng-model="driver"
-                                            uib-typeahead="company as company.name for company in getDriverList($viewValue)"
+                                            uib-typeahead="company as company.firstName for company in getDriverList($viewValue)"
                                             typeahead-loading="loadingLocations"typeahead-show-hint="false" typeahead-min-length="0" typeahead-no-results="noResults"
                                             class="form-control" ng-focus = getDriverList()> 
                                         <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>

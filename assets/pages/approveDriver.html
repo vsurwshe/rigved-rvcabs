@@ -352,10 +352,10 @@ top: 13px;
                 </thead>
                 <tbody>
                     <tr ng-repeat="record in driverList" ng-show="!NoDriverList">
-                        <td data-table-header="Name">{{record.name}}</td>
-                        <td data-table-header="Mobile Number"></td>
-                        <td data-table-header="Email"></td>
-                        <td data-table-header="Car Brand/Model"></td>
+                        <td data-table-header="Name">{{record.firstName}}</td>
+                        <td data-table-header="Mobile Number">{{record.mobileNumber}}</td>
+                        <td data-table-header="Email">{{record.emailId}}</td>
+                        <td data-table-header="Car Brand/Model">{{record.carDetailDto.subType.name}}</td>
                         <td data-table-header="Action">
                             <button type="button" class="button-small" ng-click="showDriverDetails(record)" uib-tooltip='appears with delay'><i class="fa fa-search-minus" aria-hidden="true"></i></button>
                             <!--<button type="button" class="button-small" data-toggle="modal" data-target="#deleteConf"><i class="fa fa-check-circle" aria-hidden="true"></i></button>-->

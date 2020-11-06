@@ -265,7 +265,7 @@
             <table class="responsive table" id="tableDta">
                 <thead>
                     <tr>
-                        <th scope="col">Selection <input type="checkbox" onclick="checkAll(this)"></th>
+                        <th scope="col">Selection</th>
                         <th scope="col">Company Name</th>
                         <th scope="col">GST</th>
                         <th scope="col">Cost center</th>
@@ -296,7 +296,7 @@
                 </thead>
                 <tbody>
                     <tr  ng-repeat = "data in filtedData">
-                     <td><input id="chkCustomer_{{fruit.FruitId}}" type="checkbox" ng-model="data.Selected" />
+                     <td><input type="checkbox" ng-model="data.selected" value="{{data.id}}" />
                         
                      <td>{{data.nameOfCompany}}</td>
                      <td>{{data.gstNo}}</td>
@@ -371,11 +371,11 @@
             </tr>
             <tr>
               
-                <td colspan="10" style="position: relative; left: 500px;">Invoice No : <b>{{invoiceData.invoiceNo}}</b></td>
+                <td colspan="10" >Invoice No : <b>{{invoiceData.invoiceNo}}</b></td>
               
             </tr>
             <tr>             
-                <td colspan="10" style="position: relative; left: 500px;">Invoice Date : <b>{{invoiceData.invoiceDate}}</b></td>           
+                <td colspan="10" >Invoice Date : <b>{{invoiceData.invoiceDate}}</b></td>           
             </tr>
             <tr>          
                 <table>
@@ -409,7 +409,7 @@
                     </tr>
                     <tr>
                         <td>State Code :<b>{{invoiceData.toStateCode}}</b></td>
-                        <td>Description of Service :<b>{{invoiceData.desOfService}}</b></td>
+                        <td></b></td>
                     </tr>
                     <tr>
                         <td></td>
@@ -456,7 +456,7 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td >SGST/UTGS :<b>{{invoiceData.sgstutgs}}</b></td>
+                        <td >SGST/UTGS :<b>{{invoiceData.sgstutgsamt}}</b></td>
                         <td ></td>
                         <td></td>
                         
@@ -464,7 +464,7 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td >CGST : <b>{{invoiceData.cgst}}</b></td>
+                        <td >CGST : <b>{{invoiceData.cgstamt}}</b></td>
                         <td ></td>
                         <td></td>
                         
@@ -506,13 +506,13 @@
                 <td colspan="0" class="text1" ><h6>Authorised Signatory</h6></td>
             </tr>
            </table>
-
+        </div>
            <div class="text-center">
                 <!-- <button class="btn btn-success">Save</button>
                 <button class="btn btn-success">Print</button> -->
-                <button class="btn btn-success" onclick="demoFromHTML()" >Close</button>
+                <button class="btn btn-success" data-dismiss = "modal" >Close</button>
            </div> 
-           </div>
+           
        </div>
        
         </div>
@@ -554,56 +554,6 @@
         downloadLink.click();
     }
 }
-function checkAll(bx) {
-  var cbs = document.getElementsByTagName('input');
-  for(var i=0; i < cbs.length; i++) {
-    if(cbs[i].type == 'checkbox') {
-      cbs[i].checked = bx.checked;
-    }
-  }
-}
 
-</script>
-<script>
-    function demoFromHTML() {
-        alert("harishj")
-    var pdf = new jsPDF('p', 'pt', 'letter');
-    // source can be HTML-formatted string, or a reference
-    // to an actual DOM element from which the text will be scraped.
-    source = $('#pdfData');
-
-    // we support special element handlers. Register them with jQuery-style 
-    // ID selector for either ID or node name. ("#iAmID", "div", "span" etc.)
-    // There is no support for any other type of selectors 
-    // (class, of compound) at this time.
-    specialElementHandlers = {
-        // element with id of "bypass" - jQuery style selector
-        '#bypassme': function (element, renderer) {
-            // true = "handled elsewhere, bypass text extraction"
-            return true
-        }
-    };
-    margins = {
-        top: 80,
-        bottom: 60,
-        left: 40,
-        width: 900
-    };
-    // all coords and widths are in jsPDF instance's declared units
-    // 'inches' in this case
-    pdf.fromHTML(
-    source, // HTML string or DOM elem ref.
-    margins.left, // x coord
-    margins.top, { // y coord
-        'width': margins.width, // max width of content on PDF
-        'elementHandlers': specialElementHandlers
-    },
-
-    function (dispose) {
-        // dispose: object with X, Y of the last line add to the PDF 
-        //          this allow the insertion of new lines after html
-        pdf.save('Test.pdf');
-    }, margins);
-}
    
 </script>

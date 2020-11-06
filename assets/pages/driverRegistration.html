@@ -651,7 +651,7 @@ input:checked + .slider:before {
                                         <div class="card">
                                             <div class="card-header" id="pv">
                                             <h5 class="mb-0">
-                                            <button class="btn btn-link font-weight-bold collapsed" data-toggle="collapse" data-target="#pvaccordian" aria-expanded="false" aria-controls="dlaccordian">
+                                            <button class="btn btn-link font-weight-bold collapsed" data-toggle="collapse" data-target="#pvaccordian" aria-expanded="false" aria-controls="dlaccordian" ng-click = acc4()>
                                               Police Verification 
                                             </button>
                                           </h5>
@@ -695,7 +695,7 @@ input:checked + .slider:before {
                                         <div class="card">
                                             <div class="card-header" id="vr">
                                             <h5 class="mb-0">
-                                            <button class="btn btn-link font-weight-bold collapsed" data-toggle="collapse" data-target="#vraccordian" aria-expanded="false" aria-controls="dlaccordian">
+                                            <button class="btn btn-link font-weight-bold collapsed" data-toggle="collapse" data-target="#vraccordian" aria-expanded="false" aria-controls="dlaccordian" ng-click = "acc5()">
                                               Vehicle Registration
                                             </button>
                                           </h5>
@@ -776,7 +776,9 @@ input:checked + .slider:before {
                                                     <select class="form-control txt-field " ng-model = "fuel" id="exampleFormControlSelect1" ng-change = "addAccordian()">
                                                         <option>Diesel</option>
                                                         <option>Petrol</option>
+                                                        <option>CNG</option>
                                                         <option>Other</option>
+                                                        
                                                     </select>
                                                    
                                                 </div>
@@ -818,7 +820,7 @@ input:checked + .slider:before {
                                         <div class="card">
                                             <div class="card-header" id="vi">
                                             <h5 class="mb-0">
-                                            <button class="btn btn-link font-weight-bold collapsed" data-toggle="collapse" data-target="#viaccordian" aria-expanded="false" aria-controls="dlaccordian">
+                                            <button class="btn btn-link font-weight-bold collapsed" data-toggle="collapse" data-target="#viaccordian" aria-expanded="false" aria-controls="dlaccordian" ng-click= "acc6()">
                                               Vehicle Insurance
                                             </button>
                                           </h5>
@@ -885,7 +887,7 @@ input:checked + .slider:before {
                                         <div class="card">
                                             <div class="card-header" id="vper">
                                             <h5 class="mb-0">
-                                            <button class="btn btn-link font-weight-bold collapsed" data-toggle="collapse" data-target="#vperaccordian" aria-expanded="false" aria-controls="dlaccordian">
+                                            <button class="btn btn-link font-weight-bold collapsed" data-toggle="collapse" data-target="#vperaccordian" aria-expanded="false" aria-controls="dlaccordian" ng-click = "acc7()">
                                               Vehicle Permit
                                             </button>
                                           </h5>
@@ -948,11 +950,85 @@ input:checked + .slider:before {
                                         </div>
                                     </div>
                                     </div>
+                                    <div id="card8" class="col-md-12">
+                                        <div class="card">
+                                            <div class="card-header" id="puc">
+                                            <h5 class="mb-0">
+                                            <button class="btn btn-link font-weight-bold collapsed" data-toggle="collapse" data-target="#pucaccrdian" aria-expanded="false" aria-controls="dlaccordian" ng-click = "acc8()">
+                                              PUC Certificate
+                                            </button>
+                                          </h5>
+                                        </div>
+                                        <div id="pucaccrdian" class="collapse" aria-labelledby="puc" data-parent="#card6">
+                                            <div class="card-body row">
+                                                <div class="from-group  col-sm-6">
+                                                    <lable for="">Licence Number<span class="mendatory">*</span></lable>
+                                                    <input class="form-control txt-field" ng-model="LiNumber" type="text" name="traveler_fname" placeholder="Licence Number">
+                                                </div>
+                                                <div class="from-group  col-sm-6">  
+                                                    <lable for="">Center Name</lable>
+                                                    <input class="form-control txt-field" ng-model="centerName" type="text" name="traveler_fname" placeholder="center name">
+                                                </div>
+                                                <div class="from-group  col-sm-6">
+                                                    <lable for="">Center Address</lable>
+                                                    <input class="form-control txt-field" ng-model="cenAdress" type="text" name="traveler_fname" placeholder="Center Address">
+                                                </div>
+                                                <div class="from-group  col-sm-6">
+                                                    <lable for="">Puc Number</lable>
+                                                    <input class="form-control txt-field" ng-model="pucNumber" type="text" placeholder="Puc number">
+                                                </div>
+                                                <div class="from-group  col-sm-6">
+                                                    <lable for="">Permit Type<span class="mendatory"></span></lable>
+                                                    <input class="form-control txt-field" ng-model="PermitType" type="text" name="traveler_mobNum" placeholder="Docment Number"  >
+                                                   
+                                                </div>
+                                                <div class="from-group  col-sm-6">
+                                                    <lable for="">Engine Number<span class="mendatory"></span></lable>
+                                                    <input class="form-control txt-field" ng-model="engineNumber" type="text" name="vehcle_num" placeholder=" Engine Number" maxlength="20" >
+                                                </div>
+                                             
+                                                <div class="from-group  col-sm-6">
+                                                    <lable for="">Fuel Type<span class="mendatory"></span></lable>
+                                                    <select class="form-control txt-field " ng-model = "fuel" id="exampleFormControlSelect1" ng-change = "addAccordian()">
+                                                        <option>Diesel</option>
+                                                        <option>Petrol</option>
+                                                        <option>CNG</option>
+                                                        <option>Other</option>
+                                                        
+                                                    </select>
+                                                   
+                                                </div>
+                                                <div class="from-group  col-sm-6">
+                                                    <lable for="">Catalyst<span class="mendatory"></span></lable>
+                                                    <input class="form-control txt-field" ng-model="Catalyst" type="text" name="vehcle_num" placeholder="Catalyst" >
+                                                </div>
+                                                <div class="from-group  col-sm-6">
+                                                    <lable for="">Test Date</lable>
+                                                    <my-datepicker ng-model="testDate" myid="someid"></my-datepicker>
+                                                </div>
+                                                <div class="from-group  col-sm-6">
+                                                    <lable for="">Validity Date</lable>
+                                                    <my-datepicker ng-model="valDate" myid="someid"></my-datepicker>
+                                                </div>
+                                                <div class="from-group  col-sm-6">
+                                                    <lable for=""> front Image<span class="mendatory"></span></lable>
+                                                    <input type="file" ng-model="pucfile" name="files" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000"  ng-change="Uploadingvep()"> 
+                                                    <label for="">{{puc_front}}</label>
+                                                </div>
+                                                <div class="from-group  col-sm-6">
+                                                    <lable for=""> Back Image<span class="mendatory"></span></lable>
+                                                    <input type="file" ng-model="puc1file" name="files" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000"  ng-change="Uploadingvep1()"> 
+                                                    <label for="">{{puc_back}}</label> 
+                                                </div>                                        
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
                                     <div id="card9" class="col-md-12">
                                         <div class="card">
                                             <div class="card-header" id="tax">
                                             <h5 class="mb-0">
-                                            <button class="btn btn-link font-weight-bold collapsed" data-toggle="collapse" data-target="#taxaccordian" aria-expanded="false" aria-controls="dlaccordian">
+                                            <button class="btn btn-link font-weight-bold collapsed" data-toggle="collapse" data-target="#taxaccordian" aria-expanded="false" aria-controls="dlaccordian" ng-click= "acc8()">
                                               Road Tax
                                             </button>
                                           </h5>
@@ -1007,7 +1083,7 @@ input:checked + .slider:before {
                                         <div class="card">
                                             <div class="card-header" id="fc">
                                             <h5 class="mb-0">
-                                            <button class="btn btn-link font-weight-bold collapsed" data-toggle="collapse" data-target="#fcaccordian" aria-expanded="false" aria-controls="dlaccordian">
+                                            <button class="btn btn-link font-weight-bold collapsed" data-toggle="collapse" data-target="#fcaccordian" aria-expanded="false" aria-controls="dlaccordian" ng-click = "acc9()">
                                               Fitness Certificate
                                             </button>
                                           </h5>
@@ -1053,6 +1129,61 @@ input:checked + .slider:before {
                                                     <lable for=""> Back Image<span class="mendatory"></span></lable>
                                                     <input type="file" ng-model="ft1file" name="files" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000"  ng-change="UploadingFT1()"> 
                                                     <label for="">{{ft_back}}</label> 
+                                                </div>                                        
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div id="card11" class="col-md-12" >
+                                        <div class="card">
+                                            <div class="card-header" id="pftax">
+                                            <h5 class="mb-0">
+                                            <button class="btn btn-link font-weight-bold collapsed" data-toggle="collapse" data-target="#pfaccordian" aria-expanded="false" aria-controls="dlaccordian" ng-click = "acc9()">
+                                                Professional Tax
+                                            </button>
+                                          </h5>
+                                        </div>
+                                        <div id="pfaccordian" class="collapse" aria-labelledby="pftax" data-parent="#card8">
+                                            <div class="card-body row">
+                                                <div class="from-group  col-sm-6">
+                                                    <lable for="">Document Number<span class="mendatory">*</span></lable>
+                                                    <input class="form-control txt-field" ng-model="docuNoPf" type="text" name="traveler_fname" placeholder="Document Number">
+                                                </div>
+                                                <div class="from-group  col-sm-6">  
+                                                    <lable for="">Issued Date</lable>
+                                                    <my-datepicker ng-model="pfissueDate" myid="someid"></my-datepicker>
+                                                    <!-- <p class="input-group">      
+                                                        <input type="text" class="form-control"
+                                                            uib-datepicker-popup="{{format}}" ng-click="open1()"
+                                                            ng-model="fcissueDate" is-open="popup1.opened"
+                                                            datepicker-options="dateOptions" ng-required="true"
+                                                            close-text="Close" alt-input-formats="altInputFormats" />
+        
+                                                    </p> -->
+                                                </div>
+                                                <div class="from-group  col-sm-6">
+                                                    <lable for="">Expiry Date</lable>
+                                                    <my-datepicker ng-model="pfexpiryDate" myid="someid"></my-datepicker>
+                                                    <!-- <p class="input-group">
+        
+                                                        <input type="text" class="form-control"
+                                                            uib-datepicker-popup="{{format}}" ng-click="open1()"
+                                                            ng-model="fcexpiryDate" is-open="popup1.opened"
+                                                            datepicker-options="dateOptions" ng-required="true"
+                                                            close-text="Close" alt-input-formats="altInputFormats" />
+        
+                                                    </p> -->
+                                                </div>
+
+                                                <div class="from-group  col-sm-6">
+                                                    <lable for=""> front Image<span class="mendatory"></span></lable>
+                                                    <input type="file" ng-model="ftfiles" name="files" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000"  ng-change="UploadingFT()"> 
+                                                    <label for="">{{pf_front}}</label>
+                                                </div>
+                                                <div class="from-group  col-sm-6">
+                                                    <lable for=""> Back Image<span class="mendatory"></span></lable>
+                                                    <input type="file" ng-model="ft1file" name="files" base-sixty-four-input multiple accept=".xlsx, .txt, .xls, .png, .jpg, .doc, .docx, .pdf, .gif, .bmp, .jpeg, .rtf" maxsize="5000000"  ng-change="UploadingFT1()"> 
+                                                    <label for="">{{pf_back}}</label> 
                                                 </div>                                        
                                             </div>
                                         </div>

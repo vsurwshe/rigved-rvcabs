@@ -4,8 +4,8 @@ console.log("Local IP::",lip);
  */
 
 //var ip = 'https://dotstaxi.com/dot-services/';
-var ip = 'http://103.224.240.187:9000/'; 
-// var ip = 'https://staging.health5c.com/dot-services/';
+var ip = 'http://103.224.240.187:9001/'; 
+//var ip = 'http://103.224.240.187:8090/';
 app.constant('DotsCons', {
     'LOGIN_POINT': ip + 'public/signIn/',
     'LOGOUT_POINT': ip + 'authenticate/logOut',
@@ -38,6 +38,7 @@ app.constant('DotsCons', {
     'TRAVELLER_REGISTRATION' : ip+"file/userSignup",
     'ADD_CLIENT':ip+'masterdata/addCustomer',
     'GET_CLIENT_LIST':ip+ 'masterdata/costomerSearch',
+    'GET_PARTNER_LIST':ip+ 'masterdata/partnerSearch',
     //'APPROVE_MEMBER_LIST': ip + 'userInfo/driverApproveList',
     'ACCPET_RIDE':ip + 'booking/bookingNotificationResponse',
     'RE_ASSIGN_RIDE' :ip +"booking/allotingDriver/",
@@ -112,7 +113,7 @@ app.config(['$routeProvider', function ($routeProvider) {
                     var token = authService.getCookie('globals');
                     return $http({
                         method: 'GET',
-                        url: DotsCons.GET_RIDE_LIST,
+                        url: DotsCons.GET_RIDE_LIST+"/"+"0/10",
                         data: "",
                         headers: {
                             'Content-Type': 'application/json',
@@ -291,7 +292,7 @@ app.config(['$routeProvider', function ($routeProvider) {
                 },
             
             }
-        }).when('/manageVendor', {
+        }).when('/manageClient', {
             templateUrl: 'assets/pages/manageVendor.html',
             controller : managevendortrl,
             resolve: {
@@ -320,7 +321,7 @@ app.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'assets/pages/addVendor.html',
             controller: addvendorCtrl
         })
-        .when('/manageClient', {
+        .when('/manageVendor', {
             templateUrl: 'assets/pages/manageClient.html',
             controller : manageClientCtrl,
             resolve: {
@@ -328,7 +329,7 @@ app.config(['$routeProvider', function ($routeProvider) {
                     var token = authService.getCookie('globals');
                     return $http({
                         method: 'get',
-                        url: DotsCons.GET_CLIENT_LIST+"/0/20/",
+                        url: DotsCons.GET_PARTNER_LIST+"/0/10/",
                         data: "",
                         headers: {
                             'Content-Type': 'application/json',
