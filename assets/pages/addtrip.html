@@ -236,7 +236,6 @@
         box-shadow: none;
     }
 </style>
-
 <div id="page-loading" ng-show="loading" class="ng-hide">
     <div class="loader">
         <img src="assets/img/giphy.gif" width="100" height="100" style="padding: 0">
@@ -433,7 +432,14 @@
                                     </div>
                                     <div class="from-group  col-sm-6" style="position: absolute;" ng-show="!online">
                                         <lable for="">Select a Driver<span class="mendatory">*</span></lable>
-                                        <input class="form-control txt-field " placeholder="Select For Driver" ng-model="driver" uib-typeahead="company as company.name for company in getDriverList($viewValue)" typeahead-loading="loadingLocations"typeahead-show-hint="false" typeahead-min-length="0" typeahead-no-results="noResults" class="form-control" ng-focus = getDriverList()> 
+                                        <input class="form-control txt-field " 
+                                            placeholder="Select For Driver"
+                                            ng-model="driver"
+                                            uib-typeahead="company as company.firstName for company in getDriverList($viewValue)"
+                                            typeahead-loading="loadingLocations"
+                                            typeahead-show-hint="false" typeahead-min-length="0" typeahead-no-results="noResults"
+                                            class="form-control" ng-focus = getDriverList()
+                                        > 
                                         <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
                                         <div ng-show="noResults"> <i class="glyphicon glyphicon-remove"></i> No Results Found </div>
                                     </div>
