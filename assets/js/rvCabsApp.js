@@ -217,14 +217,19 @@ app.config(['$routeProvider', function($routeProvider) {
             controller: maintenanceReportCtrl,
             resolve: {
                 GET_CURRENT_DATA: function(authService, DotsCons, $rootScope, $http,$q) {
+
                     var token = authService.getCookie('globals');
                     if ($rootScope.data != null) {
-                        var data = $rootScope.data
+                        const { newFromDate,newEndDate }=$rootScope.data
+                        var data = {}
+                        var consalidateUrl= DotsCons.CONSOLIDATE_SERVICE + 0 + "/30/"+newFromDate+"/"+newEndDate
+                        $rootScope.data=null;
                     } else {
                         var data = {}
+                        var consalidateUrl = DotsCons.CONSOLIDATE_SERVICE + 0 + "/10/"
                     }
                     return $q.all([
-                        $http({ method: 'GET', url: DotsCons.CONSOLIDATE_SERVICE + 0 + "/10/", data, headers: {'Content-Type': 'application/json','Authorization': token.currentUser.tokenDto.token } }),
+                        $http({ method: 'GET', url: consalidateUrl, data, headers: {'Content-Type': 'application/json','Authorization': token.currentUser.tokenDto.token } }),
                         $http({ method: 'GET', url: DotsCons.ALL_EXPENCE_LIST + 0 + "/10/Pending", data, headers: {'Content-Type': 'application/json','Authorization': token.currentUser.tokenDto.token } })
                     ]).then( response=>{ return response; })
                 },
@@ -238,15 +243,15 @@ app.config(['$routeProvider', function($routeProvider) {
                 GET_CURRENT_DATA: function(authService, DotsCons, $rootScope,$location, $http,$q) {
                     var token = authService.getCookie('globals');
                     var urlParams = $location.search();
-                    const { driverId,driverName }=urlParams
+                    const { driverId,driverName, newStartDate,newEndDate }=urlParams
                     if ($rootScope.data != null) {
                         var data = $rootScope.data
                     } else {
                         var data = {}
                     }
                     return $q.all([
-                        $http({ method: 'GET', url: DotsCons.GET_EXPENCE_LIST + 0 + "/20/"+ driverId, data, headers: {'Content-Type': 'application/json','Authorization': token.currentUser.tokenDto.token } }),
-                        $http({ method: 'GET', url: DotsCons.DRIVER_SEARCH + 0 + "/10/"+driverName, data, headers: {'Content-Type': 'application/json','Authorization': token.currentUser.tokenDto.token } })
+                        $http({ method: 'GET', url: DotsCons.GET_EXPENCE_LIST + 0 + "/20/"+ driverId+"/"+newStartDate+"/"+newEndDate, data, headers: {'Content-Type': 'application/json','Authorization': token.currentUser.tokenDto.token } }),
+                        $http({ method: 'GET', url: DotsCons.DRIVER_SEARCH + 0 + "/10/"+driverId, data, headers: {'Content-Type': 'application/json','Authorization': token.currentUser.tokenDto.token } })
                     ]).then( response=>{ return response; })
                 },
             }

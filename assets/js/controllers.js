@@ -3246,7 +3246,7 @@ function maintenanceReportCtrl($scope, $http, DotsCons, $rootScope, $route, auth
     $scope.pendingBillsDtOptions = dtOptionsBuilder($scope.pendingBillsData);
 
     var approvedBillsActionsHtml = function (data, type, full, meta) {
-        return '<button class="btn ripple-infinite btn-round btn-primary materialButtons" ng-click="showApprovedBills(\''+data.driverAccountId+'\',\''+data.driverName+'\')"> view </button>';
+        return '<button class="btn ripple-infinite btn-round btn-primary materialButtons" ng-click="showApprovedBills(\''+data.driverAccountId+'\',\''+data.driverName+'\',\''+data.startDate+'\',\''+data.endDate+'\')"> view </button>';
     }
 
     var pendingBillsActionsHtml = function (data, type, full, meta) {
@@ -3290,9 +3290,12 @@ function maintenanceReportCtrl($scope, $http, DotsCons, $rootScope, $route, auth
         DTColumnBuilder.newColumn(null).withTitle('Action').notSortable().renderWith(pendingBillsActionsHtml),
     ];
 
-    $scope.showApprovedBills = function (driverId, driverName) { 
-        let nameArray=driverName && driverName.split(" ");
-        $location.path('/maintenanceDetaills').search({driverId,driverName: nameArray[0]}); 
+    $scope.showApprovedBills = function (driverId, driverName, startDate, endDate) { 
+        startDate= startDate.split("IST");
+        endDate= endDate.split("IST");
+        var newStartDate = moment(new Date(startDate[0]+startDate[1])).format("YYYY-MM-DD");
+        var newEndDate = moment(new Date(endDate[0]+endDate[1])).format("YYYY-MM-DD");
+        $location.path('/maintenanceDetaills').search({driverId,newStartDate,newEndDate}); 
     }
 
     $scope.updateStatus= async function(status, billId){
@@ -3330,10 +3333,10 @@ function maintenanceReportCtrl($scope, $http, DotsCons, $rootScope, $route, auth
             })
             .withPaginationType('full_numbers')
             .withOption('lengthMenu', [
-                [5, 8, 10, 25, 50, -1],
-                [5, 8, 10, 25, 50, "All"]
+                [10, 25, 50, -1],
+                [10, 25, 50, "All"]
             ])
-            .withDisplayLength(5)
+            .withDisplayLength(10)
             .withButtons(['print', 'excel', 'csvHtml5'])
             // Add Bootstrap compatibility
             .withBootstrap();
@@ -3410,7 +3413,15 @@ function maintenanceDetailsCtrl($scope, $http, DotsCons, $rootScope, authService
 }
 // this is the maintance report filter controller
 function maintenanceRerportFilterCtrl($scope, $http, DotsCons, $rootScope, authService, $localStorage, $location, $q, toaster) {
-    $scope.reportFiltersApply = function (data) {}
+    $scope.reportFiltersApply = function () {
+        if($scope.fromDate !== null &&  $scope.endDate !== null ){
+            var newFromDate = moment(new Date($scope.fromDate)).format("YYYY-MM-DD");
+            var newEndDate = moment(new Date($scope.endDate)).format("YYYY-MM-DD");
+            console.log("Date ",newFromDate,newEndDate)
+            $rootScope.data={newFromDate,newEndDate}
+            $location.path('/maintenanceReport')
+        }
+    }
 }
 // this is expense controller
 function expenseCtrl($scope, $http, DotsCons, $rootScope, authService, $localStorage, $location, $q, toaster) {
