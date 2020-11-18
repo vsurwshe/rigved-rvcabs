@@ -629,7 +629,7 @@ function addTripController($scope, $http, DotsCons, authService, $localStorage, 
         if (val == "" || val == undefined || val == null) { val = "" }
         return $http({
             method: 'GET',
-            url: DotsCons.SEARCH_MODEL + 0 + "/" + $scope.carBrandSubType.id,
+            url: DotsCons.SEARCH_MODEL +"/"+ 0 + "/" + $scope.carBrandSubType.id,
             data: "",
             headers: {
                 'Content-Type': 'application/json',
@@ -2620,7 +2620,7 @@ function travelBillingCtrl($scope, $http, DotsCons, $rootScope, authService, $lo
     )
     $http({
         method: 'GET',
-        url: DotsCons.SEARCH_MODEL + '/1',
+        url: DotsCons.SEARCH_MODEL +'/1',
         data: "",
         headers: {
             'Content-Type': 'application/json',
@@ -3390,13 +3390,15 @@ function maintenanceReportCtrl($scope, $http, DotsCons, $rootScope, $route, auth
 // maintance details controller
 function maintenanceDetailsCtrl($scope, $http, DotsCons, $rootScope, authService, $localStorage, $location, GET_CURRENT_DATA, $q, toaster, $compile, DTOptionsBuilder, DTColumnBuilder) {
     var token = authService.getCookie('globals');
+    const { driverId} = $location.search();
     if (GET_CURRENT_DATA != null) {
         $scope.approvedBillsData= (GET_CURRENT_DATA[0].data && GET_CURRENT_DATA[0].data.length >0) && GET_CURRENT_DATA[0].data.map((item)=> {return {...item,"entryDate":moment(item.entryDate).format('YYYY-MM-DD')}});
         $scope.driverDetails= GET_CURRENT_DATA[1].data[0]
+        
     }
-
+    console.log("Data ",driverId);
     $scope.maintenanceReport = function () { $location.path('/maintenanceReport') }
-    $scope.addExpense = function () { $location.path('/addExpense') }
+    $scope.addExpense = function () { $location.path('/addExpense').search({driverId});  }
 
     $scope.download = function () {
         setTimeout(function () {
@@ -3426,6 +3428,8 @@ function maintenanceRerportFilterCtrl($scope, $http, DotsCons, $rootScope, authS
 // this is expense controller
 function expenseCtrl($scope, $http, DotsCons, $rootScope, authService, $localStorage, $location, $q, toaster) {
     var token = authService.getCookie('globals');
+    const { driverId} = $location.search();
+    $scope.filterData;
     // this function will help to load initial call apis and data
     (function () {
         $scope.loading = true;
@@ -3441,6 +3445,9 @@ function expenseCtrl($scope, $http, DotsCons, $rootScope, authService, $localSto
             function (response) {
                 $scope.driverList = response.data
                 $scope.loading = false;
+                $scope.filterData= (response.data.length >0) && response.data.filter(item=>item.accountId===driverId);
+                $scope.driver=$scope.filterData[0]
+                // $scope.driver = (filterData.length >0) && filterData[0]
             },
             function (errResponse) {
                 $scope.loading = false;
@@ -3448,6 +3455,7 @@ function expenseCtrl($scope, $http, DotsCons, $rootScope, authService, $localSto
             }
         )
     })();
+
     // this function will used for go to back maintence report
     $scope.maintenanceReport = function () { $location.path('/maintenanceReport') }
 
@@ -3478,7 +3486,7 @@ function expenseCtrl($scope, $http, DotsCons, $rootScope, authService, $localSto
                 "source": "Admin",
                 "status":"Approved",
                 "fileUrl": $scope.fileUrl,
-                "driverAccountId": expenceData.driver ? expenceData.driver.accountId : "",
+                "driverAccountId": $scope.driver ? $scope.driver.accountId : "",
                 "entryDate": expenceData.entryDate.getTime(),
                 "vehicleNumber": expenceData.vehicleNumber
             });
