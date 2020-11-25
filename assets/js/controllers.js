@@ -2854,6 +2854,16 @@ function travelBillingCtrl($scope, $http, DotsCons, $rootScope, authService, $lo
             });
         }, 5000)
     }
+    $scope.total_km="";
+    $scope.total_rates="";
+    $scope.showDialog= function (data) {
+        const { totalKm, perHrRate}=data
+        $scope.total_km=totalKm;
+        $scope.total_rates=perHrRate;
+    }
+    $scope.callAdjusment=function () {
+        console.log("Data ", $scope.total_km, $scope.total_rates,$scope.rasing)
+    }
     $scope.closeModel=function(){ $('#exampleModal').modal('hide'); }
     $scope.downloadPDF = function (pdfUrl, name) {
         let pdfWindow = window.open("");

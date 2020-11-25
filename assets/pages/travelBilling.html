@@ -1,12 +1,9 @@
 <style>
     /* -------------Content Css-------------- */
-
     .wrapper {
         display: flex;
         width: 200%;
     }
-
-
     #content {
         width: calc(100% - 220px);
         padding: 10px 40px 20px 40px !important;
@@ -16,42 +13,32 @@
         top: 0;
         right: 0;
         background-image: url('assets/img/background.jpg')!important;
-        
     }
-
     #content.active {
         width: 100%;
     }
-
     /* ------------------------------------- */
-
     table {
         width: 100%;
         border-collapse: collapse;
     }
-
     /* Zebra striping */
-
     tr:nth-of-type(odd) {
         background: #eee;
     }
-
     th {
         background: #333;
         color: white;
         font-weight: bold;
     }
-
     td,
     th {
         padding: 6px;
         border: 1px solid #ccc;
         text-align: left;
     }
-
     @media only screen and (max-width: 760px),
     (min-device-width: 768px) and (max-device-width: 1024px) {
-
         /* Force table to not be like tables anymore */
         table.responsive,
         .responsive thead,
@@ -61,18 +48,15 @@
         .responsive tr {
             display: block;
         }
-
         /* Hide table headers (but not display: none;, for accessibility) */
         .responsive thead tr {
             position: absolute;
             top: -9999px;
             left: -9999px;
         }
-
         .responsive tr {
             border: 1px solid #ccc;
         }
-
         .responsive td {
             /* Behave  like a "row" */
             border: none;
@@ -80,7 +64,6 @@
             position: relative;
             padding-left: 50%;
         }
-
         .responsive td:before {
             /* Now like a table header */
             position: absolute;
@@ -91,13 +74,11 @@
             padding-right: 10px;
             white-space: nowrap;
         }
-
         /*Label the data*/
         .responsive td:before {
             content: attr(data-table-header);
         }
     }
-
     .table-responsive .bootstrap {
         min-height: .01%;
         overflow-x: auto;
@@ -107,7 +88,6 @@
                 /* border:1px solid black;  */
                 padding:50px 
     }
-
     @media screen and (max-width: 767px) {
         .table-responsive.bootstrap {
             width: 100%;
@@ -158,9 +138,7 @@
                 box-shadow:  1px 3px 10px 5px #cecece !important;
         }
     }
-
     /* ---------------User info Section--------------------- */
-
     .label {
         width: 70px;
 
@@ -169,28 +147,31 @@
         width: 1200px;
         max-width: 900px;
     }
-
+    .modal-header {
+        background-color: #fff;
+        color: #000;
+    }
+    .modal-footer {
+        background-color: #fff;
+        color: #000;
+    }
     .label,
     .phone,
     .mobile,
     .email {
         display: inline-block;
     }
-
     .phone,
     .mobile,
     .email {
         font-weight: 600;
     }
-
     .details-td {
         padding: 10px;
         border: none;
         background-color: #ffff;
     }
-
     /* -----------------button------------------------- */
-
     .button {
         padding: 5px 20px;
         border: 2px solid #494a49;
@@ -201,18 +182,12 @@
         text-decoration: none;
         color: #494a49;
         background-color: #fff;
-
-
     }
-
     .button:hover {
         color: #494a49;
         background-color: #f1f50b;
         cursor: pointer;
-
     }
-
-
     .button-small {
         padding: 3px 15px;
         border: 2px solid #494a49;
@@ -223,15 +198,11 @@
         text-decoration: none;
         color: #494a49;
         background-color: #fff;
-
-
     }
-
     .button-small:hover {
         color: #494a49;
         background-color: #f1f50b;
         cursor: pointer;
-
     }
     .overlay {
         display: none;
@@ -243,7 +214,6 @@
         opacity: 0;
         transition: all 0.5s ease-in-out;
     }
-
     .overlay.active {
         display: block;
         opacity: 1;
@@ -313,7 +283,7 @@
                      <td>{{data.tolllPark}}</td>
                      <td>{{data.naDa}}</td>
                      <td>{{data.totalTripBill}}</td>
-                     <td></td>
+                     <td><button type="button" class="button-small" style="cursor: pointer" ng-click="showDialog(data)" data-toggle="modal" data-target="#tripControllerModal"><span class="myfont">Adjustment</span></button></td>
                      <tr>
                         <td colspan="23">
                             <center>
@@ -471,6 +441,42 @@
            </div>
        </div>
       </div>
+    </div>
+</div>
+<div class="modal" tabindex="-1" role="dialog" id="tripControllerModal">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-header">
+            <h5 >Adjust Trip Details</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-content">
+            <div class="modal-body" >
+                <div class="card-body row">
+                    <div class="from-group  col-sm-6">
+                        <lable for="">Total KM<span class="mendatory">*</span></lable>
+                        <input class="form-control txt-field" ng-model="total_km" type="text" placeholder="Enter total KM">
+                    </div>
+                    <div class="from-group  col-sm-6">
+                        <lable for="">Total Rates <span class="mendatory"></span></lable>
+                        <input class="form-control txt-field" ng-model="total_rates" type="text" placeholder="Enter total rates">
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label for="exampleFormControlSelect1">Raised by<span class="mendatory">*</span></label>
+                        <select class="form-control txt-field" id="exampleFormControlSelect1" ng-model=rasing>
+                            <option value="">Select option</option>
+                            <option value="Increment">Increment</option>
+                            <option value="Decrement">Decrement</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="from-group  col-sm-12 modal-footer" style="float: right;margin-bottom: 20px;">
+                <button type="submit" class="btn btn-primary" ng-click="callAdjusment()">Save</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
     </div>
 </div>
 <script >
