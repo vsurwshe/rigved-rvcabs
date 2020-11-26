@@ -218,8 +218,8 @@
         display: block;
         opacity: 1;
     }
+    .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
 </style>
-
 <div id="page-loading" ng-show="loading" class="ng-hide">
     <div class="loader">
         <img src="assets/img/giphy.gif" width="100" height="100" style="padding: 0">
@@ -452,30 +452,36 @@
             </button>
         </div>
         <div class="modal-content">
-            <div class="modal-body" >
+            <form>
+                <div class="modal-body" >
                 <div class="card-body row">
+                    <div class="form-group col-sm-12">
+                        <label for="exampleFormControlSelect1">Adjust by<span class="mendatory">*</span></label>
+                        <select class="form-control txt-field" ng-model="adjust" required>
+                            <option value="">Select Option</option>
+                            <option value="+">Increment</option>
+                            <option value="-">Decrement</option>
+                        </select>
+                    </div>
                     <div class="from-group  col-sm-6">
                         <lable for="">Total KM<span class="mendatory">*</span></lable>
                         <input class="form-control txt-field" ng-model="total_km" type="text" placeholder="Enter total KM">
                     </div>
                     <div class="from-group  col-sm-6">
-                        <lable for="">Total Rates <span class="mendatory"></span></lable>
-                        <input class="form-control txt-field" ng-model="total_rates" type="text" placeholder="Enter total rates">
-                    </div>
-                    <div class="form-group col-sm-6">
-                        <label for="exampleFormControlSelect1">Raised by<span class="mendatory">*</span></label>
-                        <select class="form-control txt-field" id="exampleFormControlSelect1" ng-model=rasing>
-                            <option value="">Select option</option>
-                            <option value="Increment">Increment</option>
-                            <option value="Decrement">Decrement</option>
-                        </select>
+                        <lable for="">Total Hours <span class="mendatory"></span></lable>
+                        <div class="row">
+                            <input ng-model="hours" class="form-control col-sm-3" placeholder="Hours"> &nbsp;:&nbsp;
+                            <input ng-model="minutes" class="form-control  col-sm-3" placeholder="Minutes">
+                        </div>
+                        
                     </div>
                 </div>
-            </div>
-            <div class="from-group  col-sm-12 modal-footer" style="float: right;margin-bottom: 20px;">
+                </div>
+                <div class="from-group  col-sm-12 modal-footer" style="float: right;margin-bottom: 20px;">
                 <button type="submit" class="btn btn-primary" ng-click="callAdjusment()">Save</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>

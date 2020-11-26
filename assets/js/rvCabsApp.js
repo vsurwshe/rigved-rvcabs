@@ -71,6 +71,7 @@ app.constant('DotsCons', {
     'UPDATE_EXPENCE_STATUS': ip +'expenditure/updateStatus/',
     'CONSOLIDATE_SERVICE': ip +'expenditure/expList/',
     'ALL_EXPENCE_LIST': ip +'expenditure/allExpList/',
+    'ADJUSTMENT_API': ip +'bill/adjustInvoice/'
 });
 
 // this app config provider

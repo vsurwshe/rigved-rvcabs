@@ -2856,13 +2856,59 @@ function travelBillingCtrl($scope, $http, DotsCons, $rootScope, authService, $lo
     }
     $scope.total_km="";
     $scope.total_rates="";
+    $scope.invoiceId;
     $scope.showDialog= function (data) {
-        const { totalKm, perHrRate}=data
+        const { totalKm, totalHr, id}=data
+        let filterTime= totalHr && totalHr.split(":")
         $scope.total_km=totalKm;
-        $scope.total_rates=perHrRate;
+        $scope.hours=filterTime.length>0 && filterTime[0];
+        $scope.minutes=filterTime.length>0 && filterTime[1];
+        $scope.invoiceId=id;
     }
     $scope.callAdjusment=function () {
-        console.log("Data ", $scope.total_km, $scope.total_rates,$scope.rasing)
+        if($scope.adjust !=""){
+            let hours= $scope.hours >0 ? parseInt($scope.hours)*60: $scope.hours;
+            let totalHours= parseInt(hours)  + parseInt($scope.minutes);
+            let withSign=$scope.adjust == "-" ? $scope.adjust+totalHours : totalHours
+            let url= DotsCons.ADJUSTMENT_API +$scope.invoiceId+"/"+$scope.total_km+"/"+withSign
+            $scope.loading=true;
+            $http({
+            method: 'GET',
+            url: url,
+            data: "",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': token.currentUser.tokenDto.token
+            }
+        }).then(
+            function (response) { 
+                $http({
+                    method: 'post',
+                    url: DotsCons.GET_FILTERD_DATA + "/0/100/",
+                    data: data,
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': token.currentUser.tokenDto.token
+                    }
+                }).then(
+                    function(response) { 
+                        $scope.loading=false;
+                        return response.data 
+                    },
+                    function(errResponse) { $scope.loading=false; return $q.reject(errResponse) }
+                )},
+            function (errResponse) { 
+                $.iaoAlert({
+                    msg: "Somthing went wrong...Try agian!",
+                    type: "error",
+                    mode: "dark",
+                })
+                $scope.loading=false; return $q.reject(errResponse) 
+        })
+        }else{
+            alert("Please Check the values");
+        }
+        
     }
     $scope.closeModel=function(){ $('#exampleModal').modal('hide'); }
     $scope.downloadPDF = function (pdfUrl, name) {
