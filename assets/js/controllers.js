@@ -2882,21 +2882,15 @@ function travelBillingCtrl($scope, $http, DotsCons, $rootScope, authService, $lo
             }
         }).then(
             function (response) { 
-                $http({
-                    method: 'post',
-                    url: DotsCons.GET_FILTERD_DATA + "/0/100/",
-                    data: data,
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': token.currentUser.tokenDto.token
-                    }
-                }).then(
-                    function(response) { 
-                        $scope.loading=false;
-                        return response.data 
-                    },
-                    function(errResponse) { $scope.loading=false; return $q.reject(errResponse) }
-                )},
+                console.log("Rs ",response)
+                $scope.loading=false;
+                $.iaoAlert({
+                    msg: "Successfully updated adjustment!",
+                    type: "success",
+                    mode: "dark",
+                })
+                window.location.reload();
+            },
             function (errResponse) { 
                 $.iaoAlert({
                     msg: "Somthing went wrong...Try agian!",
